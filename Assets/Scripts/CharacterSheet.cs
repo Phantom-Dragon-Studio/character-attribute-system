@@ -12,7 +12,8 @@ public class CharacterSheet : ScriptableObject
     [SerializeField] private Sprite characterSprite;
     
 
-    //Attributes do not have direct getters. They are loaded into a list, then converted into an array and sent as a whole.
+    //Attributes do not have direct getters. They are loaded into an array and sent as a whole.
+    //The SO is setup in this manner to allow explicit attribute base values to be assigned without needing to write a custom inspector.
     [Header("Agility")]
     [SerializeField] private float baseAgiilityValue;
     [Header("Strength")]
@@ -26,18 +27,18 @@ public class CharacterSheet : ScriptableObject
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
-    private List<Attribute> attributes = new List<Attribute>();
 
+    private Attribute[] attributes = new Attribute[Enum.GetNames(typeof(AttributeType)).Length];
     public void OnEnable()
     {
         Debug.Log("Initializing CharacterSheet");
         attributes[0] = new Attribute(AttributeType.Agility, baseAgiilityValue);
-        attributes[1] = new Attribute(AttributeType.Strength, baseAgiilityValue);
-        attributes[2] = new Attribute(AttributeType.Wisdom, baseAgiilityValue);
-        attributes[3] = new Attribute(AttributeType.Endurance, baseAgiilityValue);
+        attributes[1] = new Attribute(AttributeType.Strength, baseStrengthValue);
+        attributes[2] = new Attribute(AttributeType.Wisdom, baseWisdomValue);
+        attributes[3] = new Attribute(AttributeType.Endurance, baseEnduranceValue);
     }
     #endregion
-    public Attribute[] Attributes { get => attributes.ToArray(); }
+    public Attribute[] Attributes { get => attributes; }
     public string CharacterName { get => characterName; }
     public string CharacterDescription { get => characterDescription; }
     public Sprite CharacterSprite { get => characterSprite; }
