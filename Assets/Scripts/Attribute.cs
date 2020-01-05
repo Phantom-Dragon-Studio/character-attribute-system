@@ -1,5 +1,18 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// This class is strictly a data container containing a pair of values, but is more managable than using a key value pair.
+/// </summary>
+public enum AttributeType
+{
+    //Note: Any items added or removed in this Enum should also be updates to reflect inside the CharacterAttributes constructor.
+    //TODO-- Finish adding all attribute getters.
+    Agility,
+    Strength,
+    Wisdom,
+    Endurance,
+}
+
 [System.Serializable]
 public class Attribute
 {

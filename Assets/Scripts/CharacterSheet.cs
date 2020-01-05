@@ -32,6 +32,7 @@ public class CharacterSheet : ScriptableObject
     public void OnEnable()
     {
         Debug.Log("Initializing CharacterSheet");
+        //TODO-- Finish adding all attributes to the character sheet.
         attributes[0] = new Attribute(AttributeType.Agility, baseAgiilityValue);
         attributes[1] = new Attribute(AttributeType.Strength, baseStrengthValue);
         attributes[2] = new Attribute(AttributeType.Wisdom, baseWisdomValue);

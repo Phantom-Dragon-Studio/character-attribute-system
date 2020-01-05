@@ -2,5 +2,5 @@
 
 public interface IUnit
 {
-    IAttribute GetAttributes { get; }
+    ICharacterAttributes GetAttributes { get; }
 }

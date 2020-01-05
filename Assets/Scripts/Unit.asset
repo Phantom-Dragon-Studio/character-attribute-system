@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a1eb6815b45db44b49b0d2155968c4, type: 3}
-  m_Name: Hero
+  m_Name: Unit
   m_EditorClassIdentifier: 
-  characterName: Test Hero
-  characterDescription: I like to test things.
-  characterSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  baseAgiilityValue: 10
-  baseStrengthValue: 20
-  baseWisdomValue: 30
-  baseEnduranceValue: 40
+  characterName: Test Unit
+  characterDescription: I also like to test stuff.
+  characterSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  baseAgiilityValue: 1
+  baseStrengthValue: 2
+  baseWisdomValue: 3
+  baseEnduranceValue: 4

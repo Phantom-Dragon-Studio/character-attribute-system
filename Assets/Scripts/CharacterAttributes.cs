@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttributeType
-{
-    //Note: Any items added or removed in this Enum should also be updates to reflect inside the CharacterAttributes constructor.
-    Agility,
-    Strength,
-    Wisdom,
-    Endurance,
-}
 
+/// <summary>
+/// This class manages all attributes on a given unit class. This is done to avoid unwanted changes to the attributes as well as seperated concerns.
+/// </summary>
 
-public class CharacterAttributes : IAttribute
+public class CharacterAttributes : ICharacterAttributes
 {
 
     private Dictionary<AttributeType, Attribute> myAttributes = new Dictionary<AttributeType, Attribute>();
 
     //Any Getters & Setters added here for attributes will need to be added into the IAttribute interface as well for accessibility.
+    //TODO-- Finish adding all attribute getters.
     public Attribute Agility { get; internal set; }
     public Attribute Strength { get; internal set; }
     public Attribute Wisdom { get; internal set; }
@@ -33,13 +29,14 @@ public class CharacterAttributes : IAttribute
                 {
                     myAttributes.Add(attributes[i].AttributeType, new Attribute(attributes[i].AttributeType, attributes[i].Amount));
                 }
-                else
-                {
-                    Debug.Log("Whoops! You tried to add something with the same key to the CharacterAttribute dictionary twice! Check your CharacterSheet file.");
-                }
+                //else
+                //{
+                //    Debug.Log("Whoops! You tried to add something with the same key to the CharacterAttribute dictionary twice!");
+                //}
             }
             try
             {
+                //TODO-- Finish adding all attribute getters.
                 Agility = myAttributes[AttributeType.Agility];
                 Strength = myAttributes[AttributeType.Strength];
                 Wisdom = myAttributes[AttributeType.Wisdom];

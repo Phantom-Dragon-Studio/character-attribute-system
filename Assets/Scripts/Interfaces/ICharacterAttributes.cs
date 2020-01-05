@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IAttribute
+public interface ICharacterAttributes
 {
     void UpdateAllAttributes(Attribute[] attributes);
 

@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class TESTER : MonoBehaviour
 {
-    private Unit u;
+    private Unit[] u;
     // Start is called before the first frame update
     void Start()
     {
-        u = FindObjectOfType<Unit>();
-        Debug.Log(u.CharacterName);
-        Debug.Log(u.CharacterDescription);
-        Debug.Log(u.CharacterSprite.name);
-        Debug.Log(u.GetAttributes.Agility);
-        Debug.Log(u.GetAttributes.Strength);
-        Debug.Log(u.GetAttributes.Wisdom);
-        Debug.Log(u.GetAttributes.Endurance);
+        u = FindObjectsOfType<Unit>();
+        for (int i = 0; i < u.Length; i++)
+        {
+            Debug.Log(u[i].CharacterName);
+            Debug.Log(u[i].CharacterDescription);
+            Debug.Log(u[i].CharacterSprite.name);
+            Debug.Log(u[i].GetAttributes.Agility);
+            Debug.Log(u[i].GetAttributes.Strength);
+            Debug.Log(u[i].GetAttributes.Wisdom);
+            Debug.Log(u[i].GetAttributes.Endurance);
+
+        }
     }
 
     // Update is called once per frame
