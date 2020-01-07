@@ -2,5 +2,8 @@
 
 public interface IUnit
 {
-    ICharacterAttributes GetAttributes { get; }
+    string CharacterName { get; }
+    string CharacterDescription { get; }
+    Sprite CharacterSprite { get; }
+    ICharacterAttributesHandler GetAttributes { get; }
 }

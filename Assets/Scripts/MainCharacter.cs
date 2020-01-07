@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainCharacter : Hero, IMainCharacter, IControllable
 {
-    public MainCharacter(CharacterSheet sheet, CharacterAttributes characterStats) : base(sheet, characterStats)
+    public MainCharacter(CharacterSheet sheet) : base(sheet)
     {
     }
 

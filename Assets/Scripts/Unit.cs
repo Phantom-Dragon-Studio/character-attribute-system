@@ -7,31 +7,21 @@ public class Unit : MonoBehaviour, IUnit
 {
     [SerializeField] private CharacterSheet characterSheet;
 
-    private ICharacterAttributes characterAttributes;
-
+    private ICharacterAttributesHandler characterAttributes;
+    private CharacterAttributesHandlerFactory _characterAttributesFactory => new CharacterAttributesHandlerFactory();
 
     public string CharacterName => characterSheet.CharacterName;
     public string CharacterDescription => characterSheet.CharacterDescription;
     public Sprite CharacterSprite => characterSheet.CharacterSprite;
-    public ICharacterAttributes GetAttributes => characterAttributes;
+    public ICharacterAttributesHandler GetAttributes => characterAttributes;
 
-    public Unit(CharacterSheet sheet, ICharacterAttributes characterStats)
+    public Unit(CharacterSheet sheet)
     {
         this.characterSheet = sheet;
-        this.characterAttributes = characterStats;
     }
 
-    //public Unit(CharacterSheet sheet)
-    //{
-    //    this.characterSheet = sheet;
-    //    this.characterAttributes = new CharacterAttributes(characterSheet.Attributes.ToArray());
-    //}
-
-    protected virtual void Awake()
+    private void Awake()
     {
-        //characterAttributes must have a new instance initialized in awake.
-        //If this line is moved into the contructor then preplaced objects whom are not created using the constructor
-        //will have a null value assigned to characterAttributes.
-        this.characterAttributes = new CharacterAttributes(characterSheet.Attributes);
+        this.characterAttributes = _characterAttributesFactory.Create(characterSheet.Attributes);
     }
 }

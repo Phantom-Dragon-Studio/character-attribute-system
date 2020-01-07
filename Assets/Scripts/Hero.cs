@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Hero : Unit, IHero
 {
-    public Hero(CharacterSheet sheet, CharacterAttributes characterStats) : base(sheet, characterStats)
+    public Hero(CharacterSheet sheet) : base(sheet)
     {
     }
 
