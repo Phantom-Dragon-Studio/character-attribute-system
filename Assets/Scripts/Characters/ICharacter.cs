@@ -5,5 +5,6 @@ public interface ICharacter
     string CharacterName { get; }
     string CharacterDescription { get; }
     Sprite CharacterSprite { get; }
-    ICharacterAttributesHandler GetAttributes { get; }
+    ICharacterAttributesHandler Attributes { get; }
+    ICharacterClass CharacterClass { get; }
 }

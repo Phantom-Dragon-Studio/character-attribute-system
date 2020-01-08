@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class Warrior : CharacterClass
 {
-    public void GetAbilities()
+    public override string ToString()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return "Warrior";
     }
 }

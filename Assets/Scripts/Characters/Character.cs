@@ -15,7 +15,7 @@ public class Character : MonoBehaviour, ICharacter
     public string CharacterDescription => characterSheet.CharacterDescription;
     public Sprite CharacterSprite => characterSheet.CharacterSprite;
 
-    public ICharacterAttributesHandler GetAttributes => characterAttributes;
+    public ICharacterAttributesHandler Attributes => characterAttributes;
     public ICharacterClass CharacterClass => characterSheet.CharacterClass;
 
     private void Awake()

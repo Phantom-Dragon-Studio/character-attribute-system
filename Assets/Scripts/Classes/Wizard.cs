@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class Wizard : CharacterClass
 {
-    string[] abilities;
 
-    public void GetAbilities()
+    public override string ToString()
     {
-        throw new System.NotImplementedException();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return "Wizard";
     }
 }

@@ -34,6 +34,7 @@ public class CharacterSheet : ScriptableObject
     public void OnEnable()
     {
         Debug.Log("Initializing CharacterSheet for " + CharacterName);
+        Debug.Log(CharacterName + " is a " + characterClass.ToString());
         attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
         attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
         attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);

@@ -14,10 +14,10 @@ public class TESTER : MonoBehaviour
             Debug.Log(u[i].CharacterName);
             Debug.Log(u[i].CharacterDescription);
             Debug.Log(u[i].CharacterSprite.name);
-            Debug.Log(u[i].GetAttributes.Agility);
-            Debug.Log(u[i].GetAttributes.Strength);
-            Debug.Log(u[i].GetAttributes.Wisdom);
-            Debug.Log(u[i].GetAttributes.Endurance);
+            Debug.Log(u[i].Attributes.Agility);
+            Debug.Log(u[i].Attributes.Strength);
+            Debug.Log(u[i].Attributes.Wisdom);
+            Debug.Log(u[i].Attributes.Endurance);
 
         }
     }

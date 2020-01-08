@@ -4,20 +4,9 @@ using UnityEngine;
 
 public class Rogue : CharacterClass
 {
-    public void GetAbilities()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    // Start is called before the first frame update
-    void Start()
+    public override string ToString()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return "Rogue";
     }
 }
