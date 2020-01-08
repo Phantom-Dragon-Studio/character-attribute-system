@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IUnit
+public interface ICharacter
 {
     string CharacterName { get; }
     string CharacterDescription { get; }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TESTER : MonoBehaviour
 {
-    private IUnit[] u;
+    private ICharacter[] u;
     // Start is called before the first frame update
     void Start()
     {
-        u = FindObjectsOfType<Unit>();
+        u = FindObjectsOfType<Character>();
         for (int i = 0; i < u.Length; i++)
         {
             Debug.Log(u[i].CharacterName);

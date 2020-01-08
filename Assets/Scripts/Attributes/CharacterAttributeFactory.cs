@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttributeFactory
+public static class CharacterAttributeFactory
 {
-    public ICharacterAttribute Create(AttributeType attributeType, float amount)
+    public static ICharacterAttribute Create(AttributeType attributeType, float amount)
     {
         CharacterAttribute newAttribute = new CharacterAttribute();
 

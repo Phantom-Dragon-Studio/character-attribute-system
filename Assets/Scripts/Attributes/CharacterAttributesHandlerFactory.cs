@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttributesHandlerFactory
+public static class CharacterAttributesHandlerFactory
 {
-    public ICharacterAttributesHandler Create(ICharacterAttribute[] attributes)
+    public static ICharacterAttributesHandler Create(ICharacterAttribute[] attributes)
     {
         var newAttributeHandler = new CharacterAttributesHandler();
         if (attributes != null)

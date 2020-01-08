@@ -1,27 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 /// <summary>
 /// This class is the base class for all units. Classes such as the Hero class inherit from this class.
 /// </summary>
 [System.Serializable]
-public class Unit : MonoBehaviour, IUnit
+public class Character : MonoBehaviour, ICharacter
 {
     [SerializeField] private CharacterSheet characterSheet;
 
     private ICharacterAttributesHandler characterAttributes;
-    private CharacterAttributesHandlerFactory _characterAttributesFactory => new CharacterAttributesHandlerFactory();
+    private ICharacterClass characterClass;
 
     public string CharacterName => characterSheet.CharacterName;
     public string CharacterDescription => characterSheet.CharacterDescription;
     public Sprite CharacterSprite => characterSheet.CharacterSprite;
-    public ICharacterAttributesHandler GetAttributes => characterAttributes;
 
-    public Unit(CharacterSheet sheet)
-    {
-        this.characterSheet = sheet;
-    }
+    public ICharacterAttributesHandler GetAttributes => characterAttributes;
+    public ICharacterClass CharacterClass => characterSheet.CharacterClass;
 
     private void Awake()
     {
-        this.characterAttributes = _characterAttributesFactory.Create(characterSheet.Attributes);
+        this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
     }
 }

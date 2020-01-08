@@ -10,6 +10,7 @@ public class CharacterSheet : ScriptableObject
     [SerializeField] private string characterName;
     [SerializeField] private string characterDescription;
     [SerializeField] private Sprite characterSprite;
+    [SerializeField] private ICharacterClass characterClass;
     
 
     //Attributes do not have direct getters. They are loaded into an array and sent as a whole.
@@ -28,16 +29,15 @@ public class CharacterSheet : ScriptableObject
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
 
-    private CharacterAttributeFactory characterAttributeFactory => new CharacterAttributeFactory();
     private ICharacterAttribute[] attributes = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
 
     public void OnEnable()
     {
         Debug.Log("Initializing CharacterSheet for " + CharacterName);
-        attributes[0] = characterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
-        attributes[1] = characterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
-        attributes[2] = characterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
-        attributes[3] = characterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
+        attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
+        attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
+        attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
+        attributes[3] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
     }
     #endregion
 
@@ -45,4 +45,5 @@ public class CharacterSheet : ScriptableObject
     public string CharacterName { get => characterName; }
     public string CharacterDescription { get => characterDescription; }
     public Sprite CharacterSprite { get => characterSprite; }
+    public ICharacterClass CharacterClass { get => characterClass; set => characterClass = value; }
 }

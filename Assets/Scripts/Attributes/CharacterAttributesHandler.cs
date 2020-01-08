@@ -9,9 +9,7 @@ using UnityEngine;
 
 public class CharacterAttributesHandler : ICharacterAttributesHandler
 {
-
     private Dictionary<AttributeType, ICharacterAttribute> myAttributes = new Dictionary<AttributeType, ICharacterAttribute>();
-    private CharacterAttributeFactory characterAttributeFactory => new CharacterAttributeFactory();
 
     //Any Getters & Setters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
     public ICharacterAttribute Agility => myAttributes[AttributeType.Agility];
@@ -36,7 +34,7 @@ public class CharacterAttributesHandler : ICharacterAttributesHandler
     {
         if (!myAttributes.ContainsKey(attribute.AttributeType))
         {
-            myAttributes.Add(attribute.AttributeType, characterAttributeFactory.Create(attribute.AttributeType, attribute.Amount));
+            myAttributes.Add(attribute.AttributeType, CharacterAttributeFactory.Create(attribute.AttributeType, attribute.Amount));
         }
     }
 }
