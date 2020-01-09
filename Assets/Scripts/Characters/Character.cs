@@ -9,14 +9,14 @@ public class Character : MonoBehaviour, ICharacter
     [SerializeField] private CharacterSheet characterSheet;
 
     private ICharacterAttributesHandler characterAttributes;
-    private ICharacterClass characterClass;
+    private ICharacterLeague characterLeague;
 
     public string CharacterName => characterSheet.CharacterName;
     public string CharacterDescription => characterSheet.CharacterDescription;
     public Sprite CharacterSprite => characterSheet.CharacterSprite;
 
     public ICharacterAttributesHandler Attributes => characterAttributes;
-    public ICharacterClass CharacterClass => characterSheet.CharacterClass;
+    public ICharacterLeague CharacterLeague => characterSheet.CharacterLeague;
 
     private void Awake()
     {

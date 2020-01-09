@@ -1,4 +1,7 @@
-﻿public interface IMainCharacter
+﻿using System.Collections.Generic;
+
+public interface IMainCharacter
 {
-    ICharacterClass CharacterClass {  get; }
+    ICharacterLeague CharacterLeague {  get; }
+    Dictionary<ITalent, ITalent> TalentPointList { get; }
 }

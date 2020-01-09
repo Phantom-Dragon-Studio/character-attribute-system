@@ -6,5 +6,5 @@ public interface ICharacter
     string CharacterDescription { get; }
     Sprite CharacterSprite { get; }
     ICharacterAttributesHandler Attributes { get; }
-    ICharacterClass CharacterClass { get; }
+    ICharacterLeague CharacterLeague { get; }
 }
