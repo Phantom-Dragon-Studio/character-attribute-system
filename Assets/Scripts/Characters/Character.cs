@@ -6,20 +6,28 @@ using UnityEngine;
 [System.Serializable]
 public class Character : MonoBehaviour, ICharacter
 {
-    [SerializeField] private CharacterSheet characterSheet;
+    [SerializeField] public CharacterSheet characterSheet = default;
 
-    private ICharacterAttributesHandler characterAttributes;
-    private ICharacterLeague characterLeague;
+    private ICharacterAttributesHandler characterAttributes = default;
+    private ICharacterLeague characterLeague = default;
+    private IStatusEffectHandler statusEffectHandler = default;
 
     public string CharacterName => characterSheet.CharacterName;
     public string CharacterDescription => characterSheet.CharacterDescription;
     public Sprite CharacterSprite => characterSheet.CharacterSprite;
 
     public ICharacterAttributesHandler Attributes => characterAttributes;
-    public ICharacterLeague CharacterLeague => characterSheet.CharacterLeague;
+    public ICharacterLeague CharacterLeague => characterLeague;
+    public IStatusEffectHandler StatusEffectHandler => statusEffectHandler;
+
+    public GameObject GameObject => this.gameObject;
 
     private void Awake()
     {
         this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
+        //Calculate in any gear bonuses.
+        //Calculate in any StatusEffects from spells OR gear.
+        //SecondaryAttributes
+
     }
 }

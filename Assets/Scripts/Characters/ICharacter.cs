@@ -7,4 +7,6 @@ public interface ICharacter
     Sprite CharacterSprite { get; }
     ICharacterAttributesHandler Attributes { get; }
     ICharacterLeague CharacterLeague { get; }
+    IStatusEffectHandler StatusEffectHandler { get; }
+    GameObject GameObject { get; }
 }

@@ -12,4 +12,9 @@ public interface ICharacterAttributesHandler
     ICharacterAttribute Strength { get; }
     ICharacterAttribute Wisdom { get; }
     ICharacterAttribute Endurance { get; }
+
+    
+    
+    //Unit Testing Purposes
+    ICharacterAttribute[] MyAttributes { get; }
 }

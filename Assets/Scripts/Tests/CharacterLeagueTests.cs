@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -8,14 +9,26 @@ namespace Tests
 {
     public class CharacterLeagueTests
     {
-        CharacterSheet sheetToTest;
+        ICharacterSheet sheetToTest;
         ICharacterAttributesHandler charAttributes;
 
         [SetUp]
         public void Setup()
         {
-            sheetToTest = new CharacterSheet();
-            charAttributes = CharacterAttributesHandlerFactory.Create(sheetToTest.Attributes);
+            ICharacterAttribute at1 = CharacterAttributeFactory.Create(AttributeType.Agility, 5);
+            ICharacterAttribute at2 = CharacterAttributeFactory.Create(AttributeType.Strength, 15);
+            ICharacterAttribute at3 = CharacterAttributeFactory.Create(AttributeType.Wisdom, 25);
+            ICharacterAttribute at4 = CharacterAttributeFactory.Create(AttributeType.Endurance, 30);
+
+            ICharacterAttribute[] characterAttributes = new ICharacterAttribute[4];
+            characterAttributes[0] = at1;
+            characterAttributes[1] = at2;
+            characterAttributes[2] = at3;
+            characterAttributes[3] = at4;
+
+            var mock = new Mock<ICharacterSheet>();
+            mock.Setup(m => m.Attributes).Returns(characterAttributes);
+
         }
 
         // A Test behaves as an ordinary method

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a1eb6815b45db44b49b0d2155968c4, type: 3}
   m_Name: BigUnit
   m_EditorClassIdentifier: 
-  characterName: Big Test Unit
-  characterDescription: I BIG
-  characterSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  objectInformation:
+    name: Big Unit
+    description: Big Description
+    sprite: {fileID: 0}
+    gameeObject: {fileID: 0}
   baseAgiilityValue: 100
   baseStrengthValue: 100
   baseWisdomValue: 100

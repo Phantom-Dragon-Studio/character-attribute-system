@@ -27,4 +27,4 @@ MonoBehaviour:
   wizard_StrengthPerLevel: 0
   wizard_WisdomPerLevel: 0
   wizard_EndurancePerLevel: 0
-  wizard_A_D_C_Multiplier: 0
+  wizard_A_D_C_Multiplier: 0.5

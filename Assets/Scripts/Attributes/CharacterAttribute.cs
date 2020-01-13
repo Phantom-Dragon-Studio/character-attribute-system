@@ -5,6 +5,7 @@
 /// </summary>
 public enum AttributeType
 {
+    None,
     Agility,
     Strength,
     Wisdom,

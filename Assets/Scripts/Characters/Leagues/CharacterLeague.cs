@@ -9,19 +9,31 @@ using UnityEngine;
 /// It is responsible for storing the abiltiy handler and the ability handler will be incharge of storing the usable abilities.
 /// Just like we do with attributes on the base Character c# class.
 /// </summary>
-
 [RequireComponent(typeof(Character))]
 public abstract class CharacterLeague : MonoBehaviour, ICharacterLeague
 {
-    private Dictionary<IAbility, IAbility> abilityList = new Dictionary<IAbility, IAbility>();
-    public Dictionary<IAbility, IAbility> GetAbilities => abilityList;
+    [SerializeField] private AbilityInformation[] currentAbilities;
 
+    private IAbilityHandler abilityHandler;
     private IAttackStyle attackStyle;
     public IAttackStyle AttackStyle { get => attackStyle; private set => attackStyle = value; }
-
+    public IAbilityHandler AbilityHandler { get => abilityHandler; private set => abilityHandler = value; }
 
     public override string ToString()
     {
-        return "Character Class: Base";
+        return "Character Class: Base" + "Character Specialization: " + AbilityHandler;
+    }
+
+    private void Awake()
+    {
+        abilityHandler = AbilityHandlerFactory.Create(currentAbilities);
+    }
+
+    private void Start()
+    {
+
+        //TODO Remove
+        abilityHandler.CastAbility(0);
+        abilityHandler.CastAbility(1);
     }
 }

@@ -9,37 +9,38 @@ using UnityEngine;
 public class CharacterSheet : ScriptableObject
 {
     [Header("General Information")]
-    [SerializeField] private string characterName;
-    [SerializeField] private string characterDescription;
-    [SerializeField] private Sprite characterSprite;
-    [SerializeField] private ICharacterLeague characterLeague;
-    
+    [SerializeField] private GeneralObjectInformation objectInformation = default;
+    [SerializeField] private ICharacterLeague characterLeague = default;
+
     [Header("Agility")]
-    [SerializeField] private float baseAgiilityValue;
+    [SerializeField] private float baseAgiilityValue = default;
     [Header("Strength")]
-    [SerializeField] private float baseStrengthValue;
+    [SerializeField] private float baseStrengthValue = default;
     [Header("Wisdom")]
-    [SerializeField] private float baseWisdomValue;
+    [SerializeField] private float baseWisdomValue = default;
     [Header("Endurance")]
-    [SerializeField] private float baseEnduranceValue;
+    [SerializeField] private float baseEnduranceValue = default;
 
 
 
     //Public Accessors
     public ICharacterAttribute[] Attributes { get => attributes; }
-    public string CharacterName { get => characterName; }
-    public string CharacterDescription { get => characterDescription; }
-    public Sprite CharacterSprite { get => characterSprite; }
+    public string CharacterName { get => objectInformation.Name; }
+    public string CharacterDescription { get => objectInformation.Description; }
+    public Sprite CharacterSprite { get => objectInformation.Sprite; }
     public ICharacterLeague CharacterLeague { get => characterLeague; set => characterLeague = value; }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
 
-    private ICharacterAttribute[] attributes = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
+        //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
+        //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
+
+    private ICharacterAttribute[] attributes = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length - 1];
 
     public void OnEnable()
     {
-        Debug.Log("Initializing CharacterSheet for " + CharacterName);
+        Debug.Log("Initializing ICharacterSheet for " + CharacterName);
         //Debug.Log(CharacterName + " is a " + characterClass.ToString());
         attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
         attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);

@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AbilityHandler : IAbilityHandler
+{
+    private Dictionary<int, IAbility> currentAbilities = new Dictionary<int, IAbility>();
+    public Dictionary<int, IAbility> GetAbilities => currentAbilities;
+
+    public void AddAbility(int abilityIndex, IAbility _ability)
+    {
+        currentAbilities.Add(abilityIndex, _ability);
+    }
+
+    public void RemoveAbility(int abilityIndex)
+    {
+        currentAbilities.Remove(abilityIndex);
+    }
+
+    public void LevelUpAbility(int index, int numberOfLevelsToIncrementBy)
+    {
+        currentAbilities[index].AbilityInformation.GeneralAbilityInfo.IncreaseAbilityLevel(numberOfLevelsToIncrementBy);
+    }
+
+    public void CastAbility(int abilityIndex)
+    {
+        GetAbilities[abilityIndex].Execute();
+    }
+}

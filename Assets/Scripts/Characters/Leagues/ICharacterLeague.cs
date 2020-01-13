@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public interface ICharacterLeague
 {
-    Dictionary<IAbility, IAbility> GetAbilities { get; }
-
+    IAbilityHandler AbilityHandler { get; }
+    IAttackStyle AttackStyle { get; }
     string ToString();
 }
