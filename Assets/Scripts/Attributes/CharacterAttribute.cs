@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// This class is strictly a data container containing a pair of values, but is more managable than using a key value pair.

@@ -21,14 +21,15 @@ public class TESTER : MonoBehaviour
             //Debug.Log(u[i].Attributes.Strength);
             //Debug.Log(u[i].Attributes.Wisdom);
             //Debug.Log(u[i].Attributes.Endurance);
-
-            u[0].Attributes.UpdateAtribute(AttributeType.Agility, 500);
-            Debug.Log(u[0].Attributes.Agility);
-
-
-
-            cl = FindObjectOfType<CharacterLeague>();
         }
+        var ch = u[0];
+        ch.Attributes.UpdateAtribute(AttributeType.Agility, 500);
+        Debug.Log(ch.Attributes.Agility);
+
+
+
+        cl = FindObjectOfType<CharacterLeague>();
+
     }
 
     // Update is called once per frame

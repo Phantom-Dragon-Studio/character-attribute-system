@@ -20,7 +20,7 @@ public class CharacterSheet : ScriptableObject
     [SerializeField] private float baseWisdomValue = default;
     [Header("Endurance")]
     [SerializeField] private float baseEnduranceValue = default;
-
+    [SerializeField] private GameObject prefab = default;
 
 
     //Public Accessors
@@ -29,19 +29,19 @@ public class CharacterSheet : ScriptableObject
     public string CharacterDescription { get => objectInformation.Description; }
     public Sprite CharacterSprite { get => objectInformation.Sprite; }
     public ICharacterLeague CharacterLeague { get => characterLeague; set => characterLeague = value; }
+    public GameObject Prefab { get => prefab; }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
 
-        //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
-        //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
+    //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
+    //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
 
     private ICharacterAttribute[] attributes = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length - 1];
 
     public void OnEnable()
     {
         Debug.Log("Initializing ICharacterSheet for " + CharacterName);
-        //Debug.Log(CharacterName + " is a " + characterClass.ToString());
         attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
         attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
         attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);

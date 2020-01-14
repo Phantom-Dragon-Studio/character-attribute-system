@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public interface ICharacter
 {
@@ -9,4 +10,7 @@ public interface ICharacter
     ICharacterLeague CharacterLeague { get; }
     IStatusEffectHandler StatusEffectHandler { get; }
     GameObject GameObject { get; }
+    IHealth Health { get; }
+    void Heal(int amount);
+    event EventHandler<Character.HealedEventArgs> Healed;
 }

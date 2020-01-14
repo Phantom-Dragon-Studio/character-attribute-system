@@ -12,7 +12,7 @@ using UnityEngine;
 [RequireComponent(typeof(Character))]
 public abstract class CharacterLeague : MonoBehaviour, ICharacterLeague
 {
-    [SerializeField] private AbilityInformation[] currentAbilities;
+    [SerializeField] private AbilityInformation[] currentAbilities = default;
 
     private IAbilityHandler abilityHandler;
     private IAttackStyle attackStyle;

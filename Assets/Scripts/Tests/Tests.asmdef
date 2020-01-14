@@ -17,7 +17,7 @@
         "System.Runtime.CompilerServices.Unsafe.dll",
         "System.Threading.Tasks.Extensions.dll"
     ],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
     ],

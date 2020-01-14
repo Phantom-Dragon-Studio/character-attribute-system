@@ -20,3 +20,4 @@ MonoBehaviour:
   baseStrengthValue: 32
   baseWisdomValue: 11
   baseEnduranceValue: 27
+  prefab: {fileID: 7659718069294395533, guid: 5e7ec7fb461261a40bbe6ed1c157b2c1, type: 3}

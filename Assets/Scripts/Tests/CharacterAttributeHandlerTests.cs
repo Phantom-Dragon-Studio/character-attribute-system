@@ -15,7 +15,6 @@ namespace Tests
     {
         ICharacterSheet sheetToTest;
         ICharacterAttributesHandler attributesHandler;
-        Moq.Mock mock;
 
         [SetUp]
         public void Setup()
