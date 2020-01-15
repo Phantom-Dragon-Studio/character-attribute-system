@@ -17,7 +17,6 @@ namespace Tests
         public void TestsSetup()
         {
             character = new GameObject().AddComponent<Character>();
-            Debug.Log(character);
         }
 
         [Test]
