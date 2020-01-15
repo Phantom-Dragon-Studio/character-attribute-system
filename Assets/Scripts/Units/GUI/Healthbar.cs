@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Healthbar : MonoBehaviour
+public class Healthbar : MonoBehaviour, IHealthbar
 {
     ICharacter characterToMonitor;
 

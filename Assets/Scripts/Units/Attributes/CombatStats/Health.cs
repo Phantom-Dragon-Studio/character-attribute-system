@@ -20,6 +20,7 @@ public class Health : IHealth
 
     private void IncreaseHealth(int amount) //Take healingReceived statusEffects as a param here.
     {
+        Debug.Log("HEALING!");
         //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
         Debug.Log("Increasing health of " + characterToMonitor + " by " + amount.ToString());
         CurrentHealth += amount;

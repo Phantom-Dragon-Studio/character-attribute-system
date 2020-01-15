@@ -8,29 +8,25 @@ using Moq;
 using System;
 
 namespace Tests
-{[TestFixture]
+{
     public class CharacterTests
     {
         Character character;
-        Health health;
-        Character.HealedEventArgs ag;
 
         [SetUp]
-        public void CharacterTestsSimplePasses()
+        public void TestsSetup()
         {
-            character = new Character();
-            health = new Health(-1, character);
-            character.Health.Returns(health);
-
-            ag = new Character.HealedEventArgs(10);
+            character = new GameObject().AddComponent<Character>();
+            Debug.Log(character);
         }
 
-        [TestCase(10)]
-        public void Raises_Event_On_Heal(int a)
+        [Test]
+        public void Raises_Event_On_Heal()
         {
-            var amount = -1;
-            character.Healed += (sender, args) => { amount = args.Amount; };
-            Assert.AreEqual(character.Health.CurrentHealth, amount);
+            bool wasCalled = false;
+            character.Healed += (sender, args) => wasCalled = true;
+            character.Heal(10);
+            Assert.IsTrue(wasCalled);
         }
     }
 }

@@ -32,14 +32,13 @@ public class Character : MonoBehaviour, ICharacter
     public void Heal(int amount)
     {
         //It could be done inside the HealthClass as well, but we would need to pass all healingReceived statusEffects with it as well.
-        Debug.Log("HEALING!");
         Healed?.Invoke(this, new HealedEventArgs(amount));
     }
     #endregion
 
     private void Awake()
     {
-        this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
+        //this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
         //Calculate in any gear bonuses.
         //Calculate in any StatusEffects from spells & items.
         //CombatStats
