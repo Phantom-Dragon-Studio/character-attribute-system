@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class CharacterFactory
 {
-    public static GameObject Create(CharacterSheet sheet, CharacterLeague league)
+    public static GameObject Create(CharacterSheet sheet)
     {
         //TODO Add in object pooling.
         return GameObject.Instantiate(sheet.Prefab);

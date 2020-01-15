@@ -10,6 +10,7 @@ public class Health : IHealth
         CurrentHealth = currentHealth;
         CharacterToMonitor = characterToMonitor;
 
+        //TODO Unsubscribe from onHealedEvent
         CharacterToMonitor.Healed += (sender, args) => IncreaseHealth(args.Amount);
     }
 

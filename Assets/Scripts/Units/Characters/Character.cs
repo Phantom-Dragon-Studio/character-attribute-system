@@ -42,7 +42,7 @@ public class Character : MonoBehaviour, ICharacter
         this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
         //Calculate in any gear bonuses.
         //Calculate in any StatusEffects from spells & items.
-        //SecondaryAttributes
+        //CombatStats
 
         Health = new Health(-1, this);
         Health.CharacterToMonitor = this;

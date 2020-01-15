@@ -5,37 +5,32 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using NSubstitute;
 using Moq;
+using System;
 
 namespace Tests
-{
+{[TestFixture]
     public class CharacterTests
     {
         ICharacter character;
+        IHealth health;
 
         [SetUp]
         public void CharacterTestsSimplePasses()
         {
-
+            character = Substitute.For<ICharacter>();
+            health = Substitute.For<IHealth>();
+            health.CharacterToMonitor = character;
         }
 
-        //[Test]
-        //public IEnumerator CharacterTestsWithEnumeratorPasses()
-        //{
-        //    // Use the Assert class to test conditions.
-        //    // Use yield to skip a frame.
-        //    yield return null;
-        //}
-
-        [Test]
-        public void Raises_Event_On_Heal()
+        [TestCase(10)]
+        public void Raises_Event_On_Heal(int a)
         {
-
-            character = Substitute.For<ICharacter>();
-
             var amount = -1;
             character.Healed += (sender, args) => { amount = args.Amount; };
-            character.Heal(0);
-            Assert.AreEqual(0, amount);
+            character.Heal(a); 
+
+            //Debug.Log(health.Received());
+            //Assert.AreEqual(10, amount);
         }
     }
 }
