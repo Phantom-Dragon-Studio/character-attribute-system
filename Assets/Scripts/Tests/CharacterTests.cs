@@ -11,15 +11,18 @@ namespace Tests
 {[TestFixture]
     public class CharacterTests
     {
-        ICharacter character;
-        IHealth health;
+        Character character;
+        Health health;
+        Character.HealedEventArgs ag;
 
         [SetUp]
         public void CharacterTestsSimplePasses()
         {
-            character = Substitute.For<ICharacter>();
-            health = Substitute.For<IHealth>();
-            health.CharacterToMonitor = character;
+            character = new Character();
+            health = new Health(-1, character);
+            character.Health.Returns(health);
+
+            ag = new Character.HealedEventArgs(10);
         }
 
         [TestCase(10)]
@@ -27,10 +30,7 @@ namespace Tests
         {
             var amount = -1;
             character.Healed += (sender, args) => { amount = args.Amount; };
-            character.Heal(a); 
-
-            //Debug.Log(health.Received());
-            //Assert.AreEqual(10, amount);
+            Assert.AreEqual(character.Health.CurrentHealth, amount);
         }
     }
 }
