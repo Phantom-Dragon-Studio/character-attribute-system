@@ -11,6 +11,6 @@ public interface ICharacter
     IStatusEffectHandler StatusEffectHandler { get; }
     GameObject GameObject { get; }
     IHealth Health { get; }
-    void Heal(int amount);
+    void Heal(float amount);
     event EventHandler<Character.HealedEventArgs> Healed;
 }

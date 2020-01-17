@@ -13,7 +13,10 @@ public static class CharacterAttributesHandlerFactory
         {
             for (int i = 0; i < attributes.Length; i++)
             {
-                newAttributeHandler.AddAttribute(attributes[i]);
+                if(attributes[i] != null)
+                {
+                    newAttributeHandler.AddAttribute(attributes[i]);
+                }
             }
         }
         else Debug.LogError("Null list recieved by CharacterAttributesHandler Factory.");

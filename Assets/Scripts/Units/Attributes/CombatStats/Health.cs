@@ -14,11 +14,15 @@ public class Health : IHealth
         CharacterToMonitor.Healed += (sender, args) => IncreaseHealth(args.Amount);
     }
 
-    public int CurrentHealth { get; private set; }
-    public ICharacter CharacterToMonitor { get => characterToMonitor; set => characterToMonitor = value; }
+    public float CurrentHealth { get; private set; }
+    public ICharacter CharacterToMonitor { get => characterToMonitor; private set => characterToMonitor = value; }
 
+    public void ResetHealth()
+    {
+        CurrentHealth = 0;
+    }
 
-    private void IncreaseHealth(int amount) //Take healingReceived statusEffects as a param here.
+    private void IncreaseHealth(float amount)
     {
         Debug.Log("HEALING!");
         //TODO ~ Add BonusHealingReceived & HealingReduced logic here.

@@ -6,7 +6,7 @@ using UnityEngine;
 ///  The SO is setup in this manner to allow explicit attribute base values to be assigned without needing to write a custom inspector.
 /// </summary>
 [CreateAssetMenu(fileName = "New Character Sheet", menuName = "Phantom Dragon Studio/Character Sheet", order = 0)]
-public class CharacterSheet : ScriptableObject
+public class CharacterSheet : ScriptableObject, ICharacterSheet
 {
     [Header("General Information")]
     [SerializeField] private GeneralObjectInformation objectInformation = default;

@@ -17,7 +17,7 @@ public class AbilityBehavior_SingleTargetMissle : AbilityBehavior
 
     public override void Execute()
     {
-        Debug.Log("AbilityBehavior_SingleTargetMissle: Executing");
+        //Debug.Log("AbilityBehavior_SingleTargetMissle: Executing");
     }
 
 }

@@ -13,6 +13,12 @@ public class Character : MonoBehaviour, ICharacter
     private ICharacterLeague characterLeague = default;
     private IStatusEffectHandler statusEffectHandler = default;
     private IHealth health;
+
+    public Character Construct()
+    {
+        this.health = new Health(100, this);
+        return this;
+    }
     #endregion
 
     #region Getters & Setters
@@ -29,33 +35,27 @@ public class Character : MonoBehaviour, ICharacter
     #region Health Mechanics
     public event EventHandler<HealedEventArgs> Healed;
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
-        //It could be done inside the HealthClass as well, but we would need to pass all healingReceived statusEffects with it as well.
         Healed?.Invoke(this, new HealedEventArgs(amount));
     }
     #endregion
 
     private void Awake()
     {
-        //this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
+        this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
         //Calculate in any gear bonuses.
         //Calculate in any StatusEffects from spells & items.
         //CombatStats
-
-        Health = new Health(-1, this);
-        Health.CharacterToMonitor = this;
-
-        Heal(100);
     }
 
     public class HealedEventArgs : EventArgs
     {
-        public HealedEventArgs(int amount)
+        public HealedEventArgs(float amount)
         {
             Amount = amount;
         }
 
-        public int Amount { get; private set; }
+        public float Amount { get; private set; }
     }
 }

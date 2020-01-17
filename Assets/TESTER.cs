@@ -24,7 +24,7 @@ public class TESTER : MonoBehaviour
         }
         var ch = u[0];
         ch.Attributes.UpdateAtribute(AttributeType.Agility, 500);
-        Debug.Log(ch.Attributes.Agility);
+        //Debug.Log(ch.Attributes.Agility);
 
 
 

@@ -8,7 +8,6 @@ public static class CharacterFactory
     {
         //TODO Add in object pooling.
         return GameObject.Instantiate(sheet.Prefab);
-        //var temp = newCharGO.GetComponent<Character>();
-        //return temp;
+
     }
 }
