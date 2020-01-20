@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MagicProjectileSpawner : MonoBehaviour
 {
-    [SerializeField] private Settings _settings;
+    [SerializeField] private Settings _settings = default;
 
     public void CreateMagicBolt(Vector3 spawnPoint, Quaternion spawnRotation)
     {

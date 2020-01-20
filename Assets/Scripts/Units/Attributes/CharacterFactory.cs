@@ -4,10 +4,15 @@ using UnityEngine;
 
 public static class CharacterFactory
 {
-    public static GameObject Create(CharacterSheet sheet)
+
+    public static GameObject Create(CharacterSheet sheet, Vector3 location, Quaternion rotation)
     {
         //TODO Add in object pooling.
-        return GameObject.Instantiate(sheet.Prefab);
-
+        GameObject GO = GameObject.Instantiate(sheet.Prefab);
+        Character character = GO.GetComponent<Character>();
+        character.Construct();
+        character.transform.position = location;
+        character.transform.rotation = rotation;
+        return GO;
     }
 }

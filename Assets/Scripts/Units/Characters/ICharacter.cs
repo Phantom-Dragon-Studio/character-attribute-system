@@ -7,9 +7,8 @@ public interface ICharacter
     string CharacterDescription { get; }
     Sprite CharacterSprite { get; }
     ICharacterAttributesHandler Attributes { get; }
-    ICharacterLeague CharacterLeague { get; }
     IStatusEffectHandler StatusEffectHandler { get; }
-    GameObject GameObject { get; }
+
     IHealth Health { get; }
     void Heal(float amount);
     event EventHandler<Character.HealedEventArgs> Healed;

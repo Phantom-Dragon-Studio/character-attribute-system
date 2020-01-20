@@ -2,6 +2,9 @@
 public interface ICharacterLeague
 {
     IAbilityHandler AbilityHandler { get; }
-    IAttackStyle AttackStyle { get; }
+    ICombatStatsHandler CombatStats { get; }
+    IStatusEffectHandler StatusEffectHandler { get; }
+    IElementalResistanceHandler ResistanceHandler { get; }
+
     string ToString();
 }

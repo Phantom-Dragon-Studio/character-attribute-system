@@ -12,35 +12,31 @@ public class CharacterAttributesHandler : ICharacterAttributesHandler
     private Dictionary<AttributeType, ICharacterAttribute> myAttributes = new Dictionary<AttributeType, ICharacterAttribute>();
 
     //Any Getters & Setters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
-    public ICharacterAttribute Agility => MyAttributes[AttributeType.Agility];
-    public ICharacterAttribute Strength => MyAttributes[AttributeType.Strength];
-    public ICharacterAttribute Wisdom => MyAttributes[AttributeType.Wisdom];
-    public ICharacterAttribute Endurance => MyAttributes[AttributeType.Endurance];
+    public Dictionary<AttributeType, ICharacterAttribute> Attributes { get => myAttributes; }
 
-    public Dictionary<AttributeType, ICharacterAttribute> MyAttributes { get => myAttributes; }
+    public ICharacterAttribute Agility => Attributes[AttributeType.Agility];
+    public ICharacterAttribute Strength => Attributes[AttributeType.Strength];
+    public ICharacterAttribute Wisdom => Attributes[AttributeType.Wisdom];
+    public ICharacterAttribute Endurance => Attributes[AttributeType.Endurance];
 
-
-    //Unit Testing Purposes
-    ICharacterAttribute[] ICharacterAttributesHandler.MyAttributes => throw new NotImplementedException();
-
-    public void UpdateAllAttributes(ICharacterAttribute[] attributes)
+    public void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes)
     {
         for (int i = 0; i < attributes.Length; i++)
         {
-            MyAttributes[attributes[i].AttributeType].Amount += attributes[i].Amount;
+            Attributes[attributes[i].AttributeType].UpdateValue(character, attributes[i].Amount);
         }
     }
 
-    public void UpdateAtribute(AttributeType type, float amount)
+    public void UpdateAtribute(ICharacter character, AttributeType type, float amount)
     {
-        MyAttributes[type].Amount += amount;
+        Attributes[type].UpdateValue(character, amount);
     }
 
     public void AddAttribute(ICharacterAttribute attribute)
     {
-        if (!MyAttributes.ContainsKey(attribute.AttributeType))
+        if (!Attributes.ContainsKey(attribute.AttributeType))
         {
-            MyAttributes.Add(attribute.AttributeType, CharacterAttributeFactory.Create(attribute.AttributeType, attribute.Amount));
+            Attributes.Add(attribute.AttributeType, CharacterAttributeFactory.Create(attribute.AttributeType, attribute.Amount));
         }
     }
 }

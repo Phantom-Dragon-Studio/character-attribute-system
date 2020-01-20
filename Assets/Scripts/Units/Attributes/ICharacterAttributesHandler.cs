@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public interface ICharacterAttributesHandler
 {
-    void UpdateAllAttributes(ICharacterAttribute[] attributes);
+    void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes);
 
-    void UpdateAtribute(AttributeType type, float amount);
+    void UpdateAtribute(ICharacter character, AttributeType type, float amount);
 
     void AddAttribute(ICharacterAttribute attribute);
 
@@ -12,9 +13,4 @@ public interface ICharacterAttributesHandler
     ICharacterAttribute Strength { get; }
     ICharacterAttribute Wisdom { get; }
     ICharacterAttribute Endurance { get; }
-
-    
-    
-    //Unit Testing Purposes
-    ICharacterAttribute[] MyAttributes { get; }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TESTER : MonoBehaviour
 {
+
+    public float agi = 1000;
     private ICharacter[] u;
     private IAbility abilityToCast;
     private CharacterLeague cl;
@@ -23,13 +25,11 @@ public class TESTER : MonoBehaviour
             //Debug.Log(u[i].Attributes.Endurance);
         }
         var ch = u[0];
-        ch.Attributes.UpdateAtribute(AttributeType.Agility, 500);
-        //Debug.Log(ch.Attributes.Agility);
-
-
-
+        //ch.Attributes.UpdateAtribute(AttributeType.Agility, 32);
+        //ch.Attributes.UpdateAtribute(AttributeType.Strength, 25);
+        //ch.Attributes.UpdateAtribute(AttributeType.Wisdom, 15);
+        //ch.Attributes.UpdateAtribute(AttributeType.Endurance, 21);
         cl = FindObjectOfType<CharacterLeague>();
-
     }
 
     // Update is called once per frame
