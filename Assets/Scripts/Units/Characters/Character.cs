@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 /// <summary>
-/// This class is the base class for all units. Classes such as the Hero class inherit from this class.
+/// This class is the class for all alive units (Anyting that can move basically because I intend on making structures their own script, similar to the Character script).
 /// </summary>
 [System.Serializable]
 public class Character : MonoBehaviour, ICharacter
