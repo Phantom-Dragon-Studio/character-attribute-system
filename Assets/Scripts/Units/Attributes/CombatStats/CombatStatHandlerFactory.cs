@@ -17,7 +17,7 @@ public static class CombatStatHandlerFactory
             {
                 if (combatStats[i] != null)
                 {
-                    Debug.Log("Adding " + combatStats[i].CombatStatType + " to the character.");
+                    Debug.Log("Adding " + combatStats[i].CombatStatType + " to "+ character + ".");
                     newAttributeHandler.AddCombatStat(combatStats[i]);
                 }
             }

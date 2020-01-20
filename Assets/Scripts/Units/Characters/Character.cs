@@ -13,6 +13,7 @@ public class Character : MonoBehaviour, ICharacter
     {
         this.health = new Health(100, this);
         this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
+        League = GetComponent<CharacterLeague>();
         return this;
     }
 
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour, ICharacter
     private ICharacterAttributesHandler characterAttributes = default;
     private IStatusEffectHandler statusEffectHandler = default;
     private IHealth health;
+    private CharacterLeague league;
     #endregion
 
     #region Getters & Setters
@@ -29,6 +31,7 @@ public class Character : MonoBehaviour, ICharacter
     public ICharacterAttributesHandler Attributes => characterAttributes;
     public IStatusEffectHandler StatusEffectHandler => statusEffectHandler;
     public IHealth Health { get => health; private set { health = value; } }
+    public CharacterLeague League { get => league; set => league = value; }
     #endregion
 
     #region Health Mechanics
