@@ -22,17 +22,17 @@ public class CS_AttackSpeed : ICombatStat
         if(character.League is Rogue )
         {
             Value = character.Attributes.Agility.Amount + character.Attributes.Endurance.Amount * 0.8f;
-            Debug.Log("Calculating " + CombatStatType + " based upon " + character.CharacterName + "'s Agility & Endurance: " + Value);
+            Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + character.CharacterName + "'s Agility & Endurance: " + Value);
         }
         if (character.League is Warrior)
         {
             Value = character.Attributes.Agility.Amount * 0.6f;
-            Debug.Log("Calculating " + CombatStatType + " based upon " + character.CharacterName + "'s Agility: " + Value);
+            Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + character.CharacterName + "'s Agility: " + Value);
         }
         if (character.League is Wizard)
         {
             Value = character.Attributes.Agility.Amount * 0.5f;
-            Debug.Log("Calculating " + CombatStatType + " based upon " + character.CharacterName + "'s Agility: " + Value);
+            Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + character.CharacterName + "'s Agility: " + Value);
         }
     }
 
