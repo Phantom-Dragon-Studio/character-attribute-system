@@ -15,13 +15,14 @@ public class Character_InformationWindow : MonoBehaviour
 
     [ShowOnly] [SerializeField] float criticalStrikeChance;
     [ShowOnly] [SerializeField] float dodgeChance;
-    [ShowOnly] [SerializeField] float baseDamage;
+    [ShowOnly] [SerializeField] float physicalDamage;
+    [ShowOnly] [SerializeField] float magicalDamage;
     [ShowOnly] [SerializeField] float movementSpeed;
     [ShowOnly] [SerializeField] float attackSpeed;
     [ShowOnly] [SerializeField] float magicDefense;
     [ShowOnly] [SerializeField] float physicalDefense;
 
-    [ShowOnly] [SerializeField] float healthBase;
+    [ShowOnly] [SerializeField] float maxHealth;
     [ShowOnly] [SerializeField] float healthRegen;
     [ShowOnly] [SerializeField] float M_E_F_Base;
     [ShowOnly] [SerializeField] float M_E_F_Regen;
@@ -40,12 +41,13 @@ public class Character_InformationWindow : MonoBehaviour
 
         criticalStrikeChance = league.CombatStats.CriticalStrikeChance.Value;
         dodgeChance = league.CombatStats.DodgeChance.Value;
-        baseDamage = league.CombatStats.BaseDamage.Value;
-        movementSpeed = league.CombatStats.MovementSpeed.Value;
         attackSpeed = league.CombatStats.AttackSpeed.Value;
-        magicDefense = league.CombatStats.MagicDefense.Value;
+        movementSpeed = league.CombatStats.MovementSpeed.Value;
+        physicalDamage = league.CombatStats.PhysicalDamage.Value;
+        magicalDamage = league.CombatStats.MagicalDamage.Value;
         physicalDefense = league.CombatStats.PhysicalDefense.Value;
-        //healthBase = character.CombatStats.HealthBase.Amount;
+        magicDefense = league.CombatStats.MagicDefense.Value;
+        maxHealth = league.CombatStats.MaxHealth.Value;
         //healthRegen = character.CharacterLeague.CombatStats.HealthRegen.Amount;
         //M_E_F_Base = character.CharacterLeague.CombatStats.M_E_F_Base.Amount;
         //M_E_F_Regen = character.CharacterLeague.CombatStats.M_E_F_Regen.Amount;

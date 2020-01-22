@@ -4,12 +4,13 @@
 
     ICombatStat CriticalStrikeChance { get; }
     ICombatStat DodgeChance { get; }
-    ICombatStat BaseDamage { get; }
+    ICombatStat PhysicalDamage{ get; }
+    ICombatStat MagicalDamage { get; }
     ICombatStat MovementSpeed  { get; }
     ICombatStat AttackSpeed { get; }
     ICombatStat PhysicalDefense { get; }
     ICombatStat MagicDefense { get; }
-    ICombatStat HealthBase { get; }
+    ICombatStat MaxHealth { get; }
     ICombatStat HealthRegen { get; }
     ICombatStat M_E_F_Base { get; }
     ICombatStat M_E_F_Regen { get; }

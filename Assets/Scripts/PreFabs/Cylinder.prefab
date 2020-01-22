@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5170785089927531445}
   - component: {fileID: 7820825201266497140}
   - component: {fileID: 4655360713742537705}
+  - component: {fileID: 4389645941062607799}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -123,3 +124,32 @@ MonoBehaviour:
   currentAbilities:
   - {fileID: 11400000, guid: a9685addd7259cc4a98d71672046da33, type: 2}
   - {fileID: 11400000, guid: 774ad937673ffdb46911d0f5cba01d83, type: 2}
+--- !u!114 &4389645941062607799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170785089927531442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e800b6e7cd23e64a9a4c9ce5a88c5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agility: 0
+  strength: 0
+  wisdom: 0
+  endurance: 0
+  criticalStrikeChance: 0
+  dodgeChance: 0
+  baseDamage: 0
+  movementSpeed: 0
+  attackSpeed: 0
+  magicDefense: 0
+  physicalDefense: 0
+  healthBase: 0
+  healthRegen: 0
+  M_E_F_Base: 0
+  M_E_F_Regen: 0
+  staminaBase: 0
+  staminaRegen: 0

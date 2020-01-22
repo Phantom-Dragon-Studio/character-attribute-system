@@ -8,48 +8,45 @@ public class Character : MonoBehaviour, ICharacter
 {
     //Inspector Editable Field
     [SerializeField] private CharacterSheet characterSheet = default;
-
+    [SerializeField] public CharacterCombatController CharacterCombatController { get; private set; }
     public Character Construct()
     {
-        this.health = new Health(100, this);
-        this.characterAttributes = CharacterAttributesHandlerFactory.Create(characterSheet.Attributes);
+        CharacterCombatController = GetComponent<CharacterCombatController>();
+
         League = GetComponent<ICharacterLeague>();
         return this;
     }
 
-    #region Private Variables
-    private ICharacterAttributesHandler characterAttributes = default;
-    private IStatusEffectHandler statusEffectHandler = default;
-    private IHealth health;
-    private ICharacterLeague league;
+    #region Getters & Setters
+    public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
+    public ICharacterLeague League { get; private set; }
     #endregion
 
-    #region Getters & Setters
-    public string CharacterName => characterSheet.CharacterName;
-    public string CharacterDescription => characterSheet.CharacterDescription;
-    public Sprite CharacterSprite => characterSheet.CharacterSprite;
-    public ICharacterAttributesHandler Attributes => characterAttributes;
-    public IStatusEffectHandler StatusEffectHandler => statusEffectHandler;
-    public IHealth Health { get => health; private set { health = value; } }
-    public ICharacterLeague League { get => league; set => league = value; }
-    #endregion
+
+    void Start()
+    {
+        Heal(20);
+    }
+
 
     #region Health Mechanics
     public event EventHandler<HealedEventArgs> Healed;
 
     public void Heal(float amount)
     {
-        Healed?.Invoke(this, new HealedEventArgs(amount));
+        Healed?.Invoke(this, new HealedEventArgs(this, amount));
     }
 
     public class HealedEventArgs : EventArgs
     {
-        public HealedEventArgs(float amount)
+        public HealedEventArgs(ICharacter character, float amount)
         {
+            Character = character;
             Amount = amount;
         }
 
         public float Amount { get; private set; }
+        public ICharacter Character { get; private set; }
     }
     #endregion
 }

@@ -4,27 +4,41 @@ using UnityEngine;
 
 public class CS_Dodge : ICombatStat
 {
-    private float value = 0.10f;
+    private float amount = 0.00f;
+    private ICharacter characterToMonitor = default;
+
+    public CS_Dodge(ICharacter characterToMonitor)
+    {
+        CharacterToMonitor = characterToMonitor;
+        characterToMonitor.Attributes.Agility.Changed += (sender, args) => Calculate(args.Character);
+        characterToMonitor.Attributes.Wisdom.Changed += (sender, args) => Calculate(args.Character);
+    }
+
+    public float Value { get => amount; set => amount = value; }
+    public ICharacter CharacterToMonitor { get => characterToMonitor; set => characterToMonitor = value; }
     public CombatStatType CombatStatType { get => CombatStatType.DodgeChance; }
-    public float Value { get => value; }
 
-    public void Calculate(Warrior warrior)
+    void Calculate(ICharacter character)
     {
-
-    }
-
-    public void Calculate(Rogue rogue)
-    {
-
-    }
-
-    public void Calculate(Wizard wizard)
-    {
-
+        if (character.League is Rogue)
+        {
+            Value = character.Attributes.Agility.Amount * 0.6f;
+            Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Agility: " + Value);
+        }
+        if (character.League is Warrior)
+        {
+            Value = character.Attributes.Agility.Amount * 0.8f;
+            Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Agility: " + Value);
+        }
+        if (character.League is Wizard)
+        {
+            Value = character.Attributes.Agility.Amount + character.Attributes.Wisdom.Amount * 0.5f;
+            Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Agility: " + Value);
+        }
     }
 
     public override string ToString()
     {
-        return "Dodge Chance: " + value * 100 + "%";
+        return "Dodge Chance: " + amount;
     }
 }

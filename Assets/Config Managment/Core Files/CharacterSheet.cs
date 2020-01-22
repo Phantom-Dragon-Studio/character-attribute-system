@@ -10,7 +10,6 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
 {
     [Header("General Information")]
     [SerializeField] private GeneralObjectInformation objectInformation = default;
-    [SerializeField] private ICharacterLeague characterLeague = default;
 
     [Header("Agility")]
     [SerializeField] private float baseAgiilityValue = default;
@@ -25,10 +24,7 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
 
     //Public Accessors
     public ICharacterAttribute[] Attributes { get => attributes; }
-    public string CharacterName { get => objectInformation.Name; }
-    public string CharacterDescription { get => objectInformation.Description; }
-    public Sprite CharacterSprite { get => objectInformation.Sprite; }
-    public ICharacterLeague CharacterLeague { get => characterLeague; set => characterLeague = value; }
+    public GeneralObjectInformation GeneralObjectInformation { get => objectInformation; }
     public GameObject Prefab { get => prefab; }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +37,7 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
 
     public void OnEnable()
     {
-        Debug.Log("Initializing ICharacterSheet for " + CharacterName);
+        Debug.Log("Initializing ICharacterSheet for " + GeneralObjectInformation.Name);
         attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
         attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
         attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);

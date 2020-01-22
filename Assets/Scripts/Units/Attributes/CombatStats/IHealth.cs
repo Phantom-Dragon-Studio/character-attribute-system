@@ -2,6 +2,7 @@
 
 public interface IHealth
 {
+    float Value { get; }
     float CurrentHealth { get; }
-    void ResetHealth();
+    float MaxHealth { get; }
 }

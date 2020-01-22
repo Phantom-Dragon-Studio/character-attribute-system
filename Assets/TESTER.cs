@@ -17,7 +17,7 @@ public class TESTER : MonoBehaviour
 
         for (int i = 0; i < u.Length; i++)
         {
-            //Debug.Log(u[i].CharacterName);
+            //Debug.Log(u[i].GeneralObjectInformation.Name);
             //Debug.Log(u[i].CharacterDescription);
             //Debug.Log(u[i].Attributes.Agility);
             //Debug.Log(u[i].Attributes.Strength);

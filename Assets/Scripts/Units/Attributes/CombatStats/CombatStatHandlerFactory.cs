@@ -7,6 +7,8 @@ using UnityEngine;
 
 public static class CombatStatHandlerFactory
 {
+    private static ICombatStat[] combatStats = new ICombatStat[Enum.GetNames(typeof(CombatStatType)).Length - 1];
+
     public static ICombatStatsHandler Create(ICharacter character)
     {
         var combatStats = GenerateCombatStats(character);
@@ -29,17 +31,16 @@ public static class CombatStatHandlerFactory
 
     private static ICombatStat[] GenerateCombatStats(ICharacter character)
     {
-        ICombatStat[] combatStats = new ICombatStat[Enum.GetNames(typeof(CombatStatType)).Length - 1];
-
         Debug.Log("Initializing Combat Stats....");
-        combatStats[0] = new CS_CriticalStike();
-        combatStats[1] = new CS_Dodge();
-        combatStats[2] = new CS_BaseDamage(character);
-        combatStats[3] = new CS_MovementSpeed();
-        combatStats[4] = new CS_AttackSpeed(character);
-        combatStats[5] = new CS_PhysicalDefense();
-        combatStats[6] = new CS_MagicDefense();
-        //combatStats[7] = CombatStatFactory.Create(CombatStatType.Health_Base, 0);
+        combatStats[0] = new CS_CriticalStrike(character);
+        combatStats[1] = new CS_Dodge(character);
+        combatStats[2] = new CS_AttackSpeed(character);
+        combatStats[3] = new CS_MovementSpeed(character);
+        combatStats[4] = new CS_PhysicalDamage(character);
+        combatStats[5] = new CS_PhysicalDefense(character);
+        combatStats[6] = new CS_MagicalDamage(character);
+        combatStats[7] = new CS_MagicDefense(character);
+        combatStats[8] = new CS_Health(character);
         //combatStats[8] = CombatStatFactory.Create(CombatStatType.Health_RegenerationRate, 0);
         //combatStats[9] = CombatStatFactory.Create(CombatStatType.M_E_F_Base, 0);
         //combatStats[10] = CombatStatFactory.Create(CombatStatType.M_E_F_RegenerationRate, 0);
