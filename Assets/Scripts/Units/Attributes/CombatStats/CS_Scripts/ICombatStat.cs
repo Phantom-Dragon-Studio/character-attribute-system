@@ -20,7 +20,7 @@
 public interface ICombatStat
 {
     CombatStatType CombatStatType { get; }
-    ICharacter CharacterToMonitor { get; }
+    ICombatController CombatController { get; }
     float Value { get; }
     string ToString();
 }

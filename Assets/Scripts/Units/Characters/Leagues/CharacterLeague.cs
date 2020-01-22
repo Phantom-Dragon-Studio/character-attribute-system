@@ -15,11 +15,9 @@ public abstract class CharacterLeague : MonoBehaviour, ICharacterLeague
     [SerializeField] private AbilityInformation[] currentAbilities = default;
 
     private IAbilityHandler abilityHandler;
-    private ICombatStatsHandler combatStatsHandler;
     private ICharacter character;
 
     public IAbilityHandler AbilityHandler { get => abilityHandler; private set => abilityHandler = value; }
-    public ICombatStatsHandler CombatStats { get => combatStatsHandler; private set => combatStatsHandler = value; }
     public ICharacter Character { get => character; private set => character = value; }
     //public ICharacterAttribute PrimaryAttribute => 
 
@@ -32,6 +30,6 @@ public abstract class CharacterLeague : MonoBehaviour, ICharacterLeague
     {
         Character = GetComponent<Character>();
         abilityHandler = AbilityHandlerFactory.Create(currentAbilities);
-        CombatStats = CombatStatHandlerFactory.Create(Character);
+        //CombatStats = CombatStatHandlerFactory.Create(this);
     }
 }

@@ -5,35 +5,35 @@ using UnityEngine;
 public class CS_MagicalDamage : ICombatStat
 {
     private float amount = 0.00f;
-    private ICharacter characterToMonitor = default;
+    private ICombatController characterToMonitor = default;
 
-    public CS_MagicalDamage(ICharacter characterToMonitor)
+    public CS_MagicalDamage(ICombatController characterToMonitor)
     {
-        CharacterToMonitor = characterToMonitor;
-        characterToMonitor.Attributes.Wisdom.Changed += (sender, args) => Calculate(args.Character);
+        CombatController = characterToMonitor;
+        characterToMonitor.Attributes.Wisdom.Changed += (sender, args) => Calculate(args.CharacterAttribute);
     }
 
     public float Value { get => amount; set => amount = value; }
-    public ICharacter CharacterToMonitor { get => characterToMonitor; set => characterToMonitor = value; }
+    public ICombatController CombatController { get => characterToMonitor; set => characterToMonitor = value; }
     public CombatStatType CombatStatType { get => CombatStatType.MagicalDamage; }
 
-    void Calculate(ICharacter character)
+    void Calculate(ICharacterAttribute influentialattribute)
     {
-        if (character.League is Rogue)
-        {
-            Value = character.Attributes.Agility.Amount * 0.6f;
-            Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
-        }
-        if (character.League is Warrior)
-        {
-            Value = character.Attributes.Strength.Amount * 0.5f;
-            Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
-        }
-        if (character.League is Wizard)
-        {
-            Value = (character.Attributes.Wisdom.Amount) * 1.5f;
-            Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
-        }
+        //if (character.League is Rogue)
+        //{
+        //    Value = influentialattribute.Amount * 0.6f;
+        //    Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
+        //}
+        //if (character.League is Warrior)
+        //{
+        //    Value = influentialattribute.Amount * 0.5f;
+        //    Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
+        //}
+        //if (character.League is Wizard)
+        //{
+        //    Value = (influentialattribute.Amount) * 1.5f;
+        //    Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
+        //}
     }
 
     public override string ToString()

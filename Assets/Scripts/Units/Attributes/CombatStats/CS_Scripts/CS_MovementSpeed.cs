@@ -5,36 +5,33 @@ using UnityEngine;
 public class CS_MovementSpeed : ICombatStat
 {
     private float amount = 0.00f;
-    private ICharacter characterToMonitor = default;
-
-    public CS_MovementSpeed(ICharacter characterToMonitor)
-    {
-        CharacterToMonitor = characterToMonitor;
-        characterToMonitor.Attributes.Agility.Changed += (sender, args) => Calculate(args.Character);
-        characterToMonitor.Attributes.Endurance.Changed += (sender, args) => Calculate(args.Character);
-    }
-
-    public float Value { get => amount; set => amount = value; }
-    public ICharacter CharacterToMonitor { get => characterToMonitor; set => characterToMonitor = value; }
+    public float Value { get; set; }
+    public ICombatController CombatController { get; set; }
     public CombatStatType CombatStatType { get => CombatStatType.MovementSpeed; }
 
-    void Calculate(ICharacter character)
+    public CS_MovementSpeed(ICombatController combatControllerToWatch)
     {
-        if (character.League is Rogue)
-        {
-            Value = character.Attributes.Agility.Amount;
-            Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Strength: " + Value);
-        }
-        if (character.League is Warrior)
-        {
-            Value = character.Attributes.Strength.Amount * 0.9f;
-            Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Agility: " + Value);
-        }
-        if (character.League is Wizard)
-        {
-            Value = character.Attributes.Wisdom.Amount * 0.5f;
-            Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + character.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
-        }
+        combatControllerToWatch.Attributes.Agility.Changed += (sender, args) => Calculate(args.CharacterAttribute);
+        combatControllerToWatch.Attributes.Endurance.Changed += (sender, args) => Calculate(args.CharacterAttribute);
+    }
+
+    void Calculate(ICharacterAttribute influentialAttribute)
+    {
+        //if (influentialAttribute.League is Rogue)
+        //{
+        //    Value = influentialAttribute.Amount;
+        //    Debug.Log("Calculating Rogue: " + CombatStatType + " based upon " + influentialAttribute.GeneralObjectInformation.Name + "'s Strength: " + Value);
+        //}
+        //if (influentialAttribute.League is Warrior)
+        //{
+        //    Value = influentialAttribute.Amount * 0.9f;
+        //    Debug.Log("Calculating Warrior: " + CombatStatType + " based upon " + influentialAttribute.GeneralObjectInformation.Name + "'s Agility: " + Value);
+        //}
+        //if (influentialAttribute.League is Wizard)
+        //{
+        //    Value = influentialAttribute.Amount * 0.5f;
+        //    Debug.Log("Calculating Wizard: " + CombatStatType + " based upon " + influentialAttribute.GeneralObjectInformation.Name + "'s Wisdom: " + Value);
+        //}
     }
 
     public override string ToString()

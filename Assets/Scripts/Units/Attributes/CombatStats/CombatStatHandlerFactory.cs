@@ -9,9 +9,9 @@ public static class CombatStatHandlerFactory
 {
     private static ICombatStat[] combatStats = new ICombatStat[Enum.GetNames(typeof(CombatStatType)).Length - 1];
 
-    public static ICombatStatsHandler Create(ICharacter character)
+    public static ICombatStatsHandler Create(ICombatController combatController)
     {
-        var combatStats = GenerateCombatStats(character);
+        var combatStats = GenerateCombatStats(combatController);
         var newAttributeHandler = new CombatStatsHandler();
         if (combatStats != null)
         {
@@ -19,7 +19,7 @@ public static class CombatStatHandlerFactory
             {
                 if (combatStats[i] != null)
                 {
-                    Debug.Log("Adding " + combatStats[i].CombatStatType + " to "+ character + ".");
+                    Debug.Log("Adding " + combatStats[i].CombatStatType + " to "+ combatController + ".");
                     newAttributeHandler.AddCombatStat(combatStats[i]);
                 }
             }
@@ -29,18 +29,18 @@ public static class CombatStatHandlerFactory
         return newAttributeHandler;
     }
 
-    private static ICombatStat[] GenerateCombatStats(ICharacter character)
+    private static ICombatStat[] GenerateCombatStats(ICombatController combatController)
     {
         Debug.Log("Initializing Combat Stats....");
-        combatStats[0] = new CS_CriticalStrike(character);
-        combatStats[1] = new CS_Dodge(character);
-        combatStats[2] = new CS_AttackSpeed(character);
-        combatStats[3] = new CS_MovementSpeed(character);
-        combatStats[4] = new CS_PhysicalDamage(character);
-        combatStats[5] = new CS_PhysicalDefense(character);
-        combatStats[6] = new CS_MagicalDamage(character);
-        combatStats[7] = new CS_MagicDefense(character);
-        combatStats[8] = new CS_Health(character);
+        combatStats[0] = new CS_CriticalStrike(combatController);
+        combatStats[1] = new CS_Dodge(combatController);
+        combatStats[2] = new CS_AttackSpeed(combatController);
+        combatStats[3] = new CS_MovementSpeed(combatController);
+        combatStats[4] = new CS_PhysicalDamage(combatController);
+        combatStats[5] = new CS_PhysicalDefense(combatController);
+        combatStats[6] = new CS_MagicalDamage(combatController);
+        combatStats[7] = new CS_MagicDefense(combatController);
+        combatStats[8] = new CS_Health(combatController);
         //combatStats[8] = CombatStatFactory.Create(CombatStatType.Health_RegenerationRate, 0);
         //combatStats[9] = CombatStatFactory.Create(CombatStatType.M_E_F_Base, 0);
         //combatStats[10] = CombatStatFactory.Create(CombatStatType.M_E_F_RegenerationRate, 0);

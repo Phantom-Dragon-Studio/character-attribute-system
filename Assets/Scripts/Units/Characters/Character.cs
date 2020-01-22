@@ -8,28 +8,20 @@ public class Character : MonoBehaviour, ICharacter
 {
     //Inspector Editable Field
     [SerializeField] private CharacterSheet characterSheet = default;
-    [SerializeField] public CharacterCombatController CharacterCombatController { get; private set; }
+    public ICharacterSheet CharacterSheet => characterSheet;
+    [SerializeField] public CombatController CombatController { get; private set; }
     public Character Construct()
     {
-        CharacterCombatController = GetComponent<CharacterCombatController>();
+        CombatController = GetComponent<CombatController>();
+        CombatController.Character = this;
 
         League = GetComponent<ICharacterLeague>();
         return this;
     }
 
-    #region Getters & Setters
     public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
     public ICharacterLeague League { get; private set; }
-    #endregion
 
-
-    void Start()
-    {
-        Heal(20);
-    }
-
-
-    #region Health Mechanics
     public event EventHandler<HealedEventArgs> Healed;
 
     public void Heal(float amount)
@@ -48,7 +40,11 @@ public class Character : MonoBehaviour, ICharacter
         public float Amount { get; private set; }
         public ICharacter Character { get; private set; }
     }
-    #endregion
+
+    void Start()
+    {
+        Heal(20);
+    }
 }
 //Calculate in any gear bonuses for ALREADY equipped gear. Other gear will be accounted for at time of changes.
 //Calculate in any StatusEffects from spells & items.

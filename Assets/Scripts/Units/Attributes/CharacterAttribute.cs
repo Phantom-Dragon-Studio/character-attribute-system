@@ -22,26 +22,26 @@ public class CharacterAttribute : ICharacterAttribute
     public AttributeType AttributeType { get => attributeType; set => attributeType = value; }
     public float Amount { get => amount; set => amount = value; }
 
-    public event EventHandler<AttributeChangedEventArgs> Changed;
-
     public override string ToString()
     {
         return AttributeType.ToString() + ": " + Amount.ToString();
     }
 
-    public void UpdateValue(ICharacter character, float value)
+    public event EventHandler<AttributeChangedEventArgs> Changed;
+
+    public void UpdateValue(ICharacter combatController, float value)
     {
         this.Amount += value;
-        Changed?.Invoke(this, new AttributeChangedEventArgs(character));
+        Changed?.Invoke(this, new AttributeChangedEventArgs(this));
     }
 
     public class AttributeChangedEventArgs : EventArgs
     {
-        public AttributeChangedEventArgs(ICharacter character)
+        public AttributeChangedEventArgs(ICharacterAttribute characterAttribute)
         {
-            Character = character;
+            CharacterAttribute = characterAttribute;
         }
 
-        public ICharacter Character { get; private set; }
+        public ICharacterAttribute CharacterAttribute { get; private set; }
     }
 }
