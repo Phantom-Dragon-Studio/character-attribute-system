@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterPlaceHolder : MonoBehaviour
+public class PrePlacedCharacterPlaceHolder : MonoBehaviour
 {
     public CharacterSheet characterToSpawn;
     public CharacterSheet characterToSpawn2;

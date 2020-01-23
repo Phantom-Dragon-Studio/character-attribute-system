@@ -13,7 +13,7 @@ public enum TargetingType
 }
 
 [System.Serializable]
-public class GeneralAbilityInfo
+public class GeneralAbilityInfoContainer
 {
     [SerializeField] private GameObject specialEffectsPrefab = default;
     [SerializeField] private TargetingType targetingType = default;
@@ -24,8 +24,6 @@ public class GeneralAbilityInfo
     [Tooltip("This value will be assumed to be negative; however, if you would like to INCREASE the cooldown rate per level, provide a negative number.")]
     [SerializeField] private float cooldownModifier = default;
 
-    [SerializeField] private AbilityBehavior _abilityBehavior;
-
     public TargetingType TargetingType => targetingType;
     public GameObject Sfx => specialEffectsPrefab;
     public int CurrentLevel => currentLevel; 
@@ -33,7 +31,7 @@ public class GeneralAbilityInfo
     public float Cooldown => cooldown; 
     public float CooldownModifier => cooldownModifier;
 
-    public AbilityBehavior AbilityBehavior { get => _abilityBehavior; set => _abilityBehavior = value; }
+    public AbilityBehavior AbilityBehavior { get; private set; }
 
     public void IncreaseAbilityLevel(int increase)
     {

@@ -15,6 +15,8 @@ public class CombatController : ICombatController
         this.Character = _character;
         this.Attributes = CharacterAttributesHandlerFactory.Create(Character.CharacterSheet.Attributes);
         this.CombatStats = CombatStatHandlerFactory.Create(this);
+        
+        
         this.StatusEffects = new StatusEffectHandler();
     }
 }
