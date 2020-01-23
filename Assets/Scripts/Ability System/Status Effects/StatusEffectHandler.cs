@@ -2,42 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusEffectHandler : MonoBehaviour
+public class StatusEffectHandler : IStatusEffectHandler
 {
     private IElementalResistanceHandler elementalResistanceHandler;
 
-    private Dictionary<ElementalEffectType, IElementalResistance> resistances = new Dictionary<ElementalEffectType, IElementalResistance>();
+    private Dictionary<PhysicalStatusEffectType, IStatusEffect> resistances = new Dictionary<PhysicalStatusEffectType, IStatusEffect>();
 
     //Any Getters & Setters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
-    public Dictionary<ElementalEffectType, IElementalResistance> ResistanceTypes { get => resistances; }
-    public IElementalResistance Fire => ResistanceTypes[ElementalEffectType.Fire];
-    public IElementalResistance Water => ResistanceTypes[ElementalEffectType.Water];
-    public IElementalResistance Earth => ResistanceTypes[ElementalEffectType.Earth];
-    public IElementalResistance Wind => ResistanceTypes[ElementalEffectType.Wind];
-    public IElementalResistance Lightning => ResistanceTypes[ElementalEffectType.Lightning];
-    public IElementalResistance Divine => ResistanceTypes[ElementalEffectType.Divine];
-    public IElementalResistance Dark => ResistanceTypes[ElementalEffectType.Dark];
-    public IElementalResistance Arcane => ResistanceTypes[ElementalEffectType.Arcane];
+    public Dictionary<PhysicalStatusEffectType, IStatusEffect> ResistanceTypes { get => resistances; }
+    public IStatusEffect Bleeding => ResistanceTypes[PhysicalStatusEffectType.Bleeding];
 
-
-    public void AddResistance(IElementalResistance elementalResistance)
+    public void AddStatusEffect(ICharacterAttribute attribute)
     {
-        if (!ResistanceTypes.ContainsKey(elementalResistance.ElementalType))
-        {
-            ResistanceTypes.Add(elementalResistance.ElementalType, ElementalResistanceFactory.Create(elementalResistance.ElementalType, elementalResistance.Amount));
-        }
+        throw new System.NotImplementedException();
     }
 
-    public void UpdateIndividualResistance(ElementalEffectType type, float amount)
+    public IStatusEffect[] GetAllStatusEffectsOfType(PhysicalStatusEffectType statusEffectType)
     {
-        ResistanceTypes[type].Amount += amount;
+        throw new System.NotImplementedException();
     }
 
-    public void UpdateAllResistances(IElementalResistance[] resistances)
+    public IStatusEffect[] GetAllStatusEffects(IStatusEffect[] currentlyActiveEffects)
     {
-        for (int i = 0; i < resistances.Length; i++)
-        {
-            ResistanceTypes[resistances[i].ElementalType].Amount += resistances[i].Amount;
-        }
+        throw new System.NotImplementedException();
     }
 }

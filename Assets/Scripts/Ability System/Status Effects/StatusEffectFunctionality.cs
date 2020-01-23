@@ -1,23 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[System.Serializable]
-[CreateAssetMenu(fileName = "New StatusEffect Data", menuName = "Phantom Dragon Studio/Create New StatusEffect Data", order = 1)]
-public class StatusEffectFunctionality : ScriptableObject
+﻿[System.Serializable]
+public abstract class StatusEffectFunctionality
 {
-    public void Apply()
-    {
-        Debug.Log("StatusEffectFunctionality: Apply.");
-    }
+    public abstract void Apply();
 
-    public void Tick()
-    {
-        Debug.Log("StatusEffectFunctionality: Tick.");
-    }
+    public abstract void Tick();
 
-    public void Dispose()
-    {
-        Debug.Log("StatusEffectFunctionality: Dispose.");
-    }
+    public abstract void Dispose();
 }

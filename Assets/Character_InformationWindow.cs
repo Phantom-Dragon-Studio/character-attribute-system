@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Character_InformationWindow : MonoBehaviour
 {
-    CombatController combatController;
+    ICharacter character;
+    ICombatController cc;
 
     [Header("Raw Character Data Table")]
     [ShowOnly] [SerializeField] float agility;
@@ -29,24 +30,28 @@ public class Character_InformationWindow : MonoBehaviour
     [ShowOnly] [SerializeField] float staminaBase;
     [ShowOnly] [SerializeField] float staminaRegen;
 
+    void Start()
+    {
+        character = GetComponent<ICharacter>();
+        cc = character.CombatController;
+    }
+
     void Update()
     {
-        combatController = GetComponent<CombatController>();
+        agility = cc.Attributes.Agility.AttributeInfo.Value;
+        strength = cc.Attributes.Strength.AttributeInfo.Value;
+        wisdom = cc.Attributes.Wisdom.AttributeInfo.Value;
+        endurance = cc.Attributes.Endurance.AttributeInfo.Value;
 
-        agility = combatController.Attributes.Agility.Amount;
-        strength = combatController.Attributes.Strength.Amount;
-        wisdom = combatController.Attributes.Wisdom.Amount;
-        endurance = combatController.Attributes.Endurance.Amount;
-
-        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value;
-        dodgeChance = combatController.CombatStats.DodgeChance.Value;
-        attackSpeed = combatController.CombatStats.AttackSpeed.Value;
-        movementSpeed = combatController.CombatStats.MovementSpeed.Value;
-        physicalDamage = combatController.CombatStats.PhysicalDamage.Value;
-        magicalDamage = combatController.CombatStats.MagicalDamage.Value;
-        physicalDefense = combatController.CombatStats.PhysicalDefense.Value;
-        magicDefense = combatController.CombatStats.MagicDefense.Value;
-        maxHealth = combatController.CombatStats.MaxHealth.Value;
+        criticalStrikeChance = cc.CombatStats.CriticalStrikeChance.Value;
+        dodgeChance = cc.CombatStats.DodgeChance.Value;
+        attackSpeed = cc.CombatStats.AttackSpeed.Value;
+        movementSpeed = cc.CombatStats.MovementSpeed.Value;
+        physicalDamage = cc.CombatStats.PhysicalDamage.Value;
+        magicalDamage = cc.CombatStats.MagicalDamage.Value;
+        physicalDefense = cc.CombatStats.PhysicalDefense.Value;
+        magicDefense = cc.CombatStats.MagicDefense.Value;
+        maxHealth = cc.CombatStats.MaxHealth.Value;
         //healthRegen = character.CharacterLeague.CombatStats.HealthRegen.Amount;
         //M_E_F_Base = character.CharacterLeague.CombatStats.M_E_F_Base.Amount;
         //M_E_F_Regen = character.CharacterLeague.CombatStats.M_E_F_Regen.Amount;

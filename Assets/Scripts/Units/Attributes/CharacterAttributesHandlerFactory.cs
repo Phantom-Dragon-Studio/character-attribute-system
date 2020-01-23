@@ -15,7 +15,7 @@ public static class CharacterAttributesHandlerFactory
             {
                 if(attributes[i] != null)
                 {
-                    newAttributeHandler.AddAttribute(attributes[i]);
+                    newAttributeHandler.AddAttribute(attributes[i].AttributeInfo);
                 }
             }
         }

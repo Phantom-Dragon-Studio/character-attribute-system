@@ -78,7 +78,13 @@ MonoBehaviour:
   endurance: 0
   criticalStrikeChance: 0
   dodgeChance: 0
-  healthBase: 0
+  physicalDamage: 0
+  magicalDamage: 0
+  movementSpeed: 0
+  attackSpeed: 0
+  magicDefense: 0
+  physicalDefense: 0
+  maxHealth: 0
   healthRegen: 0
   M_E_F_Base: 0
   M_E_F_Regen: 0
@@ -164,7 +170,13 @@ MonoBehaviour:
   endurance: 0
   criticalStrikeChance: 0
   dodgeChance: 0
-  healthBase: 0
+  physicalDamage: 0
+  magicalDamage: 0
+  movementSpeed: 0
+  attackSpeed: 0
+  magicDefense: 0
+  physicalDefense: 0
+  maxHealth: 0
   healthRegen: 0
   M_E_F_Base: 0
   M_E_F_Regen: 0

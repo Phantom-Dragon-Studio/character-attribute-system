@@ -9,11 +9,12 @@ public class Character : MonoBehaviour, ICharacter
     //Inspector Editable Field
     [SerializeField] private CharacterSheet characterSheet = default;
     public ICharacterSheet CharacterSheet => characterSheet;
-    [SerializeField] public CombatController CombatController { get; private set; }
+    public ICombatController CombatController { get; private set; }
+
     public Character Construct()
     {
-        CombatController = GetComponent<CombatController>();
-        CombatController.Character = this;
+        CombatController = new CombatController(this);
+        Debug.Log(CombatController.Character);
 
         League = GetComponent<ICharacterLeague>();
         return this;

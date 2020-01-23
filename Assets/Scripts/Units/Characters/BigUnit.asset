@@ -16,8 +16,8 @@ MonoBehaviour:
     name: Big Unit
     description: Big Description
     sprite: {fileID: 0}
-  baseAgiilityValue: 1
-  baseStrengthValue: 1
-  baseWisdomValue: 1
-  baseEnduranceValue: 1
-  prefab: {fileID: 5170785089927531442, guid: 3aabcce8c1958154bb65264725e28204, type: 3}
+  baseAgiilityValue: 5
+  baseStrengthValue: 6
+  baseWisdomValue: 7
+  baseEnduranceValue: 8
+  prefab: {fileID: 7659718069294395533, guid: 5e7ec7fb461261a40bbe6ed1c157b2c1, type: 3}

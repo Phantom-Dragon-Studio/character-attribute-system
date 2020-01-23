@@ -3,11 +3,11 @@ using UnityEngine;
 
 public interface ICharacterAttributesHandler
 {
-    void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes);
+    //void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes);
 
-    void UpdateAtribute(ICharacter character, AttributeType type, float amount);
+    void UpdateAtribute(TypeValuePair<AttributeType, float> attribute);
 
-    void AddAttribute(ICharacterAttribute attribute);
+    void AddAttribute(TypeValuePair<AttributeType, float> attribute);
 
     ICharacterAttribute Agility { get; }
     ICharacterAttribute Strength { get; }

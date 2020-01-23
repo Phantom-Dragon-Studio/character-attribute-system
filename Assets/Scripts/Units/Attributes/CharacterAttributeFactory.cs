@@ -4,12 +4,12 @@ using UnityEngine;
 
 public static class CharacterAttributeFactory
 {
-    public static ICharacterAttribute Create(AttributeType attributeType, float amount)
+    public static ICharacterAttribute Create(AttributeType attributeType, float value)
     {
-        CharacterAttribute newAttribute = new CharacterAttribute();
+        CharacterAttribute newAttribute = new CharacterAttribute(new TypeValuePair<AttributeType, float>(attributeType, value));
 
-        newAttribute.AttributeType = attributeType;
-        newAttribute.Amount = amount;
+        newAttribute.AttributeInfo.Type = attributeType;
+        newAttribute.AttributeInfo.Value = value;
 
         return newAttribute;
     }

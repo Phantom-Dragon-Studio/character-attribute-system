@@ -19,24 +19,17 @@ public class CharacterAttributesHandler : ICharacterAttributesHandler
     public ICharacterAttribute Wisdom => Attributes[AttributeType.Wisdom];
     public ICharacterAttribute Endurance => Attributes[AttributeType.Endurance];
 
-    public void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes)
+    public void UpdateAtribute(TypeValuePair<AttributeType, float> attribute)
     {
-        for (int i = 0; i < attributes.Length; i++)
-        {
-            Attributes[attributes[i].AttributeType].UpdateValue(character, attributes[i].Amount);
-        }
+        Attributes[attribute.Type].UpdateValue(attribute.Value);
     }
 
-    public void UpdateAtribute(ICharacter character, AttributeType type, float amount)
+    public void AddAttribute(TypeValuePair<AttributeType, float> attribute)
     {
-        Attributes[type].UpdateValue(character, amount);
-    }
-
-    public void AddAttribute(ICharacterAttribute attribute)
-    {
-        if (!Attributes.ContainsKey(attribute.AttributeType))
+        if (!Attributes.ContainsKey(attribute.Type))
         {
-            Attributes.Add(attribute.AttributeType, CharacterAttributeFactory.Create(attribute.AttributeType, attribute.Amount));
+            var temp = CharacterAttributeFactory.Create(attribute.Type, attribute.Value);
+            Attributes.Add(temp.AttributeInfo.Type, temp);
         }
     }
 }

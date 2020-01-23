@@ -16,22 +16,17 @@ public enum AttributeType
 [System.Serializable]
 public class CharacterAttribute : ICharacterAttribute
 {
-    [SerializeField] private AttributeType attributeType;
-    [SerializeField] private float amount;
+    public event EventHandler<AttributeChangedEventArgs> Changed;
+    public TypeValuePair<AttributeType, float> AttributeInfo { get; }
 
-    public AttributeType AttributeType { get => attributeType; set => attributeType = value; }
-    public float Amount { get => amount; set => amount = value; }
-
-    public override string ToString()
+    public CharacterAttribute(TypeValuePair<AttributeType, float> attributeInfo)
     {
-        return AttributeType.ToString() + ": " + Amount.ToString();
+        this.AttributeInfo = attributeInfo;
     }
 
-    public event EventHandler<AttributeChangedEventArgs> Changed;
-
-    public void UpdateValue(ICharacter combatController, float value)
+    public void UpdateValue(float value)
     {
-        this.Amount += value;
+        this.AttributeInfo.Value += value;
         Changed?.Invoke(this, new AttributeChangedEventArgs(this));
     }
 
@@ -43,5 +38,10 @@ public class CharacterAttribute : ICharacterAttribute
         }
 
         public ICharacterAttribute CharacterAttribute { get; private set; }
+    }
+
+    public override string ToString()
+    {
+        return AttributeInfo.Type.ToString() + ": " + AttributeInfo.Value.ToString();
     }
 }

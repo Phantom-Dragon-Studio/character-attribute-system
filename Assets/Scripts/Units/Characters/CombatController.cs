@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatController : MonoBehaviour, ICombatController
+public class CombatController : ICombatController
 {
-    //Reference Character for the sheet???
-
-    public ICharacter Character { get; set; }
+    public ICharacter Character { get; private set; }
     public ICharacterAttributesHandler Attributes { get; private set; }
     public ICombatStatsHandler CombatStats { get; private set; }
     public IStatusEffectHandler StatusEffects { get; private set; }
-    public IElementalResistanceHandler ElementalResistances { get; set; }
+    public IElementalResistanceHandler ElementalResistances { get; private set; }
 
-    public CombatController()
+    public CombatController(ICharacter _character)
     {
+        this.Character = _character;
         this.Attributes = CharacterAttributesHandlerFactory.Create(Character.CharacterSheet.Attributes);
+        this.CombatStats = CombatStatHandlerFactory.Create(this);
+        this.StatusEffects = new StatusEffectHandler();
     }
 }

@@ -2,7 +2,9 @@
 
 public interface IStatusEffectHandler
 {
-    void GetAllStatusEffects(IStatusEffect[] currentlyActiveEffects);
+    void AddStatusEffect(ICharacterAttribute attribute);
 
-    void AddAttribute(ICharacterAttribute attribute);
+    IStatusEffect[] GetAllStatusEffectsOfType(PhysicalStatusEffectType statusEffectType);
+
+    IStatusEffect[] GetAllStatusEffects(IStatusEffect[] currentlyActiveEffects);
 }
