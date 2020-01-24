@@ -1,7 +1,6 @@
 ﻿public interface IElementalResistance
 {
-    ElementalEffectType ElementalType { get; set; }
-    float Amount { get; set; }
+    TypeValuePair<ElementalEffectType, float> ResistanceInfo { get; set; }
 
     string ToString();
 }

@@ -13,7 +13,7 @@ public enum TargetingType
 }
 
 [System.Serializable]
-public class GeneralAbilityInfoContainer
+public class AbilityInfoContainer
 {
     [SerializeField] private GameObject specialEffectsPrefab = default;
     [SerializeField] private TargetingType targetingType = default;

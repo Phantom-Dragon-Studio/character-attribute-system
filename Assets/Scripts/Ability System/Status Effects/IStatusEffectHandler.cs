@@ -1,10 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public interface IStatusEffectHandler
 {
-    void AddStatusEffect(ICharacterAttribute attribute);
+    void AddStatusEffect(PhysicalStatusEffectType statusEffectType);
 
-    IStatusEffect[] GetAllStatusEffectsOfType(PhysicalStatusEffectType statusEffectType);
-
-    IStatusEffect[] GetAllStatusEffects(IStatusEffect[] currentlyActiveEffects);
+    Queue<IStatusEffect> GetAllStatusEffectsOfType(PhysicalStatusEffectType statusEffectType);
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class StatusEffectFactory
 {
-    public static IStatusEffect Create(AbilityInformation abilityInfo)
+    public static IStatusEffect Create(PhysicalStatusEffectType typeToCreate)
     {
-        IStatusEffect newAbility = new StatusEffect(abilityInfo);
+        IStatusEffect newStatusEffect = new StatusEffect();
 
-        return newAbility;
+        return newStatusEffect;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum PhysicalStatusEffectType
 {
-    None,
+    _None = 0,
     Burning,
     Frozen,
     Slowed,
@@ -11,7 +11,7 @@ public enum PhysicalStatusEffectType
     Bleeding,
     Poisoned,
     Corrupted,
-    Summoned,
+    TimedLife,
     Silenced,
     Blinded,
     Rooted,
@@ -22,21 +22,13 @@ public enum PhysicalStatusEffectType
 [System.Serializable]
 public class StatusEffect : IStatusEffect
 {
-    [SerializeField] private IElementalEffect effectType = default;
-    [SerializeField] private ICombatStat effectedStat = default;
-    [SerializeField] private AttributeType tickAmountModifier = default;
-    [SerializeField] private PhysicalStatusEffectType physicalStatusEffect = default;
-    [SerializeField] private float tickMaxStackCount = default;
-    [SerializeField] private float tickDuration = default;
-    [SerializeField] private float tickAmount = default;
-
-    public IElementalEffect ElementalType { get => effectType; set => effectType = value; }
-    public ICombatStat EffectedStat { get => effectedStat; set => effectedStat = value; }
-    public AttributeType AttributeType { get => tickAmountModifier; set => tickAmountModifier = value; }
-    public PhysicalStatusEffectType PhysicalStatusEffect { get => physicalStatusEffect; set => physicalStatusEffect = value; }
-    public float TickMaxStackCount => tickMaxStackCount;
-    public float TickDuration => tickDuration;
-    public float TickAmount => tickAmount;
+    [field: SerializeField] public ElementalEffectType ElementalType { get; set; }
+    [field: SerializeField] public ICombatStat EffectedStat { get; set; }
+    [field: SerializeField] public AttributeType AttributeType { get; set; }
+    [field: SerializeField] public PhysicalStatusEffectType PhysicalStatusEffect { get; set; }
+    [field: SerializeField] public float TickMaxStackCount { get; set; }
+    [field: SerializeField] public float TickDuration { get; set; }
+    [field: SerializeField] public float TickAmount { get; set; }
 
     public override string ToString()
     {

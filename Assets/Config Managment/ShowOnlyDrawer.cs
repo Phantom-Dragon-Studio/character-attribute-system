@@ -39,11 +39,11 @@ public class ShowOnlyDrawer : PropertyDrawer
                     valueStr = "None (Game Object)";
                 }
                 break;
-            default:
-                valueStr = "(not supported)";
-                break;
             case SerializedPropertyType.Enum:
                 valueStr = prop.enumNames[prop.enumValueIndex];
+                break;
+            default:
+                valueStr = "(not supported)";
                 break;
         }
 

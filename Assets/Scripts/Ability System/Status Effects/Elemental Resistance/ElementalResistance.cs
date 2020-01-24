@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ElementalResistance : IElementalResistance
 {
-    private ElementalEffectType elementalType;
-    private float amount;
+    public ElementalResistance(ElementalEffectType type, float value)
+    {
+        ResistanceInfo = new TypeValuePair<ElementalEffectType, float>(type, value);
+    }
 
-    public ElementalEffectType ElementalType { get => elementalType; set => elementalType = value; }
-    public float Amount { get => amount; set => amount = value; }
+    public TypeValuePair<ElementalEffectType, float> ResistanceInfo { get; set; }
 
     public override string ToString()
     {
-        return "";
+        return ResistanceInfo.Type + " " + ResistanceInfo.Value;
     }
 }

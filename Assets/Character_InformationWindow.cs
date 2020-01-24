@@ -8,12 +8,13 @@ public class Character_InformationWindow : MonoBehaviour
     ICharacter character;
     ICombatController cc;
 
-    [Header("Raw Character Data Table")]
+    [Header("Attributes")]
     [ShowOnly] [SerializeField] float agility;
     [ShowOnly] [SerializeField] float strength;
     [ShowOnly] [SerializeField] float wisdom;
     [ShowOnly] [SerializeField] float endurance;
 
+    [Header("Combat Stats")]
     [ShowOnly] [SerializeField] float criticalStrikeChance;
     [ShowOnly] [SerializeField] float dodgeChance;
     [ShowOnly] [SerializeField] float physicalDamage;
@@ -29,6 +30,16 @@ public class Character_InformationWindow : MonoBehaviour
     [ShowOnly] [SerializeField] float M_E_F_Regen;
     [ShowOnly] [SerializeField] float staminaBase;
     [ShowOnly] [SerializeField] float staminaRegen;
+
+    [Header("Resistances")]
+    [ShowOnly] [SerializeField] float elementalResistanceFire;
+    [ShowOnly] [SerializeField] float elementalResistanceWater;
+    [ShowOnly] [SerializeField] float elementalResistanceEarth;
+    [ShowOnly] [SerializeField] float elementalResistanceWind;
+    [ShowOnly] [SerializeField] float elementalResistanceLightning;
+    [ShowOnly] [SerializeField] float elementalResistanceDivine;
+    [ShowOnly] [SerializeField] float elementalResistanceDark;
+    [ShowOnly] [SerializeField] float elementalResistanceArcane;
 
     void Start()
     {
@@ -58,5 +69,14 @@ public class Character_InformationWindow : MonoBehaviour
         //staminaBase = character.CharacterLeague.CombatStats.StaminaBase.Amount;
         //staminaRegen = character.CharacterLeague.CombatStats.HealthRegen.Amount;
 
+        
+        elementalResistanceFire = cc.ElementalResistances.Fire.ResistanceInfo.Value;
+        elementalResistanceWater = cc.ElementalResistances.Water.ResistanceInfo.Value;
+        elementalResistanceEarth = cc.ElementalResistances.Earth.ResistanceInfo.Value;
+        elementalResistanceWind = cc.ElementalResistances.Wind.ResistanceInfo.Value;
+        elementalResistanceLightning = cc.ElementalResistances.Lightning.ResistanceInfo.Value;
+        elementalResistanceDivine = cc.ElementalResistances.Divine.ResistanceInfo.Value;
+        elementalResistanceDark = cc.ElementalResistances.Dark.ResistanceInfo.Value;
+        elementalResistanceArcane = cc.ElementalResistances.Arcane.ResistanceInfo.Value;
     }
 }

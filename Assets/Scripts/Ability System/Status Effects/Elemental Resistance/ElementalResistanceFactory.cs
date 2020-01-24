@@ -2,11 +2,11 @@
 {
     public static IElementalResistance Create(ElementalEffectType elementalType, float amount)
     {
-        ElementalResistance newCombatStat = new ElementalResistance();
+        ElementalResistance newElementalResistance = new ElementalResistance(elementalType, amount);
 
-        newCombatStat.ElementalType = elementalType;
-        newCombatStat.Amount = amount;
+        newElementalResistance.ResistanceInfo.Type = elementalType;
+        newElementalResistance.ResistanceInfo.Value = amount;
 
-        return newCombatStat;
+        return newElementalResistance;
     }
 }

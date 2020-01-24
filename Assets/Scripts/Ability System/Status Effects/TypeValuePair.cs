@@ -17,6 +17,6 @@ public class TypeValuePair<TKey, TValue>
     public override string ToString()
     {
 
-        return Type.ToString() + " " +  Value.ToString();
+        return Type.ToString() + " " + Value.ToString();
     }
 }

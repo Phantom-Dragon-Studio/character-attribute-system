@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 /// <summary>
-/// This class manages all attributes on a given unit class. This is done to avoid unwanted changes to the attributes as well as seperated concerns.
+/// This class manages all Elemental Resistances on a given unit. This hsould allow for easy management of the effects each unit has on it at the time.
+/// Allowing for stacking of effects.
 /// </summary>
 
 public class ElementalResistanceHandler : IElementalResistanceHandler
@@ -23,24 +24,21 @@ public class ElementalResistanceHandler : IElementalResistanceHandler
     public IElementalResistance Dark => ResistanceTypes[ElementalEffectType.Dark];
     public IElementalResistance Arcane => ResistanceTypes[ElementalEffectType.Arcane];
 
-    public void AddResistance(IElementalResistance elementalResistance)
+    public void AddResistance(ElementalEffectType typeToAdd, float amount)
     {
-        if (!ResistanceTypes.ContainsKey(elementalResistance.ElementalType))
+        if (!ResistanceTypes.ContainsKey(typeToAdd))
         {
-            ResistanceTypes.Add(elementalResistance.ElementalType, ElementalResistanceFactory.Create(elementalResistance.ElementalType, elementalResistance.Amount));
+            ResistanceTypes.Add(typeToAdd, ElementalResistanceFactory.Create(typeToAdd, amount));
         }
     }
 
-    public void UpdateIndividualResistance(ElementalEffectType type, float amount)
+    public void UpdateIndividualResistance(ElementalEffectType typeToUpdate, float amount)
     {
-        ResistanceTypes[type].Amount += amount;
+        ResistanceTypes[typeToUpdate].ResistanceInfo.Value += amount;
     }
 
-    public void UpdateAllResistances(IElementalResistance[] resistances)
+    public float GetResistanceValue(ElementalEffectType typeToCheck)
     {
-        for (int i = 0; i < resistances.Length; i++)
-        {
-            ResistanceTypes[resistances[i].ElementalType].Amount += resistances[i].Amount;
-        }
+        return resistanceTypes[typeToCheck].ResistanceInfo.Value;
     }
 }
