@@ -8,9 +8,6 @@ public interface ICharacter
 
     ICombatController CombatController { get; }
 
-    ICharacterLeague League { get; }
-
-
     void Heal(float amount);
     event EventHandler<Character.HealedEventArgs> Healed;
 }

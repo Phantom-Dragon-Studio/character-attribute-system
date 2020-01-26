@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
 public class CombatStatsHandler : ICombatStatsHandler
 {
-    private Dictionary<CombatStatType, ICombatStat> combatStats = new Dictionary<CombatStatType, ICombatStat>();
-
     //Any Getters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
-    public Dictionary<CombatStatType, ICombatStat> CombatStats { get => combatStats; }
+    private Dictionary<CombatStatType, ICombatStat> CombatStats { get; } = new Dictionary<CombatStatType, ICombatStat>();
+
+    public CombatStatsHandler(ICombatStat[] combatStats)
+    {
+        for (int i = 0; i < combatStats.Length; i++)
+        {
+            CombatStats[combatStats[i].CombatStatType] = combatStats[i];
+        }
+    }
 
     public ICombatStat CriticalStrikeChance => CombatStats[CombatStatType.CriticalStrikeChance];
     public ICombatStat DodgeChance => CombatStats[CombatStatType.DodgeChance];
@@ -18,7 +25,6 @@ public class CombatStatsHandler : ICombatStatsHandler
     public ICombatStat MagicalDamage => CombatStats[CombatStatType.MagicalDamage];
     public ICombatStat PhysicalDefense => CombatStats[CombatStatType.PhysicalDefense];
     public ICombatStat MagicDefense => CombatStats[CombatStatType.MagicDefense];
-    //TODO Finish making the lower into their own classes.
     public ICombatStat MaxHealth => CombatStats[CombatStatType.MaxHealth];
     public ICombatStat HealthRegen => CombatStats[CombatStatType.Health_RegenerationRate];
     public ICombatStat M_E_F_Base => CombatStats[CombatStatType.M_E_F_Base];
@@ -26,11 +32,11 @@ public class CombatStatsHandler : ICombatStatsHandler
     public ICombatStat StaminaBase => CombatStats[CombatStatType.Stamina_Base];
     public ICombatStat StaminaRegen => CombatStats[CombatStatType.Stamina_RegenerationRate];
 
-    public void AddCombatStat(ICombatStat combatStat)
+    public ICombatStat GetCombatStatByType(CombatStatType typeToCheck)
     {
-        if (!CombatStats.ContainsKey(combatStat.CombatStatType))
-        {
-            CombatStats.Add(combatStat.CombatStatType, combatStat);
-        }
+        if (CombatStats.ContainsKey(typeToCheck)) return CombatStats[typeToCheck];
+        
+        Debug.LogError("CombatStatsHandler tried to access a NULL ICombatStat");
+        return null;
     }
 }

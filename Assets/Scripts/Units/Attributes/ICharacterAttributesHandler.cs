@@ -3,9 +3,7 @@ using UnityEngine;
 
 public interface ICharacterAttributesHandler
 {
-    //void UpdateAllAttributes(ICharacter character, ICharacterAttribute[] attributes);
-
-    void UpdateAtribute(TypeValuePair<AttributeType, float> attribute);
+    void UpdateAttribute(TypeValuePair<AttributeType, float> attribute);
 
     void AddAttribute(TypeValuePair<AttributeType, float> attribute);
 

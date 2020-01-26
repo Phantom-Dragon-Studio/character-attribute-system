@@ -6,7 +6,7 @@ using UnityEngine;
 public class Character_InformationWindow : MonoBehaviour
 {
     ICharacter character;
-    ICombatController cc;
+    ICombatController combatController;
 
     [Header("Attributes")]
     [ShowOnly] [SerializeField] float agility;
@@ -23,7 +23,6 @@ public class Character_InformationWindow : MonoBehaviour
     [ShowOnly] [SerializeField] float attackSpeed;
     [ShowOnly] [SerializeField] float magicDefense;
     [ShowOnly] [SerializeField] float physicalDefense;
-
     [ShowOnly] [SerializeField] float maxHealth;
     [ShowOnly] [SerializeField] float healthRegen;
     [ShowOnly] [SerializeField] float M_E_F_Base;
@@ -44,39 +43,38 @@ public class Character_InformationWindow : MonoBehaviour
     void Start()
     {
         character = GetComponent<ICharacter>();
-        cc = character.CombatController;
+        combatController = character.CombatController;
     }
 
     void Update()
     {
-        agility = cc.Attributes.Agility.AttributeInfo.Value;
-        strength = cc.Attributes.Strength.AttributeInfo.Value;
-        wisdom = cc.Attributes.Wisdom.AttributeInfo.Value;
-        endurance = cc.Attributes.Endurance.AttributeInfo.Value;
+        agility = combatController.Attributes.Agility.AttributeInfo.value;
+        strength = combatController.Attributes.Strength.AttributeInfo.value;
+        wisdom = combatController.Attributes.Wisdom.AttributeInfo.value;
+        endurance = combatController.Attributes.Endurance.AttributeInfo.value;
 
-        criticalStrikeChance = cc.CombatStats.CriticalStrikeChance.Value;
-        dodgeChance = cc.CombatStats.DodgeChance.Value;
-        attackSpeed = cc.CombatStats.AttackSpeed.Value;
-        movementSpeed = cc.CombatStats.MovementSpeed.Value;
-        physicalDamage = cc.CombatStats.PhysicalDamage.Value;
-        magicalDamage = cc.CombatStats.MagicalDamage.Value;
-        physicalDefense = cc.CombatStats.PhysicalDefense.Value;
-        magicDefense = cc.CombatStats.MagicDefense.Value;
-        maxHealth = cc.CombatStats.MaxHealth.Value;
-        //healthRegen = character.CharacterLeague.CombatStats.HealthRegen.Amount;
-        //M_E_F_Base = character.CharacterLeague.CombatStats.M_E_F_Base.Amount;
-        //M_E_F_Regen = character.CharacterLeague.CombatStats.M_E_F_Regen.Amount;
-        //staminaBase = character.CharacterLeague.CombatStats.StaminaBase.Amount;
-        //staminaRegen = character.CharacterLeague.CombatStats.HealthRegen.Amount;
+        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value;
+        dodgeChance = combatController.CombatStats.DodgeChance.Value;
+        attackSpeed = combatController.CombatStats.AttackSpeed.Value;
+        movementSpeed = combatController.CombatStats.MovementSpeed.Value;
+        physicalDamage = combatController.CombatStats.PhysicalDamage.Value;
+        magicalDamage = combatController.CombatStats.MagicalDamage.Value;
+        physicalDefense = combatController.CombatStats.PhysicalDefense.Value;
+        magicDefense = combatController.CombatStats.MagicDefense.Value;
+        maxHealth = combatController.CombatStats.MaxHealth.Value;
+        healthRegen = combatController.CombatStats.HealthRegen.Value;
+        M_E_F_Base = combatController.CombatStats.M_E_F_Base.Value;
+        M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value;
+        staminaBase = combatController.CombatStats.StaminaBase.Value;
+        staminaRegen = combatController.CombatStats.StaminaRegen.Value;
 
-        
-        elementalResistanceFire = cc.ElementalResistances.Fire.ResistanceInfo.Value;
-        elementalResistanceWater = cc.ElementalResistances.Water.ResistanceInfo.Value;
-        elementalResistanceEarth = cc.ElementalResistances.Earth.ResistanceInfo.Value;
-        elementalResistanceWind = cc.ElementalResistances.Wind.ResistanceInfo.Value;
-        elementalResistanceLightning = cc.ElementalResistances.Lightning.ResistanceInfo.Value;
-        elementalResistanceDivine = cc.ElementalResistances.Divine.ResistanceInfo.Value;
-        elementalResistanceDark = cc.ElementalResistances.Dark.ResistanceInfo.Value;
-        elementalResistanceArcane = cc.ElementalResistances.Arcane.ResistanceInfo.Value;
+        elementalResistanceFire = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Fire).ResistanceInfo.value;
+        elementalResistanceWater = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Water).ResistanceInfo.value;
+        elementalResistanceEarth = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Earth).ResistanceInfo.value;
+        elementalResistanceWind = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Wind).ResistanceInfo.value;
+        elementalResistanceLightning = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Lightning).ResistanceInfo.value;
+        elementalResistanceDivine = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Divine).ResistanceInfo.value;
+        elementalResistanceDark = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Dark).ResistanceInfo.value;
+        elementalResistanceArcane = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Arcane).ResistanceInfo.value;
     }
 }

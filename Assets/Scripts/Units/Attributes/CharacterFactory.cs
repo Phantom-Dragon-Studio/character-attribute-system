@@ -5,10 +5,10 @@ using UnityEngine;
 public static class CharacterFactory
 {
 
-    public static GameObject Create(CharacterSheet sheet, Vector3 location, Quaternion rotation)
+    public static GameObject Create(GameObject prefab, Vector3 location, Quaternion rotation)
     {
         //TODO Add in object pooling.
-        GameObject GO = GameObject.Instantiate(sheet.Prefab);
+        GameObject GO = GameObject.Instantiate(prefab);
         Character character = GO.GetComponent<Character>();
         character.Construct();
         character.transform.position = location;

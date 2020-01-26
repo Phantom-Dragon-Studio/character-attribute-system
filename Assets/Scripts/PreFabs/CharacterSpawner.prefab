@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b186ece1624444a8fd4681c6186cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterToSpawn: {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
-  characterToSpawn2: {fileID: 11400000, guid: 26a6fa2142639e543a35d854cf0fdda0, type: 2}
+  sheets:
+  - {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}

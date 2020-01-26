@@ -90,6 +90,14 @@ MonoBehaviour:
   M_E_F_Regen: 0
   staminaBase: 0
   staminaRegen: 0
+  elementalResistanceFire: 0
+  elementalResistanceWater: 0
+  elementalResistanceEarth: 0
+  elementalResistanceWind: 0
+  elementalResistanceLightning: 0
+  elementalResistanceDivine: 0
+  elementalResistanceDark: 0
+  elementalResistanceArcane: 0
 --- !u!1 &7659718069294395533
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,8 +108,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5738108573677433828}
   - component: {fileID: 479221707}
-  - component: {fileID: 479221709}
   - component: {fileID: 3121751971987048216}
+  - component: {fileID: -8542935229115645674}
   m_Layer: 0
   m_Name: Main Character
   m_TagString: Untagged
@@ -137,21 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSheet: {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
---- !u!114 &479221709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7659718069294395533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 351bb606aeaa5864bab68624f937daf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAbilities:
-  - {fileID: 11400000, guid: a9685addd7259cc4a98d71672046da33, type: 2}
-  - {fileID: 11400000, guid: 774ad937673ffdb46911d0f5cba01d83, type: 2}
 --- !u!114 &3121751971987048216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +175,29 @@ MonoBehaviour:
   M_E_F_Regen: 0
   staminaBase: 0
   staminaRegen: 0
+  elementalResistanceFire: 0
+  elementalResistanceWater: 0
+  elementalResistanceEarth: 0
+  elementalResistanceWind: 0
+  elementalResistanceLightning: 0
+  elementalResistanceDivine: 0
+  elementalResistanceDark: 0
+  elementalResistanceArcane: 0
+--- !u!114 &-8542935229115645674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659718069294395533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c4ab8d73af4e98bac701c1f0f5f908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAbilities:
+  - {fileID: 11400000, guid: a9685addd7259cc4a98d71672046da33, type: 2}
+  - {fileID: 11400000, guid: 774ad937673ffdb46911d0f5cba01d83, type: 2}
 --- !u!1001 &1412334353818258045
 PrefabInstance:
   m_ObjectHideFlags: 0

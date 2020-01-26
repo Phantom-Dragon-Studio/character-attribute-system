@@ -9,27 +9,23 @@ using UnityEngine;
 
 public class CharacterAttributesHandler : ICharacterAttributesHandler
 {
-    private Dictionary<AttributeType, ICharacterAttribute> myAttributes = new Dictionary<AttributeType, ICharacterAttribute>();
-
-    //Any Getters & Setters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
-    public Dictionary<AttributeType, ICharacterAttribute> Attributes { get => myAttributes; }
-
+    private Dictionary<AttributeType, ICharacterAttribute> Attributes { get; } = new Dictionary<AttributeType, ICharacterAttribute>();
     public ICharacterAttribute Agility => Attributes[AttributeType.Agility];
     public ICharacterAttribute Strength => Attributes[AttributeType.Strength];
     public ICharacterAttribute Wisdom => Attributes[AttributeType.Wisdom];
     public ICharacterAttribute Endurance => Attributes[AttributeType.Endurance];
 
-    public void UpdateAtribute(TypeValuePair<AttributeType, float> attribute)
+    public void UpdateAttribute(TypeValuePair<AttributeType, float> attribute)
     {
-        Attributes[attribute.Type].UpdateValue(attribute.Value);
+        Attributes[attribute.type].UpdateValue(attribute.value);
     }
 
     public void AddAttribute(TypeValuePair<AttributeType, float> attribute)
     {
-        if (!Attributes.ContainsKey(attribute.Type))
+        if (!Attributes.ContainsKey(attribute.type))
         {
-            var temp = CharacterAttributeFactory.Create(attribute.Type, attribute.Value);
-            Attributes.Add(temp.AttributeInfo.Type, temp);
+            var temp = CharacterAttributeFactory.Create(attribute.type, attribute.value);
+            Attributes.Add(temp.AttributeInfo.type, temp);
         }
     }
 }

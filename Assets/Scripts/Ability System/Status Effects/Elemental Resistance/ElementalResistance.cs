@@ -14,6 +14,6 @@ public class ElementalResistance : IElementalResistance
 
     public override string ToString()
     {
-        return ResistanceInfo.Type + " " + ResistanceInfo.Value;
+        return ResistanceInfo.type + " " + ResistanceInfo.value;
     }
 }

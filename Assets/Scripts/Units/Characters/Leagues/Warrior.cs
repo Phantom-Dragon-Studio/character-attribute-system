@@ -8,4 +8,9 @@ public class Warrior : CharacterLeague
     {
         return "Warrior";
     }
+
+    public override ICombatStat[] GenerateCombatStats(ICombatController combatController, ICombatStat[] emptyArrayToPopulate)
+    {
+        throw new System.NotImplementedException();
+    }
 }

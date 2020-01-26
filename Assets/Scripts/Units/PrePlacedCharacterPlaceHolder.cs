@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PrePlacedCharacterPlaceHolder : MonoBehaviour
 {
-    public CharacterSheet characterToSpawn;
-    public CharacterSheet characterToSpawn2;
-    // Start is called before the first frame update
+    [SerializeField] private CharacterSheet[] sheets = default;
+
     void Awake()
     {
-        CharacterFactory.Create(characterToSpawn, transform.position, transform.rotation);
-        CharacterFactory.Create(characterToSpawn2, transform.position, transform.rotation);
+        for (int i = 0; i < sheets.Length; i++)
+        {
+            var t = transform;
+            CharacterFactory.Create(sheets[i].Prefab, t.position, t.rotation);
+            t.Translate(new Vector3(i+1,0,0));
+        }
     }
 }

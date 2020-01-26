@@ -16,8 +16,9 @@ MonoBehaviour:
     name: Main Character
     description: I do main things
     sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  baseAgiilityValue: 1
-  baseStrengthValue: 2
-  baseWisdomValue: 3
-  baseEnduranceValue: 4
   prefab: {fileID: 7659718069294395533, guid: 5e7ec7fb461261a40bbe6ed1c157b2c1, type: 3}
+  characterLeagueType: 1
+  baseAgilityValue: 0
+  baseStrengthValue: 0
+  baseWisdomValue: 0
+  baseEnduranceValue: 0

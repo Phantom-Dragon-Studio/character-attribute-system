@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 /// <summary>
 ///     Main Data Container for characters
 ///  Attributes do not have direct getters. They are loaded into an array and sent as a whole.
@@ -10,38 +12,63 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
 {
     [Header("General Information")]
     [SerializeField] private GeneralObjectInformation objectInformation = default;
+    [SerializeField] private GameObject prefab = default;
 
+    [SerializeField] private CharacterLeagueType characterLeagueType = default;
     [Header("Agility")]
-    [SerializeField] private float baseAgiilityValue = default;
+    [SerializeField] private float baseAgilityValue = default;
     [Header("Strength")]
     [SerializeField] private float baseStrengthValue = default;
     [Header("Wisdom")]
     [SerializeField] private float baseWisdomValue = default;
     [Header("Endurance")]
     [SerializeField] private float baseEnduranceValue = default;
-    [SerializeField] private GameObject prefab = default;
+    
+    
 
-
-    //Public Accessors
-    public ICharacterAttribute[] Attributes { get => attributes; }
-    public GeneralObjectInformation GeneralObjectInformation { get => objectInformation; }
-    public GameObject Prefab { get => prefab; }
+    
+    //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
+    //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
+    public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length - 1];
+    public GeneralObjectInformation GeneralObjectInformation => objectInformation;
+    public GameObject Prefab => prefab;
+    public ICharacterLeague LeagueType { get; private set; }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
 
-    //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
-    //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
-
-    private ICharacterAttribute[] attributes = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length - 1];
-
     public void OnEnable()
     {
         Debug.Log("Initializing ICharacterSheet for " + GeneralObjectInformation.Name);
-        attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgiilityValue);
-        attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
-        attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
-        attributes[3] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
+        Attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgilityValue);
+        Attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
+        Attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
+        Attributes[3] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
+        LeagueType = CreateLeague();
+    }
+
+    private ICharacterLeague CreateLeague()
+    {
+        switch (characterLeagueType)
+        {
+            case CharacterLeagueType.Rogue:
+            {
+                return new Rogue();
+            }
+            case CharacterLeagueType.Warrior:
+            {
+                return new Warrior();
+            }
+            case CharacterLeagueType.Wizard:
+            {
+                return new Wizard();
+            }
+            default:
+            {
+                Debug.LogWarning(GeneralObjectInformation.Name + " has an empty class type selected and therefore will have a null CharacterLeague.");
+                return null;
+            }
+        }
     }
     #endregion
 }

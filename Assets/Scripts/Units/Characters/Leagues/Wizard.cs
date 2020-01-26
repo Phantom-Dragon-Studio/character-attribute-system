@@ -9,4 +9,9 @@ public class Wizard : CharacterLeague
     {
         return "Wizard";
     }
+
+    public override ICombatStat[] GenerateCombatStats(ICombatController combatController, ICombatStat[] emptyArrayToPopulate)
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -1,4 +1,7 @@
-﻿public enum CombatStatType
+﻿using System;
+using UnityEngine;
+
+public enum CombatStatType
 {
     _None = 0,
     CriticalStrikeChance,
@@ -19,8 +22,9 @@
 
 public interface ICombatStat
 {
+    event EventHandler<Rogue_CombatStat.CombatStatCalculatedEventArgs> Calculated;
+    
     CombatStatType CombatStatType { get; }
-    ICombatController CombatController { get; }
     float Value { get; }
     string ToString();
 }

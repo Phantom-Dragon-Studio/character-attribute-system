@@ -9,14 +9,14 @@ public class CombatController : ICombatController
     public ICombatStatsHandler CombatStats { get; private set; }
     public IStatusEffectHandler StatusEffects { get; private set; }
     public IElementalResistanceHandler ElementalResistances { get; private set; }
+    
 
-    public CombatController(ICharacter _character)
+    public CombatController(ICharacter character)
     {
-        this.Character = _character;
+        this.Character = character;
         this.Attributes = CharacterAttributesHandlerFactory.Create(Character.CharacterSheet.Attributes);
-        this.CombatStats = CombatStatHandlerFactory.Create(this);
-        
-        
+        this.CombatStats = CombatStatHandlerFactory.Create(this, Character.CharacterSheet.LeagueType);
+        this.ElementalResistances = new ElementalResistanceHandler();
         this.StatusEffects = new StatusEffectHandler();
     }
 }

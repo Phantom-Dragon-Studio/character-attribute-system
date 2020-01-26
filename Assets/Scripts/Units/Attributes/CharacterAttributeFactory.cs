@@ -8,8 +8,8 @@ public static class CharacterAttributeFactory
     {
         CharacterAttribute newAttribute = new CharacterAttribute(new TypeValuePair<AttributeType, float>(attributeType, value));
 
-        newAttribute.AttributeInfo.Type = attributeType;
-        newAttribute.AttributeInfo.Value = value;
+        newAttribute.AttributeInfo.type = attributeType;
+        newAttribute.AttributeInfo.value = value;
 
         return newAttribute;
     }

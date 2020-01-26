@@ -1,6 +1,6 @@
 ﻿public interface ICombatStatsHandler
 {
-    void AddCombatStat(ICombatStat attribute);
+    ICombatStat GetCombatStatByType(CombatStatType typeToCheck);
 
     ICombatStat CriticalStrikeChance { get; }
     ICombatStat DodgeChance { get; }

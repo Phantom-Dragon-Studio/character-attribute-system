@@ -10,41 +10,44 @@ public class Character : MonoBehaviour, ICharacter
     [SerializeField] private CharacterSheet characterSheet = default;
     public ICharacterSheet CharacterSheet => characterSheet;
     public ICombatController CombatController { get; private set; }
+    
+    public IHealth Health { get; private set;  }
 
     public Character Construct()
     {
         CombatController = new CombatController(this);
-        Debug.Log(CombatController.Character);
-
-        League = GetComponent<ICharacterLeague>();
+        Initialize();
         return this;
+    }
+    
+    private void Initialize()
+    {
+        Health = new Health(CombatController);
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Agility, 1));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Strength, 1));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Wisdom, 1));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Endurance, 1));
     }
 
     public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
-    public ICharacterLeague League { get; private set; }
 
     public event EventHandler<HealedEventArgs> Healed;
 
     public void Heal(float amount)
     {
-        Healed?.Invoke(this, new HealedEventArgs(this, amount));
+        Debug.Log("Attempting to heal...");
+        Healed?.Invoke(this, new HealedEventArgs(amount));
     }
 
     public class HealedEventArgs : EventArgs
     {
-        public HealedEventArgs(ICharacter character, float amount)
+        public HealedEventArgs(float amount)
         {
-            Character = character;
+            Debug.Log("Healed Event Fired....");
             Amount = amount;
         }
 
         public float Amount { get; private set; }
-        public ICharacter Character { get; private set; }
-    }
-
-    void Start()
-    {
-        Heal(20);
     }
 }
 //Calculate in any gear bonuses for ALREADY equipped gear. Other gear will be accounted for at time of changes.

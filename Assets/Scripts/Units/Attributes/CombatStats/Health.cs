@@ -1,30 +1,33 @@
 ﻿using System;
 using UnityEngine;
 
-public class CS_Health : IHealth, ICombatStat
+public class Health : IHealth
 {
-    public float Value { get; private set; }
-    public float CurrentHealth => Value;
-    public ICombatController CombatController { get; private set; }
-    public CombatStatType CombatStatType => CombatStatType.MaxHealth;
-    public float MaxHealth { get; set; }
+    public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
+    public ICombatController CombatController { get; }
 
-    public CS_Health(ICombatController controllerToWatch)
+    public Health(ICombatController controllerToWatch)
     {
         CombatController = controllerToWatch;
-        //TODO Unsubscribe from onHealedEvent
-        ////CombatController.Healed += (sender, args) => Calculate(args.Amount);
-        //CharacterToMonitor.League.PrimaryAttribute.Changed += (sender, args) => Calculate(args.Amount);
-        //Calculate(CharacterToMonitor.League.PrimaryAttribute);
+        controllerToWatch.CombatStats.MaxHealth.Calculated += (sender, args) => GetMaxHealth(args.Value); //TODO Unsubscribe from onHealedEvent
+        controllerToWatch.Character.Healed += (sender, args) => ApplyCurrentHealthIncrease(args.Amount); //TODO Unsubscribe from onHealedEvent
     }
 
-    private void Calculate(float amount)
+    private void GetMaxHealth(float maxHealthStatValue)
     {
-        Debug.Log("HEALING!");
-        //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
-        Debug.Log("Increasing health of " + CombatController + " by " + amount.ToString());
-        Value += amount;
+        MaxHealth = maxHealthStatValue * 1000;
+        Debug.Log("Retrieving max health value from MaxHealth Combat Stat...");
+    }
 
-        if (Value > MaxHealth) Value = MaxHealth;
+    private void ApplyCurrentHealthIncrease(float amount)
+    {
+        //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
+        Debug.Log("Healed EVENT: Increasing " + CombatController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
+        CurrentHealth += amount;
+
+        if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth; //TODO Make MaxHealth get initialized first to avoid health stuck at 0
+        Debug.Log("Current: " + CurrentHealth);
+        Debug.Log("Max: " + MaxHealth);
     }
 }

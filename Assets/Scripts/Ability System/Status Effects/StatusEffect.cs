@@ -1,37 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum PhysicalStatusEffectType
-{
-    _None = 0,
-    Burning,
-    Frozen,
-    Slowed,
-    StaticallyCharged,
-    Bleeding,
-    Poisoned,
-    Corrupted,
-    TimedLife,
-    Silenced,
-    Blinded,
-    Rooted,
-    Stunned,
-
-}
-
 [System.Serializable]
 public class StatusEffect : IStatusEffect
 {
-    [field: SerializeField] public ElementalEffectType ElementalType { get; set; }
-    [field: SerializeField] public ICombatStat EffectedStat { get; set; }
-    [field: SerializeField] public AttributeType AttributeType { get; set; }
-    [field: SerializeField] public PhysicalStatusEffectType PhysicalStatusEffect { get; set; }
-    [field: SerializeField] public float TickMaxStackCount { get; set; }
-    [field: SerializeField] public float TickDuration { get; set; }
-    [field: SerializeField] public float TickAmount { get; set; }
+    public StatusEffect()
+    {
+    }
 
+    public PhysicalStatusEffectType PhysicalStatusEffect { get; private set; }
+    public ElementalEffectType ElementalType { get; private set; }
+    public AttributeType AttributeModifier { get; private set; }
+    public ICombatStat EffectedStat { get; private set; }
+    public float TickMaxStackCount { get; private set; }
+    public float TickDuration { get; private set; }
     public override string ToString()
     {
-        return "Type: " + ElementalType.ToString() + "Duration: " + TickDuration.ToString() + "Bonus: " + EffectedStat.ToString();
+        return $"Type: " + ElementalType.ToString() + "Duration: " + TickDuration.ToString() + "Bonus: " + EffectedStat.ToString();
     }
+    
 }

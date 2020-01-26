@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using System.Collections.Generic;
 
 /// <summary>
 /// This class manages all Elemental Resistances on a given unit. This hsould allow for easy management of the effects each unit has on it at the time.
@@ -10,10 +7,8 @@ using UnityEngine;
 
 public class ElementalResistanceHandler : IElementalResistanceHandler
 {
-    private Dictionary<ElementalEffectType, IElementalResistance> resistanceTypes = new Dictionary<ElementalEffectType, IElementalResistance>();
-
-    //Any Getters & Setters added here for attributes will need to be added into the ICharacterAttribute Interface & Class as well for accessibility.
-    public Dictionary<ElementalEffectType, IElementalResistance> ResistanceTypes { get => resistanceTypes; }
+    private const float DefaultValue = 10f; //TODO Default to 0
+    private Dictionary<ElementalEffectType, IElementalResistance> ResistanceTypes { get; } = new Dictionary<ElementalEffectType, IElementalResistance>();
 
     public IElementalResistance Fire => ResistanceTypes[ElementalEffectType.Fire];
     public IElementalResistance Water => ResistanceTypes[ElementalEffectType.Water];
@@ -34,11 +29,13 @@ public class ElementalResistanceHandler : IElementalResistanceHandler
 
     public void UpdateIndividualResistance(ElementalEffectType typeToUpdate, float amount)
     {
-        ResistanceTypes[typeToUpdate].ResistanceInfo.Value += amount;
+        ResistanceTypes[typeToUpdate].ResistanceInfo.value += amount;
     }
 
-    public float GetResistanceValue(ElementalEffectType typeToCheck)
+    public IElementalResistance GetResistanceByType(ElementalEffectType typeToCheck)
     {
-        return resistanceTypes[typeToCheck].ResistanceInfo.Value;
+        if (ResistanceTypes.ContainsKey(typeToCheck)) return ResistanceTypes[typeToCheck];
+        AddResistance(typeToCheck, DefaultValue);
+        return ResistanceTypes[typeToCheck];
     }
 }

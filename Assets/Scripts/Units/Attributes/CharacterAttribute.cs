@@ -26,7 +26,7 @@ public class CharacterAttribute : ICharacterAttribute
 
     public void UpdateValue(float value)
     {
-        this.AttributeInfo.Value += value;
+        this.AttributeInfo.value += value;
         Changed?.Invoke(this, new AttributeChangedEventArgs(this));
     }
 
@@ -42,6 +42,6 @@ public class CharacterAttribute : ICharacterAttribute
 
     public override string ToString()
     {
-        return AttributeInfo.Type.ToString() + ": " + AttributeInfo.Value.ToString();
+        return AttributeInfo.type.ToString() + ": " + AttributeInfo.value.ToString();
     }
 }
