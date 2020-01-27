@@ -9,7 +9,6 @@ public class BaseAbility : IAbility
     private AbilityBehavior abilityBehavior = default;
     private AbilityInformation abilityInfo = default;
     private TargetingType targetingType = default;
-
     public AbilityInformation AbilityInformation { get => abilityInfo; private set => abilityInfo = value; }
     public AbilityBehavior AbilityBehavior { get => abilityBehavior; set => abilityBehavior = value; }
     public TargetingType TargetingType { get => targetingType; }

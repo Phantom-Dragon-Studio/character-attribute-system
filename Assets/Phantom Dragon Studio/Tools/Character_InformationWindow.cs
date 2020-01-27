@@ -30,7 +30,7 @@ public class Character_InformationWindow : MonoBehaviour
     [ShowOnly] [SerializeField] float staminaBase;
     [ShowOnly] [SerializeField] float staminaRegen;
 
-    [Header("Resistances")]
+    [Header("Resistances")] 
     [ShowOnly] [SerializeField] float elementalResistanceFire;
     [ShowOnly] [SerializeField] float elementalResistanceWater;
     [ShowOnly] [SerializeField] float elementalResistanceEarth;
@@ -53,20 +53,20 @@ public class Character_InformationWindow : MonoBehaviour
         wisdom = combatController.Attributes.Wisdom.AttributeInfo.value;
         endurance = combatController.Attributes.Endurance.AttributeInfo.value;
 
-        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value;
-        dodgeChance = combatController.CombatStats.DodgeChance.Value;
-        attackSpeed = combatController.CombatStats.AttackSpeed.Value;
-        movementSpeed = combatController.CombatStats.MovementSpeed.Value;
+        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value * 100;
+        dodgeChance = combatController.CombatStats.DodgeChance.Value * 100;
+        attackSpeed = combatController.CombatStats.AttackSpeed.Value * 100;
+        movementSpeed = combatController.CombatStats.MovementSpeed.Value * 100;
         physicalDamage = combatController.CombatStats.PhysicalDamage.Value;
         magicalDamage = combatController.CombatStats.MagicalDamage.Value;
         physicalDefense = combatController.CombatStats.PhysicalDefense.Value;
         magicDefense = combatController.CombatStats.MagicDefense.Value;
         maxHealth = combatController.CombatStats.MaxHealth.Value;
-        healthRegen = combatController.CombatStats.HealthRegen.Value;
+        healthRegen = combatController.CombatStats.HealthRegen.Value * 100;
         M_E_F_Base = combatController.CombatStats.M_E_F_Base.Value;
-        M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value;
+        M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value * 100;
         staminaBase = combatController.CombatStats.StaminaBase.Value;
-        staminaRegen = combatController.CombatStats.StaminaRegen.Value;
+        staminaRegen = combatController.CombatStats.StaminaRegen.Value * 100;
 
         elementalResistanceFire = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Fire).ResistanceInfo.value;
         elementalResistanceWater = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Water).ResistanceInfo.value;

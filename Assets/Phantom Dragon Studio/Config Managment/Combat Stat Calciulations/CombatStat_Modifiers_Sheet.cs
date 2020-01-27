@@ -5,20 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Combat Stat Modifiers Sheet", menuName = "Phantom Dragon Studio/Settings Modifiers Sheet", order = 0)]
 public class CombatStat_Modifiers_Sheet : ScriptableObject
 {
-    [SerializeField] private float criticalStrikeChance_perAttributePoint;
-    [SerializeField] private float dodgeChance_perAttributePoint;
-    [SerializeField] private float physicalDamage_perAttributePoint;
-    [SerializeField] private float magicalDamage_perAttributePoint;
-    [SerializeField] private float attackSpeed_perAttributePoint;
-    [SerializeField] private float movementSpeed_perAttributePoint;
-    [SerializeField] private float physicalDefense_perAttributePoint;
-    [SerializeField] private float magicalDefense_perAttributePoint;
-    [SerializeField] private float maxHealth_perAttributePoint;
-    [SerializeField] private float healthRegen_perAttributePoint;
-    [SerializeField] private float M_E_F_perAttributePoint;
-    [SerializeField] private float M_E_F_Regen_perAttributePoint;
-    [SerializeField] private float maxStamina_perAttributePoint;
-    [SerializeField] private float staminaRegen_perAttributePoint;
+    [SerializeField] private float criticalStrikeChance_perAttributePoint = default;
+    [SerializeField] private float dodgeChance_perAttributePoint = default;
+    [SerializeField] private float physicalDamage_perAttributePoint = default;
+    [SerializeField] private float magicalDamage_perAttributePoint = default;
+    [SerializeField] private float attackSpeed_perAttributePoint = default;
+    [SerializeField] private float movementSpeed_perAttributePoint = default;
+    [SerializeField] private float physicalDefense_perAttributePoint = default;
+    [SerializeField] private float magicalDefense_perAttributePoint = default;
+    [SerializeField] private float maxHealth_perAttributePoint = default;
+    [SerializeField] private float healthRegen_perAttributePoint = default;
+    [SerializeField] private float M_E_F_perAttributePoint = default;
+    [SerializeField] private float M_E_F_Regen_perAttributePoint = default;
+    [SerializeField] private float maxStamina_perAttributePoint = default;
+    [SerializeField] private float staminaRegen_perAttributePoint = default;
 
 
     public Dictionary<CombatStatType, float> Settings { get; private set; } = new Dictionary<CombatStatType, float>();

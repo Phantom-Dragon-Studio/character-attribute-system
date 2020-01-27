@@ -11,7 +11,6 @@ public class Rogue : CharacterLeague
 
     public override ICombatStat[] GenerateCombatStats(ICombatController combatController, ICombatStat[] emptyArrayToPopulate)
     {
-        Debug.Log(emptyArrayToPopulate.Length);
         return RogueCombatStatFactory.Create(combatController, emptyArrayToPopulate);
     }
 }

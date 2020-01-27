@@ -41,7 +41,8 @@ public class CombatStat : ICombatStat
             secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
         
         Value = primaryPlaceHolder + secondaryPlaceHolder;
-        Value += CombatManager.instance.RogueCombatStatModifiers(CombatStatType);
+        Debug.LogWarning(CombatManager.Instance.RogueCombatStatModifiers(CombatStatType));
+        Value *= CombatManager.Instance.RogueCombatStatModifiers(CombatStatType);
         Calculated?.Invoke((this), new CombatStatCalculatedEventArgs(Value));
     }
 
@@ -60,4 +61,4 @@ public class CombatStat : ICombatStat
             //Debug.Log("Calculated CombatStat EVENT FIRED.");
         }
     }
-}
+} 

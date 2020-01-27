@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ce73b312e2ac44b63004bd765b81d, type: 3}
   m_Name: New Combat Stat Modifiers Sheet
   m_EditorClassIdentifier: 
-  criticalStrikeChance_perAttributePoint: 0
-  dodgeChance_perAttributePoint: 0
-  physicalDamage_perAttributePoint: 0
-  magicalDamage_perAttributePoint: 0
-  attackSpeed_perAttributePoint: 0
-  movementSpeed_perAttributePoint: 0
-  physicalDefense_perAttributePoint: 0
-  magicalDefense_perAttributePoint: 0
-  maxHealth_perAttributePoint: 0
-  healthRegen_perAttributePoint: 0
-  M_E_F_perAttributePoint: 0
-  M_E_F_Regen_perAttributePoint: 0
-  maxStamina_perAttributePoint: 0
-  staminaRegen_perAttributePoint: 0
+  criticalStrikeChance_perAttributePoint: 0.01
+  dodgeChance_perAttributePoint: 0.005
+  physicalDamage_perAttributePoint: 0.25
+  magicalDamage_perAttributePoint: 0.5
+  attackSpeed_perAttributePoint: 0.1
+  movementSpeed_perAttributePoint: 0.1
+  physicalDefense_perAttributePoint: 0.05
+  magicalDefense_perAttributePoint: 0.005
+  maxHealth_perAttributePoint: 0.15
+  healthRegen_perAttributePoint: 0.05
+  M_E_F_perAttributePoint: 0.0125
+  M_E_F_Regen_perAttributePoint: 0.05
+  maxStamina_perAttributePoint: 0.014
+  staminaRegen_perAttributePoint: 0.02

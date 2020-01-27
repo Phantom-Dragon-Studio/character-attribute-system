@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-    public static CombatManager instance;
+    public static CombatManager _instance;
 
-    void Awake()
-    {
-        if(instance == null) instance = this; else Destroy(this);
-    }
+    public static CombatManager Instance {  get { if (_instance == null) _instance = FindObjectOfType<CombatManager>(); return _instance; } }
 
     [SerializeField] private  CombatStat_Modifiers_Sheet rogueSettings;
     public CombatStat_Modifiers_Sheet RogueStatSettings { get => rogueSettings; set => rogueSettings = value; }

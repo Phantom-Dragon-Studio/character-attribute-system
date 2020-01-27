@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465806, g: 0.49641544, b: 0.5748185, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658005, g: 0.49641466, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -474,7 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f36785c49d51940959365eb8d7a4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 0}
+  rogueSettings: {fileID: 11400000, guid: fc5676e94a993964da555dd5e89a3d91, type: 2}
+  warriorSettings: {fileID: 11400000, guid: fc5676e94a993964da555dd5e89a3d91, type: 2}
+  wizardSettings: {fileID: 11400000, guid: fc5676e94a993964da555dd5e89a3d91, type: 2}
 --- !u!1001 &4211579859521958232
 PrefabInstance:
   m_ObjectHideFlags: 0

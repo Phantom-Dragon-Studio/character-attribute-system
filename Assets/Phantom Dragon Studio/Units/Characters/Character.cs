@@ -23,10 +23,10 @@ public class Character : MonoBehaviour, ICharacter
     private void Initialize()
     {
         Health = new Health(CombatController);
-        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Agility, 1));
-        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Strength, 1));
-        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Wisdom, 1));
-        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Endurance, 1));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Agility, 10));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Strength, 10));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Wisdom, 10));
+        CombatController.Attributes.UpdateAttribute(new TypeValuePair<AttributeType, float>(AttributeType.Endurance, 10));
     }
 
     public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
