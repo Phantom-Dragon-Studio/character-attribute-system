@@ -7,6 +7,7 @@ public interface ICharacterAttributesHandler
 
     void AddAttribute(TypeValuePair<AttributeType, float> attribute);
 
+    ICharacterAttribute NULL { get; }
     ICharacterAttribute Agility { get; }
     ICharacterAttribute Strength { get; }
     ICharacterAttribute Wisdom { get; }

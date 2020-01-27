@@ -18,61 +18,66 @@ public class Rogue : CharacterLeague
 
 public static class RogueCombatStatFactory
 {
+
+    //Initializes the type and value of all combat stats for the rogue. Assigning unique listerners
+    //If you want to change WHAT attibutes each combat stat listens to, you may do that inside this function below.
+    //Note: Here we have implemented the null implementation pattern. You subscribe to an empty attibute's events
+    //only if you wish to not utilize the secondary attribute for that given stat.
     public static ICombatStat[] Create(ICombatController combatController, ICombatStat[] combatStats)
     {
-        combatStats[0] = new Rogue_CombatStat(CombatStatType.CriticalStrikeChance,
+        combatStats[0] = new CombatStat(CombatStatType.CriticalStrikeChance,
             combatController.Attributes.Agility,
             combatController.Attributes.Strength);
 
-        combatStats[1] = new Rogue_CombatStat(CombatStatType.DodgeChance,
+        combatStats[1] = new CombatStat(CombatStatType.DodgeChance,
             combatController.Attributes.Agility,
             combatController.Attributes.Strength);
 
-        combatStats[2] = new Rogue_CombatStat(CombatStatType.PhysicalDamage,
+        combatStats[2] = new CombatStat(CombatStatType.PhysicalDamage,
             combatController.Attributes.Strength,
             combatController.Attributes.Agility);
 
-        combatStats[3] = new Rogue_CombatStat(CombatStatType.MagicalDamage,
+        combatStats[3] = new CombatStat(CombatStatType.MagicalDamage,
             combatController.Attributes.Wisdom,
             combatController.Attributes.Agility);
 
-        combatStats[4] = new Rogue_CombatStat(CombatStatType.MovementSpeed,
+        combatStats[4] = new CombatStat(CombatStatType.MovementSpeed,
             combatController.Attributes.Agility,
-            combatController.Attributes.Endurance); //TODO Make Nullable
+            combatController.Attributes.NULL);
 
-        combatStats[5] = new Rogue_CombatStat(CombatStatType.AttackSpeed,
+        combatStats[5] = new CombatStat(CombatStatType.AttackSpeed,
             combatController.Attributes.Agility,
-            combatController.Attributes.Agility); //TODO Make Nullable
+            combatController.Attributes.NULL);
 
-        combatStats[6] = new Rogue_CombatStat(CombatStatType.PhysicalDefense,
+        combatStats[6] = new CombatStat(CombatStatType.PhysicalDefense,
             combatController.Attributes.Endurance,
-            combatController.Attributes.Agility); //TODO Make Nullable
+            combatController.Attributes.NULL); 
 
-        combatStats[7] = new Rogue_CombatStat(CombatStatType.MagicDefense,
+        combatStats[7] = new CombatStat(CombatStatType.MagicDefense,
             combatController.Attributes.Wisdom,
-            combatController.Attributes.Agility); //TODO Make Nullable
+            combatController.Attributes.NULL);
 
-        combatStats[8] = new Rogue_CombatStat(CombatStatType.MaxHealth,
+        combatStats[8] = new CombatStat(CombatStatType.MaxHealth,
             combatController.Attributes.Strength,
             combatController.Attributes.Endurance);
 
-        combatStats[9] = new Rogue_CombatStat(CombatStatType.Health_RegenerationRate,
+        combatStats[9] = new CombatStat(CombatStatType.Health_RegenerationRate,
             combatController.Attributes.Strength,
             combatController.Attributes.Endurance);
 
-        combatStats[10] = new Rogue_CombatStat(CombatStatType.M_E_F_Base,
+        combatStats[10] = new CombatStat(CombatStatType.M_E_F_Base,
             combatController.Attributes.Endurance,
-            combatController.Attributes.Agility); //TODO Make Nullable
+            combatController.Attributes.NULL);
 
-        combatStats[11] = new Rogue_CombatStat(CombatStatType.M_E_F_RegenerationRate,
+        combatStats[11] = new CombatStat(CombatStatType.M_E_F_RegenerationRate,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 
-        combatStats[12] = new Rogue_CombatStat(CombatStatType.Stamina_Base,
+        combatStats[12] = new CombatStat(CombatStatType.Stamina_Base,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 
-        combatStats[13] = new Rogue_CombatStat(CombatStatType.Stamina_RegenerationRate,
+        combatStats[13] = new CombatStat(CombatStatType.Stamina_RegenerationRate,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 

@@ -10,6 +10,7 @@ using UnityEngine;
 public class CharacterAttributesHandler : ICharacterAttributesHandler
 {
     private Dictionary<AttributeType, ICharacterAttribute> Attributes { get; } = new Dictionary<AttributeType, ICharacterAttribute>();
+    public ICharacterAttribute NULL => Attributes[AttributeType._None];
     public ICharacterAttribute Agility => Attributes[AttributeType.Agility];
     public ICharacterAttribute Strength => Attributes[AttributeType.Strength];
     public ICharacterAttribute Wisdom => Attributes[AttributeType.Wisdom];

@@ -29,7 +29,7 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
     
     //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
     //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
-    public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length - 1];
+    public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
     public GeneralObjectInformation GeneralObjectInformation => objectInformation;
     public GameObject Prefab => prefab;
     public ICharacterLeague LeagueType { get; private set; }
@@ -40,10 +40,11 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
     public void OnEnable()
     {
         Debug.Log("Initializing ICharacterSheet for " + GeneralObjectInformation.Name);
-        Attributes[0] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgilityValue);
-        Attributes[1] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
-        Attributes[2] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
-        Attributes[3] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
+        Attributes[0] = CharacterAttributeFactory.Create(AttributeType._None, 0f);
+        Attributes[1] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgilityValue);
+        Attributes[2] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
+        Attributes[3] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
+        Attributes[4] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
         LeagueType = CreateLeague();
     }
 

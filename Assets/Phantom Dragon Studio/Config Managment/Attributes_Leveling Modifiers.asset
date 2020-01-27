@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0810c693b9645ca438be088caf536077, type: 3}
-  m_Name: New CAS Config Settings
+  m_Name: Attributes_Leveling Modifiers
   m_EditorClassIdentifier: 
   gameDifficulty: 0
-  rogue_AgilityPerLevel: 0
+  Rogue_AgilityPerLevel: 0
   rogue_StrengthPerLevel: 0
   rogue_WisdomPerLevel: 0
   rogue_EndurancePerLevel: 0

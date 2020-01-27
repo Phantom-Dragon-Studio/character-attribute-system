@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rogue_CombatStat : ICombatStat
+public class CombatStat : ICombatStat
 {
     private const float DefaultAmount = 0.00f;
 
@@ -16,7 +16,7 @@ public class Rogue_CombatStat : ICombatStat
     
     private const float DefaultValue = 0;
 
-    public Rogue_CombatStat(CombatStatType type, ICharacterAttribute primaryAttribute, ICharacterAttribute secondaryAttribute)
+    public CombatStat(CombatStatType type, ICharacterAttribute primaryAttribute, ICharacterAttribute secondaryAttribute)
     {
         Value = DefaultValue;
         CombatStatType = type;
@@ -41,6 +41,7 @@ public class Rogue_CombatStat : ICombatStat
             secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
         
         Value = primaryPlaceHolder + secondaryPlaceHolder;
+        Value += CombatManager.instance.RogueCombatStatModifiers(CombatStatType);
         Calculated?.Invoke((this), new CombatStatCalculatedEventArgs(Value));
     }
 
@@ -51,12 +52,12 @@ public class Rogue_CombatStat : ICombatStat
     
     public class CombatStatCalculatedEventArgs : EventArgs
     {
+        public float Value { get; }
+        
         public CombatStatCalculatedEventArgs(float value)
         {
             Value = value;
-//            Debug.Log("Calculated CombatStat EVENT FIRED.");
+            //Debug.Log("Calculated CombatStat EVENT FIRED.");
         }
-
-        public float Value { get; }
     }
 }
