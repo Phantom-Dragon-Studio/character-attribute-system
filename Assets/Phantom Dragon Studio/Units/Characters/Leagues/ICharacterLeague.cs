@@ -9,6 +9,7 @@
 
 public interface ICharacterLeague
 {
+    CharacterLeagueType LeagueType { get; }
     string ToString();
     ICombatStat[] GenerateCombatStats(ICombatController combatController, ICombatStat[] emptyArrayToPopulate);
 }

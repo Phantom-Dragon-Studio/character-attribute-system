@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ce73b312e2ac44b63004bd765b81d, type: 3}
   m_Name: Rogue_Default
   m_EditorClassIdentifier: 
+  primaryAttributeAffectModifier: 0.8
+  secondaryAttributeAffectModifier: 0.8
   criticalStrikeChance_perAttributePoint: 0.01
   dodgeChance_perAttributePoint: 0.02
   physicalDamage_perAttributePoint: 0.03

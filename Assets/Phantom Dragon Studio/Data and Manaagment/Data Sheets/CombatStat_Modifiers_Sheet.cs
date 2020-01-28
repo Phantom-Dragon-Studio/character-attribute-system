@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Combat Stat Modifiers Sheet", menuName = "Phantom Dragon Studio/Settings Modifiers Sheet", order = 0)]
 public class CombatStat_Modifiers_Sheet : ScriptableObject
 {
+    [SerializeField] public float primaryAttributeAffectModifier = default;
+    [SerializeField] public float secondaryAttributeAffectModifier = default;
 
     //Accessed via dictionary key.
     [Header("Combat Stats")]

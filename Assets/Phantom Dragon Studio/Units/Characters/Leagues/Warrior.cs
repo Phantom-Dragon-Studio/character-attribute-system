@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Warrior : CharacterLeague
 {
+    public override CharacterLeagueType LeagueType => CharacterLeagueType.Warrior;
+
     public override string ToString()
     {
         return "Warrior";
@@ -24,6 +26,7 @@ public static class WarriorCombatStatFactory
     //only if you wish to not utilize the secondary attribute for that given stat.
     public static ICombatStat[] Create(ICombatController combatController, ICombatStat[] combatStats)
     {
+        //TODO Create Warrior stat
         combatStats[0] = new RogueStat(CombatStatType.CriticalStrikeChance,
             combatController.Attributes.Agility,
             combatController.Attributes.NULL);

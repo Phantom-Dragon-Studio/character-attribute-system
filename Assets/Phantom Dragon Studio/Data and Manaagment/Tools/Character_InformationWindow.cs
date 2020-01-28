@@ -49,8 +49,8 @@ public class Character_InformationWindow : MonoBehaviour
         character = GetComponent<ICharacter>();
         combatController = character.CombatController;
 
-        primaryAttributeEffectiveness = GameManager.Instance.Settings.primaryAttributeAffectModifier;
-        secondaryAttributeEffectiveness = GameManager.Instance.Settings.secondaryAttributeAffectModifier;
+        primaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeAffectModifier;
+        secondaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeAffectModifier;
     }
 
     void Update()

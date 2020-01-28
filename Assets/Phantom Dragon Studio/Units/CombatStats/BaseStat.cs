@@ -1,8 +1,10 @@
 ﻿using System;
+using UnityEngine;
 
 public abstract class BaseStat
 {
     public float Value { get; protected set; }
+    protected abstract CharacterLeagueType LeagueType { get; }
     public CombatStatType CombatStatType { get; protected set; }
     protected ICharacterAttribute PrimaryAttribute { get; set; }
     protected ICharacterAttribute SecondaryAttribute { get; set; }
@@ -34,13 +36,14 @@ public abstract class BaseStat
 
         if (PrimaryAttribute != null)
         {
+            Debug.Log(CombatManager.Instance.LeagueSettings[CharacterLeagueType.Rogue]);
             primaryPlaceHolder = PrimaryAttribute.AttributeInfo.value;
-            primaryPlaceHolder *= GameManager.Instance.Settings.primaryAttributeAffectModifier;
+            primaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].primaryAttributeAffectModifier;
         }
         if (SecondaryAttribute != null)
         {
             secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
-            secondaryPlaceHolder = GameManager.Instance.Settings.secondaryAttributeAffectModifier;
+            secondaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].secondaryAttributeAffectModifier;
         }
 
         Value = primaryPlaceHolder + secondaryPlaceHolder;

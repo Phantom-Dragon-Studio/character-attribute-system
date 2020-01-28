@@ -6,6 +6,7 @@ using UnityEngine;
 public class RogueStat : BaseStat, ICombatStat
 {
     public event EventHandler<CombatStatCalculatedEventArgs> Calculated;
+    protected override CharacterLeagueType LeagueType => CharacterLeagueType.Rogue;
 
     public RogueStat(CombatStatType type, ICharacterAttribute primaryAttribute, ICharacterAttribute secondaryAttribute) 
         : base(type, primaryAttribute, secondaryAttribute)
@@ -15,7 +16,7 @@ public class RogueStat : BaseStat, ICombatStat
     protected override void Calculate()
     {
         base.Calculate();
-        Value *= CombatManager.Instance.RogueCombatStatModifiers(CombatStatType);
+        Value *= CombatManager.Instance.LeagueSettings[LeagueType].Settings[CombatStatType];
         Calculated?.Invoke((this), new CombatStatCalculatedEventArgs(Value));
     }
 } 

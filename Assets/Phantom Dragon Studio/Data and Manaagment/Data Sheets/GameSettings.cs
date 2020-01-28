@@ -8,7 +8,4 @@ public enum GameDifficulty { Easy, Medium, Hard, Impossible }
 public class GameSettings : ScriptableObject
 {
     [SerializeField] GameDifficulty gameDifficulty;
-
-    [SerializeField] public float primaryAttributeAffectModifier = default;
-    [SerializeField] public float secondaryAttributeAffectModifier = default;
 }

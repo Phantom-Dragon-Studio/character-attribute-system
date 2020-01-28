@@ -11,6 +11,4 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameSettings settings;
 
     public GameSettings Settings { get => settings; }
-
-
 }

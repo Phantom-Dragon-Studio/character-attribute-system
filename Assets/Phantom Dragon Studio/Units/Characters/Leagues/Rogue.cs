@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Rogue : CharacterLeague
 {
+    public override CharacterLeagueType LeagueType => CharacterLeagueType.Rogue;
+
     public override string ToString()
     {
         return "Rogue";

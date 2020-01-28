@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465806, g: 0.49641544, b: 0.5748185, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658005, g: 0.49641466, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rogueSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
-  warriorSettings: {fileID: 0}
-  wizardSettings: {fileID: 0}
+  warriorSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
+  wizardSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
 --- !u!1 &1962008962
 GameObject:
   m_ObjectHideFlags: 0

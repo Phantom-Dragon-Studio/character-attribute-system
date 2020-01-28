@@ -32,7 +32,7 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
     public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
     public GeneralObjectInformation GeneralObjectInformation => objectInformation;
     public GameObject Prefab => prefab;
-    public ICharacterLeague LeagueType { get; private set; }
+    public ICharacterLeague League { get; private set; }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #region Initialization
@@ -45,7 +45,7 @@ public class CharacterSheet : ScriptableObject, ICharacterSheet
         Attributes[2] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);
         Attributes[3] = CharacterAttributeFactory.Create(AttributeType.Wisdom, baseWisdomValue);
         Attributes[4] = CharacterAttributeFactory.Create(AttributeType.Endurance, baseEnduranceValue);
-        LeagueType = CreateLeague();
+        League = CreateLeague();
     }
 
     private ICharacterLeague CreateLeague()

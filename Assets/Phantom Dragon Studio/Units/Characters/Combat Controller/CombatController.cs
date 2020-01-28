@@ -15,7 +15,7 @@ public class CombatController : ICombatController
     {
         this.Character = character;
         this.Attributes = CharacterAttributesHandlerFactory.Create(Character.CharacterSheet.Attributes);
-        this.CombatStats = CombatStatHandlerFactory.Create(this, Character.CharacterSheet.LeagueType);
+        this.CombatStats = CombatStatHandlerFactory.Create(this, Character.CharacterSheet.League);
         this.ElementalResistances = new ElementalResistanceHandler();
         this.StatusEffects = new StatusEffectHandler();
     }
