@@ -24,59 +24,59 @@ public static class RogueCombatStatFactory
     //only if you wish to not utilize the secondary attribute for that given stat.
     public static ICombatStat[] Create(ICombatController combatController, ICombatStat[] combatStats)
     {
-        combatStats[0] = new CombatStat(CombatStatType.CriticalStrikeChance,
+        combatStats[0] = new RogueStat(CombatStatType.CriticalStrikeChance,
             combatController.Attributes.Agility,
             combatController.Attributes.Strength);
 
-        combatStats[1] = new CombatStat(CombatStatType.DodgeChance,
+        combatStats[1] = new RogueStat(CombatStatType.DodgeChance,
             combatController.Attributes.Agility,
             combatController.Attributes.Strength);
 
-        combatStats[2] = new CombatStat(CombatStatType.PhysicalDamage,
+        combatStats[2] = new RogueStat(CombatStatType.PhysicalDamage,
             combatController.Attributes.Strength,
             combatController.Attributes.Agility);
 
-        combatStats[3] = new CombatStat(CombatStatType.MagicalDamage,
+        combatStats[3] = new RogueStat(CombatStatType.MagicalDamage,
             combatController.Attributes.Wisdom,
             combatController.Attributes.Agility);
 
-        combatStats[4] = new CombatStat(CombatStatType.MovementSpeed,
+        combatStats[4] = new RogueStat(CombatStatType.MovementSpeed,
             combatController.Attributes.Agility,
             combatController.Attributes.NULL);
 
-        combatStats[5] = new CombatStat(CombatStatType.AttackSpeed,
+        combatStats[5] = new RogueStat(CombatStatType.AttackSpeed,
             combatController.Attributes.Agility,
             combatController.Attributes.NULL);
 
-        combatStats[6] = new CombatStat(CombatStatType.PhysicalDefense,
+        combatStats[6] = new RogueStat(CombatStatType.PhysicalDefense,
             combatController.Attributes.Endurance,
             combatController.Attributes.NULL); 
 
-        combatStats[7] = new CombatStat(CombatStatType.MagicDefense,
+        combatStats[7] = new RogueStat(CombatStatType.MagicDefense,
             combatController.Attributes.Wisdom,
             combatController.Attributes.NULL);
 
-        combatStats[8] = new CombatStat(CombatStatType.MaxHealth,
+        combatStats[8] = new RogueStat(CombatStatType.MaxHealth,
             combatController.Attributes.Strength,
             combatController.Attributes.Endurance);
 
-        combatStats[9] = new CombatStat(CombatStatType.Health_RegenerationRate,
+        combatStats[9] = new RogueStat(CombatStatType.Health_RegenerationRate,
             combatController.Attributes.Strength,
             combatController.Attributes.Endurance);
 
-        combatStats[10] = new CombatStat(CombatStatType.M_E_F_Base,
+        combatStats[10] = new RogueStat(CombatStatType.M_E_F_Base,
             combatController.Attributes.Endurance,
             combatController.Attributes.NULL);
 
-        combatStats[11] = new CombatStat(CombatStatType.M_E_F_RegenerationRate,
+        combatStats[11] = new RogueStat(CombatStatType.M_E_F_RegenerationRate,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 
-        combatStats[12] = new CombatStat(CombatStatType.Stamina_Base,
+        combatStats[12] = new RogueStat(CombatStatType.Stamina_Base,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 
-        combatStats[13] = new CombatStat(CombatStatType.Stamina_RegenerationRate,
+        combatStats[13] = new RogueStat(CombatStatType.Stamina_RegenerationRate,
             combatController.Attributes.Agility,
             combatController.Attributes.Endurance);
 

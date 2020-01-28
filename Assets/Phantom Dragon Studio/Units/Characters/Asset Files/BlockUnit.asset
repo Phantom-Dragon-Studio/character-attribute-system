@@ -17,7 +17,7 @@ MonoBehaviour:
     description: Unit Description
     sprite: {fileID: 0}
   prefab: {fileID: 4525984165041063731, guid: be7658d60c291c4418f53f558eb955e3, type: 3}
-  characterLeagueType: 1
+  characterLeagueType: 2
   baseAgilityValue: 1
   baseStrengthValue: 1
   baseWisdomValue: 1

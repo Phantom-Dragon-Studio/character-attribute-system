@@ -22,7 +22,7 @@ public enum CombatStatType
 
 public interface ICombatStat
 {
-    event EventHandler<CombatStat.CombatStatCalculatedEventArgs> Calculated;
+    event EventHandler<CombatStatCalculatedEventArgs> Calculated;
     
     CombatStatType CombatStatType { get; }
     float Value { get; }

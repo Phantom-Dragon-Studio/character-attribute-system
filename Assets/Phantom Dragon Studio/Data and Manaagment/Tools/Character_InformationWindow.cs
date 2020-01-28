@@ -8,6 +8,10 @@ public class Character_InformationWindow : MonoBehaviour
     ICharacter character;
     ICombatController combatController;
 
+    [Header("Combat Manager Attribute Settings")]
+    [ShowOnly] [SerializeField] float primaryAttributeEffectiveness;
+    [ShowOnly] [SerializeField] float secondaryAttributeEffectiveness;
+
     [Header("Attributes")]
     [ShowOnly] [SerializeField] float agility;
     [ShowOnly] [SerializeField] float strength;
@@ -44,6 +48,9 @@ public class Character_InformationWindow : MonoBehaviour
     {
         character = GetComponent<ICharacter>();
         combatController = character.CombatController;
+
+        primaryAttributeEffectiveness = GameManager.Instance.Settings.primaryAttributeAffectModifier;
+        secondaryAttributeEffectiveness = GameManager.Instance.Settings.secondaryAttributeAffectModifier;
     }
 
     void Update()
@@ -53,20 +60,20 @@ public class Character_InformationWindow : MonoBehaviour
         wisdom = combatController.Attributes.Wisdom.AttributeInfo.value;
         endurance = combatController.Attributes.Endurance.AttributeInfo.value;
 
-        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value * 100;
-        dodgeChance = combatController.CombatStats.DodgeChance.Value * 100;
-        attackSpeed = combatController.CombatStats.AttackSpeed.Value * 100;
-        movementSpeed = combatController.CombatStats.MovementSpeed.Value * 100;
+        criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value;
+        dodgeChance = combatController.CombatStats.DodgeChance.Value;
+        attackSpeed = combatController.CombatStats.AttackSpeed.Value;
+        movementSpeed = combatController.CombatStats.MovementSpeed.Value;
         physicalDamage = combatController.CombatStats.PhysicalDamage.Value;
         magicalDamage = combatController.CombatStats.MagicalDamage.Value;
         physicalDefense = combatController.CombatStats.PhysicalDefense.Value;
         magicDefense = combatController.CombatStats.MagicDefense.Value;
         maxHealth = combatController.CombatStats.MaxHealth.Value;
-        healthRegen = combatController.CombatStats.HealthRegen.Value * 100;
+        healthRegen = combatController.CombatStats.HealthRegen.Value;
         M_E_F_Base = combatController.CombatStats.M_E_F_Base.Value;
-        M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value * 100;
+        M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value;
         staminaBase = combatController.CombatStats.StaminaBase.Value;
-        staminaRegen = combatController.CombatStats.StaminaRegen.Value * 100;
+        staminaRegen = combatController.CombatStats.StaminaRegen.Value;
 
         elementalResistanceFire = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Fire).ResistanceInfo.value;
         elementalResistanceWater = combatController.ElementalResistances.GetResistanceByType(ElementalEffectType.Water).ResistanceInfo.value;
