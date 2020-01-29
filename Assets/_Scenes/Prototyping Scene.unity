@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44658005, g: 0.49641466, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465806, g: 0.49641544, b: 0.5748185, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -177,8 +178,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -291,6 +293,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -476,8 +479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rogueSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
-  warriorSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
-  wizardSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
+  warriorSettings: {fileID: 11400000, guid: 17d3a781d28a04b4abb24b3aaf5683ff, type: 2}
+  wizardSettings: {fileID: 11400000, guid: 0fae817022fd8a64faa50c0bde0f2020, type: 2}
 --- !u!1 &1962008962
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,13 +535,19 @@ PrefabInstance:
     - target: {fileID: 3544121167400433347, guid: 8910d2342853baf4db457501c7bdfaa8,
         type: 3}
       propertyPath: sheets.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3544121167400433347, guid: 8910d2342853baf4db457501c7bdfaa8,
         type: 3}
       propertyPath: sheets.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: cb9c2e13023255648bb2e4d2369a0a2e,
+        type: 2}
+    - target: {fileID: 3544121167400433347, guid: 8910d2342853baf4db457501c7bdfaa8,
+        type: 3}
+      propertyPath: sheets.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 26a6fa2142639e543a35d854cf0fdda0,
         type: 2}
     - target: {fileID: 3544121167400433351, guid: 8910d2342853baf4db457501c7bdfaa8,
         type: 3}

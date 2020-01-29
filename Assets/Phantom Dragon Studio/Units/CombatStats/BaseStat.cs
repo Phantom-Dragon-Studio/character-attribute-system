@@ -36,7 +36,7 @@ public abstract class BaseStat
 
         if (PrimaryAttribute != null)
         {
-            Debug.Log(CombatManager.Instance.LeagueSettings[CharacterLeagueType.Rogue]);
+            Debug.Log(LeagueType);
             primaryPlaceHolder = PrimaryAttribute.AttributeInfo.value;
             primaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].primaryAttributeAffectModifier;
         }
