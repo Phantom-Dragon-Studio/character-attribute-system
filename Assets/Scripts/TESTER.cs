@@ -26,5 +26,11 @@ public class TESTER : MonoBehaviour
 
             abController.AbilityHandler.CastAbility(1);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("Displaying Health...");
+            Character c = FindObjectOfType<Character>();
+            c.Heal(10);
+        }
     }
 }
