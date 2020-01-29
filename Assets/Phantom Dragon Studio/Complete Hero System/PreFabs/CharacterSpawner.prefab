@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheets:
   - {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
+  - {fileID: 11400000, guid: cb9c2e13023255648bb2e4d2369a0a2e, type: 2}
+  - {fileID: 11400000, guid: 26a6fa2142639e543a35d854cf0fdda0, type: 2}

@@ -8,6 +8,8 @@ public class Character_InformationWindow : MonoBehaviour
     ICharacter character;
     ICombatController combatController;
 
+    [ShowOnly] [SerializeField] private CharacterLeagueType leagueType;
+
     [Header("Combat Manager Attribute Settings")]
     [ShowOnly] [SerializeField] float primaryAttributeEffectiveness;
     [ShowOnly] [SerializeField] float secondaryAttributeEffectiveness;
@@ -48,7 +50,7 @@ public class Character_InformationWindow : MonoBehaviour
     {
         character = GetComponent<ICharacter>();
         combatController = character.CombatController;
-
+        leagueType = character.CharacterSheet.League.LeagueType;
         primaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeAffectModifier;
         secondaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeAffectModifier;
     }

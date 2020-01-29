@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlockUnit
   m_EditorClassIdentifier: 
   objectInformation:
-    name: Unit
+    name: Block Unit
     description: Unit Description
     sprite: {fileID: 0}
   prefab: {fileID: 4525984165041063731, guid: be7658d60c291c4418f53f558eb955e3, type: 3}

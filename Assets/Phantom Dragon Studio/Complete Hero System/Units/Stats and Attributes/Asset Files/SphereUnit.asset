@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SphereUnit
   m_EditorClassIdentifier: 
   objectInformation:
-    name: Big Unit
+    name: Sphere Unit
     description: Big Description
     sprite: {fileID: 0}
   prefab: {fileID: 8166882684698673756, guid: e22950adb09a6b7498020a3bf6989516, type: 3}

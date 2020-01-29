@@ -21,4 +21,9 @@ public class BaseAbility : IAbility
         AbilityBehavior.Execute();
         Debug.Log(AbilityInformation.AbilityName + " is Executing" + AbilityBehavior.name);
     }
+
+    public void IncreaseLevel(int levelsToIncrease)
+    {   //TODO Ability LVL Up
+        throw new System.NotImplementedException();
+    }
 }

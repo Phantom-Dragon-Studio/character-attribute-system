@@ -19,7 +19,7 @@ public class AbilityHandler : IAbilityHandler
 
     public void LevelUpAbility(int index, int numberOfLevelsToIncrementBy)
     {
-        currentAbilities[index].AbilityInformation.GeneralAbilityInfo.IncreaseAbilityLevel(numberOfLevelsToIncrementBy);
+        currentAbilities[index].IncreaseLevel(numberOfLevelsToIncrementBy);
     }
 
     public void CastAbility(int abilityIndex)
