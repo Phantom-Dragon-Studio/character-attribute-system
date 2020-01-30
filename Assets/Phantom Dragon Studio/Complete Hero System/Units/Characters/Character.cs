@@ -11,7 +11,7 @@ public class Character : MonoBehaviour, ICharacter
     public ICharacterSheet CharacterSheet => characterSheet;
     public ICombatController CombatController { get; private set; }
     public IHealth Health { get; private set;  }
-    public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
+    [SerializeField] public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
     public event EventHandler<HealedEventArgs> Healed;
 
     public ICharacter Construct(CombatController combatController, Health health)
