@@ -1,8 +1,9 @@
-﻿public interface ICombatController
+﻿namespace Phantom_Dragon_Studio.Hero_System
 {
-    ICharacter Character { get; }
-    ICharacterAttributesHandler Attributes { get;}
-    ICombatStatsHandler CombatStats { get;}
-    IStatusEffectHandler StatusEffects { get;}
-    IElementalResistanceHandler ElementalResistances { get; }
+    public interface ICombatController
+    {
+        ICharacter Character { get; }
+        ICharacterAttributesHandler Attributes { get;}
+        ICombatStatsHandler CombatStats { get;}
+    }
 }

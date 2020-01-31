@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-public class MainCharacter : Character, IMainCharacter
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    private Dictionary<ITalent, ITalent> talentPoints = new Dictionary<ITalent, ITalent>();
+    public class MainCharacter : Character, IMainCharacter
+    {
+        private Dictionary<ITalent, ITalent> talentPoints = new Dictionary<ITalent, ITalent>();
 
-    public Dictionary<ITalent, ITalent> TalentPointList => talentPoints;
+        public Dictionary<ITalent, ITalent> TalentPointList => talentPoints;
 
+    }
 }

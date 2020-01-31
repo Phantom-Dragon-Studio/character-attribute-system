@@ -1,26 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //Note: A Null reference exception can be thrown by the AddAttribute line if the character sheet sends an attribute with a null value
 
-public static class CharacterAttributesHandlerFactory
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    public static ICharacterAttributesHandler Create(ICharacterAttribute[] attributes)
+    public static class CharacterAttributesHandlerFactory
     {
-        var newAttributeHandler = new CharacterAttributesHandler();
-        if (attributes != null)
+        public static ICharacterAttributesHandler Create(ICharacterAttribute[] attributes)
         {
-            for (int i = 0; i < attributes.Length; i++)
+            var newAttributeHandler = new CharacterAttributesHandler();
+            if (attributes != null)
             {
-                if(attributes[i] != null)
+                for (int i = 0; i < attributes.Length; i++)
                 {
-                    newAttributeHandler.AddAttribute(attributes[i].AttributeInfo);
+                    if(attributes[i] != null)
+                    {
+                        newAttributeHandler.AddAttribute(attributes[i].AttributeInfo);
+                    }
                 }
             }
-        }
-        else Debug.LogError("Null list recieved by CharacterAttributesHandler Factory.");
+            else Debug.LogError("Null list recieved by CharacterAttributesHandler Factory.");
 
-        return newAttributeHandler;
+            return newAttributeHandler;
+        }
     }
 }

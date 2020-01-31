@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 
-public interface IMainCharacter
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    Dictionary<ITalent, ITalent> TalentPointList { get; }
+    public interface IMainCharacter
+    {
+        Dictionary<ITalent, ITalent> TalentPointList { get; }
+    }
 }

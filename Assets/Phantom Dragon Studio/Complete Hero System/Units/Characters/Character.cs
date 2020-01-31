@@ -1,40 +1,45 @@
 ﻿using System;
 using UnityEngine;
-/// <summary>
-/// This class is the class for all alive units (Anyting that can move basically because I intend on making structures their own script, similar to the Character script).
-/// </summary>
-[System.Serializable]
-public class Character : MonoBehaviour, ICharacter
+using Phantom_Dragon_Studio.Hero_System;
+
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    //Inspector Editable Field
-    [SerializeField] private CharacterSheet characterSheet = default;
-    public ICharacterSheet CharacterSheet => characterSheet;
-    public ICombatController CombatController { get; private set; }
-    public IHealth Health { get; private set;  }
-    [SerializeField] public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
-    public event EventHandler<HealedEventArgs> Healed;
-
-    public ICharacter Construct(CombatController combatController, Health health)
+    /// <summary>
+    /// This class is the class for all alive units (Anyting that can move basically because I intend on making structures their own script, similar to the Character script).
+    /// </summary>
+    [System.Serializable]
+    public class Character : MonoBehaviour, ICharacter
     {
-        CombatController = combatController;
-        Health = Health;
-        return this;
-    }
+        //Inspector Editable Field
+        [SerializeField] private CharacterSheet characterSheet = default;
+        public ICharacterSheet CharacterSheet => characterSheet;
+        public ICombatController CombatController { get; private set; }
+        public IHealth Health { get; private set;  }
+        [SerializeField] public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
+        public event EventHandler<HealedEventArgs> Healed;
 
-    public void Heal(float amount)
-    {
-        Debug.Log("Attempting to heal...");
-        Healed?.Invoke(this, new HealedEventArgs(amount));
-    }
-
-    public class HealedEventArgs : EventArgs
-    {
-        public HealedEventArgs(float amount)
+        public ICharacter Construct(CombatController combatController, Health health)
         {
-            Debug.Log("Healed Event Fired....");
-            Amount = amount;
+            CombatController = combatController;
+            Health = Health;
+            return this;
         }
 
-        public float Amount { get; private set; }
+        public void Heal(float amount)
+        {
+            Debug.Log("Attempting to heal...");
+            Healed?.Invoke(this, new HealedEventArgs(amount));
+        }
+
+        public class HealedEventArgs : EventArgs
+        {
+            public HealedEventArgs(float amount)
+            {
+                Debug.Log("Healed Event Fired....");
+                Amount = amount;
+            }
+
+            public float Amount { get; private set; }
+        }
     }
 }

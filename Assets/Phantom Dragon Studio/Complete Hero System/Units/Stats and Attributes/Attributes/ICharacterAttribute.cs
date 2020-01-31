@@ -1,12 +1,15 @@
 ﻿using System;
-using UnityEngine;
+using Phantom_Dragon_Studio.Tools;
 
-public interface ICharacterAttribute
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    event EventHandler<CharacterAttribute.AttributeChangedEventArgs> Changed;
+    public interface ICharacterAttribute
+    {
+        event EventHandler<CharacterAttribute.AttributeChangedEventArgs> Changed;
 
-    TypeValuePair<AttributeType, float> AttributeInfo { get; }
-    void UpdateValue(float value);
+        TypeValuePair<AttributeType, float> AttributeInfo { get; }
+        void UpdateValue(float value);
 
-    string ToString();
+        string ToString();
+    }
 }

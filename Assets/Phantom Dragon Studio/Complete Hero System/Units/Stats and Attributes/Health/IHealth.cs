@@ -1,7 +1,8 @@
-﻿using System;
-
-public interface IHealth
+﻿namespace Phantom_Dragon_Studio.Hero_System
 {
-    float CurrentHealth { get; }
-    float MaxHealth { get; }
+    public interface IHealth
+    {
+        float CurrentHealth { get; }
+        float MaxHealth { get; }
+    }
 }

@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Phantom_Dragon_Studio.Tools;
 
-public static class CharacterAttributeFactory
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    public static ICharacterAttribute Create(AttributeType attributeType, float value)
+    public static class CharacterAttributeFactory
     {
-        CharacterAttribute newAttribute = new CharacterAttribute(new TypeValuePair<AttributeType, float>(attributeType, value));
+        public static ICharacterAttribute Create(AttributeType attributeType, float value)
+        {
+            CharacterAttribute newAttribute = new CharacterAttribute(new TypeValuePair<AttributeType, float>(attributeType, value));
 
-        newAttribute.AttributeInfo.type = attributeType;
-        newAttribute.AttributeInfo.value = value;
+            newAttribute.AttributeInfo.type = attributeType;
+            newAttribute.AttributeInfo.value = value;
 
-        return newAttribute;
+            return newAttribute;
+        }
     }
 }

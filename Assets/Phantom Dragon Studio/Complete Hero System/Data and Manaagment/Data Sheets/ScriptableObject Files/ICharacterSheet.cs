@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using Phantom_Dragon_Studio.Hero_System;
 
-public interface ICharacterSheet
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    ICharacterAttribute[] Attributes { get; }
-    GeneralObjectInformation GeneralObjectInformation { get; }
-    ICharacterLeague League { get; }
+    public interface ICharacterSheet
+    {
+        ICharacterAttribute[] Attributes { get; }
+        GeneralObjectInformation GeneralObjectInformation { get; }
+        ICharacterLeague League { get; }
+    }
 }

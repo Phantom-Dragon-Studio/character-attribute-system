@@ -1,9 +1,12 @@
-﻿public class Healthbar : IHealthbar
+﻿namespace Phantom_Dragon_Studio.Hero_System
 {
-    public IHealth HealthToMonitor { get; private set; }
-
-    public Healthbar(IHealth _healthToMonitor)
+    public class Healthbar : IHealthbar
     {
-        HealthToMonitor = _healthToMonitor;
+        public IHealth HealthToMonitor { get; private set; }
+
+        public Healthbar(IHealth _healthToMonitor)
+        {
+            HealthToMonitor = _healthToMonitor;
+        }
     }
 }

@@ -1,65 +1,67 @@
 ﻿using System;
-using UnityEngine;
 
-public abstract class BaseStat
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    public float Value { get; protected set; }
-    public CombatStatType CombatStatType { get; protected set; }
-
-    protected abstract CharacterLeagueType LeagueType { get; }
-    protected ICharacterAttribute PrimaryAttribute { get; set; }
-    protected ICharacterAttribute SecondaryAttribute { get; set; }
-
-    private float primaryPlaceHolder = DefaultValue;
-    private float secondaryPlaceHolder = DefaultValue;
-
-    protected const float DefaultValue = 0f;
-
-    public BaseStat(CombatStatType type, ICharacterAttribute primaryAttribute, ICharacterAttribute secondaryAttribute)
+    public abstract class BaseStat
     {
-        Value = DefaultValue;
-        CombatStatType = type;
-        PrimaryAttribute = primaryAttribute;
-        SecondaryAttribute = secondaryAttribute;
+        public float Value { get; protected set; }
+        public CombatStatType CombatStatType { get; protected set; }
 
-        if (PrimaryAttribute != null)
-            PrimaryAttribute.Changed += (sender, args) => Calculate();
-        if (secondaryAttribute != null)
-            SecondaryAttribute.Changed += (sender, args) => Calculate();
-    }
+        protected abstract CharacterLeagueType LeagueType { get; }
+        protected ICharacterAttribute PrimaryAttribute { get; set; }
+        protected ICharacterAttribute SecondaryAttribute { get; set; }
 
-    public override string ToString()
-    {
-        return CombatStatType + ": " + Value;
-    }
+        private float primaryPlaceHolder = DefaultValue;
+        private float secondaryPlaceHolder = DefaultValue;
 
-    protected virtual void Calculate()
-    {
-        primaryPlaceHolder = DefaultValue;
-        secondaryPlaceHolder = DefaultValue;
+        protected const float DefaultValue = 0f;
 
-
-        if (PrimaryAttribute != null)
+        public BaseStat(CombatStatType type, ICharacterAttribute primaryAttribute, ICharacterAttribute secondaryAttribute)
         {
-            primaryPlaceHolder = PrimaryAttribute.AttributeInfo.value;
-            primaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].primaryAttributeAffectModifier;
-        }
-        if (SecondaryAttribute != null)
-        {
-            secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
-            secondaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].secondaryAttributeAffectModifier;
+            Value = DefaultValue;
+            CombatStatType = type;
+            PrimaryAttribute = primaryAttribute;
+            SecondaryAttribute = secondaryAttribute;
+
+            if (PrimaryAttribute != null)
+                PrimaryAttribute.Changed += (sender, args) => Calculate();
+            if (secondaryAttribute != null)
+                SecondaryAttribute.Changed += (sender, args) => Calculate();
         }
 
-        Value = primaryPlaceHolder + secondaryPlaceHolder;
+        public override string ToString()
+        {
+            return CombatStatType + ": " + Value;
+        }
+
+        protected virtual void Calculate()
+        {
+            primaryPlaceHolder = DefaultValue;
+            secondaryPlaceHolder = DefaultValue;
+
+
+            if (PrimaryAttribute != null)
+            {
+                primaryPlaceHolder = PrimaryAttribute.AttributeInfo.value;
+                primaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].primaryAttributeAffectModifier;
+            }
+            if (SecondaryAttribute != null)
+            {
+                secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
+                secondaryPlaceHolder *= CombatManager.Instance.LeagueSettings[LeagueType].secondaryAttributeAffectModifier;
+            }
+
+            Value = primaryPlaceHolder + secondaryPlaceHolder;
+        }
     }
-}
 
-public class CombatStatCalculatedEventArgs : EventArgs
-{
-    public float Value { get; }
-
-    public CombatStatCalculatedEventArgs(float value)
+    public class CombatStatCalculatedEventArgs : EventArgs
     {
-        Value = value;
+        public float Value { get; }
+
+        public CombatStatCalculatedEventArgs(float value)
+        {
+            Value = value;
+        }
     }
 }

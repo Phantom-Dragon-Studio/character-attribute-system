@@ -1,14 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Phantom_Dragon_Studio.Hero_System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    public static GameManager _instance;
+    public class GameManager : MonoBehaviour
+    {
+        public static GameManager _instance;
 
-    public static GameManager Instance { get { if (_instance == null) _instance = FindObjectOfType<GameManager>(); return _instance; } }
+        public static GameManager Instance { get { if (_instance == null) _instance = FindObjectOfType<GameManager>(); return _instance; } }
 
-    [SerializeField] private GameSettings settings = default;
+        [SerializeField] private GameSettings settings = default;
 
-    public GameSettings Settings { get => settings; }
+        public GameSettings Settings { get => settings; }
+    }
 }

@@ -1,47 +1,50 @@
 ﻿using System;
-using UnityEngine;
+using Phantom_Dragon_Studio.Tools;
 
-/// <summary>
-/// This class is strictly a data container containing a pair of values, but is more managable than using a key value pair.
-/// </summary>
-public enum AttributeType
+namespace Phantom_Dragon_Studio.Hero_System
 {
-    _None,
-    Agility,
-    Strength,
-    Wisdom,
-    Endurance,
-}
-
-[System.Serializable]
-public class CharacterAttribute : ICharacterAttribute
-{
-    public event EventHandler<AttributeChangedEventArgs> Changed;
-    public TypeValuePair<AttributeType, float> AttributeInfo { get; }
-
-    public CharacterAttribute(TypeValuePair<AttributeType, float> attributeInfo)
+    /// <summary>
+    /// This class is strictly a data container containing a pair of values, but is more managable than using a key value pair.
+    /// </summary>
+    public enum AttributeType
     {
-        this.AttributeInfo = attributeInfo;
+        _None,
+        Agility,
+        Strength,
+        Wisdom,
+        Endurance,
     }
 
-    public void UpdateValue(float value)
+    [System.Serializable]
+    public class CharacterAttribute : ICharacterAttribute
     {
-        this.AttributeInfo.value += value;
-        Changed?.Invoke(this, new AttributeChangedEventArgs(this));
-    }
+        public event EventHandler<AttributeChangedEventArgs> Changed;
+        public TypeValuePair<AttributeType, float> AttributeInfo { get; }
 
-    public class AttributeChangedEventArgs : EventArgs
-    {
-        public AttributeChangedEventArgs(ICharacterAttribute characterAttribute)
+        public CharacterAttribute(TypeValuePair<AttributeType, float> attributeInfo)
         {
-            CharacterAttribute = characterAttribute;
+            this.AttributeInfo = attributeInfo;
         }
 
-        public ICharacterAttribute CharacterAttribute { get; private set; }
-    }
+        public void UpdateValue(float value)
+        {
+            this.AttributeInfo.value += value;
+            Changed?.Invoke(this, new AttributeChangedEventArgs(this));
+        }
 
-    public override string ToString()
-    {
-        return AttributeInfo.type.ToString() + ": " + AttributeInfo.value.ToString();
+        public class AttributeChangedEventArgs : EventArgs
+        {
+            public AttributeChangedEventArgs(ICharacterAttribute characterAttribute)
+            {
+                CharacterAttribute = characterAttribute;
+            }
+
+            public ICharacterAttribute CharacterAttribute { get; private set; }
+        }
+
+        public override string ToString()
+        {
+            return AttributeInfo.type.ToString() + ": " + AttributeInfo.value.ToString();
+        }
     }
 }

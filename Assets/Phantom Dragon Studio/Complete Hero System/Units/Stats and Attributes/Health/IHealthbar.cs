@@ -1,4 +1,7 @@
-﻿public interface IHealthbar
+﻿namespace Phantom_Dragon_Studio.Hero_System
 {
-    IHealth HealthToMonitor { get; }
+    public interface IHealthbar
+    {
+        IHealth HealthToMonitor { get; }
+    }
 }
