@@ -1,4 +1,4 @@
-﻿namespace Phantom_Dragon_Studio.Ability_System
+﻿namespace PhantomDragonStudio.Ability_System
 {
     public interface IElementalResistanceHandler
     {

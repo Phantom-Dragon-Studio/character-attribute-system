@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     /// <summary>
     /// A Null reference exception can be thrown by the AddAttribute line if the character sheet sends an attribute with a null value

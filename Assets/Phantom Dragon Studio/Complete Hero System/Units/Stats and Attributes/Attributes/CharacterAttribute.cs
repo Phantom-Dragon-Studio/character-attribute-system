@@ -1,7 +1,7 @@
 ﻿using System;
-using Phantom_Dragon_Studio.Tools;
+using PhantomDragonStudio.Tools;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     /// <summary>
     /// This class is strictly a data container containing a pair of values, but is more managable than using a key value pair.

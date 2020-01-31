@@ -1,5 +1,5 @@
-﻿using Phantom_Dragon_Studio.Ability_System;
-using Phantom_Dragon_Studio.Hero_System;
+﻿using PhantomDragonStudio.Ability_System;
+using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
 public class TESTER : MonoBehaviour

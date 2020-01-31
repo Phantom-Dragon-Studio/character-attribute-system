@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     /// <summary>
     /// A Null reference exception can be thrown by the AddAbility line if the CharacterLeague sends an attribute with a null value

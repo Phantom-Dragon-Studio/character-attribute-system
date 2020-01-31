@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Phantom_Dragon_Studio.Hero_System;
+using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     public class CombatManager : MonoBehaviour
     {

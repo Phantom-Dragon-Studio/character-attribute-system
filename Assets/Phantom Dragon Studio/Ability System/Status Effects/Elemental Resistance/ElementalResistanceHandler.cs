@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     /// <summary>
     /// This class manages all Elemental Resistances on a given unit. This hsould allow for easy management of the effects each unit has on it at the time.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     [CreateAssetMenu(fileName = "Projectile Data", menuName = "New Projectile Data", order = 0)]
 

@@ -1,6 +1,6 @@
 ﻿using System;
-using Phantom_Dragon_Studio.Hero_System;
-namespace Phantom_Dragon_Studio.Hero_System
+using PhantomDragonStudio.HeroSystem;
+namespace PhantomDragonStudio.HeroSystem
 {
     public class RogueStat : BaseStat, ICombatStat
     {

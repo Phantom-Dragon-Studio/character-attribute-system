@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //[CreateAssetMenu(fileName = "Single Target Missle", menuName ="Single Target Missle", order = 1)]
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     public class AbilityBehavior_SingleTargetMissle : AbilityBehavior
     {

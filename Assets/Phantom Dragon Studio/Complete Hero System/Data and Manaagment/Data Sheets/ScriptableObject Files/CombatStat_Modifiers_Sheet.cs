@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Phantom_Dragon_Studio.Hero_System;
+using PhantomDragonStudio.HeroSystem;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     [CreateAssetMenu(fileName = "New Combat Stat Modifiers Sheet", menuName = "Phantom Dragon Studio/Settings Modifiers Sheet", order = 0)]
     public class CombatStat_Modifiers_Sheet : ScriptableObject

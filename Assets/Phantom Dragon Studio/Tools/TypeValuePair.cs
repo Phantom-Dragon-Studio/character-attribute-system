@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Serialization;
 
-namespace Phantom_Dragon_Studio.Tools
+namespace PhantomDragonStudio.Tools
 {
     [System.Serializable]
     public class TypeValuePair<TKey, TValue>

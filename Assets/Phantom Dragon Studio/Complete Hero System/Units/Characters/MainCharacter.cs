@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     public class MainCharacter : Character, IMainCharacter
     {

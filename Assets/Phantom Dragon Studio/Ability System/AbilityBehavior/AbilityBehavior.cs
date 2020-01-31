@@ -1,7 +1,7 @@
-﻿using Phantom_Dragon_Studio.Ability_System;
+﻿using PhantomDragonStudio.Ability_System;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     public abstract class AbilityBehavior : ScriptableObject
     {

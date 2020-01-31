@@ -1,7 +1,7 @@
-﻿using Phantom_Dragon_Studio.Hero_System;
+﻿using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     [System.Serializable]
     public class StatusEffect : IStatusEffect

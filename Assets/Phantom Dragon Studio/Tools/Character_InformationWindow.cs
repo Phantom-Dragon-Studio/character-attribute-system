@@ -1,8 +1,8 @@
-﻿using Phantom_Dragon_Studio.Ability_System;
-using Phantom_Dragon_Studio.Hero_System;
+﻿using PhantomDragonStudio.Ability_System;
+using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Tools
+namespace PhantomDragonStudio.Tools
 {
     public class Character_InformationWindow : MonoBehaviour
     {

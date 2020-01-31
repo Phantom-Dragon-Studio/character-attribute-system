@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     public enum CombatStatType
     {

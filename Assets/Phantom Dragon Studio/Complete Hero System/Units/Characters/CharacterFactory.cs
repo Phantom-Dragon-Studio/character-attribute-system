@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     public static class CharacterFactory
     {

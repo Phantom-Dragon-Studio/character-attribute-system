@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using Phantom_Dragon_Studio.Hero_System;
+using PhantomDragonStudio.HeroSystem;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     /// <summary>
     /// This class is the class for all alive units (Anyting that can move basically because I intend on making structures their own script, similar to the Character script).

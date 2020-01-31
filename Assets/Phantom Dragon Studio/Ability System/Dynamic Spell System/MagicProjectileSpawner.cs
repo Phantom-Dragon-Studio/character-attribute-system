@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Ability_System
+namespace PhantomDragonStudio.Ability_System
 {
     public class MagicProjectileSpawner : MonoBehaviour
     {

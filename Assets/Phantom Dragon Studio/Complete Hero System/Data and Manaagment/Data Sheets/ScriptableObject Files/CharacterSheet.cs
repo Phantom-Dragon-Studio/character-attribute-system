@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using Phantom_Dragon_Studio.Hero_System;
+using PhantomDragonStudio.HeroSystem;
 
-namespace Phantom_Dragon_Studio.Hero_System
+namespace PhantomDragonStudio.HeroSystem
 {
     /// <summary>
     ///     Main Data Container for characters

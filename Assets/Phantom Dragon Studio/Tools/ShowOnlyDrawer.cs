@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Phantom_Dragon_Studio.Tools
+namespace PhantomDragonStudio.Tools
 {
     [CustomPropertyDrawer(typeof(ShowOnlyAttribute))]
     public class ShowOnlyDrawer : PropertyDrawer
