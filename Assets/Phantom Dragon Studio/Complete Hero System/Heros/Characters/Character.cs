@@ -21,13 +21,13 @@ namespace PhantomDragonStudio.HeroSystem
         public ICharacter Construct(CharacteristicController characteristicController, Health health)
         {
             CharacteristicController = characteristicController;
-            Health = Health;
+            Health = health;
             return this;
         }
 
         public void Heal(float amount)
         {
-            Debug.Log("Attempting to heal...");
+            //Debug.Log("Attempting to heal...");
             Healed?.Invoke(this, new HealedEventArgs(amount));
         }
 
@@ -35,7 +35,7 @@ namespace PhantomDragonStudio.HeroSystem
         {
             public HealedEventArgs(float amount)
             {
-                Debug.Log("Healed Event Fired....");
+                //Debug.Log("Healed Event Fired....");
                 Amount = amount;
             }
 

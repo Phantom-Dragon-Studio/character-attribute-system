@@ -12,6 +12,9 @@ namespace PhantomDragonStudio.HeroSystem
         public abstract CharacterLeagueType LeagueType { get; }
         private ICharacterAttribute PrimaryAttribute { get; set; }
         private ICharacterAttribute SecondaryAttribute { get; set; }
+        public float PrimaryAttributeCalculatedValue { get => primaryPlaceHolder; private set => primaryPlaceHolder = value; }
+        public float SecondaryAttributeCalculatedValue { get => secondaryPlaceHolder; private set => secondaryPlaceHolder = value; }
+
         private float primaryPlaceHolder = DefaultValue;
         private float secondaryPlaceHolder = DefaultValue;
 
@@ -35,32 +38,32 @@ namespace PhantomDragonStudio.HeroSystem
 
         protected virtual void Calculate()
         {
-            primaryPlaceHolder = DefaultValue;
-            secondaryPlaceHolder = DefaultValue;
+            PrimaryAttributeCalculatedValue = DefaultValue;
+            SecondaryAttributeCalculatedValue = DefaultValue;
 
 
             if (PrimaryAttribute != null)
             {
-                primaryPlaceHolder = PrimaryAttribute.AttributeInfo.value;
-                primaryPlaceHolder *= CharacteristicsCalculator.GetPrimaryAttributeModifier(this);
+                PrimaryAttributeCalculatedValue = PrimaryAttribute.AttributeInfo.value;
+                PrimaryAttributeCalculatedValue *= CharacteristicsCalculator.GetPrimaryAttributeModifier(this);
             }
             if (SecondaryAttribute != null)
             {
-                secondaryPlaceHolder = SecondaryAttribute.AttributeInfo.value;
-                secondaryPlaceHolder *= CharacteristicsCalculator.GetSecondaryAttributeModifier(this);
+                SecondaryAttributeCalculatedValue = SecondaryAttribute.AttributeInfo.value;
+                SecondaryAttributeCalculatedValue *= CharacteristicsCalculator.GetSecondaryAttributeModifier(this);
             }
 
-            Value = primaryPlaceHolder + secondaryPlaceHolder;
+            Value = PrimaryAttributeCalculatedValue + SecondaryAttributeCalculatedValue;
         }
     }
 
     public class CombatStatCalculatedEventArgs : EventArgs
     {
-        public float Value { get; }
+        public ICombatStat Stat { get; }
 
-        public CombatStatCalculatedEventArgs(float value)
+        public CombatStatCalculatedEventArgs(ICombatStat stat)
         {
-            Value = value;
+            Stat = stat;
         }
     }
 }

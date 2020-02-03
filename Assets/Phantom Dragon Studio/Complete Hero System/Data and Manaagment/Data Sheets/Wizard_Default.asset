@@ -22,7 +22,7 @@ MonoBehaviour:
   movementSpeed_perAttributePoint: 0.02
   physicalDefense_perAttributePoint: 0.02
   magicalDefense_perAttributePoint: 0.01
-  maxHealth_perAttributePoint: 5
+  maxHealth_perAttributePoint: 0.5
   healthRegen_perAttributePoint: 0.25
   M_E_F_perAttributePoint: 0.3
   M_E_F_Regen_perAttributePoint: 0.4

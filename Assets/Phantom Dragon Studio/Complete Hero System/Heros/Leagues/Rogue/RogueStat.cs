@@ -16,7 +16,7 @@ namespace PhantomDragonStudio.HeroSystem
         {
             base.Calculate();
             Value = CharacteristicsCalculator.CalculateCombatStat(this);
-            Calculated?.Invoke((this), new CombatStatCalculatedEventArgs(Value));
+            Calculated?.Invoke((this), new CombatStatCalculatedEventArgs(this));
         }
     }
 } 

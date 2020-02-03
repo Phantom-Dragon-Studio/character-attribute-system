@@ -28,5 +28,7 @@ namespace PhantomDragonStudio.HeroSystem
         CharacterLeagueType LeagueType { get; }
         float Value { get; }
         string ToString();
+        float PrimaryAttributeCalculatedValue { get; }
+        float SecondaryAttributeCalculatedValue { get; }
     }
 }

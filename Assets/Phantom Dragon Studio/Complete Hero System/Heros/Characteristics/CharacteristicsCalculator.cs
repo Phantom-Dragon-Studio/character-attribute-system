@@ -15,7 +15,7 @@ public static class CharacteristicsCalculator
 
     public static float CalculateCombatStat(BaseStat statToCalculate)
     {
-        // Debug.Log(CombatManager.Instance.LeagueSettings[statToCalculate.LeagueType].Settings[statToCalculate.CombatStatType]);
+        //Debug.Log(CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].Settings[statToCalculate.CombatStatType]);
         var newValue = statToCalculate.Value;
         return newValue *= CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].Settings[statToCalculate.CombatStatType];
     }

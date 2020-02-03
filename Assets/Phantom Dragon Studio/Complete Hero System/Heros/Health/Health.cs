@@ -13,14 +13,16 @@ namespace PhantomDragonStudio.HeroSystem
         {
             Healthbar = new Healthbar(this);
             CharacteristicController = controllerToWatch;
-            controllerToWatch.CombatStats.MaxHealth.Calculated += (sender, args) => GetMaxHealth(args.Value); //TODO Unsubscribe from onHealedEvent
+            controllerToWatch.CombatStats.MaxHealth.Calculated += (sender, args) => GetMaxHealth(args.Stat); //TODO Unsubscribe from onHealedEvent
             controllerToWatch.Character.Healed += (sender, args) => ApplyCurrentHealthIncrease(args.Amount); //TODO Unsubscribe from onHealedEvent
         }
 
-        private void GetMaxHealth(float maxHealthStatValue)
+        private void GetMaxHealth(ICombatStat stat)
         {
-            //Debug.Log("Getting Max Health of..." + maxHealthStatValue);
-            MaxHealth = maxHealthStatValue;
+            Debug.Log(this.CharacteristicController.Character.GeneralObjectInformation.Name + " " + stat);
+            Debug.Log(stat.PrimaryAttributeCalculatedValue);
+
+            MaxHealth = stat.PrimaryAttributeCalculatedValue + stat.SecondaryAttributeCalculatedValue;
         }
 
         private void ApplyCurrentHealthIncrease(float amount)
@@ -29,9 +31,8 @@ namespace PhantomDragonStudio.HeroSystem
             Debug.Log("Healed EVENT: Increasing " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
             CurrentHealth += amount;
 
-            if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
-            Debug.Log("Current: " + CurrentHealth);
-            Debug.Log("Max: " + MaxHealth);
+            if (CurrentHealth > MaxHealth) 
+                CurrentHealth = MaxHealth;
         }
     }
 }

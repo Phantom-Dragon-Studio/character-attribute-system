@@ -27,9 +27,11 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("Displaying Health...");
-            Character c = FindObjectOfType<Character>();
+            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
             c.Heal(10);
+            
+            Debug.Log("C " + c.Health.CurrentHealth);
+            Debug.Log("M " + c.Health.MaxHealth);
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
