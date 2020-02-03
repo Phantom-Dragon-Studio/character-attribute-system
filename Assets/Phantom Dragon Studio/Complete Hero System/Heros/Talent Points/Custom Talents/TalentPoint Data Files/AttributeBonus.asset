@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16938afae865fe541ab9bfa6d242e70a, type: 3}
   m_Name: AttributeBonus
   m_EditorClassIdentifier: 
+  talentPointRequirements:
+    requiredPointsInTree: 0
+    requiredTalentPoints: []
   generalObjectInformation:
-    name: 
-    description: 
-    sprite: {fileID: 0}
-  currentLevel: 0
-  maxLevel: 0
+    name: Attribute Bonus
+    description: Gives additional attributes.
+    sprite: {fileID: 21300000, guid: 2287d3e76a7d40946ae36c17c006ccf8, type: 3}
+  currentLevel: 3
+  maxLevel: 3
+  attributeType: 1
+  bonusPerPoint: 5

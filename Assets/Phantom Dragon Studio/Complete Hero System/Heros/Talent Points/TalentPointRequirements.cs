@@ -1,3 +1,4 @@
+using System;
 using PhantomDragonStudio.Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -5,23 +6,32 @@ using UnityEngine.Serialization;
 namespace PhantomDragonStudio.HeroSystem
 {
     [System.Serializable]
-    public class TalentPointRequirements
+    public class TalentPointRequirements : ITalentPointRequirements
     {
-        private ITalentPoint owner;
-        [SerializeField] private int requiredPointsInTree;
-        [SerializeField] private BaseTalentPoint[] requiredTalentPoints;
+        [SerializeField] private int requiredPointsInTree = default;
+        [SerializeField] private BaseTalentPoint[] requiredTalentPoints = default;
 
-        bool Validate()
+        public bool Validate(ITalentPoint owner)
         {
-            if(requiredPointsInTree == )
+            //Debug.Log("Validating " + owner.GeneralTalentInfo.Name);
+
+            if (requiredPointsInTree > owner.Container.TotalPointsSpent) return false;
+            if (requiredTalentPoints.Length == 0) return true;
+
             for (int i = 0; i < requiredTalentPoints.Length; i++)
             {
-                if (requiredTalentPoints[i] != null && requiredTalentPoints[i].IsMaxed())
+                if (requiredTalentPoints[i] != null)
                 {
-                    if (i == requiredTalentPoints.Length) return true;
-                    continue;
+                    //Debug.Log(requiredTalentPoints[i].IsMaxed());
+                    if(requiredTalentPoints[i].IsMaxed())
+                        if (i == requiredTalentPoints.Length - 1)
+                            return true;
+                        continue;
                 }
+                Debug.Log("Null talent point requirement for " + owner.ToString());
+                return true;
             }
+            return false;
         }
     }
 }

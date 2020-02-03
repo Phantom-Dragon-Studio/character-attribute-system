@@ -1,7 +1,7 @@
 namespace PhantomDragonStudio.HeroSystem
 {
-    public class ITalentPointRequirements
+    public interface ITalentPointRequirements
     {
-        
+        bool Validate(ITalentPoint _owner);
     }
 }

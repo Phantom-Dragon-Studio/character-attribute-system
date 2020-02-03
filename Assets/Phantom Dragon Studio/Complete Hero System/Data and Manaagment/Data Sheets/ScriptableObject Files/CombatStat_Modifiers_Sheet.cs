@@ -7,24 +7,40 @@ namespace PhantomDragonStudio.HeroSystem
     [CreateAssetMenu(fileName = "New Combat Stat Modifiers Sheet", menuName = "Phantom Dragon Studio/Settings Modifiers Sheet", order = 0)]
     public class CombatStat_Modifiers_Sheet : ScriptableObject
     {
+        [Range(0,5)]
         [SerializeField] public float primaryAttributeAffectModifier = default;
+        [Range(0,5)]
         [SerializeField] public float secondaryAttributeAffectModifier = default;
 
         //Accessed via dictionary key.
         [Header("Combat Stats")]
+        [Range(0,1)]
         [SerializeField] private float criticalStrikeChance_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float dodgeChance_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float physicalDamage_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float magicalDamage_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float attackSpeed_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float movementSpeed_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float physicalDefense_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float magicalDefense_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float maxHealth_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float healthRegen_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float M_E_F_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float M_E_F_Regen_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float maxStamina_perAttributePoint = default;
+        [Range(0,1)]
         [SerializeField] private float staminaRegen_perAttributePoint = default;
 
 

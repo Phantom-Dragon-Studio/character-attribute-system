@@ -41,7 +41,7 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void OnEnable()
         {
-            Debug.Log("Initializing ICharacterSheet for " + GeneralObjectInformation.Name);
+            //Debug.Log("Initializing ICharacterSheet for " + GeneralObjectInformation.Name);
             Attributes[0] = CharacterAttributeFactory.Create(AttributeType._None, 0f);
             Attributes[1] = CharacterAttributeFactory.Create(AttributeType.Agility, baseAgilityValue);
             Attributes[2] = CharacterAttributeFactory.Create(AttributeType.Strength, baseStrengthValue);

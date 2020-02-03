@@ -31,5 +31,11 @@ public class TESTER : MonoBehaviour
             Character c = FindObjectOfType<Character>();
             c.Heal(10);
         }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("Attempting to increase Talent Point Level!!");
+            TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
+            tp.UpgradeTalent(0,0);
+        }
     }
 }

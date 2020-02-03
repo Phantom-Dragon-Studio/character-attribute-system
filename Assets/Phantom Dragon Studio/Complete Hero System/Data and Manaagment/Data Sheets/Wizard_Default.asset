@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ce73b312e2ac44b63004bd765b81d, type: 3}
   m_Name: Wizard_Default
   m_EditorClassIdentifier: 
-  primaryAttributeAffectModifier: 1
-  secondaryAttributeAffectModifier: 1
+  primaryAttributeAffectModifier: 0.5
+  secondaryAttributeAffectModifier: 0.5
   criticalStrikeChance_perAttributePoint: 0.01
   dodgeChance_perAttributePoint: 0.02
   physicalDamage_perAttributePoint: 0.03

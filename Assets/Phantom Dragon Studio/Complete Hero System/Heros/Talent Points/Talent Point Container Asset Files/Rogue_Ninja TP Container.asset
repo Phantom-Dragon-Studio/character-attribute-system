@@ -12,14 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8c7030c7775744aa2cbd70ca19d06c, type: 3}
   m_Name: Rogue_Ninja TP Container
   m_EditorClassIdentifier: 
-  talentPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  talentPoints: []
+  totalPointsAvailable: 0
+  totalPointsSpent: 0

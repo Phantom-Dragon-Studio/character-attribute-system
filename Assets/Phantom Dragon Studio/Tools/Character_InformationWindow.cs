@@ -7,7 +7,7 @@ namespace PhantomDragonStudio.Tools
     public class Character_InformationWindow : MonoBehaviour
     {
         ICharacter character;
-        ICombatController combatController;
+        ICharacteristicController characteristicController;
 
         [ShowOnly] [SerializeField] private CharacterLeagueType leagueType;
 
@@ -50,35 +50,35 @@ namespace PhantomDragonStudio.Tools
         void Start()
         {
             character = GetComponent<ICharacter>();
-            combatController = character.CombatController;
+            characteristicController = character.CharacteristicController;
             leagueType = character.CharacterSheet.League.LeagueType;
-            primaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeAffectModifier;
-            secondaryAttributeEffectiveness = CombatManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeAffectModifier;
+            primaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeAffectModifier;
+            secondaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeAffectModifier;
         }
 
         void Update()
         {
             //Attributes
-            agility = combatController.Attributes.Agility.AttributeInfo.value;
-            strength = combatController.Attributes.Strength.AttributeInfo.value;
-            wisdom = combatController.Attributes.Wisdom.AttributeInfo.value;
-            endurance = combatController.Attributes.Endurance.AttributeInfo.value;
+            agility = characteristicController.Attributes.Agility.AttributeInfo.value;
+            strength = characteristicController.Attributes.Strength.AttributeInfo.value;
+            wisdom = characteristicController.Attributes.Wisdom.AttributeInfo.value;
+            endurance = characteristicController.Attributes.Endurance.AttributeInfo.value;
 
             //Combat Stats
-            criticalStrikeChance = combatController.CombatStats.CriticalStrikeChance.Value;
-            dodgeChance = combatController.CombatStats.DodgeChance.Value;
-            attackSpeed = combatController.CombatStats.AttackSpeed.Value;
-            movementSpeed = combatController.CombatStats.MovementSpeed.Value;
-            physicalDamage = combatController.CombatStats.PhysicalDamage.Value;
-            magicalDamage = combatController.CombatStats.MagicalDamage.Value;
-            physicalDefense = combatController.CombatStats.PhysicalDefense.Value;
-            magicDefense = combatController.CombatStats.MagicDefense.Value;
-            maxHealth = combatController.CombatStats.MaxHealth.Value;
-            healthRegen = combatController.CombatStats.HealthRegen.Value;
-            M_E_F_Base = combatController.CombatStats.M_E_F_Base.Value;
-            M_E_F_Regen = combatController.CombatStats.M_E_F_Regen.Value;
-            staminaBase = combatController.CombatStats.StaminaBase.Value;
-            staminaRegen = combatController.CombatStats.StaminaRegen.Value;
+            criticalStrikeChance = characteristicController.CombatStats.CriticalStrikeChance.Value;
+            dodgeChance = characteristicController.CombatStats.DodgeChance.Value;
+            attackSpeed = characteristicController.CombatStats.AttackSpeed.Value;
+            movementSpeed = characteristicController.CombatStats.MovementSpeed.Value;
+            physicalDamage = characteristicController.CombatStats.PhysicalDamage.Value;
+            magicalDamage = characteristicController.CombatStats.MagicalDamage.Value;
+            physicalDefense = characteristicController.CombatStats.PhysicalDefense.Value;
+            magicDefense = characteristicController.CombatStats.MagicDefense.Value;
+            maxHealth = characteristicController.CombatStats.MaxHealth.Value;
+            healthRegen = characteristicController.CombatStats.HealthRegen.Value;
+            M_E_F_Base = characteristicController.CombatStats.M_E_F_Base.Value;
+            M_E_F_Regen = characteristicController.CombatStats.M_E_F_Regen.Value;
+            staminaBase = characteristicController.CombatStats.StaminaBase.Value;
+            staminaRegen = characteristicController.CombatStats.StaminaRegen.Value;
 
             //Elemental Resistances
             // elementalResistanceFire = ElementalResistances.GetResistanceByType(ElementalEffectType.Fire).ResistanceInfo.value;
