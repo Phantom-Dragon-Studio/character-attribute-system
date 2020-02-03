@@ -22,5 +22,10 @@ namespace PhantomDragonStudio.HeroSystem
         {
             talentPointTrees[treeIndex].UpgradeTalent(talentIndex);
         }
+
+        public void ResetTalentPointsInTree(int treeIndex)
+        {
+            talentPointTrees[treeIndex].ResetTree();
+        }
     }
 }

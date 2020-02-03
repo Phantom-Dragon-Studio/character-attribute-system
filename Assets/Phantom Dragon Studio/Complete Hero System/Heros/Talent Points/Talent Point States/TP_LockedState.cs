@@ -17,7 +17,6 @@ namespace PhantomDragonStudio.HeroSystem
         public void Enter()
         { 
             //TODO subscribe to an event so we know when to check execute? This would be done to avoid code in update.
-            Debug.Log(owner.GeneralTalentInfo.Name + " Locked State Engaged!");
             Execute();
             //TODO Greyscale image?
         }

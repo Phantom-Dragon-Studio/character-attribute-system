@@ -19,5 +19,10 @@ namespace PhantomDragonStudio.HeroSystem
         {
             TalentPointContainer.IncreaseTalentPointLevel(indexToIncrease);
         }
+
+        public void ResetTree()
+        {
+            TalentPointContainer.ResetAllTalentPoints();
+        }
     }
 }

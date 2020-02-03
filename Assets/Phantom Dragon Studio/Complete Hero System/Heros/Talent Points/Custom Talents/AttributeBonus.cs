@@ -14,23 +14,19 @@ namespace PhantomDragonStudio.HeroSystem
         [Header("Attribute Details")]
         [SerializeField] private AttributeType attributeType;
         [SerializeField] private float bonusPerPoint = default;
-        
         private float value;
 
         public override void PerformFunctionality()
         {
             value = bonusPerPoint * CurrentLevel;
-            Debug.Log("Increasing " + attributeType + " by " + bonusPerPoint * CurrentLevel);
-            Debug.Log(Container.Character.CharacteristicController);
+            Debug.Log("Increasing " + attributeType + " by " + value);
 
             Container.Character.CharacteristicController.Attributes.UpdateAttribute(attributeType, value);
-            Debug.Log(Container.Character.CharacteristicController.Attributes.Agility);
         }
 
         public override void StopFunctionality()
         {
             Container.Character.CharacteristicController.Attributes.UpdateAttribute(attributeType, -value);
-            Debug.Log(Container.Character.CharacteristicController.Attributes.Agility);
         }
     }
 }

@@ -37,5 +37,11 @@ public class TESTER : MonoBehaviour
             TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
             tp.UpgradeTalent(0,0);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Clearing Talent Points!");
+            TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
+            tp.ResetTalentPointsInTree(0);
+        }
     }
 }

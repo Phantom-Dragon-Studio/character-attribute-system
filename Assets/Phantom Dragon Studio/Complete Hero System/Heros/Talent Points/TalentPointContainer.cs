@@ -32,18 +32,13 @@ namespace PhantomDragonStudio.HeroSystem
             }
         } 
 
-        public ITalentPoint GetTalentPoint(int index)
-        {
-            return talentPoints[index];
-        }
-
         public void IncreaseTalentPointLevel (int index)
         {
             if(TotalPointsAvailable != 0)
             {
                 if (!talentPoints[index].IsMaxed())
                 {
-                    Debug.Log("Increasing Talent Point Level for " + talentPoints[index].ToString());
+                    //Debug.Log("Increasing Talent Point Level for " + talentPoints[index].ToString());
                     TotalPointsSpent++;
                     TotalPointsAvailable--;
                     talentPoints[index].IncreaseLevel(1);
@@ -54,6 +49,28 @@ namespace PhantomDragonStudio.HeroSystem
                 }
             }
             else { Debug.Log("Not enough points available!"); }
+        }
+
+        public void AdjustPoints(int adjustmentAmount)
+        {
+            TotalPointsAvailable -= adjustmentAmount;
+            totalPointsSpent += adjustmentAmount;
+        }
+
+        public ITalentPoint GetTalentPoint(int index)
+        {
+            return talentPoints[index];
+        }
+
+        public void ResetAllTalentPoints()
+        {
+            for (int i = 0; i < talentPoints.Length; i++)
+            {
+                if (talentPoints[i] != null)
+                {
+                    talentPoints[i].ResetCurrentLevel();
+                }
+            }
         }
     }
 }

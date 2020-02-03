@@ -13,7 +13,6 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void Enter()
         {
-            Debug.Log(owner.GeneralTalentInfo.Name + " UNLOCKED");
             Execute();
             //TODO Sub to event so we know when to change to activated?
         }
@@ -27,7 +26,6 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void Exit()
         {
-            Debug.Log("Exiting unlocked state...");
         }
     }
 }

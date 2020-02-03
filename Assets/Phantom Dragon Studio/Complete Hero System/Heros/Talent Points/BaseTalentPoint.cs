@@ -28,7 +28,6 @@ namespace PhantomDragonStudio.HeroSystem
         public TP_UnlockedState UnlockedState  { get; private set; }
         public TP_ActiveState ActiveState { get; private set; }
 
-
         public abstract void PerformFunctionality();
         public abstract void StopFunctionality();
 
@@ -58,6 +57,13 @@ namespace PhantomDragonStudio.HeroSystem
             ChangeState(ActiveState);
             if (CurrentLevel > MaxLevel)
                 CurrentLevel = MaxLevel;
+        }
+
+        public void ResetCurrentLevel()
+        {
+            Container.AdjustPoints(-CurrentLevel);
+            CurrentLevel = 0;
+            ChangeState(LockedState);
         }
     }
 }

@@ -8,5 +8,6 @@ namespace PhantomDragonStudio.HeroSystem
         int TotalPointsAvailable { get; }
         int TotalPointsSpent { get; }
         ICharacter Character { get; }
+        void AdjustPoints(int adjustmentAmount);
     }
 }

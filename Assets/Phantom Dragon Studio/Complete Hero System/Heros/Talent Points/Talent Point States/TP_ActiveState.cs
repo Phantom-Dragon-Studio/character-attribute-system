@@ -15,7 +15,7 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void Enter()
         {
-            Debug.Log(owner.GeneralTalentInfo.Name + " is active! Level: " + owner.CurrentLevel);
+            //Debug.Log(owner.GeneralTalentInfo.Name + " is active! Level: " + owner.CurrentLevel);
             Execute();
             //TODO Greyscale image?
         }
@@ -27,11 +27,8 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void Exit()
         {
-            Debug.Log("Exiting!");
+            //Debug.Log("Exiting!");
             owner.StopFunctionality();
-            //unGreyscale image if needed
-            //Should we dispose of this class now? 
-            //Are we completely done with it?
         }
     }
 }
