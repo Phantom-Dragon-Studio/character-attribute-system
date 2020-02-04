@@ -11,5 +11,6 @@ namespace PhantomDragonStudio.HeroSystem
         ICharacter Construct(CharacteristicController characteristicController, Health health);
         void Heal(float amount);
         event EventHandler<Character.HealedEventArgs> Healed;
+        IHealth Health { get; }
     }
 }

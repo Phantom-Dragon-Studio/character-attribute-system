@@ -45,5 +45,12 @@ public class TESTER : MonoBehaviour
             TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
             tp.ResetTalentPointsInTree(0);
         }
+
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("DAMAGE!");
+            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
+            c.Heal(-50);
+        }
     }
 }

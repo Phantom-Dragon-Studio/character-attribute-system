@@ -5,12 +5,12 @@ public static class CharacteristicsCalculator
 {
     public static float GetPrimaryAttributeModifier(BaseStat statToCalculate)
     {
-        return CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].primaryAttributeAffectModifier;
+        return CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].primaryAttributeGlobalModifier;
     }
 
     public static float GetSecondaryAttributeModifier(BaseStat statToCalculate)
     {
-        return CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].secondaryAttributeAffectModifier;
+        return CharacteristicsManager.Instance.LeagueSettings[statToCalculate.LeagueType].secondaryAttributeGlobalModifier;
     }
 
     public static float CalculateCombatStat(BaseStat statToCalculate)

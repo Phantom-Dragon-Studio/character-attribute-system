@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465776, g: 0.49641305, b: 0.5748166, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657803, g: 0.49641365, b: 0.574818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f36785c49d51940959365eb8d7a4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rogueSettings: {fileID: 11400000, guid: de169cb70044c1b4e9461547165ceb9f, type: 2}
+  rogueSettings: {fileID: 11400000, guid: 8df2cb10ca6951b4db5ffcf17738f4df, type: 2}
   warriorSettings: {fileID: 11400000, guid: 17d3a781d28a04b4abb24b3aaf5683ff, type: 2}
   wizardSettings: {fileID: 11400000, guid: 0fae817022fd8a64faa50c0bde0f2020, type: 2}
 --- !u!1 &1962008962

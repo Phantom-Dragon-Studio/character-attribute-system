@@ -30,10 +30,16 @@ namespace PhantomDragonStudio.Tools
         [ShowOnly] [SerializeField] float attackSpeed;
         [ShowOnly] [SerializeField] float magicDefense;
         [ShowOnly] [SerializeField] float physicalDefense;
-        [ShowOnly] [SerializeField] float maxHealth;
+
+        [Header("Health")]
+        [ShowOnly] [SerializeField] float maxHealthSTAT;
+        [ShowOnly] [SerializeField] float maxHealthVALUE;
+        [ShowOnly] [SerializeField] float currentHealth;
         [ShowOnly] [SerializeField] float healthRegen;
+        [Header("Mana / Energy / Focus")]
         [ShowOnly] [SerializeField] float M_E_F_Base;
         [ShowOnly] [SerializeField] float M_E_F_Regen;
+        [Header("Stamina")]
         [ShowOnly] [SerializeField] float staminaBase;
         [ShowOnly] [SerializeField] float staminaRegen;
 
@@ -52,8 +58,8 @@ namespace PhantomDragonStudio.Tools
             character = GetComponent<ICharacter>();
             characteristicController = character.CharacteristicController;
             leagueType = character.CharacterSheet.League.LeagueType;
-            primaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeAffectModifier;
-            secondaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeAffectModifier;
+            primaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeGlobalModifier;
+            secondaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].secondaryAttributeGlobalModifier;
         }
 
         void Update()
@@ -73,10 +79,15 @@ namespace PhantomDragonStudio.Tools
             magicalDamage = characteristicController.CombatStats.MagicalDamage.Value;
             physicalDefense = characteristicController.CombatStats.PhysicalDefense.Value;
             magicDefense = characteristicController.CombatStats.MagicDefense.Value;
-            maxHealth = characteristicController.CombatStats.MaxHealth.Value;
+
+            currentHealth = character.Health.CurrentHealth;
+            maxHealthVALUE = character.Health.MaxHealth;
+            maxHealthSTAT = characteristicController.CombatStats.MaxHealth.Value;
             healthRegen = characteristicController.CombatStats.HealthRegen.Value;
+
             M_E_F_Base = characteristicController.CombatStats.M_E_F_Base.Value;
             M_E_F_Regen = characteristicController.CombatStats.M_E_F_Regen.Value;
+
             staminaBase = characteristicController.CombatStats.StaminaBase.Value;
             staminaRegen = characteristicController.CombatStats.StaminaRegen.Value;
 

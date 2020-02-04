@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 056ce73b312e2ac44b63004bd765b81d, type: 3}
-  m_Name: Wizard_Default
+  m_Name: Rogue_TESTING
   m_EditorClassIdentifier: 
-  primaryAttributeGlobalModifier: 2.49
-  secondaryAttributeGlobalModifier: 2.46
+  primaryAttributeGlobalModifier: 2.29
+  secondaryAttributeGlobalModifier: 2.29
   criticalStrikeChance_perAttributePoint: 0.01
   dodgeChance_perAttributePoint: 0.02
   physicalDamage_perAttributePoint: 0.03
@@ -22,9 +22,9 @@ MonoBehaviour:
   movementSpeed_perAttributePoint: 0.02
   physicalDefense_perAttributePoint: 0.02
   magicalDefense_perAttributePoint: 0.01
-  maxHealth_perAttributePoint: 1
-  healthRegen_perAttributePoint: 0.251
-  M_E_F_perAttributePoint: 0.3
+  maxHealth_perAttributePoint: 4.04
+  healthRegen_perAttributePoint: 0.25
+  M_E_F_perAttributePoint: 0
   M_E_F_Regen_perAttributePoint: 0.4
   maxStamina_perAttributePoint: 0.4
   staminaRegen_perAttributePoint: 0.2

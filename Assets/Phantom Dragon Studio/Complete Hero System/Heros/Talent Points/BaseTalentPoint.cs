@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
-    // [CreateAssetMenu(fileName = "New Base Talent Point", menuName = "Phantom Dragon Studio/Talents/Talent Point", order = 1)]
-    
     [System.Serializable]
     public abstract class BaseTalentPoint : ScriptableObject, ITalentPoint
     {

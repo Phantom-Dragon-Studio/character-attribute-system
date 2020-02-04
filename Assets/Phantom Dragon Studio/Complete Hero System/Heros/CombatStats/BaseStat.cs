@@ -10,10 +10,11 @@ namespace PhantomDragonStudio.HeroSystem
         public float Value { get; protected set; }
         public CombatStatType CombatStatType { get; protected set; }
         public abstract CharacterLeagueType LeagueType { get; }
+
         private ICharacterAttribute PrimaryAttribute { get; set; }
         private ICharacterAttribute SecondaryAttribute { get; set; }
-        public float PrimaryAttributeCalculatedValue { get => primaryPlaceHolder; private set => primaryPlaceHolder = value; }
-        public float SecondaryAttributeCalculatedValue { get => secondaryPlaceHolder; private set => secondaryPlaceHolder = value; }
+        private float PrimaryAttributeCalculatedValue { get => primaryPlaceHolder; set => primaryPlaceHolder = value; }
+        private float SecondaryAttributeCalculatedValue { get => secondaryPlaceHolder; set => secondaryPlaceHolder = value; }
 
         private float primaryPlaceHolder = DefaultValue;
         private float secondaryPlaceHolder = DefaultValue;
