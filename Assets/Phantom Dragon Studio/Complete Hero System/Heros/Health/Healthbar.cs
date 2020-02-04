@@ -1,12 +1,17 @@
-﻿namespace PhantomDragonStudio.HeroSystem
+﻿using UnityEngine.UI;
+
+namespace PhantomDragonStudio.HeroSystem
 {
     public class Healthbar : IHealthbar
     {
-        public IHealth HealthToMonitor { get; private set; }
+        public Image Graphics{ get; private set; }
+
+        public IHealth HealthToMonitor { get; }
 
         public Healthbar(IHealth _healthToMonitor)
         {
             HealthToMonitor = _healthToMonitor;
+            //Graphics
         }
     }
 }
