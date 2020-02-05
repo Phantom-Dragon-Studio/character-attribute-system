@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryAttributeGlobalModifier: 2.49
   secondaryAttributeGlobalModifier: 2.46
-  criticalStrikeChance_perAttributePoint: 0.01
+  criticalStrikeChance_perAttributePoint: 0.001
   dodgeChance_perAttributePoint: 0.02
   physicalDamage_perAttributePoint: 0.03
   magicalDamage_perAttributePoint: 0.01
@@ -24,7 +24,7 @@ MonoBehaviour:
   magicalDefense_perAttributePoint: 0.01
   maxHealth_perAttributePoint: 1
   healthRegen_perAttributePoint: 0.251
-  M_E_F_perAttributePoint: 0.3
+  maxM_E_F_perAttributePoint: 0
   M_E_F_Regen_perAttributePoint: 0.4
   maxStamina_perAttributePoint: 0.4
   staminaRegen_perAttributePoint: 0.2

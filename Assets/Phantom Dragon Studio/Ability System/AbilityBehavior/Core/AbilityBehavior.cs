@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace PhantomDragonStudio.Ability_System
 {
+    //[CreateAssetMenu(fileName ="New Ability Behavior", menuName ="Phantom Dragon Studio/Ability System/Ability Behavior")]
+
     public abstract class AbilityBehavior : ScriptableObject
     {
         AbilityInformation _abilityInformation;

@@ -14,19 +14,19 @@ namespace PhantomDragonStudio.HeroSystem
 
         //Accessed via dictionary key.
         [Header("Combat Stats")]
-        [Range(0, 3)] [SerializeField] private float criticalStrikeChance_perAttributePoint = default;
-        [Range(0, 3)] [SerializeField] private float dodgeChance_perAttributePoint = default;
+        [Range(0, 0.5f)] [SerializeField] private float criticalStrikeChance_perAttributePoint = default;
+        [Range(0, 0.5f)] [SerializeField] private float dodgeChance_perAttributePoint = default;
         [Range(0, 10)] [SerializeField] private float physicalDamage_perAttributePoint = default;
         [Range(0, 10)] [SerializeField] private float magicalDamage_perAttributePoint = default;
         [Range(0, 3)] [SerializeField] private float attackSpeed_perAttributePoint = default;
         [Range(0, 3)] [SerializeField] private float movementSpeed_perAttributePoint = default;
-        [Range(0, 10)] [SerializeField] private float physicalDefense_perAttributePoint = default;
-        [Range(0, 10)] [SerializeField] private float magicalDefense_perAttributePoint = default;
-        [Range(0, 10)] [SerializeField] private float maxHealth_perAttributePoint = default;
+        [Range(0, 3)] [SerializeField] private float physicalDefense_perAttributePoint = default;
+        [Range(0, 3)] [SerializeField] private float magicalDefense_perAttributePoint = default;
+        [Range(0, 25)] [SerializeField] private float maxHealth_perAttributePoint = default;
         [Range(0, 3)] [SerializeField] private float healthRegen_perAttributePoint = default;
-        [Range(0, 10)] [SerializeField] private float M_E_F_perAttributePoint = default;
+        [Range(0, 25)] [SerializeField] private float maxM_E_F_perAttributePoint = default;
         [Range(0, 3)] [SerializeField] private float M_E_F_Regen_perAttributePoint = default;
-        [Range(0, 10)] [SerializeField] private float maxStamina_perAttributePoint = default;
+        [Range(0, 25)] [SerializeField] private float maxStamina_perAttributePoint = default;
         [Range(0, 3)] [SerializeField] private float staminaRegen_perAttributePoint = default;
 
 
@@ -44,7 +44,7 @@ namespace PhantomDragonStudio.HeroSystem
             Settings.Add(CombatStatType.MagicDefense, magicalDefense_perAttributePoint);
             Settings.Add(CombatStatType.MaxHealth, maxHealth_perAttributePoint);
             Settings.Add(CombatStatType.Health_RegenerationRate, healthRegen_perAttributePoint);
-            Settings.Add(CombatStatType.M_E_F_Base, M_E_F_perAttributePoint);
+            Settings.Add(CombatStatType.M_E_F_Base, maxM_E_F_perAttributePoint);
             Settings.Add(CombatStatType.M_E_F_RegenerationRate, M_E_F_Regen_perAttributePoint);
             Settings.Add(CombatStatType.Stamina_Base, maxStamina_perAttributePoint);
             Settings.Add(CombatStatType.Stamina_RegenerationRate, staminaRegen_perAttributePoint);

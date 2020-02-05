@@ -1,11 +1,16 @@
-﻿namespace PhantomDragonStudio.Ability_System
+﻿using UnityEngine;
+
+namespace PhantomDragonStudio.Ability_System
 {
     [System.Serializable]
-    public class ElementalEffect : IElementalEffect
+    public class ElementalEffect : IElementalType
     {
+        
+        [SerializeField] private float amount;
         public float Amount { get; set; }
-        public ElementalEffectType ElementalType { get; }
-        public ElementalEffect(ElementalEffectType type )
+        public ElementalType ElementalType { get; }
+
+        public ElementalEffect(ElementalType type )
         {
             ElementalType = type;
         }

@@ -2,7 +2,7 @@
 {
     public static class ElementalResistanceFactory
     {
-        public static IElementalResistance Create(ElementalEffectType elementalType, float amount)
+        public static IElementalResistance Create(ElementalType elementalType, float amount)
         {
             ElementalResistance newElementalResistance = new ElementalResistance(elementalType, amount)
             {

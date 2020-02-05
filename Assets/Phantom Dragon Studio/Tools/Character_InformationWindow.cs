@@ -36,9 +36,11 @@ namespace PhantomDragonStudio.Tools
         [ShowOnly] [SerializeField] float maxHealthVALUE;
         [ShowOnly] [SerializeField] float currentHealth;
         [ShowOnly] [SerializeField] float healthRegen;
+
         [Header("Mana / Energy / Focus")]
         [ShowOnly] [SerializeField] float M_E_F_Base;
         [ShowOnly] [SerializeField] float M_E_F_Regen;
+
         [Header("Stamina")]
         [ShowOnly] [SerializeField] float staminaBase;
         [ShowOnly] [SerializeField] float staminaRegen;

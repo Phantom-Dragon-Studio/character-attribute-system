@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-//[CreateAssetMenu(fileName = "Single Target Missle", menuName ="Single Target Missle", order = 1)]
 namespace PhantomDragonStudio.Ability_System
 {
+    [CreateAssetMenu(fileName ="New Ability Behavior", menuName ="Phantom Dragon Studio/Ability System/Single Target Behavior")]
+
     public class AbilityBehavior_SingleTargetMissle : AbilityBehavior
     {
+        [SerializeField] ProjectileData projectileData = default;
+        public ProjectileData ProjectileData { get => projectileData; set => projectileData = value; }
+
         public override void Construct()
         {
             Debug.Log("AbilityBehavior_SingleTargetMissle: Constructing");

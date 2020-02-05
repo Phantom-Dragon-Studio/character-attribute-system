@@ -12,7 +12,7 @@ namespace PhantomDragonStudio.Ability_System
 
         [SerializeField] private PhysicalStatusEffectType effectType;
         public PhysicalStatusEffectType PhysicalStatusEffect { get; private set; }
-        public ElementalEffectType ElementalType { get; private set; }
+        public ElementalType ElementalType { get; private set; }
         public AttributeType AttributeModifier { get; private set; }
         public ICombatStat EffectedStat { get; private set; }
     

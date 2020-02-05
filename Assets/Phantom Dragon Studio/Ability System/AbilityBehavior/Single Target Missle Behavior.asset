@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee72b7a0dc70e2e4fbb8d7cd1b33324c, type: 3}
-  m_Name: Fire Bolt LVL 1
+  m_Script: {fileID: 11500000, guid: 410e7e4289bff9446a5b866c5075948d, type: 3}
+  m_Name: Single Target Missle Behavior
   m_EditorClassIdentifier: 
-  name: Firebolt
-  icon: {fileID: 0}
-  sfx: {fileID: 195834, guid: 88dfa986f2cbd1b49be7b927c0f51e08, type: 3}
-  element: 1
-  damage: 5
-  lifetime: 2
-  speed: 10
+  projectileData:
+    damage: 0
+    lifetime: 0
+    speed: 0

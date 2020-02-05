@@ -10,29 +10,29 @@ namespace PhantomDragonStudio.Ability_System
     public class ElementalResistanceHandler : IElementalResistanceHandler
     {
         private const float DefaultValue = 10f; //TODO Default to 0
-        private Dictionary<ElementalEffectType, IElementalResistance> ResistanceTypes { get; } = new Dictionary<ElementalEffectType, IElementalResistance>();
+        private Dictionary<ElementalType, IElementalResistance> ResistanceTypes { get; } = new Dictionary<ElementalType, IElementalResistance>();
 
-        public IElementalResistance Fire => ResistanceTypes[ElementalEffectType.Fire];
-        public IElementalResistance Water => ResistanceTypes[ElementalEffectType.Water];
-        public IElementalResistance Earth => ResistanceTypes[ElementalEffectType.Earth];
-        public IElementalResistance Wind => ResistanceTypes[ElementalEffectType.Wind];
-        public IElementalResistance Lightning => ResistanceTypes[ElementalEffectType.Lightning];
-        public IElementalResistance Divine => ResistanceTypes[ElementalEffectType.Divine];
-        public IElementalResistance Dark => ResistanceTypes[ElementalEffectType.Dark];
-        public IElementalResistance Arcane => ResistanceTypes[ElementalEffectType.Arcane];
+        public IElementalResistance Fire => ResistanceTypes[ElementalType.Fire];
+        public IElementalResistance Water => ResistanceTypes[ElementalType.Water];
+        public IElementalResistance Earth => ResistanceTypes[ElementalType.Earth];
+        public IElementalResistance Wind => ResistanceTypes[ElementalType.Wind];
+        public IElementalResistance Lightning => ResistanceTypes[ElementalType.Lightning];
+        public IElementalResistance Divine => ResistanceTypes[ElementalType.Divine];
+        public IElementalResistance Dark => ResistanceTypes[ElementalType.Dark];
+        public IElementalResistance Arcane => ResistanceTypes[ElementalType.Arcane];
 
-        public void AddResistance(ElementalEffectType typeToAdd, float amount)
+        public void AddResistance(ElementalType typeToAdd, float amount)
         {
             if (!ResistanceTypes.ContainsKey(typeToAdd))
                 ResistanceTypes.Add(typeToAdd, ElementalResistanceFactory.Create(typeToAdd, amount));
         }
 
-        public void UpdateIndividualResistance(ElementalEffectType typeToUpdate, float amount)
+        public void UpdateIndividualResistance(ElementalType typeToUpdate, float amount)
         {
             ResistanceTypes[typeToUpdate].ResistanceInfo.value += amount;
         }
 
-        public IElementalResistance GetResistanceByType(ElementalEffectType typeToCheck)
+        public IElementalResistance GetResistanceByType(ElementalType typeToCheck)
         {
             if (ResistanceTypes.ContainsKey(typeToCheck)) 
                 return ResistanceTypes[typeToCheck];

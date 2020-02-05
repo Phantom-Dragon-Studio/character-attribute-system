@@ -16,7 +16,7 @@ namespace PhantomDragonStudio.HeroSystem
 
         public Health(ICharacteristicController controllerToWatch)
         {
-            Healthbar = new Healthbar(this);
+            //Healthbar = new Healthbar(this);
             CharacteristicController = controllerToWatch;
 
             controllerToWatch.CombatStats.MaxHealth.Calculated += (sender, args) =>

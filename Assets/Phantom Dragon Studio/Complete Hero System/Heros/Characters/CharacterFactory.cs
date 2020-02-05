@@ -13,10 +13,10 @@ namespace PhantomDragonStudio.HeroSystem
             character.Construct(characteristicController, new Health(characteristicController));
             
             //TODO Remove Test Code
-            character.CharacteristicController.Attributes.Agility.UpdateValue(10);
-            character.CharacteristicController.Attributes.Strength.UpdateValue(10);
-            character.CharacteristicController.Attributes.Wisdom.UpdateValue(10);
-            character.CharacteristicController.Attributes.Endurance.UpdateValue(10);
+            character.CharacteristicController.Attributes.Agility.UpdateValue(1);
+            character.CharacteristicController.Attributes.Strength.UpdateValue(1);
+            character.CharacteristicController.Attributes.Wisdom.UpdateValue(1);
+            character.CharacteristicController.Attributes.Endurance.UpdateValue(1);
             
             return character;
         }

@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ce73b312e2ac44b63004bd765b81d, type: 3}
   m_Name: Rogue_TESTING
   m_EditorClassIdentifier: 
-  primaryAttributeGlobalModifier: 2.29
-  secondaryAttributeGlobalModifier: 2.29
+  primaryAttributeGlobalModifier: 1.05
+  secondaryAttributeGlobalModifier: 0.6
   criticalStrikeChance_perAttributePoint: 0.01
-  dodgeChance_perAttributePoint: 0.02
-  physicalDamage_perAttributePoint: 0.03
-  magicalDamage_perAttributePoint: 0.01
-  attackSpeed_perAttributePoint: 0.01
-  movementSpeed_perAttributePoint: 0.02
-  physicalDefense_perAttributePoint: 0.02
-  magicalDefense_perAttributePoint: 0.01
-  maxHealth_perAttributePoint: 4.04
+  dodgeChance_perAttributePoint: 0.012
+  physicalDamage_perAttributePoint: 6.11
+  magicalDamage_perAttributePoint: 2.1
+  attackSpeed_perAttributePoint: 1.25
+  movementSpeed_perAttributePoint: 1.5
+  physicalDefense_perAttributePoint: 1
+  magicalDefense_perAttributePoint: 0.5
+  maxHealth_perAttributePoint: 15.31
   healthRegen_perAttributePoint: 0.25
-  M_E_F_perAttributePoint: 0
-  M_E_F_Regen_perAttributePoint: 0.4
-  maxStamina_perAttributePoint: 0.4
-  staminaRegen_perAttributePoint: 0.2
+  maxM_E_F_perAttributePoint: 18.88
+  M_E_F_Regen_perAttributePoint: 0.54
+  maxStamina_perAttributePoint: 20.25
+  staminaRegen_perAttributePoint: 0.5

@@ -5,7 +5,7 @@ namespace PhantomDragonStudio.Ability_System
     public interface IStatusEffect
     {
         PhysicalStatusEffectType PhysicalStatusEffect { get; }
-        ElementalEffectType ElementalType { get; }
+        ElementalType ElementalType { get; }
         AttributeType AttributeModifier { get; }
     }
 }

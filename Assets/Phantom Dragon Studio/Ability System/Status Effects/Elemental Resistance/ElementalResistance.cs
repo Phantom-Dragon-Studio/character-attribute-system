@@ -5,12 +5,12 @@ namespace PhantomDragonStudio.Ability_System
     [System.Serializable]
     public class ElementalResistance : IElementalResistance
     {
-        public ElementalResistance(ElementalEffectType type, float value)
+        public ElementalResistance(ElementalType type, float value)
         {
-            ResistanceInfo = new TypeValuePair<ElementalEffectType, float>(type, value);
+            ResistanceInfo = new TypeValuePair<ElementalType, float>(type, value);
         }
 
-        public TypeValuePair<ElementalEffectType, float> ResistanceInfo { get; set; }
+        public TypeValuePair<ElementalType, float> ResistanceInfo { get; set; }
 
         public override string ToString()
         {

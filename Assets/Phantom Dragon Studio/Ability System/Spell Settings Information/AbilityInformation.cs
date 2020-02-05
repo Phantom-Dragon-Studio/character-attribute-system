@@ -7,13 +7,12 @@ namespace PhantomDragonStudio.Ability_System
     public class AbilityInformation : ScriptableObject
     {
         [SerializeField] private GeneralObjectInformation information = default;
-        [SerializeField] private AbilityInfoContainer generalAbilityInfo = default;
+        [SerializeField] private AbilityContainer generalAbilityInfo = default;
         [SerializeField] private StatusEffect[] statusEffects = default;
-
         public string AbilityName => GeneraInformation.Name;
         public string AbilityDescription => GeneraInformation.Description;
         public GeneralObjectInformation GeneraInformation => information;
-        public AbilityInfoContainer GeneralAbilityInfo => generalAbilityInfo;
+        public AbilityContainer GeneralAbilityInfo => generalAbilityInfo;
         public StatusEffect[] StatusEffects => statusEffects;
     }
 }

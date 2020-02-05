@@ -1,6 +1,6 @@
 ﻿namespace PhantomDragonStudio.Ability_System
 {
-    public enum ElementalEffectType
+    public enum ElementalType
     {
         _None = 0,
         Fire,
@@ -13,9 +13,9 @@
         Arcane
     }
 
-    public interface IElementalEffect
+    public interface IElementalType
     {
-        ElementalEffectType ElementalType { get; }
+        ElementalType ElementalType { get; }
         float Amount { get; }
     }
 }
