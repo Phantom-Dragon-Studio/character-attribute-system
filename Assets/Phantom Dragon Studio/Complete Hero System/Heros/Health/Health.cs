@@ -27,7 +27,8 @@ namespace PhantomDragonStudio.HeroSystem
                 UpdateMaxHealth(args.Stat);
             };
 
-            controllerToWatch.Character.Healed += (sender, args) => UpdateCurrentHealth(args.Amount); //TODO Unsubscribe from onHealedEvent
+            controllerToWatch.Character.Healed += (sender, args) => UpdateCurrentHealth(args.Amount);
+            controllerToWatch.Character.Damaged += (sender, args) => UpdateCurrentHealth(-args.Amount); //TODO Unsubscribe from onHealedEvent
         }
 
         private void Initialize()
@@ -54,6 +55,7 @@ namespace PhantomDragonStudio.HeroSystem
         private void UpdateCurrentHealth(float amount)
         {
             //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
+            //TODO ~ Add BonusDamageReceived & DamageDecreased logic here.
             Debug.Log("Healed EVENT: Increasing " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
             CurrentHealth += amount;
             HealthCheck();

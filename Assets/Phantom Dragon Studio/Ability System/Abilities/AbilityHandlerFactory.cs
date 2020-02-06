@@ -7,7 +7,7 @@ namespace PhantomDragonStudio.Ability_System
     /// </summary>
     public static class AbilityHandlerFactory
     {
-        public static IAbilityHandler Create(AbilityInformation[] abilities)
+        public static IAbilityHandler Create(Ability[] abilities)
         {
             var newAbilityHandler = new AbilityHandler();
             if (abilities != null)

@@ -2,7 +2,7 @@
 {
     public static class AbilityFactory
     {
-        public static IAbility Create(AbilityInformation abilityInfo)
+        public static IAbility Create(Ability abilityInfo)
         {
             IAbility newAbility = new BaseAbility(abilityInfo);
 

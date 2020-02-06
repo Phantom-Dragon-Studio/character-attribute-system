@@ -24,7 +24,7 @@ namespace PhantomDragonStudio.Ability_System
 
         public void CastAbility(int abilityIndex)
         {
-            GetAbilities[abilityIndex].Execute();
+            GetAbilities[abilityIndex].Cast();
         }
     }
 }

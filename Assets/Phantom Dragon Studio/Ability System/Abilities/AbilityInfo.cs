@@ -2,20 +2,11 @@
 
 namespace PhantomDragonStudio.Ability_System
 {
-    public enum TargetingType
-    {
-        None,
-        Self,
-        SingleTarget_Melee,
-        SingleTarget_Ranged,
-        AreaOfEffect_Local,
-        AreaOfEffect_Distant,
-    }
-
     [System.Serializable]
-    public class AbilityContainer
+    public class AbilityInfo
     {
         [SerializeField] private GameObject specialEffectsPrefab = default;
+        [SerializeField] private int currentLevel = default;
         [SerializeField] private int maxLevel = default;
         [Tooltip("Base Cooldown to use for level 1 of ability. We then apply the cooldown modifier per level.")]
         [SerializeField] private float cooldown = default;
@@ -24,9 +15,15 @@ namespace PhantomDragonStudio.Ability_System
         [SerializeField] AbilityBehavior abilityBehavior = default;
 
         public GameObject Sfx => specialEffectsPrefab;
+        public int CurrentLevel { get => currentLevel; private set => currentLevel = value; }
         public int MaxLevel => maxLevel; 
         public float Cooldown => cooldown; 
         public float CooldownModifier => cooldownModifier;
-        public AbilityBehavior AbilityBehavior { get => abilityBehavior; }
+        public IAbilityBehavior AbilityBehavior { get => abilityBehavior as IAbilityBehavior; }
+
+        public void AdjustLevel(int amount)
+        {
+            CurrentLevel += amount;
+        }
     }
 }

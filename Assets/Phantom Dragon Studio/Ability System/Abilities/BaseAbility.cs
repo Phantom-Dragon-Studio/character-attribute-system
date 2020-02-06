@@ -5,25 +5,30 @@ namespace PhantomDragonStudio.Ability_System
     [System.Serializable]
     public class BaseAbility : IAbility
     {
-        public AbilityInformation AbilityInformation { get; }
-        public AbilityBehavior AbilityBehavior { get; }
-        public TargetingType TargetingType { get; }
+        public Ability AbilityInformation { get; }
+        public IAbilityBehavior AbilityBehavior { get; }
+        private ITargetable Target;
 
-        public BaseAbility(AbilityInformation abilityInfo)
+        public BaseAbility(Ability abilityInfo)
         {
             AbilityInformation = abilityInfo;
             AbilityBehavior = AbilityInformation.GeneralAbilityInfo.AbilityBehavior;
         }
 
-        public void Execute()
+        public void Cast()
         {
+            Debug.Log(AbilityInformation.AbilityName + " is Casting with behavior: " + AbilityBehavior);
             AbilityBehavior.Execute();
-            Debug.Log(AbilityInformation.AbilityName + " is Executing" + AbilityBehavior.name);
         }
 
         public void IncreaseLevel(int levelsToIncrease)
-        {   //TODO Ability LVL Up
-            throw new System.NotImplementedException();
+        {   
+            AbilityInformation.GeneralAbilityInfo.AdjustLevel(levelsToIncrease);
+        }
+
+        public void DecreaseLevel(int levelsToDecrease)
+        {   
+            AbilityInformation.GeneralAbilityInfo.AdjustLevel(-levelsToDecrease);
         }
     }
 }

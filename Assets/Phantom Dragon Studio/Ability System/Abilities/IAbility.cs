@@ -2,8 +2,8 @@
 {
     public interface IAbility 
     {
-        AbilityInformation AbilityInformation { get; }
+        Ability AbilityInformation { get; }
         void IncreaseLevel(int levelsToIncrease);
-        void Execute();
+        void Cast();
     }
 }

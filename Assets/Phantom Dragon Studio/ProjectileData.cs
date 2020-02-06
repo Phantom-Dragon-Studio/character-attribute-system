@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-namespace PhantomDragonStudio.Ability_System
+namespace PhantomDragonStudio
 {
     
     [System.Serializable]
     public class ProjectileData
     {
-        [SerializeField] private float damage;
+        [SerializeField] private float value;
         [SerializeField] private float lifetime;
         [SerializeField] private float speed;
 
         public float Speed { get => speed; private set => speed = value; }
         public float Lifetime { get => lifetime; private set => lifetime = value; }
-        public float Damage { get => damage; private set => damage = value; }
+        public float Value { get => value; private set => this.value = value; }
     }
 }

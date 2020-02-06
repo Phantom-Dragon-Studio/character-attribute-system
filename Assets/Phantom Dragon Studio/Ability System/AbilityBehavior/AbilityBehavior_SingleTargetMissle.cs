@@ -7,11 +7,14 @@ namespace PhantomDragonStudio.Ability_System
     public class AbilityBehavior_SingleTargetMissle : AbilityBehavior
     {
         [SerializeField] ProjectileData projectileData = default;
+        [SerializeField] private bool affectedByGravity = false;
+
         public ProjectileData ProjectileData { get => projectileData; set => projectileData = value; }
+        public bool AffectedByGravity { get => affectedByGravity; set => affectedByGravity = value; }
 
         public override void Construct()
         {
-            Debug.Log("AbilityBehavior_SingleTargetMissle: Constructing");
+            Debug.Log("AbilityBehavior_SingleTargetMissle: Constructing"); 
         }
 
         public override void Dispose()
@@ -21,7 +24,7 @@ namespace PhantomDragonStudio.Ability_System
 
         public override void Execute()
         {
-            //Debug.Log("AbilityBehavior_SingleTargetMissle: Executing");
+           Debug.Log("AbilityBehavior_SingleTargetMissle: Executing");
         }
 
     }

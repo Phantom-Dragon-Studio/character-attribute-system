@@ -50,7 +50,13 @@ public class TESTER : MonoBehaviour
         {
             Debug.Log("DAMAGE!");
             Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
-            c.Heal(-50);
+            c.Damage(50);
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("HEAL!");
+            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
+            c.Heal(50);
         }
     }
 }

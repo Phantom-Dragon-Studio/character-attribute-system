@@ -9,8 +9,10 @@ namespace PhantomDragonStudio.HeroSystem
         GeneralObjectInformation GeneralObjectInformation { get; }
         ICharacteristicController CharacteristicController { get; }
         ICharacter Construct(CharacteristicController characteristicController, Health health);
+        IHealth Health { get; }
         void Heal(float amount);
         event EventHandler<Character.HealedEventArgs> Healed;
-        IHealth Health { get; }
+        void Damage(float amount);
+        event EventHandler<Character.DamagedEventArgs> Damaged;
     }
 }
