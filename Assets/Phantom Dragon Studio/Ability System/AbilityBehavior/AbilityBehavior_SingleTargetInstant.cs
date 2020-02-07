@@ -8,8 +8,8 @@ namespace PhantomDragonStudio.Ability_System
     {
         [SerializeField] ProjectileData projectileData = default;
         public ProjectileData ProjectileData { get => projectileData; set => projectileData = value; }
-
-        public override void Construct()
+        public override IAbility Ability { get; set; }
+        public override void Construct(IAbility ability)
         {
             Debug.Log("AbilityBehavior_SingleTargetInstant: Constructing");
         }

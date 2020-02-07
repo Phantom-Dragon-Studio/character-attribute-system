@@ -7,10 +7,10 @@ namespace PhantomDragonStudio.Ability_System
 
     public abstract class AbilityBehavior : ScriptableObject, IAbilityBehavior
     {
-        Ability _abilityInformation;
-        public Ability AbilityInformation { get => this._abilityInformation; set { this._abilityInformation = value; }  }
+        protected IAbility ability;
+        public abstract IAbility Ability { get; set; }
 
-        public abstract void Construct();
+        public abstract void Construct(IAbility ability);
 
         public abstract void Execute();
 

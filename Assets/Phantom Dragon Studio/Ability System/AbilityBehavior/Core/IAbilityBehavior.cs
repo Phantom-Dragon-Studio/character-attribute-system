@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
-public interface IAbilityBehavior 
+namespace  PhantomDragonStudio.Ability_System
 {
-    void Construct();
+    public interface IAbilityBehavior 
+    {
+        void Construct(IAbility ability);
 
-    void Execute();
+        void Execute();
 
-    void Dispose();
+        void Dispose();
+    }
 }

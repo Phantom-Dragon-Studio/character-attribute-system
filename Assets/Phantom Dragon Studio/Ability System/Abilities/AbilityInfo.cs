@@ -25,5 +25,13 @@ namespace PhantomDragonStudio.Ability_System
         {
             CurrentLevel += amount;
         }
+        public void EngageCooldown()
+        {
+            //Start Coroutine?
+        }
+        public void ResetCooldown()
+        {
+            cooldown = 0f;
+        }
     }
 }

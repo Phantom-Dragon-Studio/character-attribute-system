@@ -1,6 +1,0 @@
-.TalentPointStyling {
-    -unity-font: url('Library/unity default resources');
-    font-size: 20px;
-    -unity-text-align: middle-center;
-    background-color: rgba(188, 188, 188, 255);
-}

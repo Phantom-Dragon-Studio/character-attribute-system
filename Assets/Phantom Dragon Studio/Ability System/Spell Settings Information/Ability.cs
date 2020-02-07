@@ -11,6 +11,7 @@ namespace PhantomDragonStudio.Ability_System
         [SerializeField] private StatusEffect[] statusEffects = default;
         public string AbilityName => GeneraInformation.Name;
         public string AbilityDescription => GeneraInformation.Description;
+        public Sprite AbilityIcon => GeneraInformation.Sprite;
         public GeneralObjectInformation GeneraInformation => information;
         public AbilityInfo GeneralAbilityInfo => generalAbilityInfo;
         public StatusEffect[] StatusEffects => statusEffects;

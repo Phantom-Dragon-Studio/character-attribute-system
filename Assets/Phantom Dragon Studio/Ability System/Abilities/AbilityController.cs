@@ -9,12 +9,7 @@ namespace PhantomDragonStudio.Ability_System
 
         public void Awake()
         {
-            AbilityHandler = AbilityHandlerFactory.Create(currentAbilities);
-        }
-
-        public void CreateMagicBolt(Vector3 spawnPoint, Quaternion spawnRotation)
-        {
-            //Instantiate(_settings.abilityDataFile.GeneralAbilityInfo.Sfx, spawnPoint, spawnRotation, this.gameObject.transform);
+            AbilityHandler = AbilityHandlerFactory.Create(currentAbilities, this);
         }
     }
 }

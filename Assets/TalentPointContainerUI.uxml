@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:VisualElement name="Header">
-        <Style src="TalentPointContainerUI.uss" />
-    </ui:VisualElement>
-    <ui:Button text="Button" name="Button 1" class="TalentPointStyling" style="width: 73.6px; height: 70.2px; background-image: url('/Assets/Graphical Assets/Rexard GUI Icons/spellbookmegapack/Skill_Icon_Pack/addons/addon_12.png'); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
-        <Style src="TalentPointContainerUI.uss" />
-    </ui:Button>
-</ui:UXML>

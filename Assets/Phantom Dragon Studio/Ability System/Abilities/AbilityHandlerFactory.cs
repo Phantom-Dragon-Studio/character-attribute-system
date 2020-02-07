@@ -7,14 +7,14 @@ namespace PhantomDragonStudio.Ability_System
     /// </summary>
     public static class AbilityHandlerFactory
     {
-        public static IAbilityHandler Create(Ability[] abilities)
+        public static IAbilityHandler Create(Ability[] abilities, AbilityController abilityController)
         {
             var newAbilityHandler = new AbilityHandler();
             if (abilities != null)
             {
                 for (int i = 0; i < abilities.Length; i++)
                 {
-                    newAbilityHandler.AddAbility(i, AbilityFactory.Create(abilities[i]));
+                    newAbilityHandler.AddAbility(i, AbilityFactory.Create(abilities[i], abilityController));
                 }
             }
             else Debug.LogError("Null list recieved by AbilityHandler Factory.");
