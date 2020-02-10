@@ -14,7 +14,7 @@ namespace PhantomDragonStudio.HeroSystem
     {
         [Header("General Information")]
         [SerializeField] private GeneralObjectInformation objectInformation = default;
-        [SerializeField] private GameObject prefab = default;
+        [SerializeField] private Character prefab = default;
 
         [SerializeField] private CharacterLeagueType characterLeagueType = default;
         [Header("Agility")]
@@ -33,7 +33,7 @@ namespace PhantomDragonStudio.HeroSystem
         //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
         public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
         public GeneralObjectInformation GeneralObjectInformation => objectInformation;
-        public GameObject Prefab => prefab;
+        public Character Prefab => prefab;
         public ICharacterLeague League { get; private set; }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

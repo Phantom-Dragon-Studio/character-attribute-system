@@ -1,13 +1,18 @@
-﻿using PhantomDragonStudio.Ability_System;
-using UnityEngine;
+﻿using UnityEngine;
+using PhantomDragonStudio;
+using PhantomDragonStudio.Ability_System;
 
 namespace PhantomDragonStudio
 {
     public static class ProjectileFactory
     {
-        public static GameObject Create(GameObject projectile, Transform source)
+        //TODO Convert this to ProjectileData Sheets
+        public static IProjectile Create(Projectile projectile)
         {
-            GameObject newProjectile = GameObject.Instantiate(projectile, source.position, source.rotation, source.transform);
+            Debug.Log(projectile);
+            IProjectile newProjectile = GameObject.Instantiate(
+                projectile);
+            newProjectile.Initialize(projectile.Data.Speed, projectile.Behavior);
             return newProjectile;
         }
     }

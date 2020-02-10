@@ -5,4 +5,5 @@ public interface ITargetable
     GameObject GetGameObject { get; }
     void Damage(float amount);
     void Heal(float amount);
+    Vector3 GetVelocity();
 }

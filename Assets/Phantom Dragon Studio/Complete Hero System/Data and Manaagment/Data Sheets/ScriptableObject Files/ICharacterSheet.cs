@@ -1,4 +1,5 @@
 ﻿using PhantomDragonStudio.HeroSystem;
+using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
@@ -7,5 +8,6 @@ namespace PhantomDragonStudio.HeroSystem
         ICharacterAttribute[] Attributes { get; }
         GeneralObjectInformation GeneralObjectInformation { get; }
         ICharacterLeague League { get; }
+        Character Prefab { get; }
     }
 }

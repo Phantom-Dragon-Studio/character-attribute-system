@@ -2,9 +2,9 @@
 
 namespace  PhantomDragonStudio.Ability_System
 {
-    public interface IAbilityBehavior 
+    public interface IProjectileBehavior 
     {
-        void Construct(IAbility ability);
+        void Construct();
 
         void Execute();
 

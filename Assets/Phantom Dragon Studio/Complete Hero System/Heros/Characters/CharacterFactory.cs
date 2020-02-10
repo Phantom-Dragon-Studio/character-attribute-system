@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+﻿using PhantomDragonStudio.PoolingSystem;
+using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
     public static class CharacterFactory
     {
 
-        public static ICharacter Create(GameObject prefab, Vector3 location, Quaternion rotation)
+        public static ICharacter Create(Character prefab, Vector3 location, Quaternion rotation)
         {
-            //TODO Add in object pooling.
-            ICharacter character = GameObject.Instantiate(prefab,location, rotation).GetComponent<Character>();
+            ICharacter character = GameObject.Instantiate(prefab, location, rotation);
             CharacteristicController characteristicController = new CharacteristicController(character);
             character.Construct(characteristicController, new Health(characteristicController));
             

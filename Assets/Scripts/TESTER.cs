@@ -1,10 +1,14 @@
-﻿using PhantomDragonStudio.Ability_System;
+﻿using System.Linq;
+using PhantomDragonStudio.Ability_System;
 using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
+using PhantomDragonStudio.PoolingSystem;
 
 public class TESTER : MonoBehaviour
 {
     private AbilityController abController;
+
+    public CharacterSheet sheet;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +61,16 @@ public class TESTER : MonoBehaviour
             Debug.Log("HEAL!");
             Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
             c.Heal(50);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var p = FindObjectOfType<CharacterPoolHandler>();
+            p.Pools[0].RemoveFromPool();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            var p = FindObjectOfType<CharacterPoolHandler>();
+            p.Pools[0].AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
         }
     }
 }

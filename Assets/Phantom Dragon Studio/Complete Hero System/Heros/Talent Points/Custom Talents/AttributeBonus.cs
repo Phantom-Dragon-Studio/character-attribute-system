@@ -19,8 +19,7 @@ namespace PhantomDragonStudio.HeroSystem
         public override void PerformFunctionality()
         {
             value = bonusPerPoint * CurrentLevel;
-            Debug.Log("Increasing " + attributeType + " by " + value);
-
+            // Debug.Log("Increasing " + attributeType + " by " + value);
             Container.Character.CharacteristicController.Attributes.UpdateAttribute(attributeType, value);
         }
 

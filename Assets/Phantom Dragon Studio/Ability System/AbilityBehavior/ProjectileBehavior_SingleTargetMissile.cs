@@ -4,18 +4,18 @@ namespace PhantomDragonStudio.Ability_System
 {
     [CreateAssetMenu(fileName ="New Ability Behavior", menuName ="Phantom Dragon Studio/Ability System/Single Target Behavior")]
 
-    public class AbilityBehavior_SingleTargetMissile : AbilityBehavior
+    public class ProjectileBehavior_SingleTargetMissile : ProjectileBehavior, IProjectileBehavior
     {
-        [SerializeField] ProjectileData projectileData = default;
         [SerializeField] private bool affectedByGravity = false;
-        public ProjectileData ProjectileData { get => projectileData; set => projectileData = value; }
         public bool AffectedByGravity { get => affectedByGravity; set => affectedByGravity = value; }
-        public override IAbility Ability { get; set; }
-
-        public override void Construct(IAbility ability)
+        public void Construct()
         {
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
-            Ability = ability;
+        }
+
+        public void Execute()
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void Dispose()
@@ -23,14 +23,11 @@ namespace PhantomDragonStudio.Ability_System
             Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
         }
 
-        public override void Execute()
+        public void Execute(ProjectileData data)
         {
            Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
-           Debug.Log(Ability);
-           Debug.Log(Ability.AbilityController.transform);
-           
-           ProjectileFactory.Create(
-               Ability.AbilityInformation.GeneralAbilityInfo.Sfx, Ability.AbilityController.transform);
+           //TODO Pull projectile from pool and assign it the correct values via Initialize().
+           //
         }
     }
 }

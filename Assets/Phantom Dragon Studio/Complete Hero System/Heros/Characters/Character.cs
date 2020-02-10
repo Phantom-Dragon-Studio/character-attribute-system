@@ -8,14 +8,17 @@ namespace PhantomDragonStudio.HeroSystem
     /// This class is the class for all alive units (Anyting that can move basically because I intend on making structures their own script, similar to the Character script).
     /// </summary>
     [System.Serializable]
+    [RequireComponent(typeof(Rigidbody))]
     public class Character : MonoBehaviour, ICharacter, ITargetable
     {
         [SerializeField] private CharacterSheet characterSheet = default;
+        [SerializeField] private new Rigidbody rigidbody = default;
         public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
         public ICharacterSheet CharacterSheet => characterSheet;
         public ICharacteristicController CharacteristicController { get; private set; }
         public IHealth Health { get; private set;  }
 
+        public Rigidbody Rigidbody  => rigidbody;
         public Vector3 GetPosition => transform.position;
         public GameObject GetGameObject => this.gameObject;
 
@@ -39,6 +42,11 @@ namespace PhantomDragonStudio.HeroSystem
         {
             //Debug.Log("Attempting to heal...");
             Healed?.Invoke(this, new HealedEventArgs(amount));
+        }
+
+        public Vector3 GetVelocity()
+        {
+            return Rigidbody.velocity;
         }
 
         public class HealedEventArgs : EventArgs
