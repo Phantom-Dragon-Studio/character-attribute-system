@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace  PhantomDragonStudio.Ability_System
+﻿namespace  PhantomDragonStudio.CombatMechanics
 {
     public interface IProjectileBehavior 
     {
-        void Construct();
+        void Construct(ProjectileData data);
 
         void Execute();
 

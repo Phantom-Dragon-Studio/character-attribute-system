@@ -4,9 +4,10 @@
     {
         public static IAbility Create(Ability abilityInfo, AbilityController abilityController)
         {
-            IAbility newAbility = new BaseAbility(abilityInfo, abilityController);
+            //TODO Fix system to work with base class ability. Also need to refactor out singletons to be scriptable objects
+            //IAbility newAbility = new BaseAbility(abilityInfo, abilityController);
 
-            return newAbility;
+            return null;
         }
     }
 }

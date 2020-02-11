@@ -7,7 +7,7 @@ namespace PhantomDragonStudio.Ability_System
     {
         public Ability AbilityInformation { get; }
         public AbilityController AbilityController { get; }
-        public BaseAbility(Ability abilityInfo, AbilityController abilityController)
+        protected BaseAbility(Ability abilityInfo, AbilityController abilityController)
         {
             AbilityInformation = abilityInfo;
             AbilityController = abilityController;
@@ -16,7 +16,6 @@ namespace PhantomDragonStudio.Ability_System
         public void Cast()
         {
             Debug.Log(AbilityInformation.AbilityName + " is Casting (WIP)");
-            //Ask for a projectile from pool.
         }
 
         public void IncreaseLevel(int levelsToIncrease)

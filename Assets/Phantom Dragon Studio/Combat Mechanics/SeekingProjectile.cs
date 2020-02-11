@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using PhantomDragonStudio.Ability_System;
 using UnityEngine;
 
-namespace PhantomDragonStudio
+namespace PhantomDragonStudio.CombatMechanics
 {
     public class SeekingProjectile : MonoBehaviour
     {
@@ -14,12 +11,12 @@ namespace PhantomDragonStudio
         private new Rigidbody rigidbody;
         private RaycastHit rayhit;
         [SerializeField] private ProjectileData projectileData = default;
-        [SerializeField] private ProjectileBehavior_SingleTargetMissile behavior = default;
+        [SerializeField] private SingleTargetMissile behavior = default;
         public ProjectileData Data { get; private set; }
-        public ProjectileBehavior_SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
+        public SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
         private Boolean hasCollided = true;
         
-        public void Initialize(float _speed, ProjectileBehavior_SingleTargetMissile behavior)
+        public void Initialize(float _speed, SingleTargetMissile behavior)
         {
             this.behavior = behavior;
             Data = projectileData;

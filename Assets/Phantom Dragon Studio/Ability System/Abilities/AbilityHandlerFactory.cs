@@ -17,7 +17,7 @@ namespace PhantomDragonStudio.Ability_System
                     newAbilityHandler.AddAbility(i, AbilityFactory.Create(abilities[i], abilityController));
                 }
             }
-            else Debug.LogError("Null list recieved by AbilityHandler Factory.");
+            else Debug.LogError("Null list received by AbilityHandler Factory.");
 
             return newAbilityHandler;
         }

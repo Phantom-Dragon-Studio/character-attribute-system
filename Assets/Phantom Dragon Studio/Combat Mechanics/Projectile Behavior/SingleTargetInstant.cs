@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 
-namespace PhantomDragonStudio.Ability_System
+namespace PhantomDragonStudio.CombatMechanics
 {
-    [CreateAssetMenu(fileName = "New Instant Ability Behavior", menuName = "Phantom Dragon Studio/Ability System/Single Target Instant Behavior")]
+    [CreateAssetMenu(fileName = "New Instant Projectile Behavior", menuName = "Phantom Dragon Studio/Ability System/Single Target Instant Behavior")]
 
-    public class Behavior_SingleTargetInstant : ProjectileBehavior, IProjectileBehavior
-    {
-        public void Construct()
+    public class SingleTargetInstant : ProjectileBehavior, IProjectileBehavior
+    { 
+        public void Construct(ProjectileData data)
         {
+            //Gather necessary information to complete behavior.
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+                //Do stuff with info we have
+            Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
         }
 
         public override void Dispose()
         {
+                //Clean up
             Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
         }
 
@@ -25,7 +28,6 @@ namespace PhantomDragonStudio.Ability_System
         {
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
             //TODO Pull projectile from pool and assign it the correct values via Initialize().
-            //
         }
     }
 }

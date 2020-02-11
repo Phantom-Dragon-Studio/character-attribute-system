@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410e7e4289bff9446a5b866c5075948d, type: 3}
-  m_Name: Fireball Behavior
+  m_Name: IceBolt Behavior
   m_EditorClassIdentifier: 
-  prefab: {fileID: 199406391419283369, guid: 933425ca6b8979b4aa8ed4f349a6cd72, type: 3}
   affectedByGravity: 0

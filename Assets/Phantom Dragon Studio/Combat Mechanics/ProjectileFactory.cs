@@ -2,7 +2,7 @@
 using PhantomDragonStudio;
 using PhantomDragonStudio.Ability_System;
 
-namespace PhantomDragonStudio
+namespace PhantomDragonStudio.CombatMechanics
 {
     public static class ProjectileFactory
     {

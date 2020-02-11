@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using PhantomDragonStudio.Ability_System;
-using PhantomDragonStudio.PoolingSystem;
 using UnityEngine;
 
-namespace PhantomDragonStudio
+namespace PhantomDragonStudio.CombatMechanics
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
@@ -13,15 +9,17 @@ namespace PhantomDragonStudio
         private new Rigidbody rigidbody;
         public ProjectileData Data { get; private set; }
         [SerializeField] ProjectileData projectileData = default;
-        [SerializeField] private ProjectileBehavior_SingleTargetMissile behavior;
-        public ProjectileBehavior_SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
+        [SerializeField] private SingleTargetMissile behavior;
+        public SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
         private Boolean hasCollided = true;
-        public void Initialize(float _speed, ProjectileBehavior_SingleTargetMissile behavior)
+        public void Initialize(float _speed, SingleTargetMissile behavior)
         {
             this.behavior = behavior;
             Data = projectileData;
             speed = _speed;
             rigidbody = GetComponent<Rigidbody>();
+            
+            Behavior.Construct(Data);
         }
 
         private void Update()

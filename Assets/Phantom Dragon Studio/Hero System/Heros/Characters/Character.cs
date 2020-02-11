@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using PhantomDragonStudio.HeroSystem;
+using PhantomDragonStudio.CombatMechanics;
 
 namespace PhantomDragonStudio.HeroSystem
 {

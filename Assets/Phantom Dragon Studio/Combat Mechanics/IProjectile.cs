@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using PhantomDragonStudio.Ability_System;
 using UnityEngine;
 
-namespace PhantomDragonStudio
+namespace PhantomDragonStudio.CombatMechanics
 {
     public interface IProjectile
     {
-        void Initialize(float _speed, ProjectileBehavior_SingleTargetMissile behavior);
+        void Initialize(float _speed, SingleTargetMissile behavior);
         ProjectileData Data { get; }
     }
 }

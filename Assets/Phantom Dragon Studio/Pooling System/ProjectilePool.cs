@@ -1,62 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhantomDragonStudio;
-using PhantomDragonStudio.HeroSystem;
 using PhantomDragonStudio.PoolingSystem;
 using PhantomDragonStudio.Tools;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Projectile Pool", menuName = "Phantom Dragon Studio/Pooling/Projectile Pool")]
-[Serializable]
-public class ProjectilePool : GenericPool<IProjectile>, IPool
+namespace PhantomDragonStudio.CombatMechanics
 {
-    [SerializeField] private Projectile projectilesToPool = default;
-    [SerializeField] [ShowOnly] private int currentSize = default;
-
-    private new KeyValuePair<int, IProjectile> pointer = new KeyValuePair<int, IProjectile>();
-    private new Dictionary<int, IProjectile> pool = new Dictionary<int, IProjectile>();
-    public Dictionary<int, IProjectile> Pool => pool;
-    public override void GeneratePool()
+    [CreateAssetMenu(fileName = "New Projectile Pool", menuName = "Phantom Dragon Studio/Pooling/Projectile Pool")]
+    [Serializable]
+    public class ProjectilePool : GenericPool<IProjectile>, IPool
     {
-        currentSize = 0;
-        for (int j = 0; j < startCount; j++)
+        [SerializeField] private Projectile projectilesToPool = default;
+        [SerializeField] [ShowOnly] private int currentSize = default;
+
+        private new KeyValuePair<int, IProjectile> pointer = new KeyValuePair<int, IProjectile>();
+        private new Dictionary<int, IProjectile> pool = new Dictionary<int, IProjectile>();
+        public Dictionary<int, IProjectile> Pool => pool;
+        public override void GeneratePool()
         {
-            IProjectile newProjectile = FactoryRequest();
-            AddToPool(newProjectile);
+            currentSize = 0;
+            for (int j = 0; j < startCount; j++)
+            {
+                IProjectile newProjectile = FactoryRequest();
+                AddToPool(newProjectile);
+            }
         }
-    }
 
-    public void AddToPool<T>(T projectile)
-    {
-        if (Pool.ContainsKey(projectile.GetHashCode()))
+        public void AddToPool<T>(T projectile)
         {
-            Debug.LogError("Attempting to add an already existing character to " + this.name); 
-            return;
-        }
-        pool.Add(projectile.GetHashCode(), projectile as IProjectile);
-        currentSize = Pool.Count;
-    }
-
-    public IProjectile RemoveFromPool()
-    {
-        if (pool.Count > 0)
-        {
-            pointer = pool.First();
-            pool.Remove(pointer.Key);
+            if (Pool.ContainsKey(projectile.GetHashCode()))
+            {
+                Debug.LogError("Attempting to add an already existing character to " + this.name); 
+                return;
+            }
+            pool.Add(projectile.GetHashCode(), projectile as IProjectile);
             currentSize = Pool.Count;
-            return pointer.Value;
         }
-        else
-            Debug.LogError(this.name + " is trying to pull an object out of an empty pool.");
 
-        FactoryRequest();
-        return null;
-    }
+        public IProjectile RemoveFromPool()
+        {
+            if (pool.Count > 0)
+            {
+                pointer = pool.First();
+                pool.Remove(pointer.Key);
+                currentSize = Pool.Count;
+                return pointer.Value;
+            }
+            else
+                Debug.LogError(this.name + " is trying to pull an object out of an empty pool.");
 
-    protected override IProjectile FactoryRequest()
-    {
-        return ProjectileFactory.Create(projectilesToPool);
+            FactoryRequest();
+            return null;
+        }
+
+        protected override IProjectile FactoryRequest()
+        {
+            return ProjectileFactory.Create(projectilesToPool);
+        }
     }
 }

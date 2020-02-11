@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using PhantomDragonStudio.Ability_System;
+﻿using PhantomDragonStudio.Ability_System;
+using UnityEngine;
 
-namespace PhantomDragonStudio
+namespace PhantomDragonStudio.CombatMechanics
 {
     
     [System.Serializable]
