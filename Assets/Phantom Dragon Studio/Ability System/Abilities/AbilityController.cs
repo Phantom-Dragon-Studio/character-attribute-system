@@ -4,7 +4,7 @@ namespace PhantomDragonStudio.Ability_System
 {
     public class AbilityController : MonoBehaviour
     {
-        [SerializeField] private Ability[] currentAbilities = default;
+        [SerializeField] public BaseAbility[] currentAbilities = default;
         public IAbilityHandler AbilityHandler { get; private set; }
 
         public void Awake()

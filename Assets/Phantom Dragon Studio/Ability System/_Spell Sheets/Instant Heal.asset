@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fa047b8e6f1804ca112b56b0c7803e, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: c7e0e45a0eeb5714b850ed97c94012c6, type: 3}
+  m_Name: Instant Heal
   m_EditorClassIdentifier: 
   abilityInformation:
     information:
-      name: Fireball
-      description: FIYA
+      name: Instant Healz
+      description: Single Target
       sprite: {fileID: 0}
-    currentLevel: 0
+    currentLevel: 1
     maxLevel: 5
     cooldownTime: 1
-    cooldownModifier: -0.5
-  statusEffects:
-  - effectType: 1
+    cooldownChangePerLevel: 0.5
+  statusEffects: []

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using PhantomDragonStudio.Tools;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem

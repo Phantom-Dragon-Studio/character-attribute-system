@@ -9,7 +9,6 @@ namespace PhantomDragonStudio.CombatMechanics
         //TODO Convert this to ProjectileData Sheets
         public static IProjectile Create(Projectile projectile)
         {
-            Debug.Log(projectile);
             IProjectile newProjectile = GameObject.Instantiate(
                 projectile);
             newProjectile.Initialize(projectile.Data.Speed, projectile.Behavior);

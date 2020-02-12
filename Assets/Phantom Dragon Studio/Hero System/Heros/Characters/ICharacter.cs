@@ -1,5 +1,5 @@
 ﻿using System;
-using PhantomDragonStudio.HeroSystem;
+using PhantomDragonStudio.Tools;
 
 namespace PhantomDragonStudio.HeroSystem
 {

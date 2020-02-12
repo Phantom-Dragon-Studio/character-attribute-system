@@ -1,41 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace PhantomDragonStudio.Ability_System
 {
     [System.Serializable]
-    public class BaseAbility : IAbility
+    public abstract class BaseAbility : ScriptableObject, IAbility
     {
-        public Ability AbilityInformation { get; }
-        public AbilityController AbilityController { get; }
-        protected BaseAbility(Ability abilityInfo, AbilityController abilityController)
+        [SerializeField] protected AbilityInfo abilityInformation = default;
+        public AbilityInfo AbilityInformation { get; private set; }
+        public AbilityController Caster { get; private set; }
+        private IEnumerator cooldownCoroutine;
+        
+        public virtual void Initialize(AbilityController abilityController)
         {
-            AbilityInformation = abilityInfo;
-            AbilityController = abilityController;
+            cooldownCoroutine = CooldownTick();
+            Caster = abilityController;
         }
 
-        public void Cast()
+        public virtual void Cast()
         {
-            Debug.Log(AbilityInformation.AbilityName + " is Casting (WIP)");
+            Debug.Log("Base Ability is Casting for: " + AbilityInformation.GeneraInformation.Name);
         }
 
-        public void IncreaseLevel(int levelsToIncrease)
-        {   
-            AbilityInformation.GeneralAbilityInfo.AdjustLevel(levelsToIncrease);
+        public virtual void IncreaseLevel(int levelsToIncrease)
+        {
+            AbilityInformation.CurrentLevel += levelsToIncrease;
+            if (AbilityInformation.CurrentLevel > AbilityInformation.MaxLevel)
+                AbilityInformation.CurrentLevel = AbilityInformation.MaxLevel;
         }
 
-        public void DecreaseLevel(int levelsToDecrease)
+        public virtual void DecreaseLevel(int levelsToDecrease)
         {   
-            AbilityInformation.GeneralAbilityInfo.AdjustLevel(-levelsToDecrease);
+            AbilityInformation.CurrentLevel -= levelsToDecrease;
+            if (AbilityInformation.CurrentLevel <= 0)
+                AbilityInformation.CurrentLevel = 0;
         }
         
-        public void EngageCooldown()
+        public virtual void EngageCooldown()
         {
-            AbilityInformation.GeneralAbilityInfo.EngageCooldown();
+            Caster.StartCoroutine(cooldownCoroutine);
         }
 
-        public void ResetCooldown()
+        public virtual void ResetCooldown()
         {
-            AbilityInformation.GeneralAbilityInfo.ResetCooldown();
+            Caster.StopCoroutine(cooldownCoroutine);
+        }
+
+        private IEnumerator CooldownTick()
+        {
+            yield return null;
         }
     }
 }

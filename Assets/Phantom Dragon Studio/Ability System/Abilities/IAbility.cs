@@ -1,9 +1,14 @@
-﻿namespace PhantomDragonStudio.Ability_System
+﻿using System;
+using UnityEngine;
+
+namespace PhantomDragonStudio.Ability_System
 {
     public interface IAbility 
     {
-        Ability AbilityInformation { get; }
-        AbilityController AbilityController { get; }
+        AbilityInfo AbilityInformation { get; }
+        AbilityController Caster { get; }
+
+        void Initialize(AbilityController abilityController);
         void IncreaseLevel(int levelsToIncrease);
         void Cast();
         void EngageCooldown();

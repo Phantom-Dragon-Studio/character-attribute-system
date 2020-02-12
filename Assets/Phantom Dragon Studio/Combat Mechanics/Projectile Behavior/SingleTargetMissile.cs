@@ -11,19 +11,19 @@ namespace PhantomDragonStudio.CombatMechanics
         public bool AffectedByGravity { get => affectedByGravity; set => affectedByGravity = value; }
         public void Construct(ProjectileData data)
         {
-            Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
+            // Debug.Log("SingleTargetMissile: Constructing");
         }
 
         public void Execute()
         {
-           Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
+           Debug.Log("SingleTargetMissile: Executing");
            //TODO Pull projectile from pool and assign it the correct values via Initialize().
            //
         }
         
         public override void Dispose()
         {
-            Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
+            Debug.Log("SingleTargetMissile: Dispose");
         }
     }
 }

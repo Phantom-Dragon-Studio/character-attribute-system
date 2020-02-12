@@ -1,4 +1,4 @@
-﻿using PhantomDragonStudio.HeroSystem;
+﻿using PhantomDragonStudio.Tools;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem

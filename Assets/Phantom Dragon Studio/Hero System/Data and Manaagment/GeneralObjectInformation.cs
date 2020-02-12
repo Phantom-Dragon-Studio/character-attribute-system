@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PhantomDragonStudio.HeroSystem
+namespace PhantomDragonStudio.Tools
 {
     [System.Serializable]
     public class GeneralObjectInformation

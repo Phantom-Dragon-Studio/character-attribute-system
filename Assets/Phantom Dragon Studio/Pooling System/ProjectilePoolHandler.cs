@@ -13,10 +13,10 @@ namespace PhantomDragonStudio.PoolingSystem
                 Pools[i].GeneratePool();
                 foreach (var entry in Pools[i].Pool)
                 {
-                    Debug.Log(entry.ToString());
+                    // Debug.Log(entry.ToString());
                 }
             }
-            Debug.Log(Pools[0].Pool.First().ToString());
+            // Debug.Log(Pools[0].Pool.First().ToString());
         }
     }
 }
