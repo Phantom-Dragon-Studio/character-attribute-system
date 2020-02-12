@@ -11,7 +11,7 @@ namespace PhantomDragonStudio.CombatMechanics
         {
             IProjectile newProjectile = GameObject.Instantiate(
                 projectile);
-            newProjectile.Initialize(projectile.Data.Speed, projectile.Behavior);
+            newProjectile.Initialize(projectile.Data, projectile.Behavior);
             return newProjectile;
         }
     }

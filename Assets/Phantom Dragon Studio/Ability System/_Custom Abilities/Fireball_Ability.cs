@@ -1,4 +1,5 @@
-﻿using PhantomDragonStudio.HeroSystem;
+﻿using PhantomDragonStudio.CombatMechanics;
+using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
 namespace PhantomDragonStudio.Ability_System
@@ -7,11 +8,14 @@ namespace PhantomDragonStudio.Ability_System
     public class Fireball_Ability : BaseAbility
     {
         [SerializeField] private StatusEffect[] statusEffects = default;
+        [SerializeField] private Projectile projectile;
         public StatusEffect[] StatusEffects => statusEffects;
+        
 
         public override void Cast()
         {
             base.Cast();
+            projectile.Pool.RemoveFromPool();
             Debug.Log(AbilityInformation.GeneraInformation.Name + " is executing CAST OVERRIDE!");
         }
     }

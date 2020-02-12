@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60fa047b8e6f1804ca112b56b0c7803e, type: 3}
-  m_Name: Fireball
+  m_Name: Single Target Missle Ability
   m_EditorClassIdentifier: 
   abilityInformation:
     information:
@@ -20,6 +20,8 @@ MonoBehaviour:
     currentLevel: 0
     maxLevel: 5
     cooldownTime: 1
-    cooldownModifier: -0.5
+    cooldownChangePerLevel: -0.5
   statusEffects:
   - effectType: 1
+  projectile: {fileID: 7438898485195910828, guid: 933425ca6b8979b4aa8ed4f349a6cd72,
+    type: 3}

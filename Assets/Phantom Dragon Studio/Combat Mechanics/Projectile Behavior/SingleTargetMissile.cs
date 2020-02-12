@@ -9,12 +9,13 @@ namespace PhantomDragonStudio.CombatMechanics
         private ProjectileData data;
         [SerializeField] private bool affectedByGravity = false;
         public bool AffectedByGravity { get => affectedByGravity; set => affectedByGravity = value; }
-        public void Construct(ProjectileData data)
+        public void Construct(ProjectileData _data)
         {
+            data = _data;
             // Debug.Log("SingleTargetMissile: Constructing");
         }
 
-        public void Execute()
+        public void Perform()
         {
            Debug.Log("SingleTargetMissile: Executing");
            //TODO Pull projectile from pool and assign it the correct values via Initialize().

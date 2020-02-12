@@ -4,7 +4,7 @@
     {
         void Construct(ProjectileData data);
 
-        void Execute();
+        void Perform();
 
         void Dispose();
     }

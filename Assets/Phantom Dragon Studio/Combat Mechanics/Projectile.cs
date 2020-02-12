@@ -1,37 +1,31 @@
 ﻿using System;
 using UnityEngine;
+using PhantomDragonStudio.PoolingSystem;
 
 namespace PhantomDragonStudio.CombatMechanics
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
-        private float speed;
-        private new Rigidbody rigidbody;
-        public ProjectileData Data { get; private set; }
         [SerializeField] ProjectileData projectileData = default;
         [SerializeField] private SingleTargetMissile behavior;
+        [SerializeField] private ProjectilePool owningPool;
+        public ProjectilePool Pool { get => owningPool; private set => owningPool = value; }
+        public ProjectileData Data { get => projectileData; private set => projectileData = value; }
         public SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
+        private new Rigidbody rigidbody;
         private Boolean hasCollided = true;
-        public void Initialize(float _speed, SingleTargetMissile behavior)
+        public void Initialize(ProjectileData projectileData, SingleTargetMissile behavior)
         {
             this.behavior = behavior;
             Data = projectileData;
-            speed = _speed;
             rigidbody = GetComponent<Rigidbody>();
-            
             Behavior.Construct(Data);
+            hasCollided = true;
         }
 
         private void Update()
         {
-            Move();
-        }
-
-        private void Move()
-        {
-            if(hasCollided == false)
-                rigidbody.AddForce(Vector3.forward * speed);
-            //Add logic to stop, hide, and return to pool.
+            Behavior.Perform();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -39,6 +33,7 @@ namespace PhantomDragonStudio.CombatMechanics
             //Debug.Log(other.collider.gameObject.GetHashCode().ToString());
             //TODO Fire off onCollisionEvent with args of GetHashCode().
             hasCollided = true;
+            Pool.AddToPool(this);
         }
     }
 } 

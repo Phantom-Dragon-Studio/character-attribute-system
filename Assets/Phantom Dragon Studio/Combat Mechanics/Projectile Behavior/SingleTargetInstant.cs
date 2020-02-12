@@ -12,7 +12,7 @@ namespace PhantomDragonStudio.CombatMechanics
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
         }
 
-        public void Execute()
+        public void Perform()
         {
                 //Do stuff with info we have
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
@@ -23,7 +23,7 @@ namespace PhantomDragonStudio.CombatMechanics
                 //Clean up
             Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
         }
-
+    //TODO Remove projectile behavior? Behavior can probably go on the projectile script themselves. Reevaluate architecture.
         public void Execute(ProjectileData data)
         {
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
