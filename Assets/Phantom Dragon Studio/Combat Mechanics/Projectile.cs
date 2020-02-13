@@ -8,32 +8,59 @@ namespace PhantomDragonStudio.CombatMechanics
     {
         [SerializeField] ProjectileData projectileData = default;
         [SerializeField] private SingleTargetMissile behavior;
-        [SerializeField] private ProjectilePool owningPool;
-        public ProjectilePool Pool { get => owningPool; private set => owningPool = value; }
-        public ProjectileData Data { get => projectileData; private set => projectileData = value; }
-        public SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
-        private new Rigidbody rigidbody;
+        [SerializeField] private new Rigidbody rigidbody;
+        public ProjectilePool Pool => owningPool;
+        public ProjectileData Data => projectileData;
+        public Transform Transform => transform;
+        public SingleTargetMissile Behavior => behavior;
+        public Rigidbody Rigidbody => rigidbody;
+
+        private float currentLifeTime;
+        private ProjectilePool owningPool;
+        private new Transform transform;
         private Boolean hasCollided = true;
-        public void Initialize(ProjectileData projectileData, SingleTargetMissile behavior)
+        public void Initialize(ProjectileData _projectileData, SingleTargetMissile _behavior, ProjectilePool poolToUse)
         {
-            this.behavior = behavior;
-            Data = projectileData;
-            rigidbody = GetComponent<Rigidbody>();
-            Behavior.Construct(Data);
-            hasCollided = true;
+            this.behavior = _behavior;
+            projectileData = _projectileData;
+            Behavior.Construct(this);
+            hasCollided = false;
+            owningPool = poolToUse;
+            transform = this.transform;
+            Debug.Log("Pool: " +  owningPool);
         }
 
+        public void Activate()
+        {
+            this.gameObject.SetActive(true);
+            Debug.Log(this.name + " has Activated.");
+            currentLifeTime = 0f;
+            //TODO Finish behavior loop.
+            // while (!hasCollided && Data.Lifetime > currentLifeTime)
+            // {
+            //     Behavior.Perform();
+            // }
+            Debug.Log("While Loop ended. Current Lifetime: " + currentLifeTime + " Has Collided: " + hasCollided);
+            owningPool.AddToPool(this);
+        }
+
+        public void Deactivate()
+        {
+            hasCollided = true;
+            Behavior.End();
+            this.gameObject.SetActive(false);
+            Debug.Log(this.name + " has deactivated.");
+        }
+        
         private void Update()
         {
-            Behavior.Perform();
+            currentLifeTime += Time.deltaTime;
         }
-
+        
         private void OnCollisionEnter(Collision other)
         {
-            //Debug.Log(other.collider.gameObject.GetHashCode().ToString());
-            //TODO Fire off onCollisionEvent with args of GetHashCode().
-            hasCollided = true;
-            Pool.AddToPool(this);
+            Deactivate();
         }
+
     }
 } 

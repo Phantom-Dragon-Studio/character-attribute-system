@@ -15,6 +15,7 @@ namespace PhantomDragonStudio.Ability_System
         {
             cooldownCoroutine = CooldownTick();
             Caster = abilityController;
+            AbilityInformation = abilityInformation;
         }
 
         public virtual void Cast()

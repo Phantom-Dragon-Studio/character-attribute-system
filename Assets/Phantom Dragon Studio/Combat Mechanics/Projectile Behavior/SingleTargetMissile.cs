@@ -6,23 +6,24 @@ namespace PhantomDragonStudio.CombatMechanics
 
     public class SingleTargetMissile : ProjectileBehavior, IProjectileBehavior
     {
-        private ProjectileData data;
         [SerializeField] private bool affectedByGravity = false;
-        public bool AffectedByGravity { get => affectedByGravity; set => affectedByGravity = value; }
-        public void Construct(ProjectileData _data)
+        private ProjectileData data;
+        private IProjectile projectile;
+        private Transform projectileTransform;
+        public bool AffectedByGravity => affectedByGravity;
+        public void Construct(Projectile _projectile)
         {
-            data = _data;
-            // Debug.Log("SingleTargetMissile: Constructing");
+            data = _projectile.Data;
+            projectile = _projectile;
+            projectileTransform = projectile.Transform;
         }
 
         public void Perform()
         {
-           Debug.Log("SingleTargetMissile: Executing");
-           //TODO Pull projectile from pool and assign it the correct values via Initialize().
-           //
+            projectile.Rigidbody.AddForce(Vector3.forward * data.Speed);
         }
         
-        public override void Dispose()
+        public void End()
         {
             Debug.Log("SingleTargetMissile: Dispose");
         }

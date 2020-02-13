@@ -9,17 +9,15 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Character Pool", menuName = "Phantom Dragon Studio/Pooling/Character Pool")]
 [Serializable]
-public class CharacterPool : GenericPool<ICharacter>, IPool
+public class CharacterPool : ScriptableObject, IPool<ICharacter>
 {
+    [SerializeField] protected int startCount = default;
     [SerializeField] private CharacterSheet charactersToPool = default;
-    
     [SerializeField] [ShowOnly] private int currentSize = default;
-    
-    private new KeyValuePair<int, ICharacter> pointer = new KeyValuePair<int, ICharacter>();
-    private new Dictionary<int, ICharacter> pool = new Dictionary<int, ICharacter>();
-    public Dictionary<int, ICharacter> Pool => pool;
 
-    public override void GeneratePool()
+    private KeyValuePair<int, ICharacter> pointer;
+    private Dictionary<int, ICharacter> pool = new Dictionary<int, ICharacter>();
+    public void GeneratePool()
     {
         currentSize = 0;
         for (int j = 0; j < startCount; j++)
@@ -29,15 +27,15 @@ public class CharacterPool : GenericPool<ICharacter>, IPool
         }
     }
 
-    public void AddToPool<T>(T character)
+    public void AddToPool(ICharacter character)
     {
-        if (Pool.ContainsKey(character.GetHashCode()))
+        if (pool.ContainsKey(character.GetHashCode()))
         {
             Debug.LogError("Attempting to add an already existing character to " + this.name);
             return;
         }
         pool.Add(character.GetHashCode(), character as ICharacter);
-        currentSize = Pool.Count;
+        currentSize = pool.Count;
     }
 
     public ICharacter RemoveFromPool()
@@ -46,7 +44,7 @@ public class CharacterPool : GenericPool<ICharacter>, IPool
         {
             pointer = pool.First();
             pool.Remove(pointer.Key);
-            currentSize = Pool.Count;
+            currentSize = pool.Count;
             return pointer.Value;
         }
         else
@@ -56,7 +54,7 @@ public class CharacterPool : GenericPool<ICharacter>, IPool
         }
     }
 
-    protected override  ICharacter FactoryRequest()
+    protected  ICharacter FactoryRequest()
     {
         return CharacterFactory.Create(charactersToPool.Prefab, Vector3.zero, Quaternion.identity);
     }

@@ -8,7 +8,13 @@ namespace PhantomDragonStudio.CombatMechanics
 {
     public interface IProjectile
     {
-        void Initialize(ProjectileData data, SingleTargetMissile behavior);
+        void Initialize(ProjectileData _projectileData, SingleTargetMissile _behavior, ProjectilePool poolToUse);
         ProjectileData Data { get; }
+        
+        Transform Transform { get; }
+        Rigidbody Rigidbody { get; }
+
+        void Activate();
+        void Deactivate();
     }
 }

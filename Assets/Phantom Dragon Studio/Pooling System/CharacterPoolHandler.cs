@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PhantomDragonStudio.CombatMechanics;
 using UnityEngine;
 
 namespace PhantomDragonStudio.PoolingSystem
 {
-    public class CharacterPoolHandler : BasePoolHandler<CharacterPool>
+    public class CharacterPoolHandler : MonoBehaviour
     {
+        [SerializeField] private CharacterPool pool = default;
+        public CharacterPool Pool => pool;
+
         private void Awake()
         {
-            for (int i = 0; i < Pools.Count; i++)
-            {
-                Pools[i].GeneratePool();
-            }
+            Pool.GeneratePool();
         }
     }
 }

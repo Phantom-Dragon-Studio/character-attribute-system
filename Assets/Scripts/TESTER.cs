@@ -65,12 +65,12 @@ public class TESTER : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             var p = FindObjectOfType<CharacterPoolHandler>();
-            p.Pools[0].RemoveFromPool();
+            p.Pool.RemoveFromPool();
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
             var p = FindObjectOfType<CharacterPoolHandler>();
-            p.Pools[0].AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
+            p.Pool.AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
         }
     }
 }

@@ -6,7 +6,7 @@ namespace PhantomDragonStudio.CombatMechanics
 
     public class SingleTargetInstant : ProjectileBehavior, IProjectileBehavior
     { 
-        public void Construct(ProjectileData data)
+        public void Construct(Projectile projectile)
         {
             //Gather necessary information to complete behavior.
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
@@ -18,16 +18,11 @@ namespace PhantomDragonStudio.CombatMechanics
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
         }
 
-        public override void Dispose()
+        public void End()
         {
-                //Clean up
+            //Clean up
             Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
-        }
-    //TODO Remove projectile behavior? Behavior can probably go on the projectile script themselves. Reevaluate architecture.
-        public void Execute(ProjectileData data)
-        {
-            Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
-            //TODO Pull projectile from pool and assign it the correct values via Initialize().
+            //TODO Remove projectile behavior? Behavior can probably go on the projectile script themselves. Reevaluate architecture.
         }
     }
 }
