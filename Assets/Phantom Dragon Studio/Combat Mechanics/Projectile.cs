@@ -1,13 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-
-//TODO We need to resolve swappable behavior file types in here. It may require inheritance... 
 namespace PhantomDragonStudio.CombatMechanics
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
-        [SerializeField] private Transform transform;
+        [SerializeField] private new Transform transform;
         [SerializeField] private ProjectileData projectileData = default;
         [SerializeField] private SingleTargetMissile behavior;
         [SerializeField] private new Rigidbody rigidbody;
@@ -22,10 +20,11 @@ namespace PhantomDragonStudio.CombatMechanics
         public Boolean Collided => hasCollided;
         public void Initialize(ProjectileData _projectileData, SingleTargetMissile _behavior, ProjectilePool poolToUse)
         {
+            transform = gameObject.transform;
             projectileData = _projectileData;
-            Behavior.Construct(this);
             hasCollided = false;
             owningPool = poolToUse;
+            Behavior.Construct(this);
         }
 
         public void Activate()
@@ -35,7 +34,7 @@ namespace PhantomDragonStudio.CombatMechanics
             gameObject.SetActive(true);
             if (!hasCollided && Data.Lifetime > currentLifeTime);
             {
-                Debug.Log("Behavior Should Perform = True #" + GetHashCode());
+                Debug.Log("Behavior Should Perform = True #" + transform.GetInstanceID());
                 behavior.Perform(this);
             }
         }
@@ -45,18 +44,18 @@ namespace PhantomDragonStudio.CombatMechanics
             hasCollided = true;
             this.gameObject.SetActive(false);
             Pool.AddToPool(this);
-            Debug.Log(this.GetHashCode() + " has deactivated.");
+            Debug.Log(transform.GetInstanceID() + " has deactivated.");
         }
         
         private void Update()
-        { //TODO FIGURE OUT WHY BEHAVIOR'S AREN'T MOVING PROJECTILES
+        {
             currentLifeTime += Time.deltaTime;
-            // behavior.Perform();
         }
         
         private void OnCollisionEnter(Collision other)
         {
-            Behavior.End();
+            Debug.Log(transform.GetInstanceID() + " has collided with " + other.gameObject.name);
+            Behavior.End(this);
         }
 
     }

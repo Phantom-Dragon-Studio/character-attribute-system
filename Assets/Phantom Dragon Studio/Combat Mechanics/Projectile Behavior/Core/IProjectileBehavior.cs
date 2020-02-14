@@ -4,10 +4,10 @@ namespace  PhantomDragonStudio.CombatMechanics
 {
     public interface IProjectileBehavior 
     {
-        void Construct(Projectile projectile);
+        void Construct(IProjectile projectile);
 
         void Perform(IProjectile projectile);
 
-        void End();
+        void End(IProjectile projectile);
     }
 }

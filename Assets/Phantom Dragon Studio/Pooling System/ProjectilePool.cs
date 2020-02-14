@@ -5,7 +5,8 @@ using PhantomDragonStudio.PoolingSystem;
 using PhantomDragonStudio.Tools;
 using UnityEngine;
 
-
+//TODO Verify all ID#s being used to store objects in the pool are all being pulled from the same component
+//NOTE: GetHashCode is not collision-proof. Not all Hashcodes are unique. InstanceID's are unique but are attached to individual components.
 namespace PhantomDragonStudio.CombatMechanics
 {
     [CreateAssetMenu(fileName = "New Projectile Pool", menuName = "Phantom Dragon Studio/Pooling/Projectile Pool")]
@@ -26,20 +27,20 @@ namespace PhantomDragonStudio.CombatMechanics
             currentSize = 0;
             for (int j = 0; j < startCount; j++)
             {
-                IProjectile newProjectile = FactoryRequest();
-                AddToPool(newProjectile);
-                newProjectile.Deactivate();
+                IProjectile freshInstance = FactoryRequest();
+                AddToPool(freshInstance);
+                freshInstance.Deactivate();
             }
         }
 
         public void AddToPool(IProjectile projectile)
         {
-            if (!Pool.ContainsKey(projectile.GetHashCode()))
+            if (!Pool.ContainsKey(projectile.Transform.GetInstanceID()))
             {
-                pool.Add(projectile.GetHashCode(), projectile);
+                pool.Add(projectile.Transform.GetInstanceID(), projectile);
                 currentSize = Pool.Count;
             }else
-                Debug.LogWarning("Attempting to add an already existing character to " + this);
+                Debug.LogWarning("Attempting to add an already existing object to " + this + " with ID#: " + projectile.Transform.GetInstanceID());
         }
 
 
@@ -51,7 +52,7 @@ namespace PhantomDragonStudio.CombatMechanics
             {
                 pointer = pool.First();
                 pool.Remove(pointer.Key);
-                Debug.Log("Removed from pool: " + pointer.Value.GetHashCode().ToString());
+                Debug.Log("Removed from pool: " + pointer.Value.Transform.GetInstanceID());
                 currentSize = Pool.Count;
                 pointer.Value.Transform.position = position;
                 pointer.Value.Transform.rotation = rotation;
@@ -59,8 +60,8 @@ namespace PhantomDragonStudio.CombatMechanics
             }
             else
                 Debug.LogWarning(this + " is trying to pull an object out of an empty pool.");
-            FactoryRequest();
-            Debug.Log("Created FOR pool: " + freshInstance.GetHashCode().ToString());
+            freshInstance = FactoryRequest();
+            Debug.Log("Created FOR pool: " + freshInstance.Transform.GetInstanceID());
             Debug.Log(freshInstance.Transform);
             freshInstance.Transform.position = position;
             freshInstance.Transform.rotation = rotation;

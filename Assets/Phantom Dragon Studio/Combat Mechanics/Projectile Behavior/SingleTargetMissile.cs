@@ -8,27 +8,23 @@ namespace PhantomDragonStudio.CombatMechanics
     {
         [SerializeField] private bool affectedByGravity = false;
         private ProjectileData data;
-        private IProjectile projectile;
-        private Transform projectileTransform;
         public bool AffectedByGravity => affectedByGravity;
-        public void Construct(Projectile _projectile)
+        public void Construct(IProjectile _projectile)
         {
-            projectile = _projectile;
-            data = projectile.Data;
-            // projectileTransform = projectile.Transform;
+
         }
 
         public void Perform(IProjectile performingProjectile)
         {
-            Debug.Log(performingProjectile.GetHashCode().ToString() + " is performing behavior!");
+            Debug.Log(performingProjectile.Transform.GetInstanceID().ToString() + " is performing behavior!");
             performingProjectile.Rigidbody.AddForce(Vector3.forward * performingProjectile.Data.Speed);
         }
         
-        public void End()
+        public void End(IProjectile performingProjectile)
         {
-            projectile.Deactivate();
-            projectile.Rigidbody.velocity = Vector3.zero;
-            projectile.Rigidbody.angularVelocity = Vector3.zero; 
+            performingProjectile.Deactivate();
+            performingProjectile.Rigidbody.velocity = Vector3.zero;
+            performingProjectile.Rigidbody.angularVelocity = Vector3.zero; 
         }
     }
 }

@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1144613808, guid: c49df862e43658a4ca5485445ba8cd16, type: 3}
       propertyPath: projectileData.speed
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1144613808, guid: c49df862e43658a4ca5485445ba8cd16, type: 3}
       propertyPath: behavior

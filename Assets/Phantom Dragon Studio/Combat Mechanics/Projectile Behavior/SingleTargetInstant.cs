@@ -8,7 +8,7 @@ namespace PhantomDragonStudio.CombatMechanics
 
     public class SingleTargetInstant : ProjectileBehavior, IProjectileBehavior
     { 
-        public void Construct(Projectile projectile)
+        public void Construct(IProjectile projectile)
         {
             //Gather necessary information to complete behavior.
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
@@ -20,7 +20,7 @@ namespace PhantomDragonStudio.CombatMechanics
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
         }
 
-        public void End()
+        public void End(IProjectile projectile)
         {
             //Clean up
             //TODO Remove projectile behavior? Behavior can probably go on the projectile script themselves. Reevaluate architecture.
