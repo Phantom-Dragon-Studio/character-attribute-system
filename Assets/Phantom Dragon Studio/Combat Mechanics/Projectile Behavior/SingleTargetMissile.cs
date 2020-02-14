@@ -13,19 +13,22 @@ namespace PhantomDragonStudio.CombatMechanics
         public bool AffectedByGravity => affectedByGravity;
         public void Construct(Projectile _projectile)
         {
-            data = _projectile.Data;
             projectile = _projectile;
-            projectileTransform = projectile.Transform;
+            data = projectile.Data;
+            // projectileTransform = projectile.Transform;
         }
 
-        public void Perform()
+        public void Perform(IProjectile performingProjectile)
         {
-            projectile.Rigidbody.AddForce(Vector3.forward * data.Speed);
+            Debug.Log(performingProjectile.GetHashCode().ToString() + " is performing behavior!");
+            performingProjectile.Rigidbody.AddForce(Vector3.forward * performingProjectile.Data.Speed);
         }
         
         public void End()
         {
-            Debug.Log("SingleTargetMissile: Dispose");
+            projectile.Deactivate();
+            projectile.Rigidbody.velocity = Vector3.zero;
+            projectile.Rigidbody.angularVelocity = Vector3.zero; 
         }
     }
 }

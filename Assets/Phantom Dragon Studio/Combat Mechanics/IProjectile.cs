@@ -10,7 +10,7 @@ namespace PhantomDragonStudio.CombatMechanics
     {
         void Initialize(ProjectileData _projectileData, SingleTargetMissile _behavior, ProjectilePool poolToUse);
         ProjectileData Data { get; }
-        
+        Boolean Collided { get; }
         Transform Transform { get; }
         Rigidbody Rigidbody { get; }
 

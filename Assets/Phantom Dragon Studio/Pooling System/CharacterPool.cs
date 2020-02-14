@@ -38,7 +38,7 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         currentSize = pool.Count;
     }
 
-    public ICharacter RemoveFromPool()
+    public ICharacter RemoveFromPool(Vector3 _position, Quaternion _rotation)
     {
         if (pool.Count > 0)
         {
@@ -50,6 +50,7 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         else
         {
             //Debug.Log(this.name + " is trying to pull an object out of an empty pool.");
+            //TODO Update to be similar to projectile pool. Utilizing passed in parameters to determine new object's location.
             return FactoryRequest();
         }
     }

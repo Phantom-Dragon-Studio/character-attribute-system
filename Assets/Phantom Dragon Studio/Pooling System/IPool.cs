@@ -7,6 +7,6 @@ namespace PhantomDragonStudio.PoolingSystem
     public interface IPool<T>
     {
         void AddToPool(T type);
-        T RemoveFromPool();
+        T RemoveFromPool(Vector3 _position, Quaternion _rotation);
     }   
 }

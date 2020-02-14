@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Audio;
 
 namespace PhantomDragonStudio.CombatMechanics
 {
@@ -12,7 +14,7 @@ namespace PhantomDragonStudio.CombatMechanics
             Debug.Log("AbilityBehavior_SingleTargetMissile: Constructing");
         }
 
-        public void Perform()
+        public void Perform(IProjectile projectile)
         {
                 //Do stuff with info we have
             Debug.Log("AbilityBehavior_SingleTargetMissile: Executing");
@@ -21,7 +23,6 @@ namespace PhantomDragonStudio.CombatMechanics
         public void End()
         {
             //Clean up
-            Debug.Log("AbilityBehavior_SingleTargetMissile: Dispose");
             //TODO Remove projectile behavior? Behavior can probably go on the projectile script themselves. Reevaluate architecture.
         }
     }

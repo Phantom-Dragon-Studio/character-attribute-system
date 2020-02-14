@@ -65,7 +65,7 @@ public class TESTER : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             var p = FindObjectOfType<CharacterPoolHandler>();
-            p.Pool.RemoveFromPool();
+            p.Pool.RemoveFromPool(new Vector3(0,10, 1), Quaternion.identity);
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {

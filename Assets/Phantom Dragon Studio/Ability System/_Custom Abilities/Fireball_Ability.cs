@@ -18,8 +18,9 @@ namespace PhantomDragonStudio.Ability_System
             // Debug.Log(projectilePool);
             Debug.Log(AbilityInformation.GeneraInformation.Name + " is executing CAST OVERRIDE!");
             
+            var casterTransform = Caster.transform;
             base.Cast();
-            projectilePool.RemoveFromPool();
+            projectilePool.RemoveFromPool(casterTransform.position, casterTransform.rotation).Activate();
         }
     }
 }
