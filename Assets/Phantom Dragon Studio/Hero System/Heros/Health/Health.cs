@@ -55,7 +55,7 @@ namespace PhantomDragonStudio.HeroSystem
         {
             //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
             //TODO ~ Add BonusDamageReceived & DamageDecreased logic here.
-            Debug.Log("Healed EVENT: Increasing " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
+            Debug.Log("Adjusting health of " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
             CurrentHealth += amount;
             HealthCheck();
         }
@@ -65,7 +65,10 @@ namespace PhantomDragonStudio.HeroSystem
             if (CurrentHealth > MaxHealth)
                 CurrentHealth = MaxHealth;
             else if (CurrentHealth < 0)
+            {
                 CurrentHealth = 0;
+                CharacteristicController.Character.Die();
+            }
         }
     }
 }

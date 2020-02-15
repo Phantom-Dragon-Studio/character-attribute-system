@@ -3,40 +3,56 @@ using UnityEngine;
 
 namespace PhantomDragonStudio.CombatMechanics
 {
-    public class SeekingProjectile : MonoBehaviour
+    public class SeekingProjectile : MonoBehaviour, IProjectile
     {
-        [SerializeField] private LayerMask collidableLayers = default;
+        public event EventHandler<ProjectileCollisionEventArgs> Collided = default;
         
-        private float speed;
-        private new Rigidbody rigidbody;
-        private RaycastHit rayhit;
+        [SerializeField] private new Transform transform = default;
         [SerializeField] private ProjectileData projectileData = default;
-        [SerializeField] private SingleTargetMissile behavior = default;
-        public ProjectileData Data { get; private set; }
-        public SingleTargetMissile Behavior {  get => behavior; private set => behavior = value; }
+        [SerializeField] private ProjectileBehavior behavior = default;
+        [SerializeField] private new Rigidbody rigidbody = default;
+        public ProjectilePool Pool => owningPool;
+        public ProjectileData Data => projectileData;
+        public Transform Transform => transform;
+        public ProjectileBehavior Behavior => behavior;
+        public Rigidbody Rigidbody => rigidbody;
+        private float currentLifeTime;
+        private float accuracy = 10;
+        private ProjectilePool owningPool;
         private Boolean hasCollided = true;
-        
-        public void Initialize(float _speed, SingleTargetMissile behavior)
+        public Boolean HasCollided => hasCollided;
+        public void Initialize(ProjectileData _projectileData, ProjectileBehavior _behavior, ProjectilePool poolToUse)
         {
-            this.behavior = behavior;
-            Data = projectileData;
-            speed = _speed;
-            rigidbody = GetComponent<Rigidbody>();
-        }
-        
-        void RaycastForLayer()
-        {
-            int layerMask = 1 << (int)collidableLayers;
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit; 
-            bool hasHit = Physics.Raycast(ray, out hit, projectileData.Lifetime, layerMask);
-            if (hasHit)
-            {
-                rayhit = hit;
-            }
+            transform = gameObject.transform;
+            projectileData = _projectileData;
+            hasCollided = false;
+            owningPool = poolToUse;
+            // Behavior.Construct(this); Unused atm.
         }
 
-        float accuracy = 10;
+        public void Activate()
+        {
+            hasCollided = false;
+            currentLifeTime = 0f;
+            gameObject.SetActive(true);
+            if (!hasCollided && Data.Lifetime > currentLifeTime)
+                behavior.Perform(this);
+        }
+        
+        public void Deactivate()
+        {
+            hasCollided = true;
+            this.gameObject.SetActive(false);
+            Pool.AddToPool(this);
+            // Debug.Log(transform.GetInstanceID() + " has deactivated.");
+        }
+        
+        private void OnCollisionEnter(Collision other)
+        {
+            // Debug.Log(transform.GetInstanceID() + " has collided with " + other.gameObject.name);
+            Behavior.End(this);
+        }
+        
         Vector3 BallisticVelocity(Vector3 source, Vector3 target, Vector3 targetVelocity)
         {
             // use a few iterations of this recursive function to zero in on 
@@ -50,12 +66,17 @@ namespace PhantomDragonStudio.CombatMechanics
             }
             // after t seconds, the cannonball will reach the horizontal location of the target -
             // so all we have to do is make sure its 'y' coordinate zeros out right there
-            float gravityY = (.5f * Physics.gravity * t * t).y;
+            float gravityY = (Physics.gravity * (.5f * t * t)).y;
             // now we've calculated how much the projectile will fall during that time
             // so let's add a 'y' component to the velocity that will take care of the rest
             float yComponent = (target.y - source.y - gravityY) / t + targetVelocity.y;
             horiz = horiz.normalized * projectileData.Speed;
             return new Vector3(horiz.x, yComponent, horiz.z);
+        }
+        
+        private void Update()
+        {
+            currentLifeTime += Time.deltaTime;
         }
     }
 }

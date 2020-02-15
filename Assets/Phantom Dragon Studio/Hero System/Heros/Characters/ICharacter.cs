@@ -1,5 +1,6 @@
 ﻿using System;
 using PhantomDragonStudio.Tools;
+using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
@@ -8,11 +9,13 @@ namespace PhantomDragonStudio.HeroSystem
         ICharacterSheet CharacterSheet { get; }
         GeneralObjectInformation GeneralObjectInformation { get; }
         ICharacteristicController CharacteristicController { get; }
-        ICharacter Construct(CharacteristicController characteristicController, Health health);
         IHealth Health { get; }
         void Heal(float amount);
-        event EventHandler<Character.HealedEventArgs> Healed;
+        event EventHandler<HealedEventArgs> Healed;
         void Damage(float amount);
-        event EventHandler<Character.DamagedEventArgs> Damaged;
+        Transform Transform { get; }
+        event EventHandler<DamagedEventArgs> Damaged;
+        ICharacter Construct(CharacteristicController characteristicController, Health health);
+        void Die();
     }
 }

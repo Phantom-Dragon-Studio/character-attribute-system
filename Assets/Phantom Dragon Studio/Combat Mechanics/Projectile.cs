@@ -5,46 +5,57 @@ namespace PhantomDragonStudio.CombatMechanics
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
-        [SerializeField] private new Transform transform;
+        [SerializeField] private new Transform transform = default;
         [SerializeField] private ProjectileData projectileData = default;
-        [SerializeField] private SingleTargetMissile behavior;
-        [SerializeField] private new Rigidbody rigidbody;
-        public ProjectilePool Pool => owningPool;
-        public ProjectileData Data => projectileData;
-        public Transform Transform => transform;
-        public SingleTargetMissile Behavior => behavior;
-        public Rigidbody Rigidbody => rigidbody;
+        [SerializeField] private ProjectileBehavior behavior = default;
+        [SerializeField] private new Rigidbody rigidbody = default;
+
+        public event EventHandler<ProjectileCollisionEventArgs> Collided = default;
+        
+        #region Private Variable
         private float currentLifeTime;
         private ProjectilePool owningPool;
-        private Boolean hasCollided = true;
-        public Boolean Collided => hasCollided;
-        public void Initialize(ProjectileData _projectileData, SingleTargetMissile _behavior, ProjectilePool poolToUse)
+        private Boolean hasHasCollided = true;
+        private int collisions = 0;
+        #endregion
+        
+        #region Getters
+
+        public ProjectileData Data => projectileData;
+        public Transform Transform => transform;
+        public ProjectileBehavior Behavior => behavior;
+        public Rigidbody Rigidbody => rigidbody;
+        public Boolean HasCollided => hasHasCollided;
+
+        #endregion
+        
+        public void Initialize(ProjectileData _projectileData, ProjectileBehavior _behavior, ProjectilePool poolToUse)
         {
             transform = gameObject.transform;
             projectileData = _projectileData;
-            hasCollided = false;
+            hasHasCollided = false;
             owningPool = poolToUse;
-            Behavior.Construct(this);
+            //Behavior.Construct(this); Not necessary in this script. Other projectile variants may utilize it though.
         }
 
         public void Activate()
         {
-            hasCollided = false;
+            hasHasCollided = false;
+            collisions = 0;
             currentLifeTime = 0f;
             gameObject.SetActive(true);
-            if (!hasCollided && Data.Lifetime > currentLifeTime);
-            {
-                Debug.Log("Behavior Should Perform = True #" + transform.GetInstanceID());
+            if (!hasHasCollided && Data.Lifetime > currentLifeTime)
                 behavior.Perform(this);
-            }
         }
 
         public void Deactivate()
         {
-            hasCollided = true;
             this.gameObject.SetActive(false);
-            Pool.AddToPool(this);
-            Debug.Log(transform.GetInstanceID() + " has deactivated.");
+            if (collisions <= 1)
+            {
+                owningPool.AddToPool(this);
+            }
+            // Debug.Log(transform.GetInstanceID() + " has deactivated.");
         }
         
         private void Update()
@@ -54,9 +65,13 @@ namespace PhantomDragonStudio.CombatMechanics
         
         private void OnCollisionEnter(Collision other)
         {
-            Debug.Log(transform.GetInstanceID() + " has collided with " + other.gameObject.name);
+            collisions++;
+            hasHasCollided = true;
             Behavior.End(this);
+            if (collisions <= 1)
+            {
+                Collided?.Invoke(this, new ProjectileCollisionEventArgs(other.gameObject.transform.GetInstanceID(), projectileData.Value));
+            }
         }
-
     }
 } 

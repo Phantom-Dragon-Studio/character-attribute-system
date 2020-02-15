@@ -20,7 +20,7 @@ namespace PhantomDragonStudio.Ability_System
 
         public virtual void Cast()
         {
-            Debug.Log("Base Ability is Casting for: " + AbilityInformation.GeneraInformation.Name);
+            // Debug.Log("Base Ability is Casting for: " + AbilityInformation.GeneraInformation.Name);
         }
 
         public virtual void IncreaseLevel(int levelsToIncrease)

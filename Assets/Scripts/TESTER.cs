@@ -20,7 +20,7 @@ public class TESTER : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Ability 1 Activating...");
+            // Debug.Log("Ability 1 Activating...");
             abController.AbilityHandler.CastAbility(0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))

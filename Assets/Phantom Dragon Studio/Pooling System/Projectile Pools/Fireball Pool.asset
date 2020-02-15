@@ -15,4 +15,4 @@ MonoBehaviour:
   startCount: 10
   projectilesToPool: {fileID: 7438898485195910828, guid: 933425ca6b8979b4aa8ed4f349a6cd72,
     type: 3}
-  currentSize: 9
+  currentSize: 10

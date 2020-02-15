@@ -23,4 +23,4 @@ MonoBehaviour:
     cooldownChangePerLevel: -0.5
   statusEffects:
   - effectType: 1
-  projectilePool: {fileID: 11400000, guid: 9504647af259d204990ca1f0b2962b20, type: 2}
+  projectilePool: {fileID: 11400000, guid: 5a86f9994dac3a641bed01c4590f8e5e, type: 2}

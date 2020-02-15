@@ -14,20 +14,22 @@ namespace PhantomDragonStudio.HeroSystem
     {
         [SerializeField] private CharacterSheet characterSheet = default;
         [SerializeField] private new Rigidbody rigidbody = default;
+        private new Transform transform;
         public GeneralObjectInformation GeneralObjectInformation => characterSheet.GeneralObjectInformation;
         public ICharacterSheet CharacterSheet => characterSheet;
         public ICharacteristicController CharacteristicController { get; private set; }
         public IHealth Health { get; private set;  }
 
+        public Transform Transform => transform;
         public Rigidbody Rigidbody  => rigidbody;
         public Vector3 GetPosition => transform.position;
         public GameObject GetGameObject => this.gameObject;
-
         public event EventHandler<HealedEventArgs> Healed;
         public event EventHandler<DamagedEventArgs> Damaged;
 
         public ICharacter Construct(CharacteristicController characteristicController, Health health)
         {
+            transform = gameObject.transform;
             CharacteristicController = characteristicController;
             Health = health;
             return this;
@@ -50,24 +52,10 @@ namespace PhantomDragonStudio.HeroSystem
             return Rigidbody.velocity;
         }
 
-        public class HealedEventArgs : EventArgs
+        public void Die()
         {
-            public float Amount { get; private set; }
-            public HealedEventArgs(float amount)
-            {
-                //Debug.Log("Healed Event Fired....");
-                Amount = amount;
-            }
-        }
-
-        public class DamagedEventArgs : EventArgs
-        {
-            public float Amount { get; private set; }
-            public DamagedEventArgs(float amount)
-            {
-                //Debug.Log("Damaged Event Fired....");
-                Amount = amount;
-            }
+            //TODO Stuff that happens when you die.
+            Destroy(this.gameObject);
         }
     }
 }

@@ -8,5 +8,7 @@ namespace PhantomDragonStudio.PoolingSystem
     {
         void AddToPool(T type);
         T RemoveFromPool(Vector3 _position, Quaternion _rotation);
+        // void GeneratePool();
+        T FindInPool(int key);
     }   
 }

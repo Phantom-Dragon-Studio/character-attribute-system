@@ -8,16 +8,13 @@ namespace PhantomDragonStudio.Ability_System
     public class Fireball_Ability : BaseAbility
     {
         [SerializeField] private StatusEffect[] statusEffects = default;
-        [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private ProjectilePool projectilePool = default;
         public StatusEffect[] StatusEffects => statusEffects;
         
 
         public override void Cast()
-        {    //TODO We had issues with null references after everything appeared to be working...
-             //Changed how we access the pool so it's more direct. It seems to be working.
-            // Debug.Log(projectilePool);
-            Debug.Log(AbilityInformation.GeneraInformation.Name + " is executing CAST OVERRIDE!");
-            
+        {  
+            // Debug.Log(AbilityInformation.GeneraInformation.Name + " is casting!");
             var casterTransform = Caster.transform;
             base.Cast();
             projectilePool.RemoveFromPool(casterTransform.position, casterTransform.rotation).Activate();
