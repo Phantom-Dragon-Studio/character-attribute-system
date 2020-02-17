@@ -15,6 +15,11 @@ public class Projectile_Character_InteractionHandler : MonoBehaviour
         projectile.Collided += (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
     }
 
+    public void RemoveFromWatchedProjectiles(IProjectile projectile)
+    {
+        projectile.Collided -= (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
+    }
+
     private void FindReceiver(int argsGoInstanceId, float argsValue)
     {
         target = characterPoolHandler.Pool.FindInPool(argsGoInstanceId);

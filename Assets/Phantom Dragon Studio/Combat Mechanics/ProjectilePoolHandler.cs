@@ -12,7 +12,6 @@ namespace PhantomDragonStudio.PoolingSystem
 
         private void Awake()
         {
-            Debug.Log("Awake");
             Pool.GeneratePool(this);
         }
     }
