@@ -8,6 +8,6 @@ namespace PhantomDragonStudio.CombatMechanics
         GameObject GetGameObject { get; }
         void Damage(float amount);
         void Heal(float amount);
-        Vector3 GetVelocity();
+        Vector3 CurrentVelocity();
     }
 }

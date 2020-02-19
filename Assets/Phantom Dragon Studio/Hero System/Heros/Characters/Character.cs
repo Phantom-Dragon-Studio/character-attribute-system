@@ -47,7 +47,7 @@ namespace PhantomDragonStudio.HeroSystem
             Healed?.Invoke(this, new HealedEventArgs(amount));
         }
 
-        public Vector3 GetVelocity()
+        public Vector3 CurrentVelocity()
         {
             return Rigidbody.velocity;
         }

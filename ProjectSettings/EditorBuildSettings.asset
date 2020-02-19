@@ -4,9 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/Prototyping Scene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 35ba2be268ede8e44b115c9e70a4d35a,
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d35d38dfeeb8b274f8fb04a240121f9c,
       type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: cdaaeb6b2a3539d49af4c3d382deee5f,
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: a5e603f3f20d91e4aa9b5b7b67fbbef8,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: ef99957c628a38b4bb2737f8b282a954,
       type: 2}

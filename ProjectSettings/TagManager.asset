@@ -14,17 +14,17 @@ TagManager:
   - 
   - 
   - ITargetable
+  - IProjectile
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Grass
+  - Small Props
+  - Large Props
+  - Trees
   - 
   - 
   - 

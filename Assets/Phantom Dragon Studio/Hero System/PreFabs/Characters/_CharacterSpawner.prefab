@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3544121167400433351}
   - component: {fileID: 3544121167400433347}
-  - component: {fileID: 1924287168}
   m_Layer: 0
   m_Name: _CharacterSpawner
   m_TagString: Untagged
@@ -46,17 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheets:
   - {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
-  - {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
-  - {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
---- !u!114 &1924287168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3544121167400433372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e263b011ea2bf044681ff1cbaad16940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

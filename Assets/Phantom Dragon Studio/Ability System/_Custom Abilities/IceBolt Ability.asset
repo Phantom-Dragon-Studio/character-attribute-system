@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fa047b8e6f1804ca112b56b0c7803e, type: 3}
-  m_Name: Fireball Ability
+  m_Script: {fileID: 11500000, guid: 5117cd13340f0cd47bc857ee7cb9b0d9, type: 3}
+  m_Name: IceBolt Ability
   m_EditorClassIdentifier: 
   abilityInformation:
     information:
-      name: Fireball
-      description: FIYA
+      name: Icebolt
+      description: Shoot ice at people.
       sprite: {fileID: 0}
-    currentLevel: 0
-    maxLevel: 5
-    cooldownTime: 1
-    cooldownChangePerLevel: -0.5
+    currentLevel: 1
+    maxLevel: 3
+    cooldownTime: 0
+    cooldownChangePerLevel: 0
   statusEffects:
-  - effectType: 1
-  projectilePool: {fileID: 11400000, guid: 9504647af259d204990ca1f0b2962b20, type: 2}
+  - effectType: 2
+  projectilePool: {fileID: 11400000, guid: 5a86f9994dac3a641bed01c4590f8e5e, type: 2}

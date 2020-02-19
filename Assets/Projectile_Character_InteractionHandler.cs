@@ -22,7 +22,7 @@ public class Projectile_Character_InteractionHandler : MonoBehaviour
 
     private void FindReceiver(int argsGoInstanceId, float argsValue)
     {
-        target = characterPoolHandler.Pool.FindInPool(argsGoInstanceId);
+        target = characterPoolHandler.SearchAllPools(argsGoInstanceId);
         target?.Damage(argsValue);
     }
 }
