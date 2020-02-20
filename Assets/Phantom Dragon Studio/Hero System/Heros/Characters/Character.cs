@@ -27,11 +27,11 @@ namespace PhantomDragonStudio.HeroSystem
         public event EventHandler<HealedEventArgs> Healed;
         public event EventHandler<DamagedEventArgs> Damaged;
 
-        public ICharacter Construct(CharacteristicController characteristicController, Health health)
+        public ICharacter Construct(CharacteristicController characteristicController, CharacterHealth characterHealth)
         {
             transform = gameObject.transform;
             CharacteristicController = characteristicController;
-            Health = health;
+            Health = characterHealth;
             return this;
         }
 

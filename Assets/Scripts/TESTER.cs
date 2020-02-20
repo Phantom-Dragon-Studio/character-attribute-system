@@ -25,7 +25,7 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Ability 2 Activating...");
+            // Debug.Log("Ability 2 Activating...");
 
             abController.AbilityHandler.CastAbility(1);
         }
@@ -62,15 +62,15 @@ public class TESTER : MonoBehaviour
             Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
             c.Heal(50);
         }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
-            var p = FindObjectOfType<CharacterPoolHandler>();
-            p.Pools.RemoveFromPool(new Vector3(0,10, 1), Quaternion.identity);
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            var p = FindObjectOfType<CharacterPoolHandler>();
-            p.Pools.AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
-        }
+        // else if (Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     var p = FindObjectOfType<CharacterPoolHandler>();
+        //     p.Pools.RemoveFromPool(new Vector3(0,10, 1), Quaternion.identity);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     var p = FindObjectOfType<CharacterPoolHandler>();
+        //     p.Pools.AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
+        // }
     }
 }

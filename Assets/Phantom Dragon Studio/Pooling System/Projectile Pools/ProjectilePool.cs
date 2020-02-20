@@ -40,15 +40,15 @@ namespace PhantomDragonStudio.CombatMechanics
             return pool.ContainsKey(key) ? pool[key] : null;
         }
 
-        public void AddToPool(IProjectile projectile)
+        public void AddToPool(IProjectile target)
         {
-            if (!pool.ContainsKey(projectile.GetInstanceID()))
+            if (!pool.ContainsKey(target.GetInstanceID()))
             {
-                pool.Add(projectile.GetInstanceID(), projectile);
+                pool.Add(target.GetInstanceID(), target);
                 currentSize = pool.Count;
             }
             else
-                Debug.LogWarning("Attempting to add an already existing object to " + this + " with ID: " + projectile.GetInstanceID().ToString());
+                Debug.LogWarning("Attempting to add an already existing object to " + this + " with ID: " + target.GetInstanceID().ToString());
         }
 
 
@@ -58,7 +58,7 @@ namespace PhantomDragonStudio.CombatMechanics
             rotation = _rotation;
             if (pool.Count > 0)
             {
-                pointer = pool.First();
+                pointer = pool.FirstOrDefault();
                 pool.Remove(pointer.Key);
                 currentSize = pool.Count;
                 pointer.Value.Transform.position = position;

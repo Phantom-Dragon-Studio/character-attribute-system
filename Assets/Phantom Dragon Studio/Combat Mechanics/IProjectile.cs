@@ -9,9 +9,7 @@ namespace PhantomDragonStudio.CombatMechanics
     public interface IProjectile
     {
         void Initialize(ProjectileData _projectileData, ProjectileBehavior _behavior, ProjectilePool poolToUse);
-        event EventHandler<ProjectileCollisionEventArgs> Collided;
         ProjectileData Data { get; }
-        Boolean HasCollided { get; }
         Transform Transform { get; }
         Rigidbody Rigidbody { get; }
         int GetInstanceID();

@@ -15,7 +15,7 @@ namespace PhantomDragonStudio.HeroSystem
         void Damage(float amount);
         Transform Transform { get; }
         event EventHandler<DamagedEventArgs> Damaged;
-        ICharacter Construct(CharacteristicController characteristicController, Health health);
+        ICharacter Construct(CharacteristicController characteristicController, CharacterHealth characterHealth);
         void Die();
     }
 }

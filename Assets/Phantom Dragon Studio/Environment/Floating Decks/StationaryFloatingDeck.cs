@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using PhantomDragonStudio.CombatMechanics;
 using UnityEngine;
 
-public class StationaryDeck : MonoBehaviour
+public class StationaryFloatingDeck : MonoBehaviour, IFloatingDeck
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Activate()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Deactivate()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

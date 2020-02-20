@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
-    public class Health : IHealth
+    public class CharacterHealth : IHealth
     {
         public float CurrentHealth { get; private set; }
         public float MaxHealth { get; private set; }
@@ -14,7 +14,7 @@ namespace PhantomDragonStudio.HeroSystem
         private bool IsInitialized = false;
         private float healthRatio;
 
-        public Health(ICharacteristicController controllerToWatch)
+        public CharacterHealth(ICharacteristicController controllerToWatch)
         {
             CharacteristicController = controllerToWatch;
 
@@ -55,7 +55,7 @@ namespace PhantomDragonStudio.HeroSystem
         {
             //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
             //TODO ~ Add BonusDamageReceived & DamageDecreased logic here.
-            Debug.Log("Adjusting health of " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
+            // Debug.Log("Adjusting health of " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
             CurrentHealth += amount;
             HealthCheck();
         }

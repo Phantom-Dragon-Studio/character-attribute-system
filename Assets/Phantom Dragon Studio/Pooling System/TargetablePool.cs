@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhantomDragonStudio.HeroSystem;
+using PhantomDragonStudio.CombatMechanics;
 using PhantomDragonStudio.PoolingSystem;
 using PhantomDragonStudio.Tools;
 using UnityEngine;
 
 /// <summary>
-/// This pool is tracked by the Transform InstanceID
+/// This pool is tracked by the ITargetable InstanceID
 /// </summary>
-[CreateAssetMenu(fileName = "New Character Pool", menuName = "Phantom Dragon Studio/Pooling/Character Pool")]
+[CreateAssetMenu(fileName = "New Targetable Pool", menuName = "Phantom Dragon Studio/Pooling/Targetable Pool")]
 [Serializable]
-public class CharacterPool : ScriptableObject, IPool<ICharacter>
+public class TargetablePool : ScriptableObject, IPool<ITargetable>
 {
     [SerializeField] protected int startCount = default;
-    [SerializeField] private CharacterSheet charactersToPool = default;
+    [SerializeReference] private GameObject targetablesToPool = default;
     [SerializeField] [ShowOnly] private int currentSize = default;
 
     private Vector3 position;
     private Quaternion rotation;
-    private ICharacter freshInstance;
-    private KeyValuePair<int, ICharacter> pointer;
-    private Dictionary<int, ICharacter> pool = new Dictionary<int, ICharacter>();
+    private ITargetable freshInstance;
+    private KeyValuePair<int, ITargetable> pointer;
+    private Dictionary<int, ITargetable> pool = new Dictionary<int, ITargetable>();
     public void GeneratePool()
     {
         currentSize = 0;
@@ -32,22 +32,22 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         }
     }
 
-    public ICharacter FindInPool(int key)
+    public ITargetable FindInPool(int key)
     {
         return pool.ContainsKey(key) ? pool[key] : null;
     }
 
-    public void AddToPool(ICharacter target)
+    public void AddToPool(ITargetable target)
     {
-        if (!pool.ContainsKey(target.Transform.GetInstanceID()))
+        if (!pool.ContainsKey(target.GetInstanceID()))
         {
-            pool.Add(target.Transform.GetInstanceID(), target);
+            pool.Add(target.GetInstanceID(), target);
             currentSize = pool.Count;
         } else
-            Debug.LogError("Attempting to add an already existing character to " + this.name);
+            Debug.LogError("Attempting to add an already existing ITargetable to " + this.name);
     }
 
-    public ICharacter RemoveFromPool(Vector3 _position, Quaternion _rotation)
+    public ITargetable RemoveFromPool(Vector3 _position, Quaternion _rotation)
     {
         position = _position;
         rotation = _rotation;
@@ -65,12 +65,13 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         freshInstance.Transform.position = position;
         freshInstance.Transform.rotation = rotation;
         
-        Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.Transform.GetInstanceID().ToString() + " for pool: " + this);
+        Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.GetInstanceID().ToString() + " for pool: " + this);
         return freshInstance;
     }
 
-    protected  ICharacter FactoryRequest()
+    protected  ITargetable FactoryRequest()
     {
-        return CharacterFactory.Create(charactersToPool.Prefab, Vector3.zero, Quaternion.identity);
+        //TODO Something
+        return null;
     }
 }

@@ -10,7 +10,7 @@ namespace PhantomDragonStudio.HeroSystem
         {
             ICharacter character = GameObject.Instantiate(prefab, location, rotation);
             CharacteristicController characteristicController = new CharacteristicController(character);
-            character.Construct(characteristicController, new Health(characteristicController));
+            character.Construct(characteristicController, new CharacterHealth(characteristicController));
             
             //TODO Remove Test Code
             character.CharacteristicController.Attributes.Agility.UpdateValue(1);

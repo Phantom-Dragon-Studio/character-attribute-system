@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 207026263}
   - component: {fileID: 207026262}
   - component: {fileID: 207026264}
+  - component: {fileID: 207026265}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -401,7 +402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e4515068f426b4c991f8c455a8f73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 11400000, guid: 2458506bfa4863545b050c521124c3be, type: 2}
+  pools:
+  - {fileID: 11400000, guid: 2458506bfa4863545b050c521124c3be, type: 2}
+  - {fileID: 11400000, guid: 272b27461086e8543bb98b57287f6fc2, type: 2}
 --- !u!114 &207026263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +434,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPoolHandler: {fileID: 207026262}
+--- !u!114 &207026265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207026260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e10831f90e8244390cece59e5d9999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - {fileID: 11400000, guid: 25f3025461404674b891f571dad7c2ae, type: 2}
 --- !u!1 &217563078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4695666576454475813, guid: ec66f4684c312be41add828bf51da29e,
@@ -1019,7 +1036,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.446e-41, y: 1.01e-43, z: NaN, w: 0}
+  m_BoundingSphereOverride: {x: 3.0092666e-36, y: 1.009742e-28, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1822,12 +1839,12 @@ PrefabInstance:
     - target: {fileID: 1270711462601210376, guid: 22560d4c716818542aaf7fdfe3f83dfd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.85
+      value: -28.3
       objectReference: {fileID: 0}
     - target: {fileID: 1270711462601210376, guid: 22560d4c716818542aaf7fdfe3f83dfd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.63
+      value: 8.9
       objectReference: {fileID: 0}
     - target: {fileID: 1270711462601210376, guid: 22560d4c716818542aaf7fdfe3f83dfd,
         type: 3}
@@ -2406,7 +2423,7 @@ PrefabInstance:
     - target: {fileID: 1270711462601210376, guid: 22560d4c716818542aaf7fdfe3f83dfd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.269531
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 1270711462601210376, guid: 22560d4c716818542aaf7fdfe3f83dfd,
         type: 3}

@@ -1,13 +1,14 @@
-﻿using PhantomDragonStudio.CombatMechanics;
-using PhantomDragonStudio.HeroSystem;
+﻿using System.Collections;
+using System.Collections.Generic;
+using PhantomDragonStudio.CombatMechanics;
 using UnityEngine;
 
 namespace PhantomDragonStudio.PoolingSystem
 {
-    public class CharacterPoolHandler : MonoBehaviour
+    public class TargetablePoolHandler : MonoBehaviour
     {
-        [SerializeField] private CharacterPool[] pools = default;
-        public CharacterPool[] Pools => pools;
+        [SerializeField] private TargetablePool[] pools = default;
+        public TargetablePool[] Pools => pools;
 
         private void Awake()
         {
@@ -19,7 +20,7 @@ namespace PhantomDragonStudio.PoolingSystem
 
         public ITargetable SearchAllPools(int InstanceID)
         {
-            ICharacter foundIndex = null;
+            ITargetable foundIndex = null;
             for (int i = 0; i < pools.Length; i++)
             {
                 foundIndex = Pools[i].FindInPool(InstanceID);
@@ -29,7 +30,7 @@ namespace PhantomDragonStudio.PoolingSystem
                     i = pools.Length;
             }
 
-            return foundIndex as ITargetable;
+            return foundIndex;
         }
     }
 }

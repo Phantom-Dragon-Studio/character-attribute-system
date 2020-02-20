@@ -17,7 +17,8 @@ namespace PhantomDragonStudio.Ability_System
             // Debug.Log(AbilityInformation.GeneraInformation.Name + " is casting!");
             var casterTransform = Caster.transform;
             base.Cast();
-            projectilePool.RemoveFromPool(casterTransform.position, casterTransform.rotation).Activate();
+            //TODO Fix and move direction calculations.
+            projectilePool.RemoveFromPool(casterTransform.position + casterTransform.transform.forward, casterTransform.rotation).Activate();
         }
     }
 }
