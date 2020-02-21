@@ -1,7 +1,7 @@
 ﻿using PhantomDragonStudio.Ability_System;
 using UnityEngine;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
     
     [System.Serializable]

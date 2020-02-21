@@ -9,10 +9,13 @@ public class TESTER : MonoBehaviour
     private AbilityController abController;
 
     public CharacterSheet sheet;
+
+    private Character c;
     // Start is called before the first frame update
     void Start()
     {
         abController = FindObjectOfType<AbilityController>();
+        c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
     }
 
     // Update is called once per frame
@@ -31,11 +34,7 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
-            c.Heal(10);
-            
-            Debug.Log("C " + c.Health.CurrentHealth);
-            Debug.Log("M " + c.Health.MaxHealth);
+            //Empty
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
@@ -52,25 +51,11 @@ public class TESTER : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("DAMAGE!");
-            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
-            c.Damage(50);
+            c.TakeDamage(50);
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("HEAL!");
-            Character c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
-            c.Heal(50);
+            c.RestoreHealth(50);
         }
-        // else if (Input.GetKeyDown(KeyCode.Z))
-        // {
-        //     var p = FindObjectOfType<CharacterPoolHandler>();
-        //     p.Pools.RemoveFromPool(new Vector3(0,10, 1), Quaternion.identity);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.X))
-        // {
-        //     var p = FindObjectOfType<CharacterPoolHandler>();
-        //     p.Pools.AddToPool(CharacterFactory.Create(sheet.Prefab, transform.position, transform.rotation));
-        // }
     }
 }

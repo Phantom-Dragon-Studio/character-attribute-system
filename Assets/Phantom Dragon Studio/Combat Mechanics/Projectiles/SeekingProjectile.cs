@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using PhantomDragonStudio.PoolingSystem;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
     public class SeekingProjectile : MonoBehaviour, IProjectile
     {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using PhantomDragonStudio.CombatMechanics;
 using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
@@ -36,12 +34,5 @@ public class Destructible : MonoBehaviour, ITargetable, IDisposable
     public void Dispose()
     {
         Destroy(this.gameObject);
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        //TODO Change this so it can be damaged multiple ways.
-        Debug.Log("Tink");
-        Damage(other.gameObject.GetComponent<Projectile>().Data.Value);
     }
 }

@@ -1,21 +1,13 @@
-﻿using System;
-using PhantomDragonStudio.Tools;
-using UnityEngine;
+﻿using PhantomDragonStudio.Tools;
+using PhantomDragonStudio.CombatMechanics;
 
 namespace PhantomDragonStudio.HeroSystem
 {
     public interface ICharacter
     {
+        int GetInstanceID();
+        ICharacter Construct(CharacteristicController characteristicController);
         ICharacterSheet CharacterSheet { get; }
-        GeneralObjectInformation GeneralObjectInformation { get; }
         ICharacteristicController CharacteristicController { get; }
-        IHealth Health { get; }
-        void Heal(float amount);
-        event EventHandler<HealedEventArgs> Healed;
-        void Damage(float amount);
-        Transform Transform { get; }
-        event EventHandler<DamagedEventArgs> Damaged;
-        ICharacter Construct(CharacteristicController characteristicController, CharacterHealth characterHealth);
-        void Die();
     }
 }

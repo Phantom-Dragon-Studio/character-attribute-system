@@ -1,4 +1,5 @@
 ﻿using PhantomDragonStudio.CombatMechanics;
+using PhantomDragonStudio.CombatMechanics.Projectiles;
 using PhantomDragonStudio.HeroSystem;
 using UnityEngine;
 
@@ -9,14 +10,14 @@ namespace PhantomDragonStudio.PoolingSystem
         [SerializeField] private CharacterPoolHandler characterPoolHandler = default;
         private ITargetable target;
 
-        public void AddToWatchedProjectiles(ICollisionHandler collisionHandler)
+        public void AddToWatchedProjectiles(IProjectile projectile)
         {
-            collisionHandler.Collided += (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
+            projectile.Collided += (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
         }
 
-        public void RemoveFromWatchedProjectiles(ICollisionHandler collisionHandler)
+        public void RemoveFromWatchedProjectiles(IProjectile projectile)
         {
-            collisionHandler.Collided -= (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
+            projectile.Collided -= (sender, args) => FindReceiver(args.GOInstanceID, args.Value);
         }
 
         private void FindReceiver(int argsGoInstanceId, float argsValue)

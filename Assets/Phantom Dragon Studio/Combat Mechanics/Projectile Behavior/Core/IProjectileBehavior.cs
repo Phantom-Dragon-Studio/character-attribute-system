@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace  PhantomDragonStudio.CombatMechanics
+namespace  PhantomDragonStudio.CombatMechanics.Projectiles
 {
     public interface IProjectileBehavior 
     {

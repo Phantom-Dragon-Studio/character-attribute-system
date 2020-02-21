@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using PhantomDragonStudio;
-using PhantomDragonStudio.Ability_System;
+using PhantomDragonStudio.PoolingSystem;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
     public static class ProjectileFactory
     {

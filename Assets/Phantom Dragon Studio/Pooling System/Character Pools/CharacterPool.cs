@@ -39,9 +39,9 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
 
     public void AddToPool(ICharacter target)
     {
-        if (!pool.ContainsKey(target.Transform.GetInstanceID()))
+        if (!pool.ContainsKey(target.GetInstanceID()))
         {
-            pool.Add(target.Transform.GetInstanceID(), target);
+            pool.Add(target.GetInstanceID(), target);
             currentSize = pool.Count;
         } else
             Debug.LogError("Attempting to add an already existing character to " + this.name);
@@ -57,15 +57,11 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
             pointer = pool.First();
             pool.Remove(pointer.Key);
             currentSize = pool.Count;
-            pointer.Value.Transform.position = position;
-            pointer.Value.Transform.rotation = rotation;
             return pointer.Value;
         }
         freshInstance = FactoryRequest();
-        freshInstance.Transform.position = position;
-        freshInstance.Transform.rotation = rotation;
-        
-        Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.Transform.GetInstanceID().ToString() + " for pool: " + this);
+
+        Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.GetInstanceID().ToString() + " for pool: " + this);
         return freshInstance;
     }
 

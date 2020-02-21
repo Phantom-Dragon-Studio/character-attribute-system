@@ -6,7 +6,7 @@ namespace PhantomDragonStudio.Tools
 {
     public class Character_InformationWindow : MonoBehaviour
     {
-        ICharacter character;
+        Character character;
         ICharacteristicController characteristicController;
 
         [ShowOnly] [SerializeField] private CharacterLeagueType leagueType;
@@ -57,7 +57,7 @@ namespace PhantomDragonStudio.Tools
 
         void Start()
         {
-            character = GetComponent<ICharacter>();
+            character = GetComponent<Character>();
             characteristicController = character.CharacteristicController;
             leagueType = character.CharacterSheet.League.LeagueType;
             primaryAttributeEffectiveness = CharacteristicsManager.Instance.LeagueSettings[character.CharacterSheet.League.LeagueType].primaryAttributeGlobalModifier;

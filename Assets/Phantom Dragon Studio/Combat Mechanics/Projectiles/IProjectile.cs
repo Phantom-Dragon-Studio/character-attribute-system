@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using PhantomDragonStudio.Ability_System;
+using PhantomDragonStudio.PoolingSystem;
 using UnityEngine;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
     public interface IProjectile
     {
+        event EventHandler<ProjectileCollisionEventArgs> Collided;
         void Initialize(ProjectileData _projectileData, ProjectileBehavior _behavior, ProjectilePool poolToUse);
         ProjectileData Data { get; }
         Transform Transform { get; }

@@ -1,74 +1,31 @@
 ﻿using System;
 using System.Collections;
+using PhantomDragonStudio.CombatMechanics;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
-    public class CharacterHealth : IHealth
+    public class CharacterHealth : Health, IDisposable
     {
-        public float CurrentHealth { get; private set; }
-        public float MaxHealth { get; private set; }
-        public IHealthbar Healthbar { get; }
-        public ICharacteristicController CharacteristicController { get; }
-
-        private bool IsInitialized = false;
-        private float healthRatio;
-
-        public CharacterHealth(ICharacteristicController controllerToWatch)
+        private Character character;
+        public CharacterHealth(Character character)
         {
-            CharacteristicController = controllerToWatch;
-
-            controllerToWatch.CombatStats.MaxHealth.Calculated += (sender, args) =>
+            character.CharacteristicController.CombatStats.MaxHealth.Calculated += (sender, args) =>
             {
                 if (!IsInitialized)
-                    Initialize();
+                    Initialize(args.Stat.Value);
 
-                UpdateMaxHealth(args.Stat);
+                IncreaseMaxHealth(args.Stat.Value);
             };
-
-            controllerToWatch.Character.Healed += (sender, args) => UpdateCurrentHealth(args.Amount);
-            controllerToWatch.Character.Damaged += (sender, args) => UpdateCurrentHealth(-args.Amount); //TODO Unsubscribe from onHealedEvent
+            
+            character.Healed += (sender, args) => UpdateCurrentHealth(args.Amount);
+            character.Damaged += (sender, args) => UpdateCurrentHealth(-args.Amount); //TODO Unsubscribe from onHealedEvent
         }
 
-        private void Initialize()
+        public void Dispose()
         {
-            MaxHealth = CharacteristicController.CombatStats.MaxHealth.Value;
-            CurrentHealth = MaxHealth;
-            IsInitialized = true;
-        }
-
-        private void GetCurrentHealthRatio()
-        {
-            healthRatio = CurrentHealth / MaxHealth;
-        }
-
-        private void UpdateMaxHealth(ICombatStat maxHealthStat)
-        {
-            //Debug.Log(this.CharacteristicController.Character.GeneralObjectInformation.Name + " " + maxHealthStat);
-            GetCurrentHealthRatio();
-            MaxHealth = maxHealthStat.Value;
-            CurrentHealth = MaxHealth * healthRatio;
-            HealthCheck();
-        }
-
-        private void UpdateCurrentHealth(float amount)
-        {
-            //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
-            //TODO ~ Add BonusDamageReceived & DamageDecreased logic here.
-            // Debug.Log("Adjusting health of " + CharacteristicController.Character.GeneralObjectInformation.Name + "'s health by " + amount.ToString());
-            CurrentHealth += amount;
-            HealthCheck();
-        }
-
-        private void HealthCheck()
-        {
-            if (CurrentHealth > MaxHealth)
-                CurrentHealth = MaxHealth;
-            else if (CurrentHealth < 0)
-            {
-                CurrentHealth = 0;
-                CharacteristicController.Character.Die();
-            }
+            character.Healed -= (sender, args) => { }; 
+            character.Damaged -= (sender, args) => { }; 
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using PhantomDragonStudio.CombatMechanics;
 
-public interface ICollisionHandler 
+public interface ICollidable 
 {
     event EventHandler<ProjectileCollisionEventArgs> Collided;
 }

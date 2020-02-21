@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using PhantomDragonStudio.PoolingSystem;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
     public class Projectile : MonoBehaviour, IProjectile
     {
@@ -15,7 +16,6 @@ namespace PhantomDragonStudio.CombatMechanics
         #region Private Variable
         private float currentLifeTime;
         private ProjectilePool owningPool;
-        private Boolean hasHasCollided = true;
         private int collisions = 0;
         #endregion
         
@@ -25,7 +25,6 @@ namespace PhantomDragonStudio.CombatMechanics
         public Transform Transform => transform;
         public ProjectileBehavior Behavior => behavior;
         public Rigidbody Rigidbody => rigidbody;
-        public Boolean HasCollided => hasHasCollided;
 
         #endregion
         
@@ -33,18 +32,16 @@ namespace PhantomDragonStudio.CombatMechanics
         {
             transform = gameObject.transform;
             projectileData = _projectileData;
-            hasHasCollided = false;
             owningPool = poolToUse;
             //Behavior.Construct(this); Not necessary in this script. Other projectile variants may utilize it though.
         }
 
         public void Activate()
         {
-            hasHasCollided = false;
             collisions = 0;
             currentLifeTime = 0f;
             gameObject.SetActive(true);
-            if (!hasHasCollided && Data.Lifetime > currentLifeTime)
+            if (Data.Lifetime > currentLifeTime)
                 behavior.Perform(this);
         }
 
@@ -66,7 +63,6 @@ namespace PhantomDragonStudio.CombatMechanics
         private void OnCollisionEnter(Collision other)
         {
             collisions++;
-            hasHasCollided = true;
             Behavior.End(this);
             if (collisions <= 1)
             {

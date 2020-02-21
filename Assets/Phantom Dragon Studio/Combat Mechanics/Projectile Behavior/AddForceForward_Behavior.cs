@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace PhantomDragonStudio.CombatMechanics
+namespace PhantomDragonStudio.CombatMechanics.Projectiles
 {
-    [CreateAssetMenu(fileName ="New Add Force Forward Behavior", menuName ="Phantom Dragon Studio/Combat Mechanics/Projectile Behaviors/Add Force Forward")]
+    [CreateAssetMenu(fileName ="New Add Force Forward Behavior", menuName ="Phantom Dragon Studio/Combat System/Projectile Behaviors/Add Force Forward")]
 
     public class AddForceForward_Behavior : ProjectileBehavior
     {
