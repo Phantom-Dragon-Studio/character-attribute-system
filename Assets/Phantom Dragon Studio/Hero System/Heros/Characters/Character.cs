@@ -29,19 +29,25 @@ namespace PhantomDragonStudio.HeroSystem
 
         public void TakeDamage(float amount)
         {
+            //TODO Add BonusDamageReceived & DamageDecreased logic here
             Damaged?.Invoke(this, new DamagedEventArgs(amount));
         }
 
         public void RestoreHealth(float amount)
-        {
-            //Debug.Log("Attempting to heal...");
+        {    
+            //TODO Add BonusHealingReceived & HealingReduced
             Healed?.Invoke(this, new HealedEventArgs(amount));
+        }
+
+        public void ReturnToPool()
+        {
+            //Fire off an event containing our IPoolable as an arg. The universal pool handler will know what to do with this.
         }
 
         public void Die()
         {
             //TODO Stuff that happens when you die.
-            //Return To Pool
+            ReturnToPool();
             Destroy(this.gameObject);
         }
     }

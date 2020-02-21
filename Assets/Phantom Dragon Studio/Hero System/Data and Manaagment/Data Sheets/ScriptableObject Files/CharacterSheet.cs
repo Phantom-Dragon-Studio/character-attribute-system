@@ -26,11 +26,6 @@ namespace PhantomDragonStudio.HeroSystem
         [Header("Endurance")]
         [SerializeField] private float baseEnduranceValue = default;
     
-    
-
-    
-        //NOTE: The "-1" at the end of the array length declaration is mandatory as we have a 'None' field available in attributes which is utilized by
-        //The StatusEffects system incase we do not want to have a status effect attached to a spell action, etc. 
         public ICharacterAttribute[] Attributes { get; } = new ICharacterAttribute[Enum.GetNames(typeof(AttributeType)).Length];
         public GeneralObjectInformation GeneralObjectInformation => objectInformation;
         public Character Prefab => prefab;

@@ -1,10 +1,13 @@
 ﻿
+using System;
+using UnityEngine;
+
 namespace PhantomDragonStudio.CombatMechanics
 {
     public class Health
     {
-        public float CurrentHealth { get; protected set; }
-        public float MaxHealth { get; protected set; }
+        public float CurrentHealth { get; private set; }
+        public float MaxHealth { get; private set; }
         
         protected bool IsInitialized = false;
         private float healthRatio;
@@ -18,16 +21,14 @@ namespace PhantomDragonStudio.CombatMechanics
 
         protected void UpdateCurrentHealth(float amount)
         {
-            //TODO ~ Add BonusHealingReceived & HealingReduced logic here.
-            //TODO ~ Add BonusDamageReceived & DamageDecreased logic here.
             CurrentHealth += amount;
             HealthCheck();
         }
 
-        protected void IncreaseMaxHealth(float amountToIncrease)
+        protected void IncreaseMaxHealth(float newAmount)
         {
             GetCurrentHealthRatio();
-            MaxHealth += amountToIncrease;
+            MaxHealth = newAmount;
             CurrentHealth = MaxHealth * healthRatio;
             HealthCheck();
         }
@@ -37,11 +38,14 @@ namespace PhantomDragonStudio.CombatMechanics
             healthRatio = CurrentHealth / MaxHealth;
         }
         
-        private void HealthCheck()
+        //If less than or the same as 0 then we should set to 0 and return false.
+        //Then inside of the override we call this base function and react accordingly.
+        //If it ever returns false that means the object should trigger it's death function.
+        protected virtual void HealthCheck()
         {
             if (CurrentHealth > MaxHealth)
                 CurrentHealth = MaxHealth;
-            else if (CurrentHealth < 0)
+            else if (CurrentHealth <= 0)
             {
                 CurrentHealth = 0;
             }
