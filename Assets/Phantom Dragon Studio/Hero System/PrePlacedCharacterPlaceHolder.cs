@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
+using PhantomDragonStudio.CombatMechanics;
+using PhantomDragonStudio.PoolingSystem;
 
 namespace PhantomDragonStudio.HeroSystem
 {
     public class PrePlacedCharacterPlaceHolder : MonoBehaviour
     {
-        [SerializeField] private CharacterSheet[] sheets = default;
+        [SerializeField] private CharacterPool[] pools = default;
 
-        void Awake()
+        private void Awake()
         {
-            for (int i = 0; i < sheets.Length; i++)
+            InitializeWithPooling();
+        }
+
+        private void InitializeWithPooling()
+        {
+            for (int i = 0; i < pools.Length; i++)
             {
-                var t = transform;
-                CharacterFactory.Create(sheets[i].Prefab, t.position, t.rotation);
-                t.Translate(new Vector3(i+1,0,0));
+                for (int j = 0; j < pools[i].StartCount; j++)
+                {
+                    DamageablePoolHandler.AddToPool(
+                        CharacterFactory.Create(pools[i].CharacterToPool.Prefab, pools[i]) as IDamageable);
+                }
             }
         }
     }

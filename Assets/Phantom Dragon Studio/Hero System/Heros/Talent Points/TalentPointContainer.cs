@@ -1,6 +1,7 @@
 ﻿using System;
 using PhantomDragonStudio.Tools;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
@@ -9,24 +10,23 @@ namespace PhantomDragonStudio.HeroSystem
     [CreateAssetMenu(fileName = "New Talent Point Container", menuName = "Phantom Dragon Studio/Talents/Talent Point Container", order = 0)]
     public class TalentPointContainer : ScriptableObject, ITalentPointContainer
     {
-        public ICharacter Character { get; private set; }
         public int TotalPointsAvailable { get => totalPointsAvailable; private set => totalPointsAvailable = value; }
         public int TotalPointsSpent { get => totalPointsSpent; private set => totalPointsSpent = value; }
         
-        [SerializeField] BaseTalentPoint[] talentPoints = default;
+        [SerializeField] private BaseTalentPoint[] talentPoints = default;
         [SerializeField] private int totalPointsAvailable;
         [SerializeField] private int totalPointsSpent;
 
+        [NonSerialized] private List<BaseTalentPoint> instanceTalentPoints = new List<BaseTalentPoint>();
 
-        public void Initialize(ICharacter _character)
+        public void Initialize(ICharacter character)
         {
-            Character = _character;
             for (int i = 0; i < talentPoints.Length; i++)
             {
-                if (talentPoints[i] != null)
+                if (talentPoints[i] != null && talentPoints.Length > 0)
                 {
-                    //Debug.Log("Setting Up Talent: " + talentPoints[i].GeneralTalentInfo.Name);
-                    talentPoints[i].Initialize(this);
+                    instanceTalentPoints.Add(ScriptableObject.Instantiate(talentPoints[i]));
+                    instanceTalentPoints[i].Initialize(this, character);
                 }
                 else Debug.LogWarning(this.name + " has null talent points!");
             }
@@ -36,14 +36,14 @@ namespace PhantomDragonStudio.HeroSystem
         {
             if(TotalPointsAvailable != 0)
             {
-                if (!talentPoints[index].IsMaxed())
+                if (!instanceTalentPoints[index].IsMaxed())
                 {
                     //Debug.Log("Increasing Talent Point Level for " + talentPoints[index].ToString());
                     TotalPointsSpent++;
                     TotalPointsAvailable--;
-                    talentPoints[index].IncreaseLevel(1);
+                    instanceTalentPoints[index].IncreaseLevel(1);
                 }
-                else
+                else 
                 {
                     Debug.Log("Current Talent is already at max level!");
                 }
@@ -59,16 +59,16 @@ namespace PhantomDragonStudio.HeroSystem
 
         public ITalentPoint GetTalentPoint(int index)
         {
-            return talentPoints[index];
+            return instanceTalentPoints[index];
         }
 
         public void ResetAllTalentPoints()
         {
-            for (int i = 0; i < talentPoints.Length; i++)
+            for (int i = 0; i < instanceTalentPoints.Count; i++)
             {
-                if (talentPoints[i] != null)
+                if (instanceTalentPoints[i] != null)
                 {
-                    talentPoints[i].ResetCurrentLevel();
+                    instanceTalentPoints[i].ResetCurrentLevel();
                 }
             }
         }

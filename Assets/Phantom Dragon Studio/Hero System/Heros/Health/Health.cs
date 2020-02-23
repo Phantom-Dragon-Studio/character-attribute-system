@@ -19,13 +19,13 @@ namespace PhantomDragonStudio.CombatMechanics
             IsInitialized = true;
         }
 
-        protected void UpdateCurrentHealth(float amount)
+        public void UpdateCurrentHealth(float amount)
         {
             CurrentHealth += amount;
             HealthCheck();
         }
 
-        protected void IncreaseMaxHealth(float newAmount)
+        public void IncreaseMaxHealth(float newAmount)
         {
             GetCurrentHealthRatio();
             MaxHealth = newAmount;
@@ -33,14 +33,6 @@ namespace PhantomDragonStudio.CombatMechanics
             HealthCheck();
         }
         
-        private void GetCurrentHealthRatio()
-        {
-            healthRatio = CurrentHealth / MaxHealth;
-        }
-        
-        //If less than or the same as 0 then we should set to 0 and return false.
-        //Then inside of the override we call this base function and react accordingly.
-        //If it ever returns false that means the object should trigger it's death function.
         protected virtual void HealthCheck()
         {
             if (CurrentHealth > MaxHealth)
@@ -49,6 +41,11 @@ namespace PhantomDragonStudio.CombatMechanics
             {
                 CurrentHealth = 0;
             }
+        }
+        
+        private void GetCurrentHealthRatio()
+        {
+            healthRatio = CurrentHealth / MaxHealth;
         }
     }
 }

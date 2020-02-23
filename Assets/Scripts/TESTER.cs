@@ -7,15 +7,15 @@ using PhantomDragonStudio.PoolingSystem;
 public class TESTER : MonoBehaviour
 {
     private AbilityController abController;
-
-    public CharacterSheet sheet;
-
     private Character c;
+    private TalentTreeHandler tp;
+    private TalentTreeHandler tp2;
     // Start is called before the first frame update
     void Start()
     {
         abController = FindObjectOfType<AbilityController>();
         c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
+        tp = c.GetComponent<TalentTreeHandler>();
     }
 
     // Update is called once per frame
@@ -34,18 +34,32 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            //Empty
+            tp2 = FindObjectOfType<TalentTreeHandler>();
+            if (tp2 == tp)
+            {
+                Destroy(tp.gameObject);
+                tp2 = FindObjectOfType<TalentTreeHandler>();
+            }
+            tp2.UpgradeTalent(0,0);
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("Attempting to increase Talent Point Level!!");
-            TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
+            // Debug.Log("Attempting to increase Talent Point Level!!");
             tp.UpgradeTalent(0,0);
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            // Debug.Log("Attempting to increase Talent Point Level!!");
+            tp.UpgradeTalent(0,1);
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Debug.Log("Attempting to increase Talent Point Level!!");
+            tp.UpgradeTalent(0,2);
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Clearing Talent Points!");
-            TalentTreeHandler tp = FindObjectOfType<TalentTreeHandler>();
             tp.ResetTalentPointsInTree(0);
         }
 

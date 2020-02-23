@@ -581,7 +581,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: RHSD
+    1: RHSD;EZ_DEFINE_SYMBOLS;PDS_POOLING
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

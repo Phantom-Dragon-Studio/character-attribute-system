@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 8934410024093529162}
   - component: {fileID: 2216195518838484816}
   - component: {fileID: 7250566722614376583}
-  - component: {fileID: 1909408780}
   m_Layer: 0
   m_Name: Main Character
   m_TagString: Untagged
@@ -181,12 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talentPointTrees:
-  - talentPointsContainer: {fileID: 11400000, guid: fcfbe1417dbe4dd1ac1dbd6f4f7a4d0c,
-      type: 2}
-  - talentPointsContainer: {fileID: 11400000, guid: 9a046a10a3994eddb6d156582e708b50,
-      type: 2}
-  - talentPointsContainer: {fileID: 11400000, guid: 9a046a10a3994eddb6d156582e708b50,
-      type: 2}
+  - {fileID: 11400000, guid: fcfbe1417dbe4dd1ac1dbd6f4f7a4d0c, type: 2}
+  - {fileID: 11400000, guid: 9a046a10a3994eddb6d156582e708b50, type: 2}
+  - {fileID: 11400000, guid: 2c48bd1e26bbef4418bc12537be564b4, type: 2}
 --- !u!54 &7250566722614376583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,20 +199,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 3
---- !u!64 &1909408780
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7659718069294395533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3343255787550126517, guid: ebd6c02ae453ff74d8cb81c687eb2667, type: 3}
 --- !u!1001 &1412334353818258045
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ namespace PhantomDragonStudio.HeroSystem
     public interface ICharacter
     {
         int GetInstanceID();
-        ICharacter Construct(CharacteristicController characteristicController);
+        ICharacter Construct(ICharacteristicController characteristicController);
         ICharacterSheet CharacterSheet { get; }
         ICharacteristicController CharacteristicController { get; }
     }

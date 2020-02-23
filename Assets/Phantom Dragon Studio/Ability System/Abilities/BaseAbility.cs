@@ -16,39 +16,41 @@ namespace PhantomDragonStudio.Ability_System
             cooldownCoroutine = CooldownTick();
             Caster = abilityController;
             AbilityInformation = abilityInformation;
+            //Call base in child class then do custom behavior.
         }
 
         public virtual void Cast()
         {
-            // Debug.Log("Base Ability is Casting for: " + AbilityInformation.GeneraInformation.Name);
+            //override me
         }
 
-        public virtual void IncreaseLevel(int levelsToIncrease)
+        public void IncreaseLevel(int levelsToIncrease)
         {
             AbilityInformation.CurrentLevel += levelsToIncrease;
             if (AbilityInformation.CurrentLevel > AbilityInformation.MaxLevel)
                 AbilityInformation.CurrentLevel = AbilityInformation.MaxLevel;
         }
 
-        public virtual void DecreaseLevel(int levelsToDecrease)
+        public void DecreaseLevel(int levelsToDecrease)
         {   
             AbilityInformation.CurrentLevel -= levelsToDecrease;
             if (AbilityInformation.CurrentLevel <= 0)
                 AbilityInformation.CurrentLevel = 0;
         }
         
-        public virtual void EngageCooldown()
+        public void EngageCooldown()
         {
             Caster.StartCoroutine(cooldownCoroutine);
         }
 
-        public virtual void ResetCooldown()
+        public void ResetCooldown()
         {
             Caster.StopCoroutine(cooldownCoroutine);
         }
 
         private IEnumerator CooldownTick()
         {
+            Debug.Log("Empty Cooldown Coroutine Started!");
             yield return null;
         }
     }

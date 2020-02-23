@@ -5,12 +5,15 @@ namespace PhantomDragonStudio.HeroSystem
 {
     public static class CharacterFactory
     {
-
-        public static ICharacter Create(Character prefab, Vector3 location, Quaternion rotation)
+        public static ICharacter Create(Character prefab, CharacterPool pool = null)
         {
-            ICharacter character = GameObject.Instantiate(prefab, location, rotation);
+            ICharacter character = GameObject.Instantiate(prefab);
             CharacteristicController characteristicController = new CharacteristicController(character);
             character.Construct(characteristicController);
+            if (pool != null)
+            {
+                pool.AddToPool(character);
+            }
             return character;
         }
     }

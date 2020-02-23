@@ -9,7 +9,7 @@ namespace PhantomDragonStudio.HeroSystem
     /// This class is the class for all alive units (Anything that can move basically because I intend on making structures their own script, similar to the Character script).
     /// </summary>
     [System.Serializable]
-    public class Character : MonoBehaviour, ICharacter, IHealthMechanics, IPoolable
+    public class Character : MonoBehaviour, ICharacter, IHealthMechanics
     {
         [SerializeField] private CharacterSheet characterSheet = default;
         public ICharacterSheet CharacterSheet => characterSheet;
@@ -19,11 +19,18 @@ namespace PhantomDragonStudio.HeroSystem
         public ICharacteristicController CharacteristicController { get; private set; }
         public event EventHandler<HealedEventArgs> Healed;
         public event EventHandler<DamagedEventArgs> Damaged;
+        private GameObject gameobject;
+        public GameObject GameObject => gameobject;
 
-        public ICharacter Construct(CharacteristicController characteristicController)
+        public ICharacter Construct(ICharacteristicController characteristicController)
         { 
             CharacteristicController = characteristicController;
             health = new CharacterHealth(this);
+            gameobject = this.gameObject;
+            CharacteristicController.Attributes.UpdateAttribute(AttributeType.Agility, 1);
+            CharacteristicController.Attributes.UpdateAttribute(AttributeType.Strength, 1);
+            CharacteristicController.Attributes.UpdateAttribute(AttributeType.Wisdom, 1);
+            CharacteristicController.Attributes.UpdateAttribute(AttributeType.Endurance, 1);
             return this;
         }
 
@@ -39,15 +46,9 @@ namespace PhantomDragonStudio.HeroSystem
             Healed?.Invoke(this, new HealedEventArgs(amount));
         }
 
-        public void ReturnToPool()
-        {
-            //Fire off an event containing our IPoolable as an arg. The universal pool handler will know what to do with this.
-        }
-
         public void Die()
         {
             //TODO Stuff that happens when you die.
-            ReturnToPool();
             Destroy(this.gameObject);
         }
     }

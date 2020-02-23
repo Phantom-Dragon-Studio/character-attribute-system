@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rogue_Ninja TP Container
   m_EditorClassIdentifier: 
   talentPoints: []
-  totalPointsAvailable: 0
+  totalPointsAvailable: 5
   totalPointsSpent: 0

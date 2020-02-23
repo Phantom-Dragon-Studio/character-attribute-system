@@ -1,4 +1,5 @@
-﻿using PhantomDragonStudio.PoolingSystem;
+﻿using PhantomDragonStudio.CombatMechanics.Projectiles;
+using PhantomDragonStudio.PoolingSystem;
 using UnityEngine;
 
 namespace PhantomDragonStudio.Ability_System
@@ -8,15 +9,18 @@ namespace PhantomDragonStudio.Ability_System
     {
         [SerializeField] private StatusEffect[] statusEffects = default;
         [SerializeField] private ProjectilePool projectilePool = default;
-        public StatusEffect[] StatusEffects => statusEffects;
+        [SerializeField] private Vector3 offset;
+        private IProjectile projectile;
         
-
         public override void Cast()
         {  
             // Debug.Log(AbilityInformation.GeneraInformation.Name + " is casting!");
             var casterTransform = Caster.transform;
             base.Cast();
-            projectilePool.RemoveFromPool(casterTransform.position, casterTransform.rotation).Activate();
+            projectile = projectilePool.RemoveFromPool();
+            projectile.Transform.position = casterTransform.position;
+            projectile.Transform.rotation = casterTransform.rotation;
+            projectile.Activate();
         }
     }
 }

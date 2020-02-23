@@ -1,38 +1,35 @@
 ﻿using System;
 using PhantomDragonStudio.CombatMechanics;
 using PhantomDragonStudio.HeroSystem;
+using PhantomDragonStudio.PoolingSystem;
+using PhantomDragonStudio.Tools;
 using UnityEngine;
 
-public class Destructible : MonoBehaviour, ITargetable, IDisposable
+public class Destructible : MonoBehaviour, IDestructible, IDamageable, IDisposable
 {
-    public Rigidbody rb;
-    [SerializeField] private DestructibleHealth destructibleHealth = default;
-    public Vector3 GetPosition { get; }
-    public GameObject GetGameObject { get; }
-    public Transform Transform { get; }
+    [SerializeField] private float maxHealth = default;
+    private DestructibleHealth health = new DestructibleHealth();
+    private GameObject gameobject;
+    public event EventHandler<DamagedEventArgs> Damaged;
+    public GameObject GameObject => gameobject;
 
     private void Awake()
     {
-        destructibleHealth.Initialize(this);
-    }
-
-    public void Damage(float amount)
-    {
-        destructibleHealth.UpdateCurrentHealth(-amount);
-    }
-
-    public void Heal(float amount)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public Vector3 CurrentVelocity()
-    {
-        return rb.velocity;
+        gameobject = gameObject;
+        health.Initialize(maxHealth, this);
+        DamageablePoolHandler.AddToPool(this);
     }
 
     public void Dispose()
     {
-        Destroy(this.gameObject);
+        Debug.Log("Dispose Destructible....");
+        DamageablePoolHandler.RemoveFromPool(this);
+        Destroy(this.gameobject); //TODO Remove
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health.UpdateCurrentHealth(-amount);
+        Damaged?.Invoke(this, new DamagedEventArgs(-amount));
     }
 }

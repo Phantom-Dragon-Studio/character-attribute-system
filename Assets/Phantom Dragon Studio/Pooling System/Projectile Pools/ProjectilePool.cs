@@ -21,16 +21,12 @@ namespace PhantomDragonStudio.PoolingSystem
         private IProjectile freshInstance;
         private KeyValuePair<int, IProjectile> pointer;
         private Dictionary<int, IProjectile> pool = new Dictionary<int, IProjectile>();
-        private Vector3 position;
-        private Quaternion rotation;
-
-        public void GeneratePool(ProjectilePoolHandler projectilePoolHandler)
+        public void GeneratePool()
         {
             currentSize = 0;
             for (int j = 0; j < startCount; j++)
             {
                 freshInstance = FactoryRequest();
-                projectilePoolHandler.InteractionsHandler.AddToWatchedProjectiles(freshInstance);
                 freshInstance.Deactivate();
             }
         }
@@ -40,36 +36,29 @@ namespace PhantomDragonStudio.PoolingSystem
             return pool.ContainsKey(key) ? pool[key] : null;
         }
 
-        public void AddToPool(IProjectile target)
+        public void AddToPool(IProjectile damageable)
         {
-            if (!pool.ContainsKey(target.GetInstanceID()))
+            if (!pool.ContainsKey(damageable.GetInstanceID()))
             {
-                pool.Add(target.GetInstanceID(), target);
+                pool.Add(damageable.GetInstanceID(), damageable);
                 currentSize = pool.Count;
             }
             else
-                Debug.LogWarning("Attempting to add an already existing object to " + this + " with ID: " + target.GetInstanceID().ToString());
+                Debug.LogWarning("Attempting to add an already existing object to " + this + " with ID: " + damageable.GetInstanceID().ToString());
         }
 
 
-        public IProjectile RemoveFromPool(Vector3 _position, Quaternion _rotation)
+        public IProjectile RemoveFromPool(IProjectile projectile = null)
         {
-            position = _position;
-            rotation = _rotation;
             if (pool.Count > 0)
             {
                 pointer = pool.FirstOrDefault();
                 pool.Remove(pointer.Key);
                 currentSize = pool.Count;
-                pointer.Value.Transform.position = position;
-                pointer.Value.Transform.rotation = rotation;
-                
                 // Debug.Log("Removed from pool: " + pointer.Value.Transform.GetInstanceID());
                 return pointer.Value;
             }
             freshInstance = FactoryRequest();
-            freshInstance.Transform.position = position;
-            freshInstance.Transform.rotation = rotation;
 
             Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.Transform.GetInstanceID().ToString() + " for pool: " + this);
             return freshInstance;
@@ -78,6 +67,7 @@ namespace PhantomDragonStudio.PoolingSystem
         protected IProjectile FactoryRequest()
         {
             freshInstance = ProjectileFactory.Create(projectilesToPool, this);
+            ProjectileCollisionListener.AddToWatchedProjectiles(freshInstance);
             return freshInstance;
         }
     }

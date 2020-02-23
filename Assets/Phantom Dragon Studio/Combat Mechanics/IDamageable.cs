@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace PhantomDragonStudio.CombatMechanics
 {
@@ -7,5 +8,7 @@ namespace PhantomDragonStudio.CombatMechanics
         void TakeDamage(float amount);
 
         event EventHandler<DamagedEventArgs> Damaged;
+
+        GameObject GameObject { get; }
     }
 }

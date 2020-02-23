@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Rogue_Hunter TP Container
   m_EditorClassIdentifier: 
   talentPoints:
+  - {fileID: 11400000, guid: f999391ae10c8eb44bbab151ee3f8e0c, type: 2}
   - {fileID: 11400000, guid: 6dde88ea14716504abfff094abe20434, type: 2}
+  - {fileID: 11400000, guid: bb4695aff10be4b478f089db84a6e028, type: 2}
+  - {fileID: 11400000, guid: 2735ce79c42c00f48b07cbee99ab4394, type: 2}
   - {fileID: 11400000, guid: dbfc9bd253c08a74b91d4317ab742820, type: 2}
-  totalPointsAvailable: 998
-  totalPointsSpent: 41
+  totalPointsAvailable: 983
+  totalPointsSpent: 56

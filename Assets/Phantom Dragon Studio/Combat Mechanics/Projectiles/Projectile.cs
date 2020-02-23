@@ -30,10 +30,9 @@ namespace PhantomDragonStudio.CombatMechanics.Projectiles
         
         public void Initialize(ProjectileData _projectileData, ProjectileBehavior _behavior, ProjectilePool poolToUse)
         {
+            owningPool = poolToUse;
             transform = gameObject.transform;
             projectileData = _projectileData;
-            owningPool = poolToUse;
-            //Behavior.Construct(this); Not necessary in this script. Other projectile variants may utilize it though.
         }
 
         public void Activate()
@@ -66,7 +65,7 @@ namespace PhantomDragonStudio.CombatMechanics.Projectiles
             Behavior.End(this);
             if (collisions <= 1)
             {
-                Collided?.Invoke(this, new ProjectileCollisionEventArgs(other.gameObject.transform.GetInstanceID(), projectileData.Value));
+                Collided?.Invoke(this, new ProjectileCollisionEventArgs(other.gameObject.GetInstanceID(), projectileData.Value));
             }
         }
     }

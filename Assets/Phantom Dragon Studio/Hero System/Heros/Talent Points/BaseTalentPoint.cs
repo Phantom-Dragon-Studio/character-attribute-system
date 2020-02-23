@@ -28,9 +28,11 @@ namespace PhantomDragonStudio.HeroSystem
         public abstract void PerformFunctionality();
         public abstract void StopFunctionality();
 
-        public void Initialize(ITalentPointContainer container)
+        protected ICharacter character;
+        public void Initialize(ITalentPointContainer container, ICharacter _character)
         {
             Container = container;
+            character = _character;
             LockedState = new TP_LockedState(this, talentPointRequirements);
             UnlockedState  = new TP_UnlockedState(this);
             ActiveState = new TP_ActiveState(this);

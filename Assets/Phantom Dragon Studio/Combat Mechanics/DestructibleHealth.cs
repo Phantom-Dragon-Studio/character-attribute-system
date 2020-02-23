@@ -1,50 +1,25 @@
 ﻿using System;
+using PhantomDragonStudio.CombatMechanics;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
     [Serializable]
-    public class DestructibleHealth
+    public class DestructibleHealth : Health
     {
-        [SerializeField] private float maxHealth = default;
-        private float currentHealth;
-        private float healthRatio;
         private Destructible destructible;
 
-        public void Initialize(Destructible _destructible)
+        public void Initialize(float amount, Destructible destructibleToWatch)
         {
-            destructible = _destructible;
-            currentHealth = maxHealth;
+            base.Initialize(amount);
+            destructible = destructibleToWatch;
         }
-
-        private void GetCurrentHealthRatio()
+        
+        protected override void HealthCheck()
         {
-            healthRatio = currentHealth / maxHealth;
-        }
-
-        public void UpdateMaxHealth()
-        {
-            GetCurrentHealthRatio();
-            currentHealth = maxHealth * healthRatio;
-            HealthCheck();
-        }
-
-        public void UpdateCurrentHealth(float amount)
-        {
-            currentHealth += amount;
-            HealthCheck();
-        }
-
-        private void HealthCheck()
-        {
-            if (currentHealth > maxHealth)
-                currentHealth = maxHealth;
-            else if (currentHealth < 0)
-            {
-                currentHealth = 0;
-                //TODO Death stuff
+            base.HealthCheck();
+            if(CurrentHealth == 0)
                 destructible.Dispose();
-            }
         }
     }
 }

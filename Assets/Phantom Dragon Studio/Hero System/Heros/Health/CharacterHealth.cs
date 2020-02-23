@@ -33,8 +33,7 @@ namespace PhantomDragonStudio.HeroSystem
         protected override void HealthCheck()
         {
             base.HealthCheck();
-            Debug.Log("Check");
-            if(CurrentHealth == 0)
+            if(CurrentHealth <= 0)
             {
                 Debug.Log("Dead");
                 character.Die();

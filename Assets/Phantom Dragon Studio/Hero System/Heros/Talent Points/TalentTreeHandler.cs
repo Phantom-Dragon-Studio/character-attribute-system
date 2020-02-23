@@ -1,31 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PhantomDragonStudio.HeroSystem
 {
-    //[RequireComponent(typeof(MainCharacter))]
-    [RequireComponent(typeof(Character))]
+    [RequireComponent(typeof(MainCharacter))]
     public class TalentTreeHandler : MonoBehaviour
     {
-        [SerializeField] TalentPointTree[] talentPointTrees = default;
         public ICharacter Character { get; private set; }
+        [SerializeField] private TalentPointContainer[] talentPointTrees = default;
+        
+        [NonSerialized] private List<TalentPointContainer> trees = new List<TalentPointContainer>();
         void Start()
         {
+            Character = GetComponent<Character>();
+            
             for (int i = 0; i < talentPointTrees.Length; i++)
             {
-                Character = GetComponent<Character>();
-                talentPointTrees[i].SetUp(Character);
+                trees.Add(ScriptableObject.Instantiate(talentPointTrees[i]));
+                trees[i].Initialize(Character);
             }
         }
 
         public void UpgradeTalent(int treeIndex, int talentIndex)
         {
-            talentPointTrees[treeIndex].UpgradeTalent(talentIndex);
+            trees[treeIndex].IncreaseTalentPointLevel(talentIndex);
         }
 
         public void ResetTalentPointsInTree(int treeIndex)
         {
-            talentPointTrees[treeIndex].ResetTree();
+            trees[treeIndex].ResetAllTalentPoints();
         }
     }
 }

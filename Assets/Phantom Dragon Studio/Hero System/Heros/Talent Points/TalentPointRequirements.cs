@@ -22,11 +22,10 @@ namespace PhantomDragonStudio.HeroSystem
             {
                 if (requiredTalentPoints[i] != null)
                 {
-                    //Debug.Log(requiredTalentPoints[i].IsMaxed());
                     if(requiredTalentPoints[i].IsMaxed())
                         if (i == requiredTalentPoints.Length - 1)
                             return true;
-                        continue;
+                    continue;
                 }
                 Debug.Log("Null talent point requirement for " + owner.ToString());
                 return true;

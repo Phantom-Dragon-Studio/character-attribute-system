@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PhantomDragonStudio.CombatMechanics;
 using PhantomDragonStudio.HeroSystem;
 using PhantomDragonStudio.PoolingSystem;
 using PhantomDragonStudio.Tools;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// This pool is tracked by the Transform InstanceID
@@ -14,21 +16,22 @@ using UnityEngine;
 public class CharacterPool : ScriptableObject, IPool<ICharacter>
 {
     [SerializeField] protected int startCount = default;
-    [SerializeField] private CharacterSheet charactersToPool = default;
+    [FormerlySerializedAs("charactersToPool")] [SerializeField] private CharacterSheet characterToPool = default;
     [SerializeField] [ShowOnly] private int currentSize = default;
-
-    private Vector3 position;
-    private Quaternion rotation;
+    
     private ICharacter freshInstance;
     private KeyValuePair<int, ICharacter> pointer;
     private Dictionary<int, ICharacter> pool = new Dictionary<int, ICharacter>();
+
+    public CharacterSheet CharacterToPool => characterToPool; 
+    public int StartCount => startCount;
+    public int CurrentSize => currentSize;
     public void GeneratePool()
     {
         currentSize = 0;
         for (int j = 0; j < startCount; j++)
         {
             var objToPool = FactoryRequest();
-            AddToPool(objToPool);
         }
     }
 
@@ -37,21 +40,18 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         return pool.ContainsKey(key) ? pool[key] : null;
     }
 
-    public void AddToPool(ICharacter target)
+    public void AddToPool(ICharacter character)
     {
-        if (!pool.ContainsKey(target.GetInstanceID()))
+        if (!pool.ContainsKey(character.GetInstanceID()))
         {
-            pool.Add(target.GetInstanceID(), target);
+            pool.Add(character.GetInstanceID(), character);
             currentSize = pool.Count;
         } else
             Debug.LogError("Attempting to add an already existing character to " + this.name);
     }
 
-    public ICharacter RemoveFromPool(Vector3 _position, Quaternion _rotation)
+    public ICharacter RemoveFromPool(ICharacter projectile = null)
     {
-        position = _position;
-        rotation = _rotation;
-
         if (pool.Count > 0)
         {
             pointer = pool.First();
@@ -67,6 +67,6 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
 
     protected  ICharacter FactoryRequest()
     {
-        return CharacterFactory.Create(charactersToPool.Prefab, Vector3.zero, Quaternion.identity);
+        return CharacterFactory.Create(characterToPool.Prefab, this);
     }
 }
