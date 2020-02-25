@@ -10,9 +10,12 @@ public class TESTER : MonoBehaviour
     private Character c;
     private TalentTreeHandler tp;
     private TalentTreeHandler tp2;
+
+    private PlatformHandler plathand;
     // Start is called before the first frame update
     void Start()
     {
+        plathand = FindObjectOfType<PlatformHandler>();
         abController = FindObjectOfType<AbilityController>();
         c = GameObject.Find("Main Character(Clone)").GetComponent<Character>();
         tp = c.GetComponent<TalentTreeHandler>();
@@ -34,13 +37,7 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            tp2 = FindObjectOfType<TalentTreeHandler>();
-            if (tp2 == tp)
-            {
-                Destroy(tp.gameObject);
-                tp2 = FindObjectOfType<TalentTreeHandler>();
-            }
-            tp2.UpgradeTalent(0,0);
+            plathand.ToggleAll(3);
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {

@@ -57,6 +57,8 @@ namespace PhantomDragonStudio.CombatMechanics.Projectiles
         private void Update()
         {
             currentLifeTime += Time.deltaTime;
+            if(currentLifeTime > Data.Lifetime)
+                Behavior.End(this);
         }
         
         private void OnCollisionEnter(Collision other)

@@ -21,7 +21,6 @@ namespace PhantomDragonStudio.Ability_System
             projectile.Transform.position = casterTransform.position;
             projectile.Transform.rotation = casterTransform.rotation;
             projectile.Activate();
-            EngageCooldown();
         }
     }
 }

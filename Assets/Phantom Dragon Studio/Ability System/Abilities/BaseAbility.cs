@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace PhantomDragonStudio.Ability_System
@@ -7,21 +8,24 @@ namespace PhantomDragonStudio.Ability_System
     public abstract class BaseAbility : ScriptableObject, IAbility
     {
         [SerializeField] protected AbilityInfo abilityInformation = default;
-        public AbilityInfo AbilityInformation { get; private set; }
-        public AbilityController Caster { get; private set; }
+        public AbilityInfo AbilityInformation => abilityInformation;
+        public AbilityController Caster { get; private set; } 
         private IEnumerator cooldownCoroutine;
+        private WaitForSeconds cooldown;
+        private bool isOnCooldown = false;
         
         public virtual void Initialize(AbilityController abilityController)
         {
             cooldownCoroutine = CooldownTick();
             Caster = abilityController;
-            AbilityInformation = abilityInformation;
-            //Call base in child class then do custom behavior.
+            cooldown = new WaitForSeconds(abilityInformation.CooldownTime);
+            //Call this in child class then do custom behavior.
         }
 
         public virtual void Cast()
         {
-            //override me
+            if(isOnCooldown) return;
+            EngageCooldown();
         }
 
         public void IncreaseLevel(int levelsToIncrease)
@@ -40,18 +44,22 @@ namespace PhantomDragonStudio.Ability_System
         
         public void EngageCooldown()
         {
+            isOnCooldown = true;
             Caster.StartCoroutine(cooldownCoroutine);
         }
 
         public void ResetCooldown()
         {
             Caster.StopCoroutine(cooldownCoroutine);
+            isOnCooldown = false;
         }
 
         private IEnumerator CooldownTick()
         {
-            Debug.Log("Empty Cooldown Coroutine Started!");
-            yield return null;
+            Debug.Log("Timer started: " + cooldown);
+            yield return cooldown;
+            Debug.Log("Wait completed!");
+            ResetCooldown();
         }
     }
 }
