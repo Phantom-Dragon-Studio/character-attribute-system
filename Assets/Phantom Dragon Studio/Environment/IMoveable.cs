@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Phantom_Dragon_Studio.Environment
 {
     public interface IMoveable
     {
-        void Move(Vector3 destination);
+        void MoveTo(Vector3 destination);
+        void MoveInstant(Vector3 destination);
     }
 }

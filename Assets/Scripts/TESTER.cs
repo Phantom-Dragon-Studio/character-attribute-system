@@ -37,7 +37,7 @@ public class TESTER : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            plathand.ToggleAll(3);
+            plathand.ToggleAll(-1);
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {

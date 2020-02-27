@@ -2,7 +2,7 @@
 
 namespace PhantomDragonStudio.Environment
 {
-    public class StationaryPlatform : MonoBehaviour
+    public class StationaryPlatform : BasePlatform
     {
 
     }

@@ -8,6 +8,7 @@ namespace PhantomDragonStudio.HeroSystem
     /// <summary>
     /// This class is the class for all alive units (Anything that can move basically because I intend on making structures their own script, similar to the Character script).
     /// </summary>
+    [SelectionBase]
     [System.Serializable]
     public class Character : MonoBehaviour, ICharacter, IHealthMechanics
     {
