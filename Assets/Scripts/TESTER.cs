@@ -39,6 +39,10 @@ public class TESTER : MonoBehaviour
         {
             plathand.ToggleAll(-1);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            plathand.ToggleAll(15);
+        }
         else if (Input.GetKeyDown(KeyCode.I))
         {
             // Debug.Log("Attempting to increase Talent Point Level!!");

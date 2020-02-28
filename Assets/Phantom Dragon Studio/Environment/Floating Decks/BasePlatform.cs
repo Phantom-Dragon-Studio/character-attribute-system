@@ -6,9 +6,9 @@ namespace PhantomDragonStudio.Environment
 {
     public class BasePlatform : MonoBehaviour, IActivatable
     {
-        private float timeToBeActive = -1;
-        private float currentLifeTime;
-        private bool isActive;
+        protected float timeToBeActive = -1;
+        protected float currentLifeTime;
+        protected bool isActive;
         
         public bool IsActive { get => isActive; set => isActive = value; }
 

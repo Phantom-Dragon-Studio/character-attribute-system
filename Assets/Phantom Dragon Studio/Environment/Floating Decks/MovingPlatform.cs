@@ -6,87 +6,42 @@ using UnityEngine;
 
 namespace PhantomDragonStudio.Environment
 {
-    public class MovingPlatform : BasePlatform, IMoveable, IPatrol
+    public class MovingPlatform : BasePlatform
     {
         [SerializeField] private List<Vector3> waypoints;
         [SerializeField] private float minimumDistance = default;
+        [Range(0f, 10f)]
         public float speed;
         public List<Vector3> Waypoints => waypoints;
+        
+        
         private Vector3 currentDestination;
         private Vector3 previousDestination;
         private Vector3 nextDestination;
         private int nextIndex;
         private bool hasOrders = false;
-        private IEnumerator executeOrders;
-        private WaitUntil waitUntilTrue;
 
         private void Awake()
         {    
             //TODO Make this calculate the closest waypoint to me and continue from there.
-            waitUntilTrue = new WaitUntil(ReadyForNewOrders);
-            executeOrders = ExecuteOrders();
-            nextIndex = 0;
+            nextIndex = 1;
             currentDestination = waypoints[0]; 
             nextDestination = waypoints[1];
-            StartCoroutine(executeOrders);
-        }
-
-        public void OverrideOrders(Vector3 destination)
-        {
             hasOrders = true;
-            MoveTo(destination);
         }
 
-        public void Patrol()
+        private void Update()
         {
-            if (hasOrders) return;
-            hasOrders = true;
-            for (int i = 0; i < waypoints.Count; i++)
-            {
-                Debug.Log("Patrolling....");
-                previousDestination = currentDestination;
-                currentDestination = nextDestination;
-
-                nextIndex = i+1;
-                if (nextIndex == waypoints.Count)
-                    nextIndex = 0;    
-                nextDestination = waypoints[nextIndex];
-            }
-        }
-        
-        public void MoveTo(Vector3 destination)
-        {
-            Debug.Log("Moving....");
-            hasOrders = true;
-            gameObject.transform.position = Vector3.Lerp(transform.position,destination, speed * Time.deltaTime);
-        }
-
-        public void MoveInstant(Vector3 destination)
-        {
-            this.gameObject.transform.position = destination;
-        }
-
-        public bool ReadyForNewOrders()
-        {
-            Debug.Log("Checking...");
-            if (!(Vector3.Distance(this.transform.position, currentDestination) <= minimumDistance)) 
-                return false;
+            if(hasOrders)
+                this.transform.position = Vector3.Lerp(transform.position,currentDestination, speed * Time.deltaTime);
             
-            hasOrders = false;
-            return true;
-        }
-        
-        private IEnumerator ExecuteOrders()
-        {
-            Debug.Log("Coroutine Tick"); 
-            yield return waitUntilTrue;
-            MoveTo(Waypoints[nextIndex]);
-            Debug.Log("Coroutine Wait Completed.");
-        }
-
-        private void FixedUpdate()
-        {
-            ReadyForNewOrders();
+            if (Vector3.Distance(this.transform.position, currentDestination) <= minimumDistance)
+            {
+                nextIndex++;
+                if (nextIndex >= waypoints.Count)
+                    nextIndex = 0;
+                currentDestination = waypoints[nextIndex];
+            }
         }
     }
 }
