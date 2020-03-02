@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Phantom_Dragon_Studio.Environment;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PhantomDragonStudio.Environment
 {
-    public class MovingPlatform : BasePlatform
+    public class MovingPlatform : BasePlatform, IPatrol
     {
-        [SerializeField] private List<Vector3> waypoints;
+        [SerializeField] private List<Vector3> waypoints = default;
         [SerializeField] private float minimumDistance = default;
-        [Range(0f, 10f)]
+        [SerializeField] private AnimationCurve curve = default;
         public float speed;
         public List<Vector3> Waypoints => waypoints;
-        
         
         private Vector3 currentDestination;
         private Vector3 previousDestination;
@@ -32,8 +32,13 @@ namespace PhantomDragonStudio.Environment
 
         private void Update()
         {
+            Patrol();
+        }
+
+        public void Patrol()
+        {
             if(hasOrders)
-                this.transform.position = Vector3.Lerp(transform.position,currentDestination, speed * Time.deltaTime);
+                this.transform.position = Vector3.Lerp(transform.position,currentDestination, speed * curve.Evaluate(Time.deltaTime) * 100);
             
             if (Vector3.Distance(this.transform.position, currentDestination) <= minimumDistance)
             {
@@ -42,6 +47,16 @@ namespace PhantomDragonStudio.Environment
                     nextIndex = 0;
                 currentDestination = waypoints[nextIndex];
             }
+        }
+
+        private void OnDisable()
+        {
+            hasOrders = false;
+        }
+        
+        private void OnEnable()
+        {
+            hasOrders = true;
         }
     }
 }

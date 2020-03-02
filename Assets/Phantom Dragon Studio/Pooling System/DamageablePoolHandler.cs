@@ -23,12 +23,9 @@ namespace PhantomDragonStudio.PoolingSystem
             pool.AddToPool(damageable);
         }
 
-        public static void RemoveFromPool(IDamageable damageable)
+        public static IDamageable RemoveFromPool(IDamageable damageable)
         {
-            if (pool.FindInPool(damageable.GameObject.GetInstanceID()) != null)
-            {
-                pool.RemoveFromPool(damageable);
-            }
+            return pool.FindInPool(damageable.GameObject.GetInstanceID()) != null ? pool.RemoveFromPool(damageable) : null;
         }
     }
 }

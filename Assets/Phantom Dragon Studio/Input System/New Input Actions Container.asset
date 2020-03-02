@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e3c1d15b8fe454f84915d50b8363bb, type: 3}
-  m_Name: MainCharacterPool
+  m_Script: {fileID: 11500000, guid: 3c76660a93325ba4db21b59b43065cad, type: 3}
+  m_Name: New Input Actions Container
   m_EditorClassIdentifier: 
-  startCount: 10
-  characterToPool: {fileID: 11400000, guid: 1a1927b1f69066d4c88684c7bde5fa2a, type: 2}
-  currentSize: 7

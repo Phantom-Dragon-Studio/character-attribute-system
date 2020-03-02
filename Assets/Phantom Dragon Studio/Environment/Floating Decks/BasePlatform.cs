@@ -11,11 +11,14 @@ namespace PhantomDragonStudio.Environment
         protected bool isActive;
         
         public bool IsActive { get => isActive; set => isActive = value; }
+        /// <summary>
+        /// Defaults to -1 for permanent activation.
+        /// </summary>
+        public float TimeToBeActive { get => timeToBeActive; set => timeToBeActive = value; }
 
-        public void Activate(float time = -1)
+        public void Activate()
         {
             currentLifeTime = 0;
-            timeToBeActive = time;
             isActive = true;
             this.gameObject.SetActive(true);
         }

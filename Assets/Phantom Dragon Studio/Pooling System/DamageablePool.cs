@@ -35,7 +35,7 @@ namespace PhantomDragonStudio.CombatMechanics
                 currentSize = pool.Count;
             }
             else
-                Debug.LogError("Attempting to add an already existing" + damageable + " to " + this.name);
+                Debug.LogError("Attempting to add an already existing " + damageable + " to damageable pool.");
         }
 
         public IDamageable RemoveFromPool(IDamageable damageable = null)

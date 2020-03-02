@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using PhantomDragonStudio.CombatMechanics;
+using PhantomDragonStudio.Environment;
 using PhantomDragonStudio.Tools;
 
 namespace PhantomDragonStudio.HeroSystem
@@ -18,6 +19,7 @@ namespace PhantomDragonStudio.HeroSystem
         private CharacterHealth health;
         public CharacterHealth Health => health;
         public ICharacteristicController CharacteristicController { get; private set; }
+        public bool IsActive { get; set; }
         public event EventHandler<HealedEventArgs> Healed;
         public event EventHandler<DamagedEventArgs> Damaged;
         private GameObject gameobject;
@@ -51,6 +53,16 @@ namespace PhantomDragonStudio.HeroSystem
         {
             //TODO Stuff that happens when you die.
             Destroy(this.gameObject);
+        }
+
+        public void Activate()
+        {
+            this.gameObject.SetActive(true);
+        }
+
+        public void Deactivate()
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }

@@ -31,7 +31,8 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         currentSize = 0;
         for (int j = 0; j < startCount; j++)
         {
-            var objToPool = FactoryRequest();
+            freshInstance = FactoryRequest();
+            DamageablePoolHandler.AddToPool(freshInstance as IDamageable);
         }
     }
 
@@ -45,6 +46,7 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         if (!pool.ContainsKey(character.GetInstanceID()))
         {
             pool.Add(character.GetInstanceID(), character);
+            character.Deactivate();
             currentSize = pool.Count;
         } else
             Debug.LogError("Attempting to add an already existing character to " + this.name);
@@ -57,10 +59,13 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
             pointer = pool.First();
             pool.Remove(pointer.Key);
             currentSize = pool.Count;
+            pointer.Value.Activate();
             return pointer.Value;
         }
         freshInstance = FactoryRequest();
-
+        freshInstance.Activate();
+        DamageablePoolHandler.AddToPool(freshInstance as IDamageable);
+        
         Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.GetInstanceID().ToString() + " for pool: " + this);
         return freshInstance;
     }

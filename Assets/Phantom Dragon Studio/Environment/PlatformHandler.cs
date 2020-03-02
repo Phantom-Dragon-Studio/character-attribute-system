@@ -48,15 +48,15 @@ public class PlatformHandler : MonoBehaviour
             if(allPlatforms[i].IsActive)
                 allPlatforms[i].Deactivate();
             else
-                allPlatforms[i].Activate(time);
+                allPlatforms[i].Activate();
         }
     }
     
-    private void ActivateAll(float time = -1)
+    private void ActivateAll()
     {
         for (int i = 0; i < allPlatforms.Count; i++)
         {
-            allPlatforms[i].Activate(time);
+            allPlatforms[i].Activate();
         }
     }
     

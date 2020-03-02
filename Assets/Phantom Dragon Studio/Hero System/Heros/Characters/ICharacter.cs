@@ -1,9 +1,10 @@
 ﻿using PhantomDragonStudio.Tools;
 using PhantomDragonStudio.CombatMechanics;
+using PhantomDragonStudio.Environment;
 
 namespace PhantomDragonStudio.HeroSystem
 {
-    public interface ICharacter
+    public interface ICharacter : IActivatable
     {
         int GetInstanceID();
         ICharacter Construct(ICharacteristicController characteristicController);
