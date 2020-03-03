@@ -10,11 +10,12 @@ namespace PhantomDragonStudio.Input
     public class InputActionsContainer : ScriptableObject
     {
         private KeyboardAndMouseInput KBM_Scheme;
+        public Vector2 input;
 
         public void SetupControls()
         {
             KBM_Scheme = new KeyboardAndMouseInput();
-            KBM_Scheme.PlayerControls.Move.performed += ctx => ProcessInput(ctx.ReadValue<Vector2>());
+            KBM_Scheme.PlayerControls.Move.performed += ctx => input = ctx.ReadValue<Vector2>();
         }
 
         private void ProcessInput(Vector2 input)
