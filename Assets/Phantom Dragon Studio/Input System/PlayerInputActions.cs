@@ -35,6 +35,14 @@ namespace PhantomDragonStudio.Input
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7d4b0ad-a4c3-4033-b2be-8ba0d38e1b40"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -147,6 +155,17 @@ namespace PhantomDragonStudio.Input
                     ""action"": ""FireDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b79c993-c61a-4696-8d04-4697829d15a3"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,6 +186,27 @@ namespace PhantomDragonStudio.Input
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Oculus"",
+            ""bindingGroup"": ""Oculus"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<OpenVROculusTouchController>{LeftHand}"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<OpenVROculusTouchController>{RightHand}"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<XRHMD>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -174,6 +214,7 @@ namespace PhantomDragonStudio.Input
             m_PlayerControls = asset.FindActionMap("Player Controls", throwIfNotFound: true);
             m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
             m_PlayerControls_FireDirection = m_PlayerControls.FindAction("FireDirection", throwIfNotFound: true);
+            m_PlayerControls_Look = m_PlayerControls.FindAction("Look", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -225,12 +266,14 @@ namespace PhantomDragonStudio.Input
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
         private readonly InputAction m_PlayerControls_Move;
         private readonly InputAction m_PlayerControls_FireDirection;
+        private readonly InputAction m_PlayerControls_Look;
         public struct PlayerControlsActions
         {
             private @KeyboardAndMouseInput m_Wrapper;
             public PlayerControlsActions(@KeyboardAndMouseInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
             public InputAction @FireDirection => m_Wrapper.m_PlayerControls_FireDirection;
+            public InputAction @Look => m_Wrapper.m_PlayerControls_Look;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -246,6 +289,9 @@ namespace PhantomDragonStudio.Input
                     @FireDirection.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireDirection;
                     @FireDirection.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireDirection;
                     @FireDirection.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireDirection;
+                    @Look.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLook;
+                    @Look.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLook;
+                    @Look.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLook;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -256,6 +302,9 @@ namespace PhantomDragonStudio.Input
                     @FireDirection.started += instance.OnFireDirection;
                     @FireDirection.performed += instance.OnFireDirection;
                     @FireDirection.canceled += instance.OnFireDirection;
+                    @Look.started += instance.OnLook;
+                    @Look.performed += instance.OnLook;
+                    @Look.canceled += instance.OnLook;
                 }
             }
         }
@@ -269,10 +318,20 @@ namespace PhantomDragonStudio.Input
                 return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
             }
         }
+        private int m_OculusSchemeIndex = -1;
+        public InputControlScheme OculusScheme
+        {
+            get
+            {
+                if (m_OculusSchemeIndex == -1) m_OculusSchemeIndex = asset.FindControlSchemeIndex("Oculus");
+                return asset.controlSchemes[m_OculusSchemeIndex];
+            }
+        }
         public interface IPlayerControlsActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnFireDirection(InputAction.CallbackContext context);
+            void OnLook(InputAction.CallbackContext context);
         }
     }
 }

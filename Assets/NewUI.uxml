@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name=" Header" style="background-image: url('/Assets/PDS Logo Final™ (White BG No Gradient).png'); -unity-background-scale-mode: stretch-to-fill; border-left-color: rgba(0, 0, 0, 255); border-right-color: rgba(0, 0, 0, 255); border-top-color: rgba(0, 0, 0, 255); border-bottom-color: rgba(0, 0, 0, 255); border-left-width: 100px; border-right-width: 100px; border-top-width: 100px; border-bottom-width: 100px; background-color: rgba(255, 255, 255, 255); align-items: auto; justify-content: center; position: relative; display: flex; opacity: 0.51; color: rgb(255, 255, 255); border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; -unity-background-image-tint-color: rgba(255, 255, 255, 255);">
+        <Style src="NewUI.uss" />
+    </ui:VisualElement>
+</ui:UXML>

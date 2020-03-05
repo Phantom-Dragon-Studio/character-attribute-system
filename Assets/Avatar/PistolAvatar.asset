@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!90 &9000000
+Avatar:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PistolAvatar
+  m_AvatarSize: 1280
+  m_Avatar:
+    serializedVersion: 3
+    m_AvatarSkeleton:
+      data:
+        m_Node:
+        - m_ParentId: -1
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        m_ID: 0000000043800f11067aff920135fe3c01a77755aff3aa3da21796e2a31f4e48
+        m_AxesArray: []
+    m_AvatarSkeletonPose:
+      data:
+        m_X:
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 9.056633E-25, y: 0.02184823, z: -0.02385385}
+          q: {x: -4.326641E-08, y: 1.557594E-07, z: 1.338171E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.0115835, z: -0.03751631}
+          q: {x: -4.326641E-08, y: 1.557594E-07, z: 1.338171E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.009633729, z: 0.03153144}
+          q: {x: -2.956868E-10, y: -6.268758E-08, z: -1.328415E-07, w: 1}
+          s: {x: 0.3936991, y: 0.393703, z: 0.3937003}
+        - t: {x: -9.846827E-25, y: -0.05041834, z: -0.02753019}
+          q: {x: 0.1173355, y: -6.044635E-08, z: -1.08386E-07, w: 0.9930924}
+          s: {x: 0.3937, y: 0.3937012, z: 0.3937004}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: -4.450259E-08, y: 1.582317E-07, z: 1.324263E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.03778351, z: 0.1743697}
+          q: {x: -5.96244E-09, y: 0, z: 0, w: 1}
+          s: {x: 0.03937008, y: 0.03937008, z: 0.03937008}
+        - t: {x: 0, y: 0.03778351, z: 0.1743697}
+          q: {x: 2.185569E-08, y: 0, z: 0, w: 1}
+          s: {x: 0.03937008, y: 0.03937008, z: 0.03937008}
+    m_DefaultPose:
+      data:
+        m_X:
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        - t: {x: 9.056633E-25, y: 0.02184823, z: -0.02385385}
+          q: {x: -4.326641E-08, y: 1.557594E-07, z: 1.338171E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.0115835, z: -0.03751631}
+          q: {x: -4.326641E-08, y: 1.557594E-07, z: 1.338171E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.009633729, z: 0.03153144}
+          q: {x: -2.956868E-10, y: -6.268758E-08, z: -1.328415E-07, w: 1}
+          s: {x: 0.3936991, y: 0.393703, z: 0.3937003}
+        - t: {x: -9.846827E-25, y: -0.05041834, z: -0.02753019}
+          q: {x: 0.1173355, y: -6.044635E-08, z: -1.08386E-07, w: 0.9930924}
+          s: {x: 0.3937, y: 0.3937012, z: 0.3937004}
+        - t: {x: 0, y: 0, z: 0}
+          q: {x: -4.450259E-08, y: 1.582317E-07, z: 1.324263E-07, w: 1}
+          s: {x: 0.01177163, y: 0.01177167, z: 0.01177164}
+        - t: {x: 0, y: 0.03778351, z: 0.1743697}
+          q: {x: -5.96244E-09, y: 0, z: 0, w: 1}
+          s: {x: 0.03937008, y: 0.03937008, z: 0.03937008}
+        - t: {x: 0, y: 0.03778351, z: 0.1743697}
+          q: {x: 2.185569E-08, y: 0, z: 0, w: 1}
+          s: {x: 0.03937008, y: 0.03937008, z: 0.03937008}
+    m_SkeletonNameIDArray: 0000000043800f11067aff920135fe3c01a77755aff3aa3da21796e2a31f4e48
+    m_Human:
+      data:
+        serializedVersion: 2
+        m_RootX:
+          t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        m_Skeleton:
+          data:
+            m_Node: []
+            m_ID:
+            m_AxesArray: []
+        m_SkeletonPose:
+          data:
+            m_X: []
+        m_LeftHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_RightHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_Handles: []
+        m_ColliderArray: []
+        m_HumanBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_HumanBoneMass:
+        - 0.1454546
+        - 0.1212121
+        - 0.1212121
+        - 0.04848485
+        - 0.04848485
+        - 0.009696971
+        - 0.009696971
+        - 0.03030303
+        - 0.1454546
+        - 0.1454546
+        - 0.01212121
+        - 0.04848485
+        - 0.006060607
+        - 0.006060607
+        - 0.02424243
+        - 0.02424243
+        - 0.01818182
+        - 0.01818182
+        - 0.006060607
+        - 0.006060607
+        - 0.002424243
+        - 0.002424243
+        - 0
+        - 0
+        - 0
+        m_ColliderIndex:
+        m_Scale: 1
+        m_ArmTwist: 0.5
+        m_ForeArmTwist: 0.5
+        m_UpperLegTwist: 0.5
+        m_LegTwist: 0.5
+        m_ArmStretch: 0.05
+        m_LegStretch: 0.05
+        m_FeetSpacing: 0
+        m_HasLeftHand: 0
+        m_HasRightHand: 0
+        m_HasTDoF: 0
+    m_HumanSkeletonIndexArray:
+    m_HumanSkeletonReverseIndexArray:
+    m_RootMotionBoneIndex: -1
+    m_RootMotionBoneX:
+      t: {x: 0, y: 0, z: 0}
+      q: {x: 0, y: 0, z: 0, w: 1}
+      s: {x: 1, y: 1, z: 1}
+    m_RootMotionSkeleton:
+      data:
+        m_Node: []
+        m_ID:
+        m_AxesArray: []
+    m_RootMotionSkeletonPose:
+      data:
+        m_X: []
+    m_RootMotionSkeletonIndexArray:
+  m_TOS:
+    0:
+    286228547: Pistol_Slide
+    1023292673: Pistol_Trigger
+    1034613679: Pistol_Body
+    1213079459: 9mm_Bullet
+    1433904897: Pistol_Magazine
+    2466216454: Pistol_Hammer
+    3801487266: 9mm_Case
