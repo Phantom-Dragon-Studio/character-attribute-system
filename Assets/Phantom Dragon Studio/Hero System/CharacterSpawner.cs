@@ -47,8 +47,8 @@ namespace PhantomDragonStudio.HeroSystem
         {
             spawnedCharacter = pools[poolIndex].RemoveFromPool();
             damageable = spawnedCharacter as IDamageable;
-            damageable.GameObject.transform.position = myTransform.position + offset;
-            damageable.GameObject.transform.rotation = myTransform.rotation;
+            // damageable.GameObject.transform.position = myTransform.position + offset;
+            // damageable.GameObject.transform.rotation = myTransform.rotation;
         }
 
         private void SpawnSinglePool(int poolIndex)

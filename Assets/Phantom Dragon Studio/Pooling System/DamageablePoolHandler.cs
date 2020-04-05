@@ -19,7 +19,6 @@ namespace PhantomDragonStudio.PoolingSystem
 
         public static void AddToPool(IDamageable damageable)
         {
-            // Debug.Log("Adding " + damageable.GameObject.ToString() + " to DamageablePool.");
             pool.AddToPool(damageable);
         }
 

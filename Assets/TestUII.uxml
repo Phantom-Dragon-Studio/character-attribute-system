@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Screen" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+        <Style src="TestUII.uss" />
+        <ui:VisualElement name="Left" class="toolbar-butrton">
+            <ui:VisualElement name="Toolbar" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Right" />
+    </ui:VisualElement>
+</ui:UXML>

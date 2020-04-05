@@ -52,7 +52,7 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
             Debug.LogError("Attempting to add an already existing character to " + this.name);
     }
 
-    public ICharacter RemoveFromPool(ICharacter projectile = null)
+    public ICharacter RemoveFromPool(ICharacter character = null)
     {
         if (pool.Count > 0)
         {
@@ -66,7 +66,7 @@ public class CharacterPool : ScriptableObject, IPool<ICharacter>
         freshInstance.Activate();
         DamageablePoolHandler.AddToPool(freshInstance as IDamageable);
         
-        Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.GetInstanceID().ToString() + " for pool: " + this);
+        // Debug.LogWarning("Created NEW: " + freshInstance + " with InstanceID: " + freshInstance.GetInstanceID().ToString() + " for pool: " + this);
         return freshInstance;
     }
 

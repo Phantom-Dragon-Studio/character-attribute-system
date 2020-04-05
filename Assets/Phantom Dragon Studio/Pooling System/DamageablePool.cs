@@ -19,7 +19,6 @@ namespace PhantomDragonStudio.CombatMechanics
         [SerializeField] [ShowOnly] private int currentSize = default;
         
         private KeyValuePair<int, IDamageable> pointer;
-        private IDamageable directReference;
         private Dictionary<int, IDamageable> pool = new Dictionary<int, IDamageable>();
 
         public IDamageable FindInPool(int key)
@@ -44,10 +43,9 @@ namespace PhantomDragonStudio.CombatMechanics
             {
                 if (damageable != null)
                 {
-                    directReference = damageable;
-                    pool.Remove(directReference.GameObject.GetInstanceID());
+                    pool.Remove(damageable.GameObject.GetInstanceID());
                     currentSize = pool.Count;
-                    return directReference;
+                    return damageable;
                 }
                 pointer = pool.First();
                 pool.Remove(pointer.Key);
