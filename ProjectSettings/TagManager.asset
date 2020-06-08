@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - ITargetable
-  - IProjectile
   - 
   - 
   - 
   - 
   - 
+  - 
+  - Units
   - Ground
   - Grass
   - Small Props
